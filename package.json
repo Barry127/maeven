@@ -1,0 +1,52 @@
+{
+  "name": "maeven",
+  "version": "0.0.1",
+  "description": "React Components",
+  "main": "build/index.js",
+  "license": "MIT",
+  "private": false,
+  "author": {
+    "name": "Barry de Kleijn",
+    "email": "kleijn.barry@gmail.com",
+    "url": "https://github.com/barry127"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barry127/maeven.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Barry127/maeven/issues"
+  },
+  "homepage": "http://barry127.github.io/maeven/",
+  "dependencies": {
+    "webfontloader": "^1.6.28"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "^2.0.1",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.4",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/webfontloader": "^1.6.29",
+    "react": "^16.9.0",
+    "react-docgen-typescript": "^1.14.1",
+    "react-dom": "^16.9.0",
+    "react-scripts": "^3.1.1",
+    "react-styleguidist": "^9.1.16",
+    "react-test-renderer": "^16.9.0",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.6.2"
+  },
+  "scripts": {
+    "clear": "rimraf build docs",
+    "prebuild": "npm run clear",
+    "build": "tsc -p tsconfig.build.json",
+    "docs": "styleguidist build",
+    "start": "styleguidist server",
+    "test": "react-scripts test"
+  }
+}
