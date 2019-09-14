@@ -1,3 +1,9 @@
-console.log('bla');
+// Components
+export * from './components/ThemeProvider';
 
-export const a: string = 'test';
+// Hooks
+export { useTheme } from './hooks/useTheme';
+
+// Themes
+export * from './themes/types';
+export { default as MaevenTheme } from './themes/Maeven';
