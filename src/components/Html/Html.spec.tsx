@@ -2,10 +2,13 @@ import '@testing-library/jest-dom/extend-expect';
 
 import React from 'react';
 import { render } from '@testing-library/react';
+import { reinit } from 'typestyle';
 
 import { H1, H2, H3, H4, H5, H6, P, Ul, Ol, Li } from './Html';
 
 describe('H1', () => {
+  afterEach(reinit);
+
   it('renders a h1 element with given text', () => {
     render(<H1>H1 Text Content</H1>);
     const element = document.querySelector('h1');

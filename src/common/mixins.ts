@@ -15,3 +15,11 @@ export const textSelection = (theme: Theme): CSSProperties => ({
   color: theme.colors.types.textSelection,
   backgroundColor: theme.colors.types.textSelectionBackground
 });
+
+export const truncate: CSSProperties = {
+  maxWidth: '100%',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  wordWrap: 'normal'
+};

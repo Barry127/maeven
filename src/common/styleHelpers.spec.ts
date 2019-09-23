@@ -1,4 +1,5 @@
-import { exportStyles } from './styleHelpers';
+import { exportStyles, getColorFromTheme } from './styleHelpers';
+import { Theme } from '../themes/types';
 
 describe('exportStyles', () => {
   const testCss = {
@@ -29,10 +30,39 @@ describe('exportStyles', () => {
     expect(styles.css).toBe(testCss);
   });
 
-  it('ex[erted key classes is a dictonary of string', () => {
+  it('exported key classes is a dictonary of string', () => {
     const styles = exportStyles(testCss);
 
     expect(typeof styles.classes.one).toBe('string');
     expect(typeof styles.classes.two).toBe('string');
+  });
+});
+
+describe('getColorFromTheme', () => {
+  const theme = {
+    colors: {
+      name: {
+        blue: 'blue',
+        red: 'red'
+      },
+      semantic: {
+        success: 'green',
+        warning: 'orange'
+      }
+    }
+  } as Theme;
+
+  it('Returns a color by name', () => {
+    expect(getColorFromTheme('red', theme)).toBe('red');
+    expect(getColorFromTheme('blue', theme)).toBe('blue');
+  });
+
+  it('Returns a color by semantic value', () => {
+    expect(getColorFromTheme('success', theme)).toBe('green');
+    expect(getColorFromTheme('warning', theme)).toBe('orange');
+  });
+
+  it('Returns null when no color is found', () => {
+    expect(getColorFromTheme('slightlyPink', theme)).toBeNull();
   });
 });

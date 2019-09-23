@@ -108,12 +108,15 @@ function createHeadingStyles(
     color: theme.colors.types.heading,
     fontFamily: theme.typography.fontFamily,
     fontWeight: theme.typography.headings.fontWeight,
-    lineHeight: 1,
+    lineHeight: 1.15,
     ...pm0,
     marginBottom: theme.typography.fontSize,
     fontSize,
     $nest: {
-      '&::selection': textSelection(theme)
+      '&::selection': textSelection(theme),
+      '&:last-child': {
+        marginBottom: 0
+      }
     }
   };
 }
@@ -128,7 +131,10 @@ function createTextStyles(theme: Theme): NestedCSSProperties {
     lineHeight: theme.typography.lineHeight,
     ...pm0,
     $nest: {
-      '&::selection': textSelection(theme)
+      '&::selection': textSelection(theme),
+      '&:last-child': {
+        marginBottom: 0
+      }
     }
   };
 }

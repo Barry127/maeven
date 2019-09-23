@@ -1,6 +1,5 @@
 import { NestedCSSProperties } from 'typestyle/lib/types';
-
-export type Color = string;
+import { Color } from 'csstype';
 
 export interface Overrides {
   [Component: string]: NestedCSSProperties;
