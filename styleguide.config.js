@@ -9,7 +9,9 @@ module.exports = {
     maeven: path.resolve(__dirname, 'src')
   },
   styleguideDir: './docs',
-  propsParser: require('react-docgen-typescript').withDefaultConfig({}).parse,
+  propsParser: require('react-docgen-typescript').withDefaultConfig({
+    propFilter
+  }).parse,
   pagePerSection: true,
   sections: [
     {
@@ -50,4 +52,16 @@ function getHooksDocs() {
       name: fileName,
       content: `./src/hooks/${fileName}/${fileName}.md`
     }));
+}
+
+const whiteList = ['className'];
+
+function propFilter(prop, component) {
+  if (whiteList.includes(prop.name)) return true;
+
+  if (prop.parent && prop.parent.fileName.includes('node_modules')) {
+    return false;
+  }
+
+  return true;
 }

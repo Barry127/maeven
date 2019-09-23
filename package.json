@@ -19,6 +19,8 @@
   },
   "homepage": "http://barry127.github.io/maeven/",
   "dependencies": {
+    "clsx": "^1.0.4",
+    "typestyle": "^2.0.4",
     "webfontloader": "^1.6.28"
   },
   "peerDependencies": {
@@ -26,6 +28,8 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.1.0",
+    "@testing-library/react": "^9.1.4",
     "@testing-library/react-hooks": "^2.0.1",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.4",
