@@ -48,11 +48,13 @@
     "typescript": "^3.6.2"
   },
   "scripts": {
-    "clear": "rimraf build docs",
+    "clear": "rimraf build docs coverage",
     "prebuild": "npm run clear",
     "build": "tsc -p tsconfig.build.json",
     "docs": "styleguidist build",
     "start": "styleguidist server",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "test:ci": "CI=true npm test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false"
   }
 }
