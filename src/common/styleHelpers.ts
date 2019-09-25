@@ -25,7 +25,7 @@ interface ClassNamesDictionary {
   [name: string]: string;
 }
 
-interface StylesExport {
+export interface StylesExport {
   css: NestedCSSPropertiesDictionary;
   classes: ClassNamesDictionary;
 }

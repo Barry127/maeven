@@ -36,7 +36,7 @@ Headings can be styled in different (theme) colors.
 ```js
 import { Heading } from 'maeven';
 
-<>
+<div style={{ columns: '2 auto' }}>
   <Heading level="h4" color="blue">
     Blue
   </Heading>
@@ -94,7 +94,7 @@ import { Heading } from 'maeven';
   <Heading level="h4" color="danger">
     Danger
   </Heading>
-</>;
+</div>;
 ```
 
 ### Truncate
