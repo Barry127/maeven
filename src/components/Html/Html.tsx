@@ -1,4 +1,10 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, {
+  FC,
+  HTMLAttributes,
+  OlHTMLAttributes,
+  LiHTMLAttributes,
+  AnchorHTMLAttributes
+} from 'react';
 import clsx from 'clsx';
 
 import { useTheme } from '../../hooks/useTheme';
@@ -41,5 +47,9 @@ export const H6 = createHtmlElement<HTMLAttributes<HTMLHeadingElement>>('h6');
 export const P = createHtmlElement<HTMLAttributes<HTMLParagraphElement>>('p');
 
 export const Ul = createHtmlElement<HTMLAttributes<HTMLUListElement>>('ul');
-export const Ol = createHtmlElement<HTMLAttributes<HTMLOListElement>>('ol');
-export const Li = createHtmlElement<HTMLAttributes<HTMLLIElement>>('li');
+export const Ol = createHtmlElement<OlHTMLAttributes<HTMLOListElement>>('ol');
+export const Li = createHtmlElement<LiHTMLAttributes<HTMLLIElement>>('li');
+
+export const A = createHtmlElement<AnchorHTMLAttributes<HTMLAnchorElement>>(
+  'a'
+);

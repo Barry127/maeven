@@ -1,4 +1,4 @@
-Currently supported components: `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Li`, `Ol`, `P`, `Ul`
+Currently supported components: `A`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Li`, `Ol`, `P`, `Ul`
 
 ## Examples
 
@@ -24,17 +24,17 @@ import { H1, H2, H3, H4, H5, H6 } from 'maeven';
 Some text with paragraphs and lists
 
 ```js
-import { H1, H2, H3, P, Ul, Ol, Li } from 'maeven';
+import { H1, H2, H3, P, Ul, Ol, Li, A } from 'maeven';
 
 <>
   <H1>You know how I sometimes have really brilliant ideas?</H1>
   <P>
     Annihilate? No. No violence. I won't stand for it. Not now, not ever, do you
-    understand me?! I'm the Doctor, the Oncoming Storm - and you basically meant
-    beat them in a football match, didn't you? Annihilate? No. No violence. I
-    won't stand for it. Not now, not ever, do you understand me?! I'm the
-    Doctor, the Oncoming Storm - and you basically meant beat them in a football
-    match, didn't you?
+    understand me?! <A href="/">I'm the Doctor</A>, the Oncoming Storm - and you
+    basically meant beat them in a football match, didn't you? Annihilate? No.
+    No violence. I won't stand for it. Not now, not ever, do you understand me?!
+    I'm the Doctor, the Oncoming Storm - and you basically meant beat them in a
+    football match, didn't you?
   </P>
   <P>
     You know how I sometimes have really brilliant ideas? No… It's a thing; it's

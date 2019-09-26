@@ -17,7 +17,8 @@ export const headingStyles = (theme: Theme, props: HeadingProps) => {
     heading: extend(
       htmlStyles[styleAsLevel](theme).css.element,
       styleColor ? { color: styleColor } : null,
-      props.truncate ? truncate : null
+      props.truncate ? truncate : null,
+      theme.overrides.Heading
     )
   });
 };

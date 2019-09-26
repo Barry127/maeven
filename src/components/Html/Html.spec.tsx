@@ -4,11 +4,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { reinit } from 'typestyle';
 
-import { H1, H2, H3, H4, H5, H6, P, Ul, Ol, Li } from './Html';
+import { H1, H2, H3, H4, H5, H6, P, Ul, Ol, Li, A } from './Html';
+
+afterEach(reinit);
 
 describe('H1', () => {
-  afterEach(reinit);
-
   it('renders a h1 element with given text', () => {
     render(<H1>H1 Text Content</H1>);
     const element = document.querySelector('h1');
@@ -264,6 +264,32 @@ describe('Li', () => {
     );
     const element = document.querySelector('li');
     expect(element!.id).toBe('li');
+    expect(element!.dataset.test).toBe('test-attr');
+  });
+});
+
+describe('A', () => {
+  it('renders an a element with given text', () => {
+    render(<A>A Text Content</A>);
+    const element = document.querySelector('a');
+    expect(element).toBeInTheDocument();
+    expect(element!.textContent).toBe('A Text Content');
+  });
+
+  it('sets className', () => {
+    render(<A className="My-a-class">A Text Content</A>);
+    const element = document.querySelector('a');
+    expect(element!.classList).toContain('My-a-class');
+  });
+
+  it('passes props', () => {
+    render(
+      <A id="a" data-test="test-attr">
+        A Text Content
+      </A>
+    );
+    const element = document.querySelector('a');
+    expect(element!.id).toBe('a');
     expect(element!.dataset.test).toBe('test-attr');
   });
 });

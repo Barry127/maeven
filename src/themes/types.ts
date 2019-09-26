@@ -20,6 +20,7 @@ export interface Theme {
   base: number;
   colors: {
     name: {
+      black: Color;
       blue: Color;
       cyan: Color;
       darkGrey: Color;
@@ -45,6 +46,7 @@ export interface Theme {
     types: {
       text: Color;
       heading: Color;
+      link: Color;
       textSelection: Color;
       textSelectionBackground: Color;
     };

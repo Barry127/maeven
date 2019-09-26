@@ -37,6 +37,9 @@ Headings can be styled in different (theme) colors.
 import { Heading } from 'maeven';
 
 <div style={{ columns: '2 auto' }}>
+  <Heading level="h4" color="black">
+    Black
+  </Heading>
   <Heading level="h4" color="blue">
     Blue
   </Heading>

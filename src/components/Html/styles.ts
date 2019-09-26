@@ -1,9 +1,43 @@
 import { extend } from 'typestyle';
 import { NestedCSSProperties } from 'typestyle/lib/types';
-
+import { color } from 'csx';
 import { Theme } from '../../themes/types';
 import { box, pm0, textSelection } from '../../common/mixins';
 import { exportStyles } from '../../common/styleHelpers';
+
+export const a = (theme: Theme) =>
+  exportStyles({
+    element: extend(
+      createTextStyles(theme),
+      {
+        textDecoration: 'none',
+        color: theme.colors.types.link,
+        $nest: {
+          '&:hover': {
+            color: color(theme.colors.types.link)
+              .darken(0.1)
+              .toString(),
+            textDecoration: 'none'
+          },
+          '&:focus': {
+            outline: 'none',
+            color: color(theme.colors.types.link)
+              .darken(0.1)
+              .toString()
+          },
+          '&:focus:not(:active):not(:hover)': {
+            textDecoration: 'underline'
+          },
+          '&:active': {
+            color: color(theme.colors.types.link)
+              .darken(0.15)
+              .toString()
+          }
+        }
+      },
+      theme.overrides.A
+    )
+  });
 
 export const h1 = (theme: Theme) =>
   exportStyles({

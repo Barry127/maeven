@@ -18,6 +18,7 @@ import {
   secondary,
   textColor
 } from './colors';
+import { color } from 'csx';
 
 const BASE = 4;
 
@@ -30,6 +31,7 @@ const meavenTheme: Theme = {
   base: BASE,
   colors: {
     name: {
+      black: textColor,
       blue,
       cyan,
       darkGrey,
@@ -55,11 +57,32 @@ const meavenTheme: Theme = {
     types: {
       text: textColor,
       heading: textColor,
+      link: blue,
       textSelection: white,
       textSelectionBackground: blue
     }
   },
-  overrides: {},
+  overrides: {
+    A: {
+      $nest: {
+        '&:hover': {
+          color: color(yellow)
+            .darken(0.1)
+            .toString()
+        },
+        '&:focus': {
+          color: color(yellow)
+            .darken(0.1)
+            .toString()
+        },
+        '&:active': {
+          color: color(yellow)
+            .darken(0.125)
+            .toString()
+        }
+      }
+    }
+  },
   typography: {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
