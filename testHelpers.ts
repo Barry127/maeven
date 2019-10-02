@@ -11,6 +11,11 @@ export function getStylesForElement(element: Element): CSSProperties {
   return styles[className];
 }
 
+export function getStylesForSelector(match: RegExp): CSSProperties {
+  const styles = getStyles();
+  return styles[Object.keys(styles).filter(key => key.match(match))[0]] || {};
+}
+
 export function getStyles(): CSSPropertiesDictionary {
   return cssAst2CSSProperties(parse(tsGetStyles()));
 }

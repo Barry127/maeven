@@ -155,7 +155,7 @@ function createHeadingStyles(
   };
 }
 
-function createTextStyles(theme: Theme): NestedCSSProperties {
+export function createTextStyles(theme: Theme): NestedCSSProperties {
   return {
     ...box,
     color: theme.colors.types.heading,
