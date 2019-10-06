@@ -7,6 +7,7 @@ import { getStylesForElement, reinit } from '../../../testHelpers';
 import { Heading } from './Heading';
 import { MaevenTheme } from '../..';
 import { h1, h3 } from '../Html/styles';
+import { ThemeProvider } from '../ThemeProvider';
 
 describe('Heading', () => {
   afterEach(reinit);
@@ -44,6 +45,27 @@ describe('Heading', () => {
     const element = document.querySelector('h1');
     expect(element!.id).toBe('heading');
     expect(element!.dataset.test).toBe('test-attr');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        Heading: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <Heading level="h1">Hello World</Heading>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('h1');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 
   describe('color', () => {

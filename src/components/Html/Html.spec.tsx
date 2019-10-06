@@ -2,9 +2,11 @@ import '@testing-library/jest-dom/extend-expect';
 
 import React from 'react';
 import { render } from '@testing-library/react';
-import { reinit } from 'typestyle';
+import { getStylesForElement, reinit } from '../../../testHelpers';
 
 import { H1, H2, H3, H4, H5, H6, P, Ul, Ol, Li, A } from './Html';
+import { MaevenTheme } from '../..';
+import { ThemeProvider } from '../ThemeProvider';
 
 afterEach(reinit);
 
@@ -32,6 +34,27 @@ describe('H1', () => {
     expect(element!.id).toBe('h1');
     expect(element!.dataset.test).toBe('test-attr');
   });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        H1: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <H1>Hello World</H1>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('h1');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
+  });
 });
 
 describe('H2', () => {
@@ -57,6 +80,27 @@ describe('H2', () => {
     const element = document.querySelector('h2');
     expect(element!.id).toBe('h2');
     expect(element!.dataset.test).toBe('test-attr');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        H2: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <H2>Hello World</H2>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('h2');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 });
 
@@ -84,6 +128,27 @@ describe('H3', () => {
     expect(element!.id).toBe('h3');
     expect(element!.dataset.test).toBe('test-attr');
   });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        H3: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <H3>Hello World</H3>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('h3');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
+  });
 });
 
 describe('H4', () => {
@@ -109,6 +174,27 @@ describe('H4', () => {
     const element = document.querySelector('h4');
     expect(element!.id).toBe('h4');
     expect(element!.dataset.test).toBe('test-attr');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        H4: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <H4>Hello World</H4>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('h4');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 });
 
@@ -136,6 +222,27 @@ describe('H5', () => {
     expect(element!.id).toBe('h5');
     expect(element!.dataset.test).toBe('test-attr');
   });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        H5: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <H5>Hello World</H5>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('h5');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
+  });
 });
 
 describe('H6', () => {
@@ -161,6 +268,27 @@ describe('H6', () => {
     const element = document.querySelector('h6');
     expect(element!.id).toBe('h6');
     expect(element!.dataset.test).toBe('test-attr');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        H6: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <H6>Hello World</H6>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('h6');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 });
 
@@ -188,6 +316,27 @@ describe('P', () => {
     expect(element!.id).toBe('p');
     expect(element!.dataset.test).toBe('test-attr');
   });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        P: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <P>Hello World</P>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('p');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
+  });
 });
 
 describe('Ul', () => {
@@ -213,6 +362,27 @@ describe('Ul', () => {
     const element = document.querySelector('ul');
     expect(element!.id).toBe('ul');
     expect(element!.dataset.test).toBe('test-attr');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        Ul: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <Ul>Hello World</Ul>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('ul');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 });
 
@@ -240,6 +410,27 @@ describe('Ol', () => {
     expect(element!.id).toBe('ol');
     expect(element!.dataset.test).toBe('test-attr');
   });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        Ol: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <Ol>Hello World</Ol>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('ol');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
+  });
 });
 
 describe('Li', () => {
@@ -266,6 +457,27 @@ describe('Li', () => {
     expect(element!.id).toBe('li');
     expect(element!.dataset.test).toBe('test-attr');
   });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        Li: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <Li>Hello World</Li>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('li');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
+  });
 });
 
 describe('A', () => {
@@ -291,5 +503,26 @@ describe('A', () => {
     const element = document.querySelector('a');
     expect(element!.id).toBe('a');
     expect(element!.dataset.test).toBe('test-attr');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        A: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <A>Hello World</A>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('a');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 });

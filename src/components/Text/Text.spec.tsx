@@ -10,6 +10,7 @@ import {
 
 import { Text } from './Text';
 import { MaevenTheme } from '../..';
+import { ThemeProvider } from '../ThemeProvider';
 
 describe('Text', () => {
   afterEach(reinit);
@@ -39,6 +40,27 @@ describe('Text', () => {
     );
     const element = document.getElementById('Text');
     expect(element!.dataset.test).toBe('test-attr');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        Text: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <Text id="Text">Hello World</Text>
+      </ThemeProvider>
+    );
+
+    const element = document.getElementById('Text');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 
   describe('color', () => {

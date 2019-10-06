@@ -34,7 +34,8 @@ export const linkStyles = (theme: Theme, props: LinkProps) => {
               }
             }
           }
-        : null
+        : null,
+      theme.overrides.Link
     )
   });
 };

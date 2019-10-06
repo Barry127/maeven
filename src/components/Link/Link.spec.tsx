@@ -6,6 +6,7 @@ import { getStylesForElement, reinit } from '../../../testHelpers';
 
 import { Link } from './Link';
 import { MaevenTheme } from '../..';
+import { ThemeProvider } from '../ThemeProvider';
 
 describe('Link', () => {
   afterEach(reinit);
@@ -33,6 +34,27 @@ describe('Link', () => {
     expect(element!.id).toBe('link');
     expect(element!.dataset.test).toBe('test-attr');
     expect(element!.getAttribute('href')).toBe('#');
+  });
+
+  it('Styles Theme overrides', () => {
+    const Theme = {
+      ...MaevenTheme,
+      overrides: {
+        Link: {
+          color: 'yellow'
+        }
+      }
+    };
+
+    render(
+      <ThemeProvider theme={Theme}>
+        <Link>Hello World</Link>
+      </ThemeProvider>
+    );
+
+    const element = document.querySelector('a');
+    const styles = getStylesForElement(element!);
+    expect(styles.color).toBe('yellow');
   });
 
   describe('color', () => {
