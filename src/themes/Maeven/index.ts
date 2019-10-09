@@ -1,4 +1,5 @@
 // import webFont from 'webfontloader';
+import { color } from 'csx';
 
 import { Theme } from '../types';
 import {
@@ -18,7 +19,7 @@ import {
   secondary,
   textColor
 } from './colors';
-import { color } from 'csx';
+import { xs, sm, md, lg, xl } from './media';
 
 const BASE = 4;
 
@@ -94,6 +95,13 @@ const meavenTheme: Theme = {
     headings: {
       fontWeight: 400
     }
+  },
+  media: {
+    xs,
+    sm,
+    md,
+    lg,
+    xl
   }
 };
 

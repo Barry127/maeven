@@ -5,6 +5,13 @@ export interface Overrides {
   [Component: string]: NestedCSSProperties;
 }
 
+export interface MediaQuery {
+  from: number;
+  to: number;
+  mediaMin: string;
+  mediaMax: string;
+}
+
 type CSSFontWeight =
   | number
   | 'normal'
@@ -61,5 +68,12 @@ export interface Theme {
     headings: {
       fontWeight: CSSFontWeight;
     };
+  };
+  media: {
+    xs: MediaQuery;
+    sm: MediaQuery;
+    md: MediaQuery;
+    lg: MediaQuery;
+    xl: MediaQuery;
   };
 }

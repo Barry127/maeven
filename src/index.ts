@@ -1,4 +1,5 @@
 // Components
+export * from './components/Grid';
 export * from './components/Heading';
 export * from './components/Html';
 export * from './components/Link';

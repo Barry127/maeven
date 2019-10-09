@@ -1,17 +1,25 @@
-import { Stylesheet, Rule, Declaration } from 'css';
-import { CSSProperties } from 'typestyle/lib/types';
+import { Stylesheet, Rule, Declaration, Media } from 'css';
+import { CSSProperties, NestedCSSProperties } from 'typestyle/lib/types';
 import { getStyles as tsGetStyles } from 'typestyle';
 import { parse } from 'css';
 
+import { MaevenTheme } from './src';
+
 export { reinit } from 'typestyle';
 
-export function getStylesForElement(element: Element): CSSProperties {
+export const MEDIA_XS = MaevenTheme.media.xs.mediaMax;
+export const MEDIA_SM = `${MaevenTheme.media.sm.mediaMin} and ${MaevenTheme.media.sm.mediaMax}`;
+export const MEDIA_MD = `${MaevenTheme.media.md.mediaMin} and ${MaevenTheme.media.md.mediaMax}`;
+export const MEDIA_LG = `${MaevenTheme.media.lg.mediaMin} and ${MaevenTheme.media.lg.mediaMax}`;
+export const MEDIA_XL = MaevenTheme.media.xl.mediaMin;
+
+export function getStylesForElement(element: Element): NestedCSSProperties {
   const className = '.' + element!.classList[0];
   const styles = getStyles();
   return styles[className];
 }
 
-export function getStylesForSelector(match: RegExp): CSSProperties {
+export function getStylesForSelector(match: RegExp): NestedCSSProperties {
   const styles = getStyles();
   return styles[Object.keys(styles).filter(key => key.match(match))[0]] || {};
 }
@@ -26,9 +34,46 @@ export function cssAst2CSSProperties(
   const allProperties: CSSPropertiesDictionary = {};
 
   stylesheet.stylesheet!.rules.forEach(rule => {
-    if (rule.type === 'rule') {
-      const { selector, map } = parseRule(rule);
-      allProperties[selector] = map;
+    switch (rule.type) {
+      case 'rule':
+        const { selector, map } = parseRule(rule);
+        if (allProperties[selector]) {
+          allProperties[selector] = {
+            ...allProperties[selector],
+            ...map
+          };
+        } else {
+          allProperties[selector] = map;
+        }
+        break;
+
+      case 'media':
+        const { media, rules } = rule as Media;
+        //@ts-ignore
+        rules.forEach(rule => {
+          if (rule.type === 'rule') {
+            const { selector, map } = parseRule(rule);
+            if (allProperties[selector]) {
+              if (allProperties[selector].$nest) {
+                allProperties[selector].$nest = {
+                  ...allProperties[selector].$nest,
+                  [media!]: map
+                };
+              } else {
+                allProperties[selector].$nest = {
+                  [media!]: map
+                };
+              }
+            } else {
+              allProperties[selector] = {
+                $nest: {
+                  [media!]: map
+                }
+              };
+            }
+          }
+        });
+        break;
     }
   });
 
@@ -36,7 +81,7 @@ export function cssAst2CSSProperties(
 }
 
 interface CSSPropertiesDictionary {
-  [selector: string]: CSSProperties;
+  [selector: string]: NestedCSSProperties;
 }
 
 interface ParsedRule {

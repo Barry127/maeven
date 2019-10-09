@@ -30,6 +30,16 @@ module.exports = {
       ]
     },
     {
+      name: 'Docs',
+      sectionDepth: 2,
+      sections: [
+        {
+          name: 'Grid',
+          content: './src/docs/grid.md'
+        }
+      ]
+    },
+    {
       name: 'Components',
       sectionDepth: 2,
       usageMode: 'expand',
