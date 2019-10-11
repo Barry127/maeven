@@ -77,7 +77,7 @@ export function cssAst2CSSProperties(
     }
   });
 
-  return allProperties;
+  return nestPseudoSelectors(allProperties);
 }
 
 interface CSSPropertiesDictionary {
@@ -92,6 +92,40 @@ interface ParsedRule {
 interface ParsedDeclaration {
   property: string;
   value: string | number | null | undefined;
+}
+
+function nestPseudoSelectors(
+  styles: CSSPropertiesDictionary
+): CSSPropertiesDictionary {
+  const nestedStyles = { ...styles };
+
+  function _nestSelector(selector: string, breakPoint: string) {
+    const offset = selector.indexOf(breakPoint);
+    const parentSelector = selector.substr(0, offset);
+    const nestedSelector = `&${selector.substr(offset)}`;
+    if (!nestedStyles[parentSelector]) {
+      nestedStyles[parentSelector] = {
+        $nest: {}
+      };
+    }
+    if (!nestedStyles[parentSelector].$nest) {
+      nestedStyles[parentSelector].$nest = {};
+    }
+    nestedStyles[parentSelector].$nest = {
+      ...nestedStyles[parentSelector].$nest,
+      [nestedSelector]: nestedStyles[selector]
+    };
+  }
+
+  Object.keys(nestedStyles).forEach(selector => {
+    if (selector.includes(' ')) {
+      _nestSelector(selector, ' ');
+    } else if (selector.includes(':')) {
+      _nestSelector(selector, ':');
+    }
+  });
+
+  return nestedStyles;
 }
 
 function parseRule(rule: Rule): ParsedRule {

@@ -17,7 +17,8 @@ import {
   white,
   yellow,
   secondary,
-  textColor
+  textColor,
+  borderColor
 } from './colors';
 import { xs, sm, md, lg, xl } from './media';
 
@@ -30,6 +31,15 @@ const BASE = 4;
 const meavenTheme: Theme = {
   name: 'Maeven',
   base: BASE,
+  sizes: {
+    borderRadius: {
+      large: 3 * BASE
+    }
+  },
+  animations: {
+    defaultTiming: '.2s',
+    defaultTimingFunction: 'cubic-bezier(0.4,1,0.75,0.9)'
+  },
   colors: {
     name: {
       black: textColor,
@@ -56,6 +66,7 @@ const meavenTheme: Theme = {
       danger: red
     },
     types: {
+      border: borderColor,
       text: textColor,
       heading: textColor,
       link: blue,

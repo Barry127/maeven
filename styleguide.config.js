@@ -6,6 +6,7 @@ module.exports = {
   title: 'Maeven',
   version,
   moduleAliases: {
+    '@maeven-doc-assets': path.resolve(__dirname, 'src', 'docs', 'assets'),
     maeven: path.resolve(__dirname, 'src')
   },
   styleguideDir: './docs',

@@ -14,3 +14,5 @@ export const darkGrey = '#7a7b97';
 
 export const secondary = '#f5f8f5';
 export const textColor = '#182026';
+
+export const borderColor = 'rgba(7, 9, 25, 0.125)';

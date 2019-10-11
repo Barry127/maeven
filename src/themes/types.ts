@@ -25,6 +25,15 @@ type CSSFontWeight =
 export interface Theme {
   name: string;
   base: number;
+  sizes: {
+    borderRadius: {
+      large: number | string;
+    };
+  };
+  animations: {
+    defaultTiming: string;
+    defaultTimingFunction: string;
+  };
   colors: {
     name: {
       black: Color;
@@ -51,6 +60,7 @@ export interface Theme {
       danger: Color;
     };
     types: {
+      border: Color;
       text: Color;
       heading: Color;
       link: Color;
