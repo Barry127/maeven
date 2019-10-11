@@ -66,7 +66,7 @@ export const cardStyles = (theme: Theme, props: CardProps) =>
     }
   });
 
-export const cardImageStyles = (theme: Theme, props: CardImageProps) =>
+export const cardImageStyles = (theme: Theme, _props: CardImageProps) =>
   exportStyles({
     container: extend({
       ...box,
