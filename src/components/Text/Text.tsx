@@ -46,13 +46,13 @@ Text.defaultProps = {
 
 export interface TextProps {
   /** Color for Text. Defaults to theme's text color */
-  color: keyof Theme['colors']['name'] | keyof Theme['colors']['semantic'];
+  color?: keyof Theme['colors']['name'] | keyof Theme['colors']['semantic'];
 
   /** Wether Text is inline (span) or block (div) */
-  inline: boolean;
+  inline?: boolean;
 
   /** Style html elements inside text with theme styles */
-  styleHtml: boolean;
+  styleHtml?: boolean;
 
   /** Wether the text should truncate after the first line (block only) */
   truncate?: boolean;
