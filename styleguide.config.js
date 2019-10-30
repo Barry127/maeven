@@ -37,6 +37,10 @@ module.exports = {
         {
           name: 'Grid',
           content: './src/docs/grid.md'
+        },
+        {
+          name: 'Icons',
+          content: './src/docs/icons.md'
         }
       ]
     },
@@ -50,8 +54,14 @@ module.exports = {
       name: 'Hooks',
       sectionDepth: 2,
       sections: getHooksDocs()
+    },
+    {
+      name: 'Types',
+      content: './src/docs/types.md',
+      sections: getTypeDocs()
     }
-  ]
+  ],
+  updateExample
 };
 
 function getHooksDocs() {
@@ -65,6 +75,13 @@ function getHooksDocs() {
     }));
 }
 
+function getTypeDocs() {
+  return fs.readdirSync('./src/docs/types').map(fileName => ({
+    name: fileName.slice(0, -3),
+    content: `./src/docs/types/${fileName}`
+  }));
+}
+
 const whiteList = ['className'];
 
 function propFilter(prop, component) {
@@ -74,5 +91,26 @@ function propFilter(prop, component) {
     return false;
   }
 
+  if (prop.type.name === 'ReactText') {
+    prop.type.name = 'string | number';
+  }
+
   return true;
+}
+
+function updateExample(props, exampleFilePath) {
+  const { settings, lang } = props;
+  if (typeof settings.file === 'string') {
+    const filePath = settings.file.startsWith('.')
+      ? path.resolve(exampleFilePath, settings.file)
+      : path.join(__dirname, settings.file);
+    delete settings.file;
+    return {
+      content: fs.readFileSync(filePath, 'utf8'),
+      settings,
+      lang
+    };
+  }
+
+  return props;
 }
