@@ -57,7 +57,12 @@
     "start": "styleguidist server",
     "test": "react-scripts test",
     "test:ci": "CI=true npm test",
-    "test:coverage": "react-scripts test --coverage --watchAll=false --testPathIgnorePatterns=src/docs",
-    "test:coverage:ci": "react-scripts test --coverage --watchAll=false  --testPathIgnorePatterns=src/docs --coverageReporters=text-lcov | coveralls"
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "test:coverage:ci": "react-scripts test --coverage --watchAll=false --coverageReporters=text-lcov | coveralls"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "src/docs"
+    ]
   }
 }
