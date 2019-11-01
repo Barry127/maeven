@@ -39,7 +39,7 @@
     "@types/webfontloader": "^1.6.29",
     "coveralls": "^3.0.6",
     "css": "^2.2.4",
-    "icon-packs": "^0.5.0",
+    "icon-packs": "^0.6.0",
     "react": "^16.10.2",
     "react-docgen-typescript": "^1.14.1",
     "react-dom": "^16.10.2",

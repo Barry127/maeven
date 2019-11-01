@@ -17,7 +17,7 @@ export function loadIconModule(name: keyof typeof PACKS) {
 
   const s = document.createElement('script');
   s.type = 'text/javascript';
-  s.src = `https://unpkg.com/icon-packs/${name}`;
+  s.src = `https://unpkg.com/icon-packs/cjs/${name}`;
   s.onload = () => {
     //@ts-ignore
     window[name] = window.exports;

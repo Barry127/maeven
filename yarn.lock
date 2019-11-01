@@ -5184,10 +5184,10 @@ hyphenate-style-name@^1.0.2:
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.3.tgz#097bb7fa0b8f1a9cf0bd5c734cf95899981a9b48"
   integrity sha512-EcuixamT82oplpoJ2XU4pDtKGWQ7b00CD9f1ug9IaQ3p1bkHMiKCZ9ut9QDI6qsa6cpUuB+A/I+zLtdNK4n2DQ==
 
-icon-packs@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/icon-packs/-/icon-packs-0.5.0.tgz#ee8c3b6a222aa123a3c2c8e52bc9c1578c7c7b3f"
-  integrity sha512-uchs+nwzIm9Hi8MimimUi5ktoS82NI5mwi2/rfX/KdA1wihZGBn0HwvglyPeX4INOdfSouLsHbuUrW7qONjLLA==
+icon-packs@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/icon-packs/-/icon-packs-0.6.0.tgz#f0bee0558497aa33ee427921620feffb69faf913"
+  integrity sha512-al051GwivK17HfutfWaxf7li/Fj5NMyEaamIqTTlYaT7ebGrVjLx98VyVcrWUtl4TtqXr6AFtU3bp+v2xzfrvA==
   dependencies:
     "@types/react" "^16.9.9"
 

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import React from 'react';
-import { activity } from 'icon-packs/feather';
+import { activity } from 'icon-packs/cjs/feather';
 import { render, fireEvent } from '@testing-library/react';
 import { getStylesForElement, reinit } from '../../../testHelpers';
 import { color } from 'csx';
