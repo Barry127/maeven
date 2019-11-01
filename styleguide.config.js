@@ -83,9 +83,20 @@ function getTypeDocs() {
 }
 
 const whiteList = ['className'];
+const componentWhitelist = {
+  AnchorButton: ['href'],
+  Button: ['type'],
+  Link: ['href']
+};
 
 function propFilter(prop, component) {
   if (whiteList.includes(prop.name)) return true;
+
+  if (
+    componentWhitelist[component.name] &&
+    componentWhitelist[component.name].includes(prop.name)
+  )
+    return true;
 
   if (prop.parent && prop.parent.fileName.includes('node_modules')) {
     return false;

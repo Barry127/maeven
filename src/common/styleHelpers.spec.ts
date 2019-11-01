@@ -1,4 +1,8 @@
-import { exportStyles, getColorFromTheme } from './styleHelpers';
+import {
+  exportStyles,
+  getColorFromTheme,
+  getTextColorFromBackground
+} from './styleHelpers';
 import { Theme } from '../themes/types';
 
 describe('exportStyles', () => {
@@ -64,5 +68,15 @@ describe('getColorFromTheme', () => {
 
   it('Returns null when no color is found', () => {
     expect(getColorFromTheme('slightlyPink', theme)).toBeNull();
+  });
+});
+
+describe('getTextColorFromBackground', () => {
+  it('returns white when backgroud is black', () => {
+    expect(getTextColorFromBackground('#000', 'white', 'black')).toBe('white');
+  });
+
+  it('returns black when background is white', () => {
+    expect(getTextColorFromBackground('#fff', 'white', 'black')).toBe('black');
   });
 });

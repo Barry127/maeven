@@ -27,6 +27,7 @@ export interface Theme {
   base: number;
   sizes: {
     borderRadius: {
+      medium: number | string;
       large: number | string;
     };
   };
@@ -66,6 +67,7 @@ export interface Theme {
       link: Color;
       textSelection: Color;
       textSelectionBackground: Color;
+      focus: Color;
     };
   };
   overrides: Overrides;

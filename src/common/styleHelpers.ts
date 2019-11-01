@@ -3,6 +3,7 @@ import { style } from 'typestyle';
 import { Color } from 'csstype';
 
 import { Theme } from '../themes/types';
+import { color } from 'csx';
 
 /**
  * Export a dictionary of NestedCSSProperties to classesNames and NestedCSSProperties
@@ -21,7 +22,7 @@ interface NestedCSSPropertiesDictionary {
   [name: string]: NestedCSSProperties;
 }
 
-interface ClassNamesDictionary {
+export interface ClassNamesDictionary {
   [name: string]: string;
 }
 
@@ -43,4 +44,18 @@ export function getColorFromTheme(color: string, theme: Theme): null | Color {
   }
 
   return null;
+}
+
+/**
+ * Get light or dark textcolor from background color
+ */
+export function getTextColorFromBackground(
+  background: string,
+  lightColor: string,
+  darkColor: string
+) {
+  const c = color(background);
+  return c.red() * 0.299 + c.green() * 0.587 + c.blue() * 0.144 > 186
+    ? darkColor
+    : lightColor;
 }

@@ -33,6 +33,7 @@ const meavenTheme: Theme = {
   base: BASE,
   sizes: {
     borderRadius: {
+      medium: 1.5 * BASE,
       large: 3 * BASE
     }
   },
@@ -71,7 +72,8 @@ const meavenTheme: Theme = {
       heading: textColor,
       link: blue,
       textSelection: white,
-      textSelectionBackground: blue
+      textSelectionBackground: blue,
+      focus: blue
     }
   },
   overrides: {
