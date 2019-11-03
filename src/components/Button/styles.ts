@@ -218,6 +218,11 @@ export const buttonStyles = (
             }
           }
         : null,
+      buttonType === 'AnchorButton'
+        ? {
+            textDecoration: 'none'
+          }
+        : null,
       buttonType === 'Button'
         ? theme.overrides.Button
         : theme.overrides.AnchorButton
