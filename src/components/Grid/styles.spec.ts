@@ -6,6 +6,10 @@ describe('Grid / styles', () => {
       expect(getResponsiveSize({}, 'md', '100%')).toBe('100%');
     });
 
+    it('Returns spanSize when no size is xs but no resoponsive sizes are set', () => {
+      expect(getResponsiveSize({}, 'xs', '100%')).toBe('100%');
+    });
+
     it('Returns 25% when size sm and sm is 6', () => {
       const props = { sm: 6 };
       expect(getResponsiveSize(props, 'sm', '100%')).toBe('25%');
