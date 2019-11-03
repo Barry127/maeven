@@ -3,8 +3,8 @@ import React, {
   useState,
   KeyboardEvent,
   FocusEvent,
-  MouseEvent,
-  HTMLAttributes
+  HTMLAttributes,
+  MouseEvent as SyntheticMouseEvent
 } from 'react';
 import clsx from 'clsx';
 
@@ -21,7 +21,6 @@ export function renderChildren(
   classes: ClassNamesDictionary
 ) {
   const { children, icon, iconRight } = props;
-  if (icon) console.log(iconRight);
   return (
     <>
       {icon && <Icon icon={icon} className={classes.iconLeft} />}
@@ -84,7 +83,7 @@ export function useButton<P extends HTMLAttributes<any>, T>(
   );
 
   const _onMouseDown = useCallback(
-    (ev: MouseEvent<T>) => {
+    (ev: SyntheticMouseEvent<T>) => {
       if (focusOutline) {
         setFocusOutline(false);
       }
