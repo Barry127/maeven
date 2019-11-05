@@ -12,7 +12,8 @@ export * from './components/ThemeProvider';
 export * from './components/types';
 
 // Hooks
-export { useTheme } from './hooks/useTheme';
+export * from './hooks/useFocus';
+export * from './hooks/useTheme';
 
 // Themes
 export * from './themes/types';
