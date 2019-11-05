@@ -13,6 +13,7 @@ export * from './components/types';
 
 // Hooks
 export * from './hooks/useFocus';
+export * from './hooks/useId';
 export * from './hooks/useTheme';
 
 // Themes
