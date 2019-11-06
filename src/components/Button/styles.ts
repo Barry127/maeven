@@ -73,7 +73,7 @@ export const buttonStyles = (
           },
           '&:focus': {
             outline: 'none',
-            zIndex: 10
+            zIndex: 1
           }
         }
       },
@@ -230,7 +230,6 @@ export const buttonStyles = (
     focusOutline: extend({
       $nest: {
         '&::before': {
-          transition: 'box-shadow 3s ease-in',
           borderRadius: 'inherit',
           content: '""',
           position: 'absolute',
