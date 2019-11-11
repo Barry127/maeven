@@ -10,8 +10,9 @@ import clsx from 'clsx';
 import { useTheme } from '../../hooks/useTheme';
 import * as styles from './styles';
 
-function createHtmlElement<P>(TagName: keyof JSX.IntrinsicElements): FC<P> {
-  //@ts-ignore
+function createHtmlElement<P extends { className?: string }>(
+  TagName: keyof JSX.IntrinsicElements
+): FC<P> {
   const HTMLElement: FC<P> = ({ children, className, ...restProps }) => {
     const theme = useTheme();
 

@@ -47,7 +47,7 @@
     "react-styleguidist": "^9.1.16",
     "react-test-renderer": "^16.9.0",
     "rimraf": "^3.0.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "clear": "rimraf build docs coverage",
