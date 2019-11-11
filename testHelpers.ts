@@ -1,6 +1,6 @@
 import { Stylesheet, Rule, Declaration, Media } from 'css';
 import { CSSProperties, NestedCSSProperties } from 'typestyle/lib/types';
-import { getStyles as tsGetStyles } from 'typestyle';
+import { getStyles as tsGetStyles, extend } from 'typestyle';
 import { parse } from 'css';
 
 import { MaevenTheme } from './src';
@@ -14,9 +14,11 @@ export const MEDIA_LG = `${MaevenTheme.media.lg.mediaMin} and ${MaevenTheme.medi
 export const MEDIA_XL = MaevenTheme.media.xl.mediaMin;
 
 export function getStylesForElement(element: Element): NestedCSSProperties {
-  const className = '.' + element!.classList[0];
   const styles = getStyles();
-  return styles[className];
+  const elementStyles = Array.from(element!.classList).map(
+    className => styles[`.${className}`]
+  );
+  return extend(...elementStyles);
 }
 
 export function getStylesForSelector(match: RegExp): NestedCSSProperties {
