@@ -52,6 +52,9 @@ export const TextInput = forwardRef<
 });
 
 TextInput.defaultProps = {
+  disabled: false,
+  hasError: false,
+  size: 'md',
   type: 'text'
 };
 
