@@ -145,8 +145,22 @@ describe('TextInput', () => {
       expect(styles).toHaveProperty('height', MaevenTheme.base * 6);
     });
 
+    it('sets sm with icons', () => {
+      render(<TextInput size="sm" icon={activity} iconRight={activity} />);
+      const input = document.querySelector('input');
+      const styles = getStylesForElement(input!);
+      expect(styles).toHaveProperty('height', MaevenTheme.base * 6);
+    });
+
     it('sets lg', () => {
       render(<TextInput size="lg" />);
+      const input = document.querySelector('input');
+      const styles = getStylesForElement(input!);
+      expect(styles).toHaveProperty('height', MaevenTheme.base * 12);
+    });
+
+    it('sets lg with icons', () => {
+      render(<TextInput size="lg" icon={activity} iconRight={activity} />);
       const input = document.querySelector('input');
       const styles = getStylesForElement(input!);
       expect(styles).toHaveProperty('height', MaevenTheme.base * 12);
