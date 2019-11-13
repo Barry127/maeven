@@ -4,8 +4,10 @@ import { color } from 'csx';
 import { Theme } from '../../themes/types';
 import { exportStyles } from '../../common/styleHelpers';
 import { box, pm0, textSelection } from '../../common/mixins';
+import { flatButtonStyles } from '../Button/styles';
 
 import { TextInputProps } from './TextInput';
+import { PasswordInputProps } from './PasswordInput';
 
 export const inputStyles = (theme: Theme, props: TextInputProps) =>
   exportStyles({
@@ -195,6 +197,30 @@ export const inputStyles = (theme: Theme, props: TextInputProps) =>
     }),
 
     children: extend(
+      props.hasError
+        ? {
+            color: theme.colors.semantic.danger
+          }
+        : null
+    )
+  });
+
+export const passwordStyles = (theme: Theme, props: PasswordInputProps) =>
+  exportStyles({
+    input: extend(
+      {
+        $nest: {
+          '& input': {
+            paddingRight:
+              theme.base *
+              (props.size === 'md' ? 8 : props.size === 'sm' ? 6 : 12)
+          }
+        }
+      },
+      theme.overrides.PasswordInput
+    ),
+    toggle: extend(
+      flatButtonStyles(theme),
       props.hasError
         ? {
             color: theme.colors.semantic.danger

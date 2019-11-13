@@ -86,6 +86,13 @@ export const buttonStyles = (
             fontSize: theme.typography.fontSize * 1.15
           }
         : null,
+      (!props.children && !props.iconRight && props.icon) ||
+        (!props.children && props.iconRight && !props.icon)
+        ? {
+            paddingLeft: 0,
+            paddingRight: 0
+          }
+        : null,
       props.size === 'sm'
         ? {
             minHeight: theme.base * 6,
@@ -286,6 +293,22 @@ export const buttonStyles = (
     )
   });
 };
+
+export const flatButtonStyles = (theme: Theme) =>
+  extend({
+    color: theme.colors.types.text,
+    background: 'transparent !important',
+    boxShadow: 'none !important',
+    opacity: 0.6,
+    $nest: {
+      '&:hover': {
+        opacity: 0.8
+      },
+      '&:active': {
+        opacity: 1
+      }
+    }
+  });
 
 interface WithChildren {
   children?: any;

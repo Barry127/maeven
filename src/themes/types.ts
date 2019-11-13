@@ -1,8 +1,15 @@
 import { NestedCSSProperties } from 'typestyle/lib/types';
 import { Color } from 'csstype';
 
+import { IconType } from '../components/types';
+
 export interface Overrides {
   [Component: string]: NestedCSSProperties;
+}
+
+export interface IconOverrides {
+  hidePassword?: IconType;
+  showPassword?: IconType;
 }
 
 export interface MediaQuery {
@@ -71,6 +78,7 @@ export interface Theme {
     };
   };
   overrides: Overrides;
+  iconOverrides: IconOverrides;
   typography: {
     fontFamily: string;
     fontFamilyMonospace: string;
