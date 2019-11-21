@@ -67,6 +67,8 @@ const meavenTheme: Theme = {
       danger: red
     },
     types: {
+      background: white,
+      gobalBackground: white,
       border: borderColor,
       text: textColor,
       heading: textColor,

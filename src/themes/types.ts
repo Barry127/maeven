@@ -68,6 +68,8 @@ export interface Theme {
       danger: Color;
     };
     types: {
+      background: Color;
+      gobalBackground: Color;
       border: Color;
       text: Color;
       heading: Color;

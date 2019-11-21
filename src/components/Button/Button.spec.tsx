@@ -221,7 +221,7 @@ describe('Button', () => {
       const styles = getStylesForElement(element!);
       expect(styles).not.toHaveProperty(
         'backgroundColor',
-        MaevenTheme.colors.name.white
+        MaevenTheme.colors.types.background
       );
       expect(styles).not.toHaveProperty('backgroundImage', 'none');
     });
@@ -232,7 +232,7 @@ describe('Button', () => {
       const styles = getStylesForElement(element!);
       expect(styles).toHaveProperty(
         'backgroundColor',
-        MaevenTheme.colors.name.white
+        MaevenTheme.colors.types.background
       );
       expect(styles).toHaveProperty('backgroundImage', 'none');
     });
@@ -247,7 +247,7 @@ describe('Button', () => {
       const styles = getStylesForElement(element!);
       expect(styles).toHaveProperty(
         'backgroundColor',
-        MaevenTheme.colors.name.white
+        MaevenTheme.colors.types.background
       );
       expect(styles).toHaveProperty('backgroundImage', 'none');
       expect(styles).toHaveProperty('color', MaevenTheme.colors.types.link);

@@ -161,7 +161,7 @@ export const buttonStyles = (
       },
       props.outline && !props.link
         ? {
-            backgroundColor: theme.colors.name.white,
+            backgroundColor: theme.colors.types.background,
             backgroundImage: 'none',
             boxShadow: colorOutline
               ? `inset 0 0 0 1px ${color(styleColor!)

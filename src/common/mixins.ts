@@ -1,4 +1,5 @@
-import { CSSProperties } from 'typestyle/lib/types';
+import { CSSProperties, NestedCSSProperties } from 'typestyle/lib/types';
+import { color } from 'csx';
 
 import { Theme } from '../themes/types';
 
@@ -23,6 +24,39 @@ export const pm0: CSSProperties = {
   padding: 0,
   margin: 0
 };
+
+export const scrollbars = (
+  theme: Theme,
+  background?: string
+): NestedCSSProperties => ({
+  $nest: {
+    '&::-webkit-scrollbar': {
+      background: 'transparent',
+      position: 'absolute',
+      width: 12
+    },
+    '&::-webkit-scrollbar-button': {
+      display: 'none'
+    },
+    '&::-webkit-scrollbar-track': {
+      background: 'transparent'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: color(theme.colors.types.text)
+        .fade(0.15)
+        .toString(),
+      border: `2px solid ${background || theme.colors.types.background}`,
+      borderRadius: 6,
+      $nest: {
+        '&:hover': {
+          background: color(theme.colors.types.text)
+            .fade(0.5)
+            .toString()
+        }
+      }
+    }
+  }
+});
 
 export const textSelection = (theme: Theme): CSSProperties => ({
   color: theme.colors.types.textSelection,
