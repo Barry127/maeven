@@ -55,6 +55,7 @@ function parse() {
     const path = metaData.path.split('/');
 
     if (path.length === 1) {
+      metaData.root = true;
       tree.children.push(metaData);
       tree.children.sort(sortTree);
     } else {
@@ -97,7 +98,7 @@ function parse() {
 module.exports = parse;
 
 function sortTree(a, b) {
-  if (a.type !== b.type) {
+  if ((a.root || b.root) && a.type !== b.type) {
     return a.type === 'node' ? 1 : -1;
   }
   const aSort = a.sortKey || a.title;

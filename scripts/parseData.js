@@ -10,7 +10,7 @@ const parseMDXData = require('./parseMDXData');
 const watchMode = process.argv.includes('--watch');
 
 if (watchMode) {
-  chokidar.watch(`${paths.components}/**/*.tsx`).on('all', updateProps);
+  chokidar.watch(`${paths.components}/**/*.tsx`).on('change', updateProps);
   chokidar.watch(`${paths.maeven}/**/*.md{,x}`).on('all', updateDocs);
 } else {
   generateAll();
