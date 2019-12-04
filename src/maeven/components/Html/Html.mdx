@@ -1,0 +1,94 @@
+---
+title: HTML
+path: Components/HTML/HTML
+sortKey: '0'
+---
+
+import { A, H1, H2, H3, H4, H5, H6, Li, Ol, P, Ul } from 'maeven';
+import { DoDont } from 'docs/components';
+
+# HTML
+
+Maeven exports semantic HTML Components with theme styling.
+
+Currently supported components: `A`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `Li`, `Ol`, `P`, `Span`, `Ul`.
+
+## Examples
+
+### Headings
+
+Headings are text in a larger size than regular text.
+
+```js live
+<>
+  <H1>Heading 1</H1>
+  <H2>Heading 2</H2>
+  <H3>Heading 3</H3>
+  <H4>Heading 4</H4>
+  <H5>Heading 5</H5>
+  <H6>Heading 6</H6>
+</>
+```
+
+### Text
+
+Some text with paragraphs, lists and headings.
+
+```js live
+<>
+  <H1>Hey, Luke! May the Force be with you.</H1>
+  <P>
+    You're all clear, kid. Let's blow this thing and <A href="#">go home</A>!
+    Hokey religions and ancient weapons are no match for a good blaster at your
+    side, kid. Still, she's got a lot of spirit. I don't know, what do you
+    think?
+  </P>
+  <P>
+    Dantooine. They're on Dantooine. Oh God, my uncle. How am I ever gonna
+    explain this? I'm trying not to, kid. The more you tighten your grip,
+    Tarkin, the more star systems will slip through your fingers.
+  </P>
+  <H2>Obi-Wan is here. The Force is with him.</H2>
+  <P>
+    Don't be too proud of this technological terror you've constructed. The
+    ability to destroy a planet is insignificant next to the power of the Force.
+    But with the blast shield down, I can't even see! How am I supposed to
+    fight?
+  </P>
+  <Ol>
+    <Li>You are a part of the Rebel Alliance and a traitor! Take her away!</Li>
+    <Li>The Force is strong with this one. I have you now.</Li>
+    <Li>He is here.</Li>
+  </Ol>
+  <H3>
+    Alderaan? I'm not going to Alderaan. I've got to go home. It's late, I'm in
+    for it as it is.
+  </H3>
+  <P>
+    Kid, I've flown from one side of this galaxy to the other. I've seen a lot
+    of strange stuff, but I've never seen anything to make me believe there's
+    one all-powerful Force controlling everything. There's no mystical energy
+    field that controls my destiny. It's all a lot of simple tricks and
+    nonsense. Don't be too proud of this technological terror you've
+    constructed. The ability to destroy a planet is insignificant next to the
+    power of the Force.
+  </P>
+  <Ul>
+    <Li>Escape is not his plan. I must face him, alone.</Li>
+    <Li>Ye-ha!</Li>
+    <Li>You're all clear, kid. Let's blow this thing and go home!</Li>
+  </Ul>
+</>
+```
+
+## Design Guidelines
+
+Use HTML components to add textual content in a semantic order.
+
+<DoDont
+  do={[
+    'Always use a semantic hierarchy for page content',
+    'Use Text component to style a lot of text'
+  ]}
+  dont={['Use non-semantic components like div or span to order content']}
+/>

@@ -1,0 +1,59 @@
+---
+title: useTheme
+path: 'Hooks/useTheme'
+---
+
+import {
+  Block,
+  MaevenDark,
+  MaevenDefault,
+  ThemeProvider,
+  useTheme
+} from 'maeven';
+import { DoDont, Props } from 'docs/components';
+
+# useTheme
+
+Exposes current theme (provided by ThemeProvider) to current component. Defaults to MaevenTheme.
+
+## Examples
+
+### Basic
+
+Basic example.
+
+```js live withRender
+const ThemeComponent = () => {
+  const theme = useTheme();
+
+  return (
+    <Block>
+      CurrentTheme: <strong>{theme.name}</strong>
+    </Block>
+  );
+};
+
+render(<ThemeComponent />);
+```
+
+### MaevenDark
+
+Example with MaevenDark theme.
+
+```js live withRender
+const ThemeComponent = () => {
+  const theme = useTheme();
+
+  return (
+    <Block>
+      CurrentTheme: <strong>{theme.name}</strong>
+    </Block>
+  );
+};
+
+render(
+  <ThemeProvider theme={MaevenDark}>
+    <ThemeComponent />
+  </ThemeProvider>
+);
+```

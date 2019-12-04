@@ -14,14 +14,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "pretty": true,
-    "removeComments": false,
+    "removeComments": true,
     "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "stripInternal": true,
-    "target": "es5",
+    "target": "es2015",
     "outDir": "build"
   },
-  "include": ["src"],
-  "exclude": ["src/**/*.spec.tsx", "src/**/*.spec.ts"]
+  "include": ["src/maeven"],
+  "exclude": ["src/maeven/**/*.spec.ts{,x}"]
 }

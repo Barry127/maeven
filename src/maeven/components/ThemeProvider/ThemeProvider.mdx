@@ -1,0 +1,27 @@
+---
+title: ThemeProvider
+path: Components/ThemeProvider
+---
+
+import { Block, MaevenDefault, ThemeProvider } from 'maeven';
+import { DoDont, Props } from 'docs/components';
+
+# ThemeProvider
+
+ThemeProvider creates a React context Provider for a Maeven Theme.
+
+## Props
+
+<Props of="ThemeProvider" />
+
+## Examples
+
+### Basic
+
+```js live
+<ThemeProvider theme={MaevenDefault}>
+  <Block>
+    All child components and deeply nested components have this theme.
+  </Block>
+</ThemeProvider>
+```

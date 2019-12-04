@@ -1,0 +1,40 @@
+---
+title: Block
+path: Components/Block
+---
+
+import { Block } from 'maeven';
+import { DoDont, Props } from 'docs/components';
+
+# Block
+
+A `Block` is a low level component with sensible theme default styling.
+
+Styling includes:
+
+- Theme font settings
+- Theme background
+- Theme text color
+
+## Props
+
+<Props of="Block" />
+
+## Examples
+
+### Basic
+
+A basic usage of Block.
+
+```js live
+<Block>Block content</Block>
+```
+
+## Design Guidelines
+
+Use Block as a building block for other components.
+
+<DoDont
+  do={['Use Block as a building block.']}
+  dont={['Use block for text content. The Text component for that.']}
+/>

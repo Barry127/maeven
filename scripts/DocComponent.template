@@ -1,0 +1,15 @@
+import React, { FC, lazy, Suspense } from 'react';
+//@ts-ignore
+import { importMDX } from 'mdx.macro';
+
+import { componentMap } from 'docs/common/componentMap';
+
+const Content = lazy(() => importMDX('{{FILENAME}}'))
+
+export const meta = {{META}};
+
+export const MdxDoc: FC = () => (
+  <Suspense fallback={<h2>Loading...</h2>}>
+    <Content components={componentMap} />
+  </Suspense>
+);

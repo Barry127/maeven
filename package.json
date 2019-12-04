@@ -1,8 +1,9 @@
 {
   "name": "maeven",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React Components",
-  "main": "build/index.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
   "license": "MIT",
   "private": false,
   "author": {
@@ -21,48 +22,85 @@
   "dependencies": {
     "clsx": "^1.0.4",
     "csx": "^10.0.0",
-    "react-autosize-textarea": "^7.0.0",
-    "typestyle": "^2.0.4",
-    "webfontloader": "^1.6.28"
+    "typestyle": "^2.0.4"
   },
   "peerDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.1.0",
-    "@testing-library/react": "^9.1.4",
-    "@testing-library/react-hooks": "^2.0.1",
-    "@types/css": "^0.0.31",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.4",
-    "@types/react-dom": "^16.9.3",
-    "@types/webfontloader": "^1.6.29",
-    "coveralls": "^3.0.6",
-    "css": "^2.2.4",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/dashify": "^1.0.0",
+    "@types/jest": "24.0.23",
+    "@types/node": "12.12.14",
+    "@types/react": "16.9.14",
+    "@types/react-dom": "16.9.4",
+    "@types/react-router-dom": "^5.1.3",
+    "chokidar": "^3.3.0",
+    "customize-cra": "^0.9.1",
+    "dashify": "^2.0.0",
+    "front-matter": "^3.0.2",
+    "husky": "^3.1.0",
     "icon-packs": "^0.6.0",
-    "react": "^16.10.2",
-    "react-docgen-typescript": "^1.14.1",
-    "react-dom": "^16.10.2",
-    "react-scripts": "^3.1.1",
-    "react-styleguidist": "^9.1.16",
-    "react-test-renderer": "^16.9.0",
+    "mdx.macro": "^0.2.9",
+    "prettier": "^1.19.1",
+    "prism-react-renderer": "^1.0.2",
+    "react": "^16.12.0",
+    "react-app-rewired": "^2.1.5",
+    "react-docgen-typescript": "^1.16.1",
+    "react-dom": "^16.12.0",
+    "react-live": "^2.2.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-test-renderer": "^16.12.0",
     "rimraf": "^3.0.0",
+    "rollup": "^1.27.8",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "shorthash": "^0.0.2",
+    "tslib": "^1.10.0",
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "clear": "rimraf build docs coverage",
-    "prebuild": "npm run clear",
-    "build": "tsc -p tsconfig.build.json",
-    "docs": "styleguidist build",
-    "start": "styleguidist server",
-    "test": "react-scripts test",
-    "test:ci": "CI=true npm test",
-    "test:coverage": "react-scripts test --coverage --watchAll=false",
-    "test:coverage:ci": "react-scripts test --coverage --watchAll=false --coverageReporters=text-lcov | coveralls"
+    "clear": "rimraf coverage lib build src/docs/_data",
+    "prebuild": "yarn clear",
+    "build": "rollup --config",
+    "lint": "eslint src/**/*.ts{,x}",
+    "prestart": "yarn parseData",
+    "start": "yarn parseData --watch & react-app-rewired start",
+    "parseData": "node scripts/parseData.js",
+    "test": "react-app-rewired test",
+    "test:ci": "CI=true yarn test",
+    "test:coverage": "react-app-rewired test --coverage --watchAll=false",
+    "test:coverage:ci": "react-app-rewired test --coverage --watchAll=false --coverageReporters=text-lcov | coveralls",
+    "docs:build": "yarn parseData && react-app-rewired build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test:ci"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "jest": {
     "coveragePathIgnorePatterns": [
+      "src/index.ts",
       "src/docs"
     ]
   }
