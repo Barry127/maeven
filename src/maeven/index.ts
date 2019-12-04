@@ -2,6 +2,7 @@
 export * from './components/Block';
 export * from './components/Heading';
 export * from './components/Html';
+export * from './components/Text';
 export * from './components/ThemeProvider';
 
 // Hooks

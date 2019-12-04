@@ -1,15 +1,19 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { Text } from 'maeven';
+
 import { docsData } from '../_data/docs';
 
 export const Nav: FC = () => (
-  <nav style={{ width: 200, flexShrink: 0 }}>
-    <h2>Maeven</h2>
-    <ul style={{ padding: 0 }}>
-      {parseChildren(docsData.children as Node[], 3)}
-    </ul>
-  </nav>
+  <Text styleHtml>
+    <nav style={{ width: 200, flexShrink: 0 }}>
+      <h2>Maeven</h2>
+      <ul style={{ padding: 0 }}>
+        {parseChildren(docsData.children as Node[], 3)}
+      </ul>
+    </nav>
+  </Text>
 );
 
 const Link: FC<Node> = ({ title, path = '' }) => (
