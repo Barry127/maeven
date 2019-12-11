@@ -50,7 +50,7 @@ const theme: Theme = {
     },
     role: {
       background: white,
-      containerBackground: '#f6f9fc',
+      bodyBackground: '#f5f8fb',
       heading: black,
       link: blue,
       linkHover: color(yellow)

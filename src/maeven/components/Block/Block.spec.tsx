@@ -55,16 +55,14 @@ describe('Block', () => {
     expect(element).toHaveClass(expectedClassName);
   });
 
-  it('renders a main component', () => {
-    const { getByText } = render(<Block component="main">Hello world!</Block>);
+  it('renders a main element', () => {
+    const { getByText } = render(<Block element="main">Hello world!</Block>);
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('MAIN');
   });
 
-  it('renders an article component', () => {
-    const { getByText } = render(
-      <Block component="article">Hello world!</Block>
-    );
+  it('renders an article element', () => {
+    const { getByText } = render(<Block element="article">Hello world!</Block>);
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('ARTICLE');
   });

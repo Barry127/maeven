@@ -13,6 +13,6 @@ describe('setDefaultTheme', () => {
     const themeCss = cssVars2Root(theme2CssVars(MaevenDefault));
     setDefaultTheme(MaevenDefault);
 
-    expect(getStyles()).toBe(themeCss);
+    expect(getStyles()).toMatch(themeCss);
   });
 });

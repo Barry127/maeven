@@ -11,6 +11,7 @@ const text = style({
 
 export const classes = {
   text,
+  background: 'transparent',
   color: textColor,
   truncate,
   styleHtml: style({

@@ -76,7 +76,7 @@ export const Props: FC<PropsProps> = ({ of: propName }) => {
               </td>
               <td>
                 <Span>
-                  {value.defaultValue?.value
+                  {value.defaultValue?.value !== undefined
                     ? `"${value.defaultValue?.value}"`
                     : '-'}
                 </Span>

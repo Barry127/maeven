@@ -37,7 +37,7 @@ export interface Theme {
     };
     role: {
       background: string;
-      containerBackground: string;
+      bodyBackground: string;
       heading: string;
       link: string;
       linkHover: string;

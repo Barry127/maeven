@@ -1,0 +1,260 @@
+---
+title: Grid
+path: Components/Grid/Grid
+sortKey: '0'
+---
+
+import { Container, Row, Col, Heading } from 'maeven';
+import { DoDont, Styles } from 'docs/components';
+
+<Styles for="grid" />
+
+# Grid
+
+Maeven comes with a full responsive 24 column grid support.
+
+## Examples
+
+### Basic
+
+A basic grid
+
+```js live
+<Container fluid>
+  <Row>
+    <Col span={24}>Col-24</Col>
+  </Row>
+  <Row>
+    <Col span={12}>Col-12</Col>
+    <Col span={12}>Col-12</Col>
+  </Row>
+  <Row>
+    <Col span={8}>Col-8</Col>
+    <Col span={8}>Col-8</Col>
+    <Col span={8}>Col-8</Col>
+  </Row>
+  <Row>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+  </Row>
+  <Row>
+    <Col span={4}>Col-4</Col>
+    <Col span={4}>Col-4</Col>
+    <Col span={4}>Col-4</Col>
+    <Col span={4}>Col-4</Col>
+    <Col span={4}>Col-4</Col>
+    <Col span={4}>Col-4</Col>
+  </Row>
+</Container>
+```
+
+### Alignment
+
+Columns can be vertically aligned.
+
+```js live
+<Container fluid>
+  <Heading level="h4" size="h5">
+    Default
+  </Heading>
+  <Row>
+    <Col span={8} style={{ height: 75 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 50 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 150 }}>
+      Col-8
+    </Col>
+  </Row>
+  <Heading level="h4" size="h5">
+    Top
+  </Heading>
+  <Row align="top">
+    <Col span={8} style={{ height: 75 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 50 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 150 }}>
+      Col-8
+    </Col>
+  </Row>
+  <Heading level="h4" size="h5">
+    center
+  </Heading>
+  <Row align="center">
+    <Col span={8} style={{ height: 75 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 50 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 150 }}>
+      Col-8
+    </Col>
+  </Row>
+  <Heading level="h4" size="h5">
+    Bottom
+  </Heading>
+  <Row align="bottom">
+    <Col span={8} style={{ height: 75 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 50 }}>
+      Col-8
+    </Col>
+    <Col span={8} style={{ height: 150 }}>
+      Col-8
+    </Col>
+  </Row>
+  <Heading level="h4" size="h5">
+    Baseline
+  </Heading>
+  <Row align="baseline">
+    <Col span={8} style={{ height: 75 }}>
+      Col-8
+    </Col>
+    <Col span={8}>
+      <H1>Col-8</H1>
+    </Col>
+    <Col span={8} style={{ height: 150 }}>
+      Col-8
+    </Col>
+  </Row>
+  <Heading level="h4" size="h5">
+    stretch
+  </Heading>
+  <Row>
+    <Col span={8}>Col-8</Col>
+    <Col span={8}>Col-8</Col>
+    <Col span={8}>
+      <H3>Col-8</H3>
+      <P>Some text to make sure this column is longer than the others.</P>
+    </Col>
+  </Row>
+</Container>
+```
+
+### Resizing
+
+Grid Columns can resize in different viewports
+
+```js live
+<Container fluid>
+  <Row>
+    <Col span={2} xs={24} sm={8} lg={6}>
+      Col 2 / xs-24 / sm-8 / lg-6
+    </Col>
+    <Col span={2} xs={12} sm={8} lg={6}>
+      Col 2 / xs-12 / sm-8 / lg-6
+    </Col>
+    <Col span={2} xs={12} sm={8} lg={12}>
+      Col 2 / xs-12 / sm-8 / lg-12
+    </Col>
+  </Row>
+</Container>
+```
+
+### Gutter
+
+You can use the `gutter` prop on the Row to set spacing between Columns.
+
+```js live
+<Container fluid>
+  <Row gutter={1}>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+  </Row>
+  <Row gutter={2}>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+  </Row>
+  <Row gutter={4}>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+  </Row>
+</Container>
+```
+
+### Wrapping
+
+Columns wrap to to a new line. But this can be prevented.
+
+```js live
+<Container fluid>
+  <Heading level="h4" size="h5">
+    Wrap (default)
+  </Heading>
+  <Row gutter={2}>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={8}>Col-8</Col>
+  </Row>
+  <Heading level="h4" size="h5">
+    No wrap
+  </Heading>
+  <Row style={{ overflowY: 'scroll' }} gutter={2} wrap={false}>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={6}>Col-6</Col>
+    <Col span={8}>Col-8</Col>
+  </Row>
+</Container>
+```
+
+### Adaptive
+
+Columns without a span resize adaptive to fill up a row.
+
+```js live
+<Container fluid>
+  <Row>
+    <Col span={4}>Col-4</Col>
+    <Col>Col</Col>
+  </Row>
+  <Row>
+    <Col>Col</Col>
+    <Col span={12}>Col-12</Col>
+    <Col>Col</Col>
+  </Row>
+</Container>
+```
+
+### Hidden
+
+Columns can be (selectively) hidden.
+
+```js live
+<Container fluid>
+  <Row>
+    <Col span={8} hidden>
+      Col-8 hidden
+    </Col>
+    <Col span={16}>Col-16</Col>
+  </Row>
+  <Row>
+    <Col span={8}>Col-8</Col>
+    <Col span={16} hidden="md">
+      Col-16 hidden from md and down
+    </Col>
+  </Row>
+  <Row>
+    <Col span={8}>Col-8</Col>
+    <Col span={16} hidden={['sm', 'lg']}>
+      Col-16 hidden on sm and lg
+    </Col>
+  </Row>
+</Container>
+```

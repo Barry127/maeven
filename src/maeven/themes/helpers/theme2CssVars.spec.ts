@@ -91,8 +91,8 @@ describe('theme2CssVars', () => {
       MaevenDefault.colors.role.background
     );
     expect(cssVars).toHaveProperty(
-      '--maeven-color-container-background',
-      MaevenDefault.colors.role.containerBackground
+      '--maeven-color-body-background',
+      MaevenDefault.colors.role.bodyBackground
     );
     expect(cssVars).toHaveProperty(
       '--maeven-color-heading',

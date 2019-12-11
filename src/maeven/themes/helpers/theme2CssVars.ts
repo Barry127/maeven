@@ -32,8 +32,7 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-warning': theme.colors.semantic.warning,
 
     '--maeven-color-background': theme.colors.role.background,
-    '--maeven-color-container-background':
-      theme.colors.role.containerBackground,
+    '--maeven-color-body-background': theme.colors.role.bodyBackground,
     '--maeven-color-heading': theme.colors.role.heading,
     '--maeven-color-link': theme.colors.role.link,
     '--maeven-color-link-hover': theme.colors.role.linkHover,

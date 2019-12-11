@@ -10,6 +10,11 @@ export const box = style({
   boxSizing: 'border-box'
 });
 
+/** Display none */
+export const hidden = style({
+  display: 'none'
+});
+
 /** Theme color & background color */
 export const blockColors = style({
   background: 'var(--maeven-color-background)',

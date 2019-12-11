@@ -11,25 +11,25 @@ import { classes, themeOverride } from './styles';
 export const Block: FC<BlockProps & AllHTMLAttributes<HTMLElement>> = ({
   children,
   className,
-  component = 'div',
+  element = 'div',
   ...restProps
 }) => {
   const theme = useTheme();
-  const Component = component;
+  const Element = element;
 
   return (
-    <Component
+    <Element
       className={clsx(classes.block, themeOverride(theme), className)}
       {...restProps}
     >
       {children}
-    </Component>
+    </Element>
   );
 };
 
 export interface BlockProps {
-  /** Type of html component to render. */
-  component?:
+  /** Type of html element to render. */
+  element?:
     | 'article'
     | 'aside'
     | 'div'

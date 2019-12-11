@@ -25,7 +25,7 @@ export const Text: FC<TextProps &
 
   return (
     <Block
-      component={inline ? 'span' : 'div'}
+      element={inline ? 'span' : 'div'}
       className={clsx(
         classes.text,
         color && classes.color[color],

@@ -11,4 +11,7 @@ import { Theme } from '../../types';
 export function setDefaultTheme(theme: Theme): void {
   const styles = cssVars2Root(theme2CssVars(theme));
   cssRaw(styles);
+  cssRaw(`body {
+    background: var(--maeven-color-body-background);
+  }`);
 }

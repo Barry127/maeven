@@ -1,0 +1,43 @@
+---
+title: Container
+path: Components/Grid/Container
+---
+
+import { Block, Container, H1, P } from 'maeven';
+import { DoDont, Props } from 'docs/components';
+
+# Container
+
+The Container component can contain the main content or a grid. It has a maxWidth and centers the content block.
+
+## Props
+
+<Props of="Container" />
+
+## Examples
+
+### Basic
+
+Basic usage of container.
+
+```js live
+<Container>
+  <Block>
+    <H1>Hello World</H1>
+    <P>A Nicely formatted container!</P>
+  </Block>
+</Container>
+```
+
+### Fluid
+
+A Fluid container fills up the available width.
+
+```js live
+<Container fluid>
+  <Block>
+    <H1>Hello World</H1>
+    <P>A fluid formatted container!</P>
+  </Block>
+</Container>
+```
