@@ -12,6 +12,7 @@ export const Block: FC<BlockProps & AllHTMLAttributes<HTMLElement>> = ({
   children,
   className,
   element = 'div',
+  padding = false,
   ...restProps
 }) => {
   const theme = useTheme();
@@ -19,7 +20,12 @@ export const Block: FC<BlockProps & AllHTMLAttributes<HTMLElement>> = ({
 
   return (
     <Element
-      className={clsx(classes.block, themeOverride(theme), className)}
+      className={clsx(
+        classes.block,
+        { [classes.padding]: padding },
+        themeOverride(theme),
+        className
+      )}
       {...restProps}
     >
       {children}
@@ -39,4 +45,7 @@ export interface BlockProps {
     | 'nav'
     | 'section'
     | 'span';
+
+  /** Wether block contains padding */
+  padding?: boolean;
 }

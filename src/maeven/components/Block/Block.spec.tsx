@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import { MaevenDefault, ThemeProvider } from '../..';
 
 import { Block } from './Block';
-import { themeOverride } from './styles';
+import { classes, themeOverride } from './styles';
 
 describe('Block', () => {
   it('renders a div element with given text', () => {
@@ -65,5 +65,19 @@ describe('Block', () => {
     const { getByText } = render(<Block element="article">Hello world!</Block>);
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('ARTICLE');
+  });
+
+  describe('padding', () => {
+    it('has no padding by default', () => {
+      const { getByText } = render(<Block>Hello world!</Block>);
+      const element = getByText('Hello world!');
+      expect(element).not.toHaveClass(classes.padding);
+    });
+
+    it('sets padding', () => {
+      const { getByText } = render(<Block padding>Hello world!</Block>);
+      const element = getByText('Hello world!');
+      expect(element).toHaveClass(classes.padding);
+    });
   });
 });
