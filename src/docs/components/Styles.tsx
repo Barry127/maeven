@@ -6,7 +6,7 @@ const row = `.${
 }`;
 
 const grid = `
-${row} > div {
+.example ${row} > div {
   background: var(--maeven-color-blue);
   color: var(--maeven-color-white);
   text-align: center;
@@ -14,11 +14,11 @@ ${row} > div {
   padding-bottom: 8px;
 }
 
-${row} > div * {
+.example ${row} > div * {
   color: var(--maeven-color-white) !important;
 }
 
-${row} > div:nth-child(even) {
+.example ${row} > div:nth-child(even) {
   background: var(--maeven-color-indigo);
 }
 `;

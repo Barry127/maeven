@@ -1,28 +1,34 @@
 import React, { FC } from 'react';
 
-import { H3, H4, Li, Ul } from 'maeven';
+import { Col, Heading, Li, Row, Ul } from 'maeven';
 
 export const DoDont: FC<DoDontProps> = ({ do: dos = [], dont: donts = [] }) => (
   <>
-    <H3 id="do-dont">Do's & Don'ts</H3>
-    <div>
-      <div>
-        <H4 id="do">Do</H4>
+    <Heading level="h3" id="do-dont">
+      Do's & Don'ts
+    </Heading>
+    <Row gutter={1}>
+      <Col span={12}>
+        <Heading level="h4" id="do" color="success">
+          Do
+        </Heading>
         <Ul>
           {dos.map(dos => (
             <Li key={dos}>{dos}</Li>
           ))}
         </Ul>
-      </div>
-      <div>
-        <H4 id="dont">Don't</H4>
+      </Col>
+      <Col span={12}>
+        <Heading level="h4" id="dont" color="danger">
+          Don't
+        </Heading>
         <Ul>
           {donts.map(dont => (
             <Li key={dont}>{dont}</Li>
           ))}
         </Ul>
-      </div>
-    </div>
+      </Col>
+    </Row>
   </>
 );
 

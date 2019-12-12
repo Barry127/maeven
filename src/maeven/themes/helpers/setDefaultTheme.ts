@@ -13,5 +13,7 @@ export function setDefaultTheme(theme: Theme): void {
   cssRaw(styles);
   cssRaw(`body {
     background: var(--maeven-color-body-background);
+    padding: 0;
+    margin: 0;
   }`);
 }
