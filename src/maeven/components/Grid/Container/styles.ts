@@ -1,8 +1,8 @@
 import { style } from 'typestyle';
 
 import { themeOverrideFactory } from '../../../common/themeOverrideFactory';
+import { responsiveStyle } from '../../../common/responsiveStyle';
 import { Theme } from '../../../types';
-import { responsiveStyle } from 'maeven/common/responsiveStyle';
 
 const container = style({
   background: 'transparent',
