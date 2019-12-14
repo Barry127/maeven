@@ -3,6 +3,7 @@ const path = require('path');
 
 const paths = {
   components: path.join(__dirname, '..', 'src', 'maeven', 'components'),
+  hooks: path.join(__dirname, '..', 'src', 'maeven', 'hooks'),
   propsData: path.join(__dirname, '..', 'src', 'docs', '_data', 'props.ts'),
   docsData: path.join(__dirname, '..', 'src', 'docs', '_data', 'docs.ts'),
   dataDir: path.join(__dirname, '..', 'src', 'docs', '_data'),
