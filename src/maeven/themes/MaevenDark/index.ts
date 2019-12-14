@@ -33,7 +33,8 @@ theme.colors.role = {
   background: theme.colors.name.black,
   bodyBackground: theme.colors.name.black,
   heading: theme.colors.name.white,
-  text: theme.colors.name.white
+  text: theme.colors.name.white,
+  textInverted: theme.colors.name.black
 };
 
 export default theme;

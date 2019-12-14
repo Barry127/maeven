@@ -63,6 +63,7 @@ const theme: Theme = {
         .darken(0.125)
         .toString(),
       text: black,
+      textInverted: white,
       textSelection: white,
       textSelectionBackground: blue
     }

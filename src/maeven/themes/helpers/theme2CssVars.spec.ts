@@ -119,6 +119,10 @@ describe('theme2CssVars', () => {
       MaevenDefault.colors.role.text
     );
     expect(cssVars).toHaveProperty(
+      '--maeven-color-text-inverted',
+      MaevenDefault.colors.role.textInverted
+    );
+    expect(cssVars).toHaveProperty(
       '--maeven-color-text-selection',
       MaevenDefault.colors.role.textSelection
     );

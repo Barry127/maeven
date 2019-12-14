@@ -39,6 +39,7 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-link-focus': theme.colors.role.linkFocus,
     '--maeven-color-link-active': theme.colors.role.linkActive,
     '--maeven-color-text': theme.colors.role.text,
+    '--maeven-color-text-inverted': theme.colors.role.textInverted,
     '--maeven-color-text-selection': theme.colors.role.textSelection,
     '--maeven-color-text-selection-background':
       theme.colors.role.textSelectionBackground,

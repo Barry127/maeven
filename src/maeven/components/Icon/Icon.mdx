@@ -1,0 +1,133 @@
+---
+title: Icon
+path: Components/Icon
+---
+
+import { Icon } from 'maeven';
+import { DoDont, Props } from 'docs/components';
+
+# Icon
+
+An Icon represents an action or concept in a visual way.
+
+## Props
+
+<Props of="Icon" />
+
+## Examples
+
+### Basic
+
+A basic Icon.
+
+```js live
+// import { arrowLeftCircle, arrowRightCircle } from 'icon-packs/feather';
+
+<Text>
+  <Icon icon={arrowLeftCircle} /> Hello World <Icon icon={arrowRightCircle} />
+</Text>
+```
+
+### Color
+
+Icons can be styled in different (theme) colors.
+
+```js live
+// import { circleSolid } from 'icon-packs/fa';
+
+<H2>
+  <Icon icon={circleSolid} color="black" />{' '}
+  <Icon icon={circleSolid} color="blue" />{' '}
+  <Icon icon={circleSolid} color="cyan" />{' '}
+  <Icon icon={circleSolid} color="darkGrey" />{' '}
+  <Icon icon={circleSolid} color="green" />{' '}
+  <Icon icon={circleSolid} color="grey" />{' '}
+  <Icon icon={circleSolid} color="indigo" />{' '}
+  <Icon icon={circleSolid} color="orange" />{' '}
+  <Icon icon={circleSolid} color="pink" />{' '}
+  <Icon icon={circleSolid} color="purple" />{' '}
+  <Icon icon={circleSolid} color="red" />{' '}
+  <Icon icon={circleSolid} color="teal" />{' '}
+  <Icon icon={circleSolid} color="white" />{' '}
+  <Icon icon={circleSolid} color="yellow" />{' '}
+  <Icon icon={circleSolid} color="primary" />{' '}
+  <Icon icon={circleSolid} color="secondary" />{' '}
+  <Icon icon={circleSolid} color="success" />{' '}
+  <Icon icon={circleSolid} color="info" />{' '}
+  <Icon icon={circleSolid} color="warning" />{' '}
+  <Icon icon={circleSolid} color="danger" />
+</H2>
+```
+
+### Fixed Width
+
+Icons with fixed width have a 1:1 height/width ratio.
+
+```js live
+// import { markGithub, logoGithub } from 'icon-packs/octicons';
+
+<Text styleHtml>
+  <h4>
+    Normal: <Icon icon={markGithub} /> <Icon icon={logoGithub} />
+  </h4>
+  <h4>
+    Fixed Width: <Icon icon={markGithub} fixedWidth />{' '}
+    <Icon icon={logoGithub} fixedWidth />
+  </h4>
+</Text>
+```
+
+### Inverted
+
+Icons can be inverted.
+
+```js live
+// import { activity } from 'icon-packs/feather';
+
+<H1>
+  <Icon color="primary" icon={activity} />{' '}
+  <Icon color="primary" icon={activity} inverted />
+</H1>
+```
+
+### Sizes
+
+Icons can have different sizes.
+
+```js live
+// import { checkCircle } from 'icon-packs/feather';
+
+<Text styleHtml>
+  <p>
+    Regular: <Icon icon={checkCircle} />
+  </p>
+  <p>
+    1em: <Icon icon={checkCircle} size="1em" />
+  </p>
+  <p>
+    2em: <Icon icon={checkCircle} size="2em" />
+  </p>
+  <p>
+    3em: <Icon icon={checkCircle} size="3em" />
+  </p>
+  <p>
+    4em: <Icon icon={checkCircle} size="4em" />
+  </p>
+  <p>
+    5em: <Icon icon={checkCircle} size="5em" />
+  </p>
+</Text>
+```
+
+## Design Guidelines
+
+Use icons to clarify information or actions. Always make sure icons are accessible.
+
+<DoDont
+  do={[
+    'Use an icon in conjunction with descriptive text when used in a button or link.',
+    'If used in an interactive element without text, the alement should always have an aria-label.',
+    'If used as an illustration / indicator or part of text the icon should have a title.'
+  ]}
+  dont={['Use icons to show pictures.']}
+/>

@@ -5,8 +5,27 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
-import * as scope from 'maeven';
+import * as maevenScope from 'maeven';
+import { circleSolid } from 'icon-packs/fa';
+import {
+  activity,
+  arrowLeftCircle,
+  arrowRightCircle,
+  checkCircle
+} from 'icon-packs/feather';
+import { markGithub, logoGithub } from 'icon-packs/octicons';
 import { Row, Col } from 'maeven';
+
+const scope = {
+  ...maevenScope,
+  activity,
+  arrowLeftCircle,
+  arrowRightCircle,
+  checkCircle,
+  circleSolid,
+  logoGithub,
+  markGithub
+};
 
 const liveProviderClass = style({
   border: `1px solid var(--maeven-color-grey)`,

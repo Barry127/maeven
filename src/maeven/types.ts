@@ -1,4 +1,11 @@
+import { AllHTMLAttributes, SVGProps } from 'react';
 import { NestedCSSProperties } from 'typestyle/lib/types';
+
+export interface MaevenIcon {
+  tag: keyof JSX.IntrinsicElements;
+  attrs: AllHTMLAttributes<any> & SVGProps<any>;
+  children?: this[] | string;
+}
 
 export interface MediaDefinition {
   from: number;
@@ -44,6 +51,7 @@ export interface Theme {
       linkFocus: string;
       linkActive: string;
       text: string;
+      textInverted: string;
       textSelection: string;
       textSelectionBackground: string;
     };
