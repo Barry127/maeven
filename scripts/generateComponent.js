@@ -239,6 +239,52 @@ import { ${name} } from './${name}';
 import { classes, themeOverride } from './styles';
 
 describe('${name}', () => {
+  it.skip('renders div element with given text', () => {
+    const { getByText } = render(<${name}>Hello world!</${name}>);
+    const element = getByText('Hello world!');
+    expect(element.tagName).toBe('DIV');
+  });
+
+  it.skip('sets className', () => {
+    const { getByText } = render(
+      <${name} className="${name.toLowerCase()}-class">Hello world!</${name}>
+    );
+    const element = getByText('Hello world!');
+    expect(element).toHaveClass('${name.toLowerCase()}-class');
+  });
+
+  it.skip('passes props', () => {
+    const { getByText } = render(
+      <${name} id="${name}Id" data-test="${name.toLowerCase()}-data">
+        Hello world!
+      </${name}>
+    );
+    const element = getByText('Hello world!');
+    expect(element).toHaveAttribute('id', '${name}Id');
+    expect(element.dataset.test).toBe('${name.toLowerCase()}-data');
+  });
+
+  it.skip('styles Theme overrides', () => {
+    const theme = {
+      ...MaevenDefault,
+      styleOverrides: {
+        ${name}: {
+          color: 'hotpink'
+        }
+      }
+    };
+
+    const expectedClassName = themeOverride(theme);
+
+    const { getByText } = render(
+      <ThemeProvider theme={theme}>
+        <${name}>Hello world!</${name}>
+      </ThemeProvider>
+    );
+    const element = getByText('Hello world!');
+    expect(element).toHaveClass(expectedClassName);
+  });
+
   it.skip('', () => {});
 });
 `,
