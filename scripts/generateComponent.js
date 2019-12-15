@@ -296,11 +296,11 @@ path: Components${nested ? '/' + parent : ''}/${name}
 ---
 
 import { ${name} } from 'maeven';
-import { DoDont, Props } from 'docs/components';
+import { Description, DoDont, Props } from 'docs/components';
 
 # ${name}
 
-${name} description.
+<Description of="${name}" />
 
 ## Props
 

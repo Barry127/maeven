@@ -92,5 +92,5 @@ export const Props: FC<PropsProps> = ({ of: propName }) => {
 type ExistingProp = keyof typeof propsData;
 
 export interface PropsProps {
-  of: 'string';
+  of: string;
 }
