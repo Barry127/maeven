@@ -1,0 +1,35 @@
+---
+title: useOutline
+path: 'Hooks/useOutline'
+---
+
+import { DoDont } from 'docs/components';
+
+# useOutline
+
+useOutline returns true when an element should have a focus outline on focus (when user is navigating page using keyboard) and false when not (when user uses mouse).
+
+## Example
+
+When `MyButton` is focussed using tab it will have a 3px blue outline. When focussed using mouse only the font will be bold.
+
+```js live withRender
+const MyButton = () => {
+  const outline = useOutline();
+
+  const MyButtonClass = typestyle({
+    $nest: {
+      '&:focus': {
+        fontWeight: 'bold',
+        outline: outline ? '3px solid blue' : 'none'
+      }
+    }
+  });
+
+  return (
+    <button className={MyButtonClass}>Focus me using keyboard or mouse</button>
+  );
+};
+
+render(<MyButton />);
+```

@@ -8,6 +8,7 @@ export * from './components/Text';
 export * from './components/ThemeProvider';
 
 // Hooks
+export * from './hooks/useOutline';
 export * from './hooks/useTheme';
 
 // Themes
