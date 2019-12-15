@@ -23,6 +23,12 @@ import { xs, sm, md, lg, xl } from './media';
 const theme: Theme = {
   name: 'Maeven',
   base: 16,
+  sizes: {
+    borderRadius: {
+      medium: 6,
+      large: 12
+    }
+  },
   colors: {
     name: {
       black,
@@ -51,6 +57,9 @@ const theme: Theme = {
     role: {
       background: white,
       bodyBackground: '#f5f8fb',
+      focus: color(blue)
+        .fade(0.5)
+        .toString(),
       heading: black,
       link: blue,
       linkHover: color(yellow)

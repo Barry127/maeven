@@ -17,6 +17,12 @@ export interface MediaDefinition {
 export interface Theme {
   name: string;
   base: string | number;
+  sizes: {
+    borderRadius: {
+      medium: string | number;
+      large: string | number;
+    };
+  };
   colors: {
     name: {
       black: string;
@@ -45,6 +51,7 @@ export interface Theme {
     role: {
       background: string;
       bodyBackground: string;
+      focus: string;
       heading: string;
       link: string;
       linkHover: string;

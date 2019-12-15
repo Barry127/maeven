@@ -14,23 +14,52 @@ const list = style({
   }
 });
 
-const a = style({
-  textDecoration: 'underline',
+export const aStyles = style({
+  textDecoration: 'none',
+  $nest: {
+    '&:hover': {
+      textDecoration: 'underline'
+    },
+    '&:focus': {
+      textDecoration: 'underline',
+      outline: 'none'
+    }
+  }
+});
+
+export const aColors = style({
   color: 'var(--maeven-color-link)',
   $nest: {
     '&:hover': {
-      color: 'var(--maeven-color-link-hover)',
-      textDecoration: 'none'
+      color: 'var(--maeven-color-link-hover)'
     },
     '&:focus': {
-      color: 'var(--maeven-color-link-focus)',
-      outline: 'none'
-    },
-    '&:focus:not(:active):not(:hover)': {
-      textDecoration: 'underline'
+      color: 'var(--maeven-color-link-focus)'
     },
     '&:active': {
       color: 'var(--maeven-color-link-active)'
+    }
+  }
+});
+
+const aFocus = style({
+  position: 'relative',
+  $nest: {
+    '&:focus:not(:active):not(:hover)': {
+      textDecoration: 'none',
+      $nest: {
+        '&::before': {
+          position: 'absolute',
+          borderRadius: 'var(--maeven-size-border-radius-medium)',
+          content: '""',
+          top: -2,
+          left: -2,
+          bottom: -2,
+          right: -2,
+          boxShadow:
+            '0 0 calc(var(--maeven-base) / 4) calc(var(--maeven-base) / 4) var(--maeven-color-focus)'
+        }
+      }
     }
   }
 });
@@ -73,7 +102,7 @@ const p = style({
 });
 
 export const classes = {
-  a: clsx(box, defaultTypography, a),
+  a: clsx(box, defaultTypography, aStyles, aColors, aFocus),
   h1: clsx(box, pm0, defaultTypography, headingBase, h1),
   h2: clsx(box, pm0, defaultTypography, headingBase, h2),
   h3: clsx(box, pm0, defaultTypography, headingBase, h3),

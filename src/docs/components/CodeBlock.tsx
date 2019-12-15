@@ -24,7 +24,8 @@ const scope = {
   checkCircle,
   circleSolid,
   logoGithub,
-  markGithub
+  markGithub,
+  typestyle: style
 };
 
 const liveProviderClass = style({

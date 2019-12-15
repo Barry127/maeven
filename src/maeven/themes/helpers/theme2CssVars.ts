@@ -9,6 +9,16 @@ export function theme2CssVars(theme: Theme): CSSProperties {
   return {
     '--maeven-base':
       typeof theme.base === 'number' ? `${theme.base}px` : theme.base,
+
+    '--maeven-size-border-radius-medium':
+      typeof theme.sizes.borderRadius.medium === 'number'
+        ? `${theme.sizes.borderRadius.medium}px`
+        : theme.sizes.borderRadius.medium,
+    '--maeven-size-border-radius-large':
+      typeof theme.sizes.borderRadius.large === 'number'
+        ? `${theme.sizes.borderRadius.large}px`
+        : theme.sizes.borderRadius.large,
+
     '--maeven-color-black': theme.colors.name.black,
     '--maeven-color-blue': theme.colors.name.blue,
     '--maeven-color-cyan': theme.colors.name.cyan,
@@ -33,6 +43,7 @@ export function theme2CssVars(theme: Theme): CSSProperties {
 
     '--maeven-color-background': theme.colors.role.background,
     '--maeven-color-body-background': theme.colors.role.bodyBackground,
+    '--maeven-color-focus': theme.colors.role.focus,
     '--maeven-color-heading': theme.colors.role.heading,
     '--maeven-color-link': theme.colors.role.link,
     '--maeven-color-link-hover': theme.colors.role.linkHover,

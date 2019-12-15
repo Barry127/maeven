@@ -4,6 +4,7 @@ import { MaevenDefault } from '..';
 describe('theme2CssVars', () => {
   it('Makes css vars for MaevenDefault colors', () => {
     const cssVars = theme2CssVars(MaevenDefault);
+
     expect(cssVars).toHaveProperty(
       '--maeven-color-black',
       MaevenDefault.colors.name.black
@@ -95,6 +96,10 @@ describe('theme2CssVars', () => {
       MaevenDefault.colors.role.bodyBackground
     );
     expect(cssVars).toHaveProperty(
+      '--maeven-color-focus',
+      MaevenDefault.colors.role.focus
+    );
+    expect(cssVars).toHaveProperty(
       '--maeven-color-heading',
       MaevenDefault.colors.role.heading
     );
@@ -142,6 +147,38 @@ describe('theme2CssVars', () => {
   });
 
   it('Makes css var for base from string', () => {
+    const theme = {
+      ...MaevenDefault,
+      sizes: {
+        ...MaevenDefault.sizes,
+        borderRadius: {
+          medium: '1em',
+          large: '2em'
+        }
+      }
+    };
+    const cssVars = theme2CssVars(theme);
+    expect(cssVars).toHaveProperty('--maeven-size-border-radius-medium', '1em');
+    expect(cssVars).toHaveProperty('--maeven-size-border-radius-large', '2em');
+  });
+
+  it('Makes css var for border radius from number', () => {
+    const theme = {
+      ...MaevenDefault,
+      sizes: {
+        ...MaevenDefault.sizes,
+        borderRadius: {
+          medium: 8,
+          large: 16
+        }
+      }
+    };
+    const cssVars = theme2CssVars(theme);
+    expect(cssVars).toHaveProperty('--maeven-size-border-radius-medium', '8px');
+    expect(cssVars).toHaveProperty('--maeven-size-border-radius-large', '16px');
+  });
+
+  it('Makes css var for border-radius from string', () => {
     const theme = {
       ...MaevenDefault,
       base: '1rem'
