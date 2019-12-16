@@ -14,6 +14,11 @@ import {
 } from 'maeven';
 import { IconProps } from 'maeven/components/Icon/Icon';
 
+// no localStorage because icon-packs exceeds max size
+unpkg.cache.set = function(k: string, v: any) {
+  this.obj[k] = { content: v, timestamp: Date.now() };
+};
+
 export const IconBrowser: FC = () => {
   const [loading, setLoading] = useState(true);
   const [pack, setPack] = useState<keyof typeof PACKS>('feather');
@@ -228,4 +233,8 @@ export const interactiveCard = style({
 
 function makeTransitionFor(keys: string[]): string {
   return keys.map(key => `${key} .2s cubic-bezier(0.4,1,0.75,0.9)`).join(',');
+}
+
+interface Cache {
+  [key: string]: any;
 }
