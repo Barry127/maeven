@@ -5,6 +5,8 @@ import { Theme } from '../../types';
 import { truncate, textColor } from '../../common/styles';
 import { themeOverrideFactory } from '../../common/themeOverrideFactory';
 
+import { classes as iconClasses } from '../Icon/styles';
+
 const text = style({
   background: 'transparent'
 });
@@ -17,7 +19,7 @@ export const classes = {
   styleHtml: style({
     /* ugly but keeps rest of code clean */
     $nest: {
-      '& a, & h1, & h2, & h3, & h4, & h5, & h6, & li, & ol, & p, & span, & ul': {
+      [`& a, & h1, & h2, & h3, & h4, & h5, & h6, & li, & ol, & p, & span:not(.${iconClasses.container}), & ul`]: {
         boxSizing: 'border-box',
         padding: 0,
         margin: 0,

@@ -24,7 +24,6 @@ export const Icon: FC<IconProps & HTMLAttributes<HTMLSpanElement>> = ({
   icon,
   inverted = false,
   size = '1em',
-  style: cssStyle,
   title,
   ...restProps
 }) => {
@@ -87,10 +86,6 @@ export const Icon: FC<IconProps & HTMLAttributes<HTMLSpanElement>> = ({
         themeOverride(theme),
         className
       )}
-      style={{
-        fontSize: size,
-        ...cssStyle
-      }}
       {...restProps}
     >
       {renderChild({ ...icon, attrs })}
