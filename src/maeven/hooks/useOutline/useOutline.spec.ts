@@ -8,6 +8,11 @@ describe('useTheme', () => {
     expect(result.current).toBe(false);
   });
 
+  it('returns true when initialState is true', () => {
+    const { result } = renderHook(() => useOutline(true));
+    expect(result.current).toBe(true);
+  });
+
   it('returns true when a key is pressed and false when the mouse went down', () => {
     const { result } = renderHook(() => useOutline());
 

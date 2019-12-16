@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export function useOutline() {
-  const [outline, setOutline] = useState(false);
+export function useOutline(initialState: boolean = false) {
+  const [outline, setOutline] = useState(initialState);
 
   useEffect(() => {
     const mouseDown = () => {

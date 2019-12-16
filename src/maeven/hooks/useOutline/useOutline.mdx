@@ -9,6 +9,12 @@ import { DoDont } from 'docs/components';
 
 useOutline returns true when an element should have a focus outline on focus (when user is navigating page using keyboard) and false when not (when user uses mouse).
 
+### signature
+
+```ts
+function useOutline(initialState: boolean = false): boolean;
+```
+
 ## Example
 
 When `MyButton` is focussed using tab it will have a 3px blue outline. When focussed using mouse only the font will be bold.
