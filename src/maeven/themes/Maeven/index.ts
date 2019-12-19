@@ -2,6 +2,8 @@ import { color } from 'csx';
 
 import { Theme } from '../../types';
 
+import { classes as buttonClasses } from '../../components/Button/styles';
+
 import {
   black,
   blue,
@@ -73,6 +75,8 @@ const theme: Theme = {
         .toString(),
       text: black,
       textInverted: white,
+      textLight: white,
+      textDark: black,
       textSelection: white,
       textSelectionBackground: blue
     }
@@ -96,6 +100,15 @@ const theme: Theme = {
     md,
     lg,
     xl
+  },
+  styleOverrides: {
+    Button: {
+      $nest: {
+        [`&.${buttonClasses.outline}.${buttonClasses.buttonTypes.secondary}`]: {
+          color: black
+        }
+      }
+    }
   }
 };
 

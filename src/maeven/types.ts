@@ -59,6 +59,8 @@ export interface Theme {
       linkActive: string;
       text: string;
       textInverted: string;
+      textLight: string;
+      textDark: string;
       textSelection: string;
       textSelectionBackground: string;
     };

@@ -18,6 +18,7 @@ function parse() {
 module.exports = parse;
 
 const whiteList = ['className'];
+const blackList = ['forwardedRef'];
 const componentWhitelist = {
   AnchorButton: ['href'],
   Button: ['type'],
@@ -25,6 +26,7 @@ const componentWhitelist = {
 };
 
 function propFilter(prop, component) {
+  if (blackList.includes(prop.name)) return false;
   if (whiteList.includes(prop.name)) return true;
 
   if (

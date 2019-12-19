@@ -6,25 +6,45 @@ import theme from 'prism-react-renderer/themes/dracula';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
 import * as maevenScope from 'maeven';
-import { circleSolid } from 'icon-packs/fa';
+import {
+  arrowLeftSolid,
+  arrowRightSolid,
+  caretDownSolid,
+  circleSolid,
+  fileRegular,
+  plusSolid,
+  timesSolid,
+  userCircleSolid
+} from 'icon-packs/fa';
 import {
   activity,
   arrowLeftCircle,
   arrowRightCircle,
-  checkCircle
+  checkCircle,
+  refreshCw
 } from 'icon-packs/feather';
 import { markGithub, logoGithub } from 'icon-packs/octicons';
 import { Row, Col } from 'maeven';
 
 const scope = {
   ...maevenScope,
+
   activity,
   arrowLeftCircle,
+  arrowLeftSolid,
   arrowRightCircle,
+  arrowRightSolid,
+  caretDownSolid,
   checkCircle,
   circleSolid,
+  fileRegular,
   logoGithub,
   markGithub,
+  plusSolid,
+  refreshCw,
+  timesSolid,
+  userCircleSolid,
+
   typestyle: style
 };
 
@@ -83,7 +103,7 @@ export const CodeBlock: FC<{
   return (
     <Highlight
       {...defaultProps}
-      code={children as any}
+      code={(children as any).trim()}
       language={language as any}
       theme={theme}
     >

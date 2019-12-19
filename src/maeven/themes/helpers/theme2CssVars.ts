@@ -1,6 +1,8 @@
 import { CSSProperties } from 'react';
+import { color } from 'csx';
 
 import { Theme } from '../../types';
+import { getTextColorFromBackground } from './getTextColorFromBackground';
 
 /**
  * Convert Theme to a dictionary of CSS vars
@@ -34,12 +36,145 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-white': theme.colors.name.white,
     '--maeven-color-yellow': theme.colors.name.yellow,
 
+    '--maeven-color-black-f10': color(theme.colors.name.black)
+      .fade(0.1)
+      .toString(),
+    '--maeven-color-black-f20': color(theme.colors.name.black)
+      .fade(0.2)
+      .toString(),
+
     '--maeven-color-danger': theme.colors.semantic.danger,
+    '--maeven-color-danger-text': getTextColorFromBackground(
+      theme.colors.semantic.danger,
+      theme.colors.role.textLight,
+      theme.colors.role.textDark
+    ),
+    '--maeven-color-danger-d05': color(theme.colors.semantic.danger)
+      .darken(0.05)
+      .toString(),
+    '--maeven-color-danger-d10': color(theme.colors.semantic.danger)
+      .darken(0.1)
+      .toString(),
+    '--maeven-color-danger-f50': color(theme.colors.semantic.danger)
+      .fade(0.5)
+      .toString(),
+    '--maeven-color-danger-l05': color(theme.colors.semantic.danger)
+      .lighten(0.05)
+      .toString(),
+    '--maeven-color-danger-outline': outlineContrast(
+      theme.colors.semantic.danger,
+      theme
+    ),
     '--maeven-color-info': theme.colors.semantic.info,
+    '--maeven-color-info-text': getTextColorFromBackground(
+      theme.colors.semantic.info,
+      theme.colors.role.textLight,
+      theme.colors.role.textDark
+    ),
+    '--maeven-color-info-d05': color(theme.colors.semantic.info)
+      .darken(0.05)
+      .toString(),
+    '--maeven-color-info-d10': color(theme.colors.semantic.info)
+      .darken(0.1)
+      .toString(),
+    '--maeven-color-info-f50': color(theme.colors.semantic.info)
+      .fade(0.5)
+      .toString(),
+    '--maeven-color-info-l05': color(theme.colors.semantic.info)
+      .lighten(0.05)
+      .toString(),
+    '--maeven-color-info-outline': outlineContrast(
+      theme.colors.semantic.info,
+      theme
+    ),
     '--maeven-color-primary': theme.colors.semantic.primary,
+    '--maeven-color-primary-text': getTextColorFromBackground(
+      theme.colors.semantic.primary,
+      theme.colors.role.textLight,
+      theme.colors.role.textDark
+    ),
+    '--maeven-color-primary-d05': color(theme.colors.semantic.primary)
+      .darken(0.05)
+      .toString(),
+    '--maeven-color-primary-d10': color(theme.colors.semantic.primary)
+      .darken(0.1)
+      .toString(),
+    '--maeven-color-primary-f50': color(theme.colors.semantic.primary)
+      .fade(0.5)
+      .toString(),
+    '--maeven-color-primary-l05': color(theme.colors.semantic.primary)
+      .lighten(0.05)
+      .toString(),
+    '--maeven-color-primary-outline': outlineContrast(
+      theme.colors.semantic.primary,
+      theme
+    ),
     '--maeven-color-secondary': theme.colors.semantic.secondary,
+    '--maeven-color-secondary-text': getTextColorFromBackground(
+      theme.colors.semantic.secondary,
+      theme.colors.role.textLight,
+      theme.colors.role.textDark
+    ),
+    '--maeven-color-secondary-d05': color(theme.colors.semantic.secondary)
+      .darken(0.05)
+      .toString(),
+    '--maeven-color-secondary-d10': color(theme.colors.semantic.secondary)
+      .darken(0.1)
+      .toString(),
+    '--maeven-color-secondary-f50': color(theme.colors.semantic.secondary)
+      .fade(0.5)
+      .toString(),
+    '--maeven-color-secondary-l05': color(theme.colors.semantic.secondary)
+      .lighten(0.05)
+      .toString(),
+    '--maeven-color-secondary-outline': outlineContrast(
+      theme.colors.semantic.secondary,
+      theme
+    ),
     '--maeven-color-success': theme.colors.semantic.success,
+    '--maeven-color-success-text': getTextColorFromBackground(
+      theme.colors.semantic.success,
+      theme.colors.role.textLight,
+      theme.colors.role.textDark
+    ),
+    '--maeven-color-success-d05': color(theme.colors.semantic.success)
+      .darken(0.05)
+      .toString(),
+    '--maeven-color-success-d10': color(theme.colors.semantic.success)
+      .darken(0.1)
+      .toString(),
+    '--maeven-color-success-f50': color(theme.colors.semantic.success)
+      .fade(0.5)
+      .toString(),
+    '--maeven-color-success-l05': color(theme.colors.semantic.success)
+      .lighten(0.05)
+      .toString(),
+    '--maeven-color-success-outline': outlineContrast(
+      theme.colors.semantic.success,
+      theme
+    ),
     '--maeven-color-warning': theme.colors.semantic.warning,
+    '--maeven-color-warning-text': getTextColorFromBackground(
+      theme.colors.semantic.warning,
+      theme.colors.role.textLight,
+      theme.colors.role.textDark
+    ),
+    '--maeven-color-warning-d05': color(theme.colors.semantic.warning)
+      .darken(0.05)
+      .toString(),
+    '--maeven-color-warning-d10': color(theme.colors.semantic.warning)
+      .darken(0.1)
+      .toString(),
+    '--maeven-color-warning-f50': color(theme.colors.semantic.warning)
+      .fade(0.5)
+      .toString(),
+    '--maeven-color-warning-l05': color(theme.colors.semantic.warning)
+      .lighten(0.05)
+      .toString(),
+    '--maeven-color-warning-outline': outlineContrast(
+      theme.colors.semantic.warning,
+      theme
+    ),
 
     '--maeven-color-background': theme.colors.role.background,
     '--maeven-color-body-background': theme.colors.role.bodyBackground,
@@ -66,4 +201,14 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-typography-heading-font-weight':
       theme.typography.heading.fontWeight
   } as CSSProperties;
+}
+
+function outlineContrast(outlineColor: string, theme: Theme): string {
+  const c = color(outlineColor);
+
+  if (c.red() > 196 && c.green() > 196 && c.blue() > 196) {
+    return `inset 0 0 0 1px var(--maeven-color-black-f20), inset 0 -1px 0 var(--maeven-color-black-f10)`;
+  }
+
+  return `inset 0 0 0 1px ${outlineColor}, inset 0 -1px 0 ${outlineColor}`;
 }

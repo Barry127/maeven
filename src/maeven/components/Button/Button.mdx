@@ -1,0 +1,196 @@
+---
+title: Button
+path: Components/Button
+---
+
+import { Button } from 'maeven';
+import { Description, DoDont, Props } from 'docs/components';
+
+# Button
+
+<Description of="Button" />
+
+## Props
+
+<Props of="Button" />
+
+## Examples
+
+### Basic
+
+A basic usage of Button.
+
+```js live
+<Button onClick={() => alert('Button Clicked')}>Click Me!</Button>
+```
+
+### buttonType
+
+Buttons can by styled as different type of buttons.
+
+```js live
+<Block padding>
+  <P>
+    <Button buttonType="primary">Primary</Button>{' '}
+    <Button buttonType="secondary">Secondary</Button>{' '}
+    <Button buttonType="link">Link</Button>{' '}
+    <Button buttonType="info">Info</Button>{' '}
+    <Button buttonType="success">Success</Button>{' '}
+    <Button buttonType="warning">Warning</Button>{' '}
+    <Button buttonType="danger">Danger</Button>
+  </P>
+  <P>
+    <Button disabled buttonType="primary">
+      Disabled Primary
+    </Button>{' '}
+    <Button disabled buttonType="secondary">
+      Disabled Secondary
+    </Button>{' '}
+    <Button disabled buttonType="link">
+      Disabled Link
+    </Button>{' '}
+    <Button disabled buttonType="info">
+      Disabled Info
+    </Button>{' '}
+    <Button disabled buttonType="success">
+      Disabled Success
+    </Button>{' '}
+    <Button disabled buttonType="warning">
+      Disabled Warning
+    </Button>{' '}
+    <Button disabled buttonType="danger">
+      Disabled Danger
+    </Button>
+  </P>
+</Block>
+```
+
+### Outline
+
+Buttons can be styled outlined for secondary actions.
+
+```js live
+<Block padding>
+  <P>
+    <Button outline buttonType="primary">
+      Primary
+    </Button>{' '}
+    <Button outline buttonType="secondary">
+      Secondary
+    </Button>{' '}
+    <Button outline buttonType="link">
+      Link
+    </Button>{' '}
+    <Button outline buttonType="info">
+      Info
+    </Button>{' '}
+    <Button outline buttonType="success">
+      Success
+    </Button>{' '}
+    <Button outline buttonType="warning">
+      Warning
+    </Button>{' '}
+    <Button outline buttonType="danger">
+      Danger
+    </Button>
+  </P>
+  <P>
+    <Button outline disabled buttonType="primary">
+      Disabled Primary
+    </Button>{' '}
+    <Button outline disabled buttonType="secondary">
+      Disabled Secondary
+    </Button>{' '}
+    <Button outline disabled buttonType="link">
+      Disabled Link
+    </Button>{' '}
+    <Button outline disabled buttonType="info">
+      Disabled Info
+    </Button>{' '}
+    <Button outline disabled buttonType="success">
+      Disabled Success
+    </Button>{' '}
+    <Button outline disabled buttonType="warning">
+      Disabled Warning
+    </Button>{' '}
+    <Button outline disabled buttonType="danger">
+      Disabled Danger
+    </Button>
+  </P>
+</Block>
+```
+
+### Icons
+
+A button can contain icons.
+
+```js live
+// import { refreshCw } from 'icon-packs/feather';
+// import {
+//   userCircleSolid,
+//   caretDownSolid,
+//   arrowLeftSolid,
+//   arrowRightSolid,
+//   fileRegular,
+//   timesSolid,
+//   plusSolid
+// } from 'icon-packs/fa';
+
+<>
+  <Button buttonType="primary" icon={refreshCw}>
+    Refresh
+  </Button>{' '}
+  <Button icon={userCircleSolid} iconRight={caretDownSolid}>
+    Profile
+  </Button>{' '}
+  <Button buttonType="warning" iconRight={arrowRightSolid}>
+    Next
+  </Button>{' '}
+  <Button icon={fileRegular} iconRight={timesSolid}>
+    Upload...
+  </Button>{' '}
+  <Button buttonType="success" icon={plusSolid} />{' '}
+  <Button icon={arrowLeftSolid} iconRight={arrowRightSolid} />
+</>
+```
+
+### Sizes
+
+Buttons can have different sizes.
+
+```js live
+<>
+  <Button buttonType="primary" size="sm">
+    Small Button
+  </Button>{' '}
+  <Button buttonType="primary" size="md">
+    Medium Button
+  </Button>{' '}
+  <Button buttonType="primary" size="lg">
+    Large Button
+  </Button>
+</>
+```
+
+### Fluid
+
+A fluid button takes up the full width.
+
+```js live
+<Button buttonType="primary" fluid>
+  Fluid Button
+</Button>
+```
+
+### Active
+
+A button can be styled to indacte it is active.
+
+```js live
+<>
+  <Button buttonType="primary">Normal</Button>{' '}
+  <Button buttonType="primary" active>
+    Active
+  </Button>
+</>
+```

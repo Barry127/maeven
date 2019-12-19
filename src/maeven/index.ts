@@ -1,5 +1,6 @@
 // Components
 export * from './components/Block';
+export * from './components/Button';
 export * from './components/Grid';
 export * from './components/Heading';
 export * from './components/Html';

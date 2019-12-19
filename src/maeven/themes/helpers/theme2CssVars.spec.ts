@@ -67,24 +67,48 @@ describe('theme2CssVars', () => {
       MaevenDefault.colors.semantic.danger
     );
     expect(cssVars).toHaveProperty(
+      '--maeven-color-danger-text',
+      MaevenDefault.colors.role.textLight
+    );
+    expect(cssVars).toHaveProperty(
       '--maeven-color-info',
       MaevenDefault.colors.semantic.info
+    );
+    expect(cssVars).toHaveProperty(
+      '--maeven-color-info-text',
+      MaevenDefault.colors.role.textLight
     );
     expect(cssVars).toHaveProperty(
       '--maeven-color-primary',
       MaevenDefault.colors.semantic.primary
     );
     expect(cssVars).toHaveProperty(
+      '--maeven-color-primary-text',
+      MaevenDefault.colors.role.textLight
+    );
+    expect(cssVars).toHaveProperty(
       '--maeven-color-secondary',
       MaevenDefault.colors.semantic.secondary
+    );
+    expect(cssVars).toHaveProperty(
+      '--maeven-color-secondary-text',
+      MaevenDefault.colors.role.textDark
     );
     expect(cssVars).toHaveProperty(
       '--maeven-color-success',
       MaevenDefault.colors.semantic.success
     );
     expect(cssVars).toHaveProperty(
+      '--maeven-color-success-text',
+      MaevenDefault.colors.role.textLight
+    );
+    expect(cssVars).toHaveProperty(
       '--maeven-color-warning',
       MaevenDefault.colors.semantic.warning
+    );
+    expect(cssVars).toHaveProperty(
+      '--maeven-color-warning-text',
+      MaevenDefault.colors.role.textLight
     );
 
     expect(cssVars).toHaveProperty(
