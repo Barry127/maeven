@@ -1,0 +1,213 @@
+---
+title: Card
+path: Components/Card/Card
+sortKey: '0'
+---
+
+import { Card } from 'maeven';
+import { Description, DoDont, Props } from 'docs/components';
+
+# Card
+
+<Description of="Card" />
+
+## Props
+
+<Props of="Card" />
+
+## Examples
+
+### Basic
+
+A basic usage of Card wit an image.
+
+```js live
+// import skyline from '@assets/skyline.jpg';
+// import bubbles from '@assets/bubbles.jpg';
+// import trees from '@assets/trees.jpg';
+
+<Container>
+  <Row gutter={1}>
+    <Col transparent span={8}>
+      <Card>
+        <CardImage src={skyline} />
+        <H3>Title</H3>
+        <P>Card content with a short text containing a description.</P>
+        <P>
+          <Button buttonType="primary">Call To Action</Button>
+        </P>
+      </Card>
+    </Col>
+    <Col transparent span={8}>
+      <Card>
+        <CardImage src={bubbles} />
+        <H3>Title</H3>
+        <P>Card content with a short text containing a description.</P>
+        <P>
+          <Button buttonType="primary">Call To Action</Button>
+        </P>
+      </Card>
+    </Col>
+    <Col transparent span={8}>
+      <Card>
+        <CardImage src={trees} />
+        <H3>Title</H3>
+        <P>Card content with a short text containing a description.</P>
+        <P>
+          <Button buttonType="primary">Call To Action</Button>
+        </P>
+      </Card>
+    </Col>
+  </Row>
+</Container>
+```
+
+### Elevation
+
+Cards can have different elevations (heights) styled with a drop shadow.
+
+```js live
+// import skyline from '@assets/skyline.jpg';
+
+<Container>
+  <Row gutter={1} wrap={false}>
+    <Col transparent>
+      <Card elevation={0}>
+        <CardImage src={skyline} />
+        <H3>Elevation 0</H3>
+        <P>Card content with a short text containing a description.</P>
+      </Card>
+    </Col>
+    <Col transparent>
+      <Card elevation={1}>
+        <CardImage src={skyline} />
+        <H3>Elevation 1</H3>
+        <P>Card content with a short text containing a description.</P>
+      </Card>
+    </Col>
+    <Col transparent>
+      <Card elevation={2}>
+        <CardImage src={skyline} />
+        <H3>Elevation 2</H3>
+        <P>Card content with a short text containing a description.</P>
+      </Card>
+    </Col>
+    <Col transparent>
+      <Card elevation={3}>
+        <CardImage src={skyline} />
+        <H3>Elevation 3</H3>
+        <P>Card content with a short text containing a description.</P>
+      </Card>
+    </Col>
+    <Col transparent>
+      <Card elevation={4}>
+        <CardImage src={skyline} />
+        <H3>Elevation 4</H3>
+        <P>Card content with a short text containing a description.</P>
+      </Card>
+    </Col>
+  </Row>
+</Container>
+```
+
+### Interactive
+
+When card is interactive it responds to mouse over.
+
+```js live
+// import skyline from '@assets/skyline.jpg';
+// import bubbles from '@assets/bubbles.jpg';
+// import trees from '@assets/trees.jpg';
+
+<Container>
+  <Row gutter={1}>
+    <Col transparent span={8}>
+      <Card interactive onClick={() => console.log('clicked skyline')}>
+        <CardImage src={skyline} />
+        <H3>Title</H3>
+        <P>Card content with a short text containing a description.</P>
+        <P>
+          <Button buttonType="primary">Call To Action</Button>
+        </P>
+      </Card>
+    </Col>
+    <Col transparent span={8}>
+      <Card interactive onClick={() => console.log('clicked bubbles')}>
+        <CardImage src={bubbles} />
+        <H3>Title</H3>
+        <P>Card content with a short text containing a description.</P>
+        <P>
+          <Button buttonType="primary">Call To Action</Button>
+        </P>
+      </Card>
+    </Col>
+    <Col transparent span={8}>
+      <Card interactive onClick={() => console.log('clicked trees')}>
+        <CardImage src={trees} />
+        <H3>Title</H3>
+        <P>Card content with a short text containing a description.</P>
+        <P>
+          <Button buttonType="primary">Call To Action</Button>
+        </P>
+      </Card>
+    </Col>
+  </Row>
+</Container>
+```
+
+### Overlay
+
+An overlay appears on a mouse over.
+
+```js live
+// import skyline from '@assets/skyline.jpg';
+// import bubbles from '@assets/bubbles.jpg';
+// import trees from '@assets/trees.jpg';
+
+<Container>
+  <Row gutter={1}>
+    <Col transparent span={8}>
+      <Card
+        overlay={
+          <Text color="white">
+            <h2>Skyline</h2>
+          </Text>
+        }
+      >
+        <CardImage src={skyline} />
+      </Card>
+    </Col>
+    <Col transparent span={8}>
+      <Card
+        overlay={
+          <Text color="white">
+            <h2>Bubbles</h2>
+          </Text>
+        }
+      >
+        <CardImage src={bubbles} />
+      </Card>
+    </Col>
+    <Col transparent span={8}>
+      <Card
+        overlay={
+          <Text color="white">
+            <h2>Trees</h2>
+          </Text>
+        }
+      >
+        <CardImage src={trees} />
+      </Card>
+    </Col>
+  </Row>
+</Container>
+```
+
+## Design Guidelines
+
+Use cards to group content in the ui.
+
+<DoDont
+  do={['Use Cards in combination with a Grid']}
+  dont={['Use interactive style without an Onclick action']}
+/>

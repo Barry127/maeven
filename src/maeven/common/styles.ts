@@ -1,6 +1,8 @@
 import { style } from 'typestyle';
 import { CSSProperties } from 'react';
 
+import { createElevation } from './createElevation';
+
 /**
  * Base style blocks at top. These can be overriden by specific style blocks.
  */
@@ -135,3 +137,11 @@ export const textColor = {
     color: 'var(--maeven-color-warning)'
   })
 };
+
+export const elevation = [
+  style({ boxShadow: createElevation(0) }),
+  style({ boxShadow: createElevation(1) }),
+  style({ boxShadow: createElevation(2) }),
+  style({ boxShadow: createElevation(3) }),
+  style({ boxShadow: createElevation(4) })
+];

@@ -20,6 +20,10 @@ import { markGithub, logoGithub } from 'icon-packs/octicons';
 
 import * as maeven from 'maeven';
 
+import skyline from '../../assets/skyline.jpg';
+import bubbles from '../../assets/bubbles.jpg';
+import trees from '../../assets/trees.jpg';
+
 export const scope = {
   ...maeven,
 
@@ -38,6 +42,10 @@ export const scope = {
   refreshCw,
   timesSolid,
   userCircleSolid,
+
+  bubbles,
+  skyline,
+  trees,
 
   typestyle: style
 };

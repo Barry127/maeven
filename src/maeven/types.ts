@@ -23,6 +23,10 @@ export interface Theme {
       large: string | number;
     };
   };
+  animations: {
+    defaultTiming: string;
+    defaultTimingFunction: string;
+  };
   colors: {
     name: {
       black: string;
@@ -51,6 +55,7 @@ export interface Theme {
     role: {
       background: string;
       bodyBackground: string;
+      border: string;
       focus: string;
       heading: string;
       link: string;

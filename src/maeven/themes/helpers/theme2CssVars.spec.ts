@@ -6,6 +6,15 @@ describe('theme2CssVars', () => {
     const cssVars = theme2CssVars(MaevenDefault);
 
     expect(cssVars).toHaveProperty(
+      '--maeven-animation-default-timing',
+      MaevenDefault.animations.defaultTiming
+    );
+    expect(cssVars).toHaveProperty(
+      '--maeven-animation-default-timing-function',
+      MaevenDefault.animations.defaultTimingFunction
+    );
+
+    expect(cssVars).toHaveProperty(
       '--maeven-color-black',
       MaevenDefault.colors.name.black
     );
@@ -118,6 +127,10 @@ describe('theme2CssVars', () => {
     expect(cssVars).toHaveProperty(
       '--maeven-color-body-background',
       MaevenDefault.colors.role.bodyBackground
+    );
+    expect(cssVars).toHaveProperty(
+      '--maeven-color-border',
+      MaevenDefault.colors.role.border
     );
     expect(cssVars).toHaveProperty(
       '--maeven-color-focus',

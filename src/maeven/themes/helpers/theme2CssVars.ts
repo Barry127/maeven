@@ -21,6 +21,10 @@ export function theme2CssVars(theme: Theme): CSSProperties {
         ? `${theme.sizes.borderRadius.large}px`
         : theme.sizes.borderRadius.large,
 
+    '--maeven-animation-default-timing': theme.animations.defaultTiming,
+    '--maeven-animation-default-timing-function':
+      theme.animations.defaultTimingFunction,
+
     '--maeven-color-black': theme.colors.name.black,
     '--maeven-color-blue': theme.colors.name.blue,
     '--maeven-color-cyan': theme.colors.name.cyan,
@@ -170,6 +174,7 @@ export function theme2CssVars(theme: Theme): CSSProperties {
 
     '--maeven-color-background': theme.colors.role.background,
     '--maeven-color-body-background': theme.colors.role.bodyBackground,
+    '--maeven-color-border': theme.colors.role.border,
     '--maeven-color-focus': theme.colors.role.focus,
     '--maeven-color-heading': theme.colors.role.heading,
     '--maeven-color-link': theme.colors.role.link,

@@ -12,3 +12,5 @@ export const red = '#f83245';
 export const teal = '#18e1a5';
 export const white = '#ffffff';
 export const yellow = '#ffc926';
+
+export const border = 'rgba(7, 9, 25, 0.125)';

@@ -7,6 +7,7 @@ import { classes as buttonClasses } from '../../components/Button/styles';
 import {
   black,
   blue,
+  border,
   cyan,
   darkGrey,
   green,
@@ -30,6 +31,10 @@ const theme: Theme = {
       medium: 6,
       large: 12
     }
+  },
+  animations: {
+    defaultTiming: '.2s',
+    defaultTimingFunction: 'cubic-bezier(0.4,1,0.75,0.9)'
   },
   colors: {
     name: {
@@ -59,6 +64,7 @@ const theme: Theme = {
     role: {
       background: white,
       bodyBackground: '#f5f8fb',
+      border,
       focus: color(blue)
         .fade(0.5)
         .toString(),
