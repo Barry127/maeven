@@ -13,8 +13,13 @@ import {
   activity,
   arrowLeftCircle,
   arrowRightCircle,
+  check,
   checkCircle,
-  refreshCw
+  helpCircle,
+  refreshCw,
+  tag,
+  user,
+  x
 } from 'icon-packs/feather';
 import { markGithub, logoGithub } from 'icon-packs/octicons';
 
@@ -33,15 +38,20 @@ export const scope = {
   arrowRightCircle,
   arrowRightSolid,
   caretDownSolid,
+  check,
   checkCircle,
   circleSolid,
   fileRegular,
+  helpCircle,
   logoGithub,
   markGithub,
   plusSolid,
   refreshCw,
+  tag,
   timesSolid,
+  user,
   userCircleSolid,
+  x,
 
   bubbles,
   skyline,

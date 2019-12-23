@@ -68,6 +68,7 @@ const theme: Theme = {
       focus: color(blue)
         .fade(0.5)
         .toString(),
+      focusBorder: blue,
       heading: black,
       link: blue,
       linkHover: color(yellow)

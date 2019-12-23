@@ -57,6 +57,7 @@ export interface Theme {
       bodyBackground: string;
       border: string;
       focus: string;
+      focusBorder: string;
       heading: string;
       link: string;
       linkHover: string;

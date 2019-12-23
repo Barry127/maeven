@@ -137,6 +137,10 @@ describe('theme2CssVars', () => {
       MaevenDefault.colors.role.focus
     );
     expect(cssVars).toHaveProperty(
+      '--maeven-color-focus-border',
+      MaevenDefault.colors.role.focusBorder
+    );
+    expect(cssVars).toHaveProperty(
       '--maeven-color-heading',
       MaevenDefault.colors.role.heading
     );

@@ -176,12 +176,19 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-body-background': theme.colors.role.bodyBackground,
     '--maeven-color-border': theme.colors.role.border,
     '--maeven-color-focus': theme.colors.role.focus,
+    '--maeven-color-focus-border': theme.colors.role.focusBorder,
     '--maeven-color-heading': theme.colors.role.heading,
     '--maeven-color-link': theme.colors.role.link,
     '--maeven-color-link-hover': theme.colors.role.linkHover,
     '--maeven-color-link-focus': theme.colors.role.linkFocus,
     '--maeven-color-link-active': theme.colors.role.linkActive,
     '--maeven-color-text': theme.colors.role.text,
+    '--maeven-color-text-f10': color(theme.colors.role.text)
+      .fade(0.1)
+      .toString(),
+    '--maeven-color-text-f50': color(theme.colors.role.text)
+      .fade(0.5)
+      .toString(),
     '--maeven-color-text-inverted': theme.colors.role.textInverted,
     '--maeven-color-text-selection': theme.colors.role.textSelection,
     '--maeven-color-text-selection-background':
