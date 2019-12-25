@@ -1,0 +1,51 @@
+---
+title: useId
+path: 'Hooks/useId'
+---
+
+import { DoDont } from 'docs/components';
+
+# useId
+
+useId returns the id from its argument or if no id given it returns a unique id.
+
+## Signature
+
+```ts
+type Id = string | { id?: string };
+
+function useId(id: Id = {}): string;
+```
+
+## Example
+
+Usecases for useId.
+
+```js live withRender
+const Example = ({ idArgument }) => {
+  const id = useId(idArgument);
+
+  return (
+    <P>
+      Id is: <i>{id}</i>
+    </P>
+  );
+};
+
+render(
+  <Row gutter={1}>
+    <Col>
+      <P>Id as string</P>
+      <Example idArgument="FromString" />
+    </Col>
+    <Col>
+      <P>Id from props object</P>
+      <Example idArgument={{ id: 'FromObject' }} />
+    </Col>
+    <Col>
+      <P>Unique generated id</P>
+      <Example />
+    </Col>
+  </Row>
+);
+```
