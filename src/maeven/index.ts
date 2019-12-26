@@ -15,6 +15,7 @@ export * from './components/ThemeProvider';
 export * from './hooks/useId';
 export * from './hooks/useOutline';
 export * from './hooks/useTheme';
+export * from './hooks/useTitle';
 
 // Themes
 export * from './themes';

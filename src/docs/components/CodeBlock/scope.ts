@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { style } from 'typestyle';
 import {
   arrowLeftSolid,
@@ -32,6 +33,8 @@ import trees from '../../assets/trees.jpg';
 
 export const scope = {
   ...maeven,
+
+  useState,
 
   activity,
   arrowLeftCircle,
