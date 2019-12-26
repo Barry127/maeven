@@ -14,6 +14,11 @@ export interface MediaDefinition {
   mediaMax: string;
 }
 
+export interface IconOverrides {
+  hidePassword?: MaevenIcon;
+  showPassword?: MaevenIcon;
+}
+
 export interface Theme {
   name: string;
   base: string | number;
@@ -104,6 +109,7 @@ export interface Theme {
     lg: MediaDefinition;
     xl: MediaDefinition;
   };
+  iconOverrides?: IconOverrides;
   styleOverrides?: {
     [ComponentName: string]: NestedCSSProperties;
   };

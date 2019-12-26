@@ -23,6 +23,7 @@ export const TextInput: FC<TextInputProps &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>> = ({
   children,
   className,
+  disabled = false,
   forwardedRef,
   hasError = false,
   icon,
@@ -65,6 +66,7 @@ export const TextInput: FC<TextInputProps &
         <input
           ref={forwardedRef}
           className={classes.input}
+          disabled={disabled}
           type={type}
           style={
             rightElement
