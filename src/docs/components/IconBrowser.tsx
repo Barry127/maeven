@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { style } from 'typestyle';
+import { search } from 'icon-packs/feather';
 //@ts-ignore
 import unpkg from 'require-unpkg';
 import {
@@ -7,9 +8,11 @@ import {
   Container,
   Row,
   Col,
+  Card,
   P,
   MaevenDefault,
   Text,
+  TextInput,
   Icon
 } from 'maeven';
 import { IconProps } from 'maeven/components/Icon/Icon';
@@ -52,7 +55,8 @@ export const IconBrowser: FC = () => {
     <Container fluid>
       <Row gutter={1}>
         <Col>
-          <input
+          <TextInput
+            icon={search}
             type="search"
             value={query}
             onChange={ev => setQuery(ev.target.value)}
@@ -61,53 +65,62 @@ export const IconBrowser: FC = () => {
       </Row>
       <Row gutter={1}>
         <Col>
-          <P>
-            <label htmlFor="pack">Icon Pack:</label>
-            <br />
-            <select
-              value={pack}
-              onChange={ev => {
-                setPack(ev.target.value as keyof typeof PACKS);
-              }}
-              name="pack"
-            >
-              {Object.keys(PACKS).map(packName => (
-                <option key={packName} value={packName}>
-                  {PACKS[packName as keyof typeof PACKS]}
-                </option>
-              ))}
-            </select>
-          </P>
+          <Card>
+            <P>
+              <label htmlFor="pack">Icon Pack:</label>
+              <br />
+              <select
+                value={pack}
+                onChange={ev => {
+                  setPack(ev.target.value as keyof typeof PACKS);
+                }}
+                name="pack"
+              >
+                {Object.keys(PACKS).map(packName => (
+                  <option key={packName} value={packName}>
+                    {PACKS[packName as keyof typeof PACKS]}
+                  </option>
+                ))}
+              </select>
+            </P>
+          </Card>
         </Col>
         <Col>
-          <P>
-            <label htmlFor="color">Color:</label>
-            <br />
-            <select
-              value={color as string}
-              name="color"
-              onChange={ev => setColor(ev.target.value)}
-            >
-              {Object.keys(COLORS).map(col => (
-                <option key={col} value={col}>
-                  {col}
-                </option>
-              ))}
-            </select>
-          </P>
+          <Card>
+            <P>
+              <label htmlFor="color">Color:</label>
+              <br />
+              <select
+                value={color as string}
+                name="color"
+                onChange={ev => setColor(ev.target.value)}
+              >
+                {Object.keys(COLORS).map(col => (
+                  <option key={col} value={col}>
+                    {col}
+                  </option>
+                ))}
+              </select>
+            </P>
+          </Card>
         </Col>
         <Col>
-          <P>
-            <label>
-              <input type="checkbox" onChange={() => setFw(!fw)} />
-              FixedWidth
-            </label>
-            <br />
-            <label>
-              <input type="checkbox" onChange={() => setInverted(!inverted)} />
-              Inverted
-            </label>
-          </P>
+          <Card>
+            <P>
+              <label>
+                <input type="checkbox" onChange={() => setFw(!fw)} />
+                FixedWidth
+              </label>
+              <br />
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={() => setInverted(!inverted)}
+                />
+                Inverted
+              </label>
+            </P>
+          </Card>
         </Col>
       </Row>
       <Row
@@ -131,7 +144,7 @@ export const IconBrowser: FC = () => {
                   position: 'relative'
                 }}
               >
-                <div className={interactiveCard}>
+                <Card interactive className={interactiveCard}>
                   <div
                     style={{
                       textAlign: 'center'
@@ -147,7 +160,7 @@ export const IconBrowser: FC = () => {
                     <br />
                     <Text truncate>{name}</Text>
                   </div>
-                </div>
+                </Card>
               </Col>
             ))
         )}
