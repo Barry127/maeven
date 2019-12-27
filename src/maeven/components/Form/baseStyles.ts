@@ -22,8 +22,6 @@ const _baseLabel = style({
 export const baseLabel = clsx(box, pm0, defaultTypography, _baseLabel);
 
 const _baseInput = style({
-  height: 'calc(var(--maeven-base) * 2)',
-  padding: '0 calc(var(--maeven-base) / 2)',
   flexGrow: 1,
   color: `var(--maeven-color-text)`,
   background: `var(--maeven-color-background)`,
@@ -55,7 +53,7 @@ const _baseInput = style({
   }
 });
 
-export const baseInput = clsx(box, pm0, defaultTypography, _baseInput);
+export const baseInput = clsx(pm0, defaultTypography, _baseInput);
 
 export const baseInputError = style({
   $nest: {

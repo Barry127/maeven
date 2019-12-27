@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { style } from 'typestyle';
 
+import { box } from '../../../common/styles';
 import { themeOverrideFactory } from '../../../common/themeOverrideFactory';
 
 import {
@@ -15,6 +16,8 @@ const label = style({
 });
 
 const input = style({
+  height: 'calc(var(--maeven-base) * 2)',
+  padding: '0 calc(var(--maeven-base) / 2)',
   $nest: {
     '&:focus ~ span': {
       opacity: 0.8
@@ -116,7 +119,7 @@ const hasError = style({
 export const classes = {
   container: baseContainer,
   label: clsx(baseLabel, label),
-  input: clsx(baseInput, input),
+  input: clsx(box, baseInput, input),
   hasLeftIcon,
   hasRightIcon,
   leftIcon: clsx(icon, leftIcon),
