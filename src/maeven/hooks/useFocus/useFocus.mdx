@@ -1,0 +1,60 @@
+---
+title: useFocus
+path: 'Hooks/useFocus'
+---
+
+import { DoDont } from 'docs/components';
+
+# useFocus
+
+useFocus keeps a local state `hasFocus` based on `onFocus` and `onBlur` props for a DOM Element. If given props contain an `onFocus` or `onBlur` handler it is wrapped.
+
+## Signature
+
+```ts
+interface OptionalFocusHandlers<T = Element> {
+  onBlur?: FocusEventHandler<T>;
+  onFocus?: FocusEventHandler<T>;
+}
+
+interface FocusEventHandlers<T = Element> {
+  onBlur: FocusEventHandler<T>;
+  onFocus: FocusEventHandler<T>;
+}
+
+function useFocus<T = Element>(
+  props: OptionalFocusHandlers<T> = {}
+): [boolean, FocusEventHandlers<T>];
+```
+
+## Example
+
+Usecase for useFocus.
+
+```js live withRender
+const Example = props => {
+  const [hasFocus, focusProps] = useFocus(props);
+
+  return (
+    <Card
+      style={
+        hasFocus
+          ? { borderColor: 'var(--maeven-color-focus-border)' }
+          : undefined
+      }
+    >
+      <P>This card will indicate when the button has focus.</P>
+      <Button {...props} {...focusProps}>
+        Focus Me
+      </Button>
+    </Card>
+  );
+};
+
+render(
+  <Example
+    onFocus={ev => console.log('onFocus', ev.target)}
+    onBlur={ev => console.log('onBlur', ev.target)}
+  />
+);
+```
