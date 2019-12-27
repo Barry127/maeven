@@ -60,6 +60,34 @@ export const headingBase = style({
   }
 });
 
+/** Base style for styled -webkit- scrollbars */
+export const scrollbars = style({
+  $nest: {
+    '&::-webkit-scrollbar': {
+      background: 'transparent',
+      position: 'absolute',
+      width: 'calc(var(--maeven-base) * 0.75)'
+    },
+    '&::-webkit-scrollbar-button': {
+      display: 'none'
+    },
+    '&::-webkit-scrollbar-track': {
+      background: 'transparent'
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: 'var(--maeven-color-text-f20)',
+      borderRadius: 'calc(var(--maeven-base) * 0.375)',
+      border: '1px solid var(--maeven-color-background)',
+      minHeight: 'calc(var(--maeven-base) * 1.5)',
+      $nest: {
+        '&:hover': {
+          background: 'var(--maeven-color-text-f50)'
+        }
+      }
+    }
+  }
+});
+
 /**
  * Specific style blocks at bottom. These can override base styles.
  */

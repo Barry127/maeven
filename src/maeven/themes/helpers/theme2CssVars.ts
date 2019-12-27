@@ -186,6 +186,9 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-text-f10': color(theme.colors.role.text)
       .fade(0.1)
       .toString(),
+    '--maeven-color-text-f20': color(theme.colors.role.text)
+      .fade(0.2)
+      .toString(),
     '--maeven-color-text-f50': color(theme.colors.role.text)
       .fade(0.5)
       .toString(),

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { style } from 'typestyle';
 
-import { box } from '../../../common/styles';
+import { box, scrollbars } from '../../../common/styles';
 import { themeOverrideFactory } from '../../../common/themeOverrideFactory';
 
 import {
@@ -14,6 +14,15 @@ import {
 const textArea = style({
   resize: 'none',
   padding: 'calc(var(--maeven-base) / 2)'
+});
+
+const textAreaNoAutoSize = style({
+  overflow: 'hidden',
+  $nest: {
+    '&:focus, &:hover': {
+      overflowY: 'auto'
+    }
+  }
 });
 
 const sm = style({
@@ -47,10 +56,10 @@ const hasError = style({
 });
 
 export const classes = {
-  box,
   containter: baseContainer,
   label: baseLabel,
   textArea: clsx(baseInput, textArea),
+  textAreaNoAutoSize: clsx(box, scrollbars, textAreaNoAutoSize),
   sm,
   lg,
   hasError: clsx(baseInputError, hasError)

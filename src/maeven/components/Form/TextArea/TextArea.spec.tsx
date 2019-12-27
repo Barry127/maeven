@@ -63,13 +63,13 @@ describe('TextArea', () => {
     it('is autosize by default', () => {
       render(<TextArea />);
       const textarea = document.querySelector('textarea');
-      expect(textarea).not.toHaveClass(classes.box);
+      expect(textarea).not.toHaveClass(classes.textAreaNoAutoSize);
     });
 
     it('unsets autosize', () => {
       render(<TextArea autoSize={false} />);
       const textarea = document.querySelector('textarea');
-      expect(textarea).toHaveClass(classes.box);
+      expect(textarea).toHaveClass(classes.textAreaNoAutoSize);
     });
   });
 

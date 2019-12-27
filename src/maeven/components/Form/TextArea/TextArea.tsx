@@ -51,7 +51,7 @@ export const TextArea: FC<TextAreaProps &
         ) : (
           <textarea
             ref={forwardedRef}
-            className={clsx(classes.box, classes.textArea)}
+            className={clsx(classes.textArea, classes.textAreaNoAutoSize)}
             disabled={disabled}
             rows={rows}
             {...restProps}
