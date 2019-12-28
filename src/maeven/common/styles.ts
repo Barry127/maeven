@@ -1,4 +1,4 @@
-import { style } from 'typestyle';
+import { style, keyframes } from 'typestyle';
 import { CSSProperties } from 'react';
 
 import { createElevation } from './createElevation';
@@ -173,3 +173,12 @@ export const elevation = [
   style({ boxShadow: createElevation(3) }),
   style({ boxShadow: createElevation(4) })
 ];
+
+export const spinKeyframes = keyframes({
+  from: {
+    transform: 'rotate(0deg)'
+  },
+  to: {
+    transform: 'rotate(360deg)'
+  }
+});

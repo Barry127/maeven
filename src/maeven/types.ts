@@ -15,6 +15,7 @@ export interface MediaDefinition {
 }
 
 export interface IconOverrides {
+  inlineLoading?: MaevenIcon;
   hidePassword?: MaevenIcon;
   showPassword?: MaevenIcon;
 }

@@ -31,7 +31,7 @@ const navClass = style({
   top: 0,
   left: 0,
   bottom: 0,
-  width: 200,
+  width: 220,
   overflowX: 'hidden',
   overflowY: 'auto'
 });
