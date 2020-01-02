@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { style } from 'typestyle';
+import { code, java, javascript1, perl, php, rust } from 'icon-packs/devicons';
 import {
   arrowLeftSolid,
   arrowRightSolid,
@@ -45,13 +46,19 @@ export const scope = {
   check,
   checkCircle,
   circleSolid,
+  code,
   fileRegular,
   helpCircle,
+  java,
+  javascript1,
   lock,
   logoGithub,
   markGithub,
+  perl,
+  php,
   plusSolid,
   refreshCw,
+  rust,
   tag,
   timesSolid,
   user,

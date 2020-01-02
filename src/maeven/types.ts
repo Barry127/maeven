@@ -15,6 +15,10 @@ export interface MediaDefinition {
 }
 
 export interface IconOverrides {
+  chevronDown?: MaevenIcon;
+  chevronLeft?: MaevenIcon;
+  chevronRight?: MaevenIcon;
+  chevronUp?: MaevenIcon;
   inlineLoading?: MaevenIcon;
   hidePassword?: MaevenIcon;
   showPassword?: MaevenIcon;
