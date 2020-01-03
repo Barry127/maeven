@@ -11,6 +11,7 @@ import {
   Card,
   P,
   MaevenDefault,
+  Select,
   Text,
   TextInput,
   Icon
@@ -24,10 +25,10 @@ unpkg.cache.set = function(k: string, v: any) {
 
 export const IconBrowser: FC = () => {
   const [loading, setLoading] = useState(true);
-  const [pack, setPack] = useState<keyof typeof PACKS>('feather');
+  const [pack, setPack] = useState('feather');
   const [icons, setIcons] = useState<Pack>({});
   const [query, setQuery] = useState('');
-  const [color, setColor] = useState<keyof typeof COLORS>('none');
+  const [color, setColor] = useState('none');
   const [fw, setFw] = useState(false);
   const [inverted, setInverted] = useState(false);
 
@@ -69,19 +70,13 @@ export const IconBrowser: FC = () => {
             <P>
               <label htmlFor="pack">Icon Pack:</label>
               <br />
-              <select
+              <Select
                 value={pack}
-                onChange={ev => {
-                  setPack(ev.target.value as keyof typeof PACKS);
-                }}
-                name="pack"
-              >
-                {Object.keys(PACKS).map(packName => (
-                  <option key={packName} value={packName}>
-                    {PACKS[packName as keyof typeof PACKS]}
-                  </option>
-                ))}
-              </select>
+                onChange={ev => setPack(ev.selectedItem?.value)}
+                options={PACKS}
+                renderItem={item => <>{item.text}</>}
+                itemToString={item => item.text}
+              />
             </P>
           </Card>
         </Col>
@@ -90,17 +85,11 @@ export const IconBrowser: FC = () => {
             <P>
               <label htmlFor="color">Color:</label>
               <br />
-              <select
-                value={color as string}
-                name="color"
-                onChange={ev => setColor(ev.target.value)}
-              >
-                {Object.keys(COLORS).map(col => (
-                  <option key={col} value={col}>
-                    {col}
-                  </option>
-                ))}
-              </select>
+              <Select
+                value={color}
+                onChange={ev => setColor(ev.selectedItem?.value)}
+                options={COLORS}
+              />
             </P>
           </Card>
         </Col>
@@ -130,7 +119,7 @@ export const IconBrowser: FC = () => {
         }}
       >
         {loading ? (
-          <Text>Loading {PACKS[pack]}</Text>
+          <Text>Loading {PACKS.find(p => p.value === pack)?.text}</Text>
         ) : (
           Object.entries(icons)
             .filter(([name]) => name.match(matcher))
@@ -153,7 +142,11 @@ export const IconBrowser: FC = () => {
                     <Icon
                       icon={icon}
                       fixedWidth={fw}
-                      color={COLORS[color] as IconProps['color']}
+                      color={
+                        color === 'none'
+                          ? undefined
+                          : ((color as any) as IconProps['color'])
+                      }
                       size="3em"
                       inverted={inverted}
                     />
@@ -169,34 +162,33 @@ export const IconBrowser: FC = () => {
   );
 };
 
-const PACKS = {
-  ant: 'Ant Design Icons',
-  blueprint: 'Blueprint Icons',
-  clarity: 'Clarity Icons',
-  devicons: 'Devicons',
-  feather: 'Feather Icons',
-  fa: 'Font Awsome Free',
-  game: 'Game Icons',
-  octicons: 'GitHub Octicons',
-  ionicons: 'Ionicons',
-  material: 'Material Icons',
-  remix: 'Remix Icons',
-  simple: 'Simple Icons',
-  typicons: 'Typicons',
-  weather: 'Weather Icons'
-};
+const PACKS = [
+  { value: 'ant', text: 'Ant Design Icons' },
+  { value: 'blueprint', text: 'Blueprint Icons' },
+  { value: 'clarity', text: 'Clarity Icons' },
+  { value: 'devicons', text: 'Devicons' },
+  { value: 'feather', text: 'Feather Icons' },
+  { value: 'fa', text: 'Font Awsome Free' },
+  { value: 'game', text: 'Game Icons' },
+  { value: 'octicons', text: 'GitHub Octicons' },
+  { value: 'ionicons', text: 'Ionicons' },
+  { value: 'jam', text: 'JAM Icons' },
+  { value: 'material', text: 'Material Icons' },
+  { value: 'remix', text: 'Remix Icons' },
+  { value: 'simple', text: 'Simple Icons' },
+  { value: 'typicons', text: 'Typicons' },
+  { value: 'weather', text: 'Weather Icons' }
+];
 
-const COLORS = {
-  none: undefined,
+const COLORS: { value: string }[] = [
+  { value: 'none' },
   ...Object.keys(MaevenDefault.colors.name).reduce((map, colorName) => {
-    map[colorName] = colorName;
-    return map;
-  }, {} as any),
+    return [...map, { value: colorName }];
+  }, [] as { value: string }[]),
   ...Object.keys(MaevenDefault.colors.semantic).reduce((map, colorName) => {
-    map[colorName] = colorName;
-    return map;
-  }, {} as any)
-};
+    return [...map, { value: colorName }];
+  }, [] as { value: string }[])
+];
 
 interface Pack {
   [name: string]: MaevenIcon;

@@ -246,4 +246,5 @@ export interface SelectProps {
 
 export interface SelectItem {
   value: any;
+  [key: string]: any;
 }
