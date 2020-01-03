@@ -16,8 +16,6 @@ import { MaevenIcon } from 'maeven/types';
 
 jest.mock('../../../common/isElementInViewport');
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 const down = (chevronDown.children![0] as MaevenIcon).attrs.points;
 const up = (chevronUp.children![0] as MaevenIcon).attrs.points;
 
