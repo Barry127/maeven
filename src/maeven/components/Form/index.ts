@@ -1,3 +1,4 @@
+export { NativeSelectForwardRef as NativeSelect } from './NativeSelect/NativeSelect';
 export { PasswordInputForwardRef as PasswordInput } from './PasswordInput/PasswordInput';
 export { SelectForwardRef as Select } from './Select/Select';
 export { TextAreaForwardRef as TextArea } from './TextArea/TextArea';
