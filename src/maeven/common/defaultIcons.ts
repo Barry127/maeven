@@ -6,8 +6,31 @@ import { spinKeyframes } from './styles';
 /**
  * Default Icons used for components.
  *
- * chevronDown, chevronLeft, chevronRight, chevronUp, eye and eyeOff icons are licensed under the MIT License by Feather Icons: https://feathericons.com
+ * check, chevronDown, chevronLeft, chevronRight, chevronUp, eye and eyeOff, minus icons are licensed under the MIT License by Feather Icons: https://feathericons.com
  */
+
+export const check = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'polyline',
+      attrs: {
+        points: '20 6 9 17 4 12'
+      }
+    }
+  ]
+};
 
 export const chevronDown: MaevenIcon = {
   tag: 'svg',
@@ -145,6 +168,32 @@ export const eyeOff: MaevenIcon = {
       }
     },
     { tag: 'line', attrs: { x1: '1', y1: '1', x2: '23', y2: '23' } }
+  ]
+};
+
+export const minus = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'line',
+      attrs: {
+        x1: '5',
+        y1: '12',
+        x2: '19',
+        y2: '12'
+      }
+    }
   ]
 };
 
