@@ -67,30 +67,26 @@ export const IconBrowser: FC = () => {
       <Row gutter={1}>
         <Col>
           <Card>
-            <P>
-              <label htmlFor="pack">Icon Pack:</label>
-              <br />
-              <Select
-                value={pack}
-                onChange={ev => setPack(ev.selectedItem?.value)}
-                options={PACKS}
-                renderItem={item => <>{item.text}</>}
-                itemToString={item => item.text}
-              />
-            </P>
+            <label htmlFor="pack">Icon Pack:</label>
+            <br />
+            <Select
+              value={pack}
+              onChange={ev => setPack(ev.selectedItem?.value)}
+              options={PACKS}
+              renderItem={item => <>{item.text}</>}
+              itemToString={item => item.text}
+            />
           </Card>
         </Col>
         <Col>
           <Card>
-            <P>
-              <label htmlFor="color">Color:</label>
-              <br />
-              <Select
-                value={color}
-                onChange={ev => setColor(ev.selectedItem?.value)}
-                options={COLORS}
-              />
-            </P>
+            <label htmlFor="color">Color:</label>
+            <br />
+            <Select
+              value={color}
+              onChange={ev => setColor(ev.selectedItem?.value)}
+              options={COLORS}
+            />
           </Card>
         </Col>
         <Col>
