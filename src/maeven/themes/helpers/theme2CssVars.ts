@@ -12,6 +12,10 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-base':
       typeof theme.base === 'number' ? `${theme.base}px` : theme.base,
 
+    '--maeven-size-border-radius-small':
+      typeof theme.sizes.borderRadius.small === 'number'
+        ? `${theme.sizes.borderRadius.small}px`
+        : theme.sizes.borderRadius.small,
     '--maeven-size-border-radius-medium':
       typeof theme.sizes.borderRadius.medium === 'number'
         ? `${theme.sizes.borderRadius.medium}px`

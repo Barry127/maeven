@@ -193,12 +193,14 @@ describe('theme2CssVars', () => {
       sizes: {
         ...MaevenDefault.sizes,
         borderRadius: {
+          small: '.5em',
           medium: '1em',
           large: '2em'
         }
       }
     };
     const cssVars = theme2CssVars(theme);
+    expect(cssVars).toHaveProperty('--maeven-size-border-radius-small', '.5em');
     expect(cssVars).toHaveProperty('--maeven-size-border-radius-medium', '1em');
     expect(cssVars).toHaveProperty('--maeven-size-border-radius-large', '2em');
   });
@@ -209,12 +211,14 @@ describe('theme2CssVars', () => {
       sizes: {
         ...MaevenDefault.sizes,
         borderRadius: {
+          small: 4,
           medium: 8,
           large: 16
         }
       }
     };
     const cssVars = theme2CssVars(theme);
+    expect(cssVars).toHaveProperty('--maeven-size-border-radius-small', '4px');
     expect(cssVars).toHaveProperty('--maeven-size-border-radius-medium', '8px');
     expect(cssVars).toHaveProperty('--maeven-size-border-radius-large', '16px');
   });

@@ -31,6 +31,7 @@ export interface Theme {
   base: string | number;
   sizes: {
     borderRadius: {
+      small: string | number;
       medium: string | number;
       large: string | number;
     };

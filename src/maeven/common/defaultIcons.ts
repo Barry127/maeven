@@ -9,7 +9,7 @@ import { spinKeyframes } from './styles';
  * check, chevronDown, chevronLeft, chevronRight, chevronUp, eye and eyeOff, minus icons are licensed under the MIT License by Feather Icons: https://feathericons.com
  */
 
-export const check = {
+export const check: MaevenIcon = {
   tag: 'svg',
   attrs: {
     xmlns: 'http://www.w3.org/2000/svg',
@@ -171,7 +171,7 @@ export const eyeOff: MaevenIcon = {
   ]
 };
 
-export const minus = {
+export const minus: MaevenIcon = {
   tag: 'svg',
   attrs: {
     xmlns: 'http://www.w3.org/2000/svg',

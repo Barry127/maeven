@@ -28,6 +28,7 @@ const theme: Theme = {
   base: 16,
   sizes: {
     borderRadius: {
+      small: 4,
       medium: 6,
       large: 12
     }
