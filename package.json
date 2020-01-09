@@ -22,7 +22,7 @@
   "dependencies": {
     "clsx": "^1.0.4",
     "csx": "^10.0.0",
-    "downshift": "^4.0.0",
+    "downshift": "^4.0.1",
     "react-autosize-textarea": "^7.0.0",
     "typestyle": "^2.0.4"
   },
