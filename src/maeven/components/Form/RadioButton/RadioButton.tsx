@@ -53,7 +53,7 @@ export const RadioButton: FC<RadioButtonProps &
 
 export const RadioButtonForwardRef = forwardRef<
   HTMLInputElement,
-  RadioButtonProps & InputHTMLAttributes<HTMLInputElement>
+  RadioButtonProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 >((props, ref) => <RadioButton {...props} forwardedRef={ref} />);
 
 export interface RadioButtonProps {
