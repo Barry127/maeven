@@ -16,6 +16,7 @@ export const FormField: FC<FormFieldProps & HTMLAttributes<HTMLDivElement>> = ({
   className,
   htmlFor,
   label,
+  labelId,
   size = 'md',
   ...restProps
 }) => {
@@ -38,7 +39,7 @@ export const FormField: FC<FormFieldProps & HTMLAttributes<HTMLDivElement>> = ({
     >
       <Col className={classes.labelCol} transparent={true}>
         {label && (
-          <label htmlFor={htmlFor}>
+          <label htmlFor={htmlFor} id={labelId}>
             <Text>{label}</Text>
           </label>
         )}
@@ -53,6 +54,9 @@ export const FormField: FC<FormFieldProps & HTMLAttributes<HTMLDivElement>> = ({
 interface FormFieldProps {
   /** Label text */
   label?: ReactNode;
+
+  /** id for label field (for use with aria-describedby) */
+  labelId?: string;
 
   /** id label points to */
   htmlFor?: string;

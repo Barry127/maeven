@@ -24,11 +24,7 @@ import { classes, themeOverride } from './styles';
 /**
  * With Select users can select one item from a list of values
  */
-export const Select: FC<SelectProps &
-  Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'onChange' | 'readOnly' | 'size' | 'type'
-  >> = ({
+export const Select: FC<FullProps> = ({
   chevronDownIcon,
   chevronUpIcon,
   children,
@@ -184,14 +180,9 @@ export const Select: FC<SelectProps &
   );
 };
 
-export const SelectForwardRef = forwardRef<
-  HTMLInputElement,
-  SelectProps &
-    Omit<
-      InputHTMLAttributes<HTMLInputElement>,
-      'onChange' | 'readOnly' | 'size' | 'type'
-    >
->((props, ref) => <Select {...props} forwardedRef={ref} />);
+export const SelectForwardRef = forwardRef<HTMLInputElement, FullProps>(
+  (props, ref) => <Select {...props} forwardedRef={ref} />
+);
 
 export interface SelectProps {
   /** toggle open icon (defaults to Feather icons chevronDown) */
@@ -248,3 +239,9 @@ export interface SelectItem {
   value: any;
   [key: string]: any;
 }
+
+export type FullProps = SelectProps &
+  Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'onChange' | 'readOnly' | 'size' | 'type'
+  >;

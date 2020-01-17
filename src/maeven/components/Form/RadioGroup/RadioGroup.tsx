@@ -9,8 +9,7 @@ import { classes, themeOverride } from './styles';
 /**
  * use a RadioGroup when you have a few options a user can choose from
  */
-export const RadioGroup: FC<RadioGroupProps &
-  HTMLAttributes<HTMLDivElement>> = ({
+export const RadioGroup: FC<FullProps> = ({
   children,
   className,
   inline = false,
@@ -81,3 +80,5 @@ export interface RadioGroupProps {
   /** Current value */
   value?: string | number;
 }
+
+export type FullProps = RadioGroupProps & HTMLAttributes<HTMLDivElement>;

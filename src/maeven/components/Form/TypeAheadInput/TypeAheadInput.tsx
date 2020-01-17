@@ -21,8 +21,7 @@ import { getSuggestion } from './getSuggestion';
 /**
  * TypeAheadInput enhances TextInput to inline autocomplete from a list.
  */
-export const TypeAheadInput: FC<TypeAheadInputProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>> = ({
+export const TypeAheadInput: FC<FullProps> = ({
   children,
   className,
   disabled = false,
@@ -142,14 +141,16 @@ export const TypeAheadInput: FC<TypeAheadInputProps &
   );
 };
 
-export const TypeAheadInputForwardRef = forwardRef<
-  HTMLInputElement,
-  TypeAheadInputProps & InputHTMLAttributes<HTMLInputElement>
->((props, ref) => <TypeAheadInput {...props} forwardedRef={ref} />);
+export const TypeAheadInputForwardRef = forwardRef<HTMLInputElement, FullProps>(
+  (props, ref) => <TypeAheadInput {...props} forwardedRef={ref} />
+);
 
 export interface TypeAheadInputProps extends TextInputProps {
   items: string[] | syncGetItems | asyncGetItems;
 }
+
+export type FullProps = TypeAheadInputProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export type syncGetItems = (value: string) => string[];
 export type asyncGetItems = (value: string) => Promise<string[]>;

@@ -20,8 +20,7 @@ import { classes, themeOverride } from './styles';
 /**
  * With Checkboxes users can select multiple options in a list.
  */
-export const Checkbox: FC<CheckboxProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>> = ({
+export const Checkbox: FC<FullProps> = ({
   checked,
   checkIcon,
   children,
@@ -83,10 +82,9 @@ export const Checkbox: FC<CheckboxProps &
   );
 };
 
-export const CheckboxForwardRef = forwardRef<
-  HTMLInputElement,
-  CheckboxProps & InputHTMLAttributes<HTMLInputElement>
->((props, ref) => <Checkbox {...props} forwardedRef={ref} />);
+export const CheckboxForwardRef = forwardRef<HTMLInputElement, FullProps>(
+  (props, ref) => <Checkbox {...props} forwardedRef={ref} />
+);
 
 export interface CheckboxProps {
   /** Wether the Checkbox is checked */
@@ -112,3 +110,6 @@ export interface CheckboxProps {
   /** Checkbox size */
   size?: 'sm' | 'md' | 'lg';
 }
+
+export type FullProps = CheckboxProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;

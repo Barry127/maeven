@@ -19,8 +19,7 @@ import { classes, themeOverride } from './styles';
 /**
  * Inputs are the most commonly used form controls and allow for text input.
  */
-export const TextInput: FC<TextInputProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>> = ({
+export const TextInput: FC<FullProps> = ({
   children,
   className,
   disabled = false,
@@ -90,10 +89,9 @@ export const TextInput: FC<TextInputProps &
   );
 };
 
-export const TextInputForwardRef = forwardRef<
-  HTMLInputElement,
-  TextInputProps & InputHTMLAttributes<HTMLInputElement>
->((props, ref) => <TextInput {...props} forwardedRef={ref} />);
+export const TextInputForwardRef = forwardRef<HTMLInputElement, FullProps>(
+  (props, ref) => <TextInput {...props} forwardedRef={ref} />
+);
 
 export interface TextInputProps {
   /** Wether input is disabled */
@@ -116,3 +114,6 @@ export interface TextInputProps {
   /** Input size */
   size?: 'sm' | 'md' | 'lg';
 }
+
+export type FullProps = TextInputProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;

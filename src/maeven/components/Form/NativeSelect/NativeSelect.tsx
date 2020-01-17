@@ -12,8 +12,7 @@ import { classes, themeOverride } from './styles';
 /**
  *With NativeSelect users can select one item from a list of values.
  */
-export const NativeSelect: FC<NativeSelectProps &
-  Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>> = ({
+export const NativeSelect: FC<FullProps> = ({
   children,
   chevronDownIcon,
   className,
@@ -69,10 +68,9 @@ export const NativeSelect: FC<NativeSelectProps &
   );
 };
 
-export const NativeSelectForwardRef = forwardRef<
-  HTMLSelectElement,
-  NativeSelectProps & Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>
->((props, ref) => <NativeSelect {...props} forwardedRef={ref} />);
+export const NativeSelectForwardRef = forwardRef<HTMLSelectElement, FullProps>(
+  (props, ref) => <NativeSelect {...props} forwardedRef={ref} />
+);
 
 export interface NativeSelectProps {
   /** Chevron icon (defaults to Feather icons chevronDown) */
@@ -95,3 +93,6 @@ export interface NativeSelectProps {
   /** Select size */
   size?: 'sm' | 'md' | 'lg';
 }
+
+export type FullProps = NativeSelectProps &
+  Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;

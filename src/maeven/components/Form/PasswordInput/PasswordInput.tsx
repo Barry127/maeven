@@ -21,8 +21,7 @@ import { classes, themeOverride } from './styles';
 /**
  * PasswordInput is a TextInput to handle passwords.
  */
-export const PasswordInput: FC<PasswordInputProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>> = ({
+export const PasswordInput: FC<FullProps> = ({
   children,
   className,
   disabled = false,
@@ -115,10 +114,9 @@ export const PasswordInput: FC<PasswordInputProps &
   );
 };
 
-export const PasswordInputForwardRef = forwardRef<
-  HTMLInputElement,
-  TextInputProps & InputHTMLAttributes<HTMLInputElement>
->((props, ref) => <PasswordInput {...props} forwardedRef={ref} />);
+export const PasswordInputForwardRef = forwardRef<HTMLInputElement, FullProps>(
+  (props, ref) => <PasswordInput {...props} forwardedRef={ref} />
+);
 
 export interface PasswordInputProps
   extends Omit<TextInputProps, 'rightElement' | 'iconRight'> {
@@ -136,3 +134,6 @@ interface Selection {
   start: number | null;
   end: number | null;
 }
+
+export type FullProps = PasswordInputProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;

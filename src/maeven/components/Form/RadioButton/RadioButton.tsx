@@ -9,8 +9,7 @@ import { classes, themeOverride } from './styles';
 /**
  * A RadioButton is one option in a RadioGroup.
  */
-export const RadioButton: FC<RadioButtonProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>> = ({
+export const RadioButton: FC<FullProps> = ({
   checked,
   children,
   className,
@@ -51,10 +50,9 @@ export const RadioButton: FC<RadioButtonProps &
   );
 };
 
-export const RadioButtonForwardRef = forwardRef<
-  HTMLInputElement,
-  RadioButtonProps & Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
->((props, ref) => <RadioButton {...props} forwardedRef={ref} />);
+export const RadioButtonForwardRef = forwardRef<HTMLInputElement, FullProps>(
+  (props, ref) => <RadioButton {...props} forwardedRef={ref} />
+);
 
 export interface RadioButtonProps {
   /** Wether the RadioButton is checked */
@@ -71,3 +69,6 @@ export interface RadioButtonProps {
   /** RadioButton size */
   size?: 'sm' | 'md' | 'lg';
 }
+
+export type FullProps = RadioButtonProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;

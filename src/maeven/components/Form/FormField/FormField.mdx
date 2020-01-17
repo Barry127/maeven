@@ -1,0 +1,193 @@
+---
+title: FormField
+path: Components/Form/FormField
+---
+
+import { FormField } from 'maeven';
+import { Description, DoDont, Props } from 'docs/components';
+
+# FormField
+
+<Description of="FormField" />
+
+## Props
+
+<Props of="FormField" />
+
+## Examples
+
+### Checkbox
+
+A Checkbox FormField.
+
+```js live
+<FormFieldCheckbox label="Checkbox">Check Me!</FormFieldCheckbox>
+```
+
+### NativeSelect
+
+A NativeSelect FormField
+
+```js live withRender
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(
+  <FormFieldNativeSelect label="Language" options={options}>
+    What language do you prefer.
+  </FormFieldNativeSelect>
+);
+```
+
+### PasswordInput
+
+A PasswordInput FormField.
+
+```js live
+<FormFieldPasswordInput label="Password">
+  Only strong passwords
+</FormFieldPasswordInput>
+```
+
+### RadioButton
+
+A RadioButton FormField.
+
+```js live
+<FormFieldRadioButton label="Radio">Single RadioButton</FormFieldRadioButton>
+```
+
+### RadioGroup
+
+A RadioGroup FormField
+
+```js live withRender
+const options = [
+  { label: 'Javascript', value: 'js' },
+  { label: 'Typescript', value: 'ts' },
+  { label: 'Coffescript', value: 'coffee' }
+];
+
+render(
+  <FormFieldRadioGroup
+    name="radio-group-form-field"
+    label="Language"
+    options={options}
+  />
+);
+```
+
+### Select
+
+A Select FormField
+
+```js live withRender
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(
+  <FormFieldSelect
+    label="Language"
+    options={options}
+    placeholder="Language..."
+    searchable
+  >
+    What language do you prefer.
+  </FormFieldSelect>
+);
+```
+
+### TextArea
+
+A TextArea FormField.
+
+```js live
+<FormFieldTextArea label="Some Text" placeholder="Type here">
+  Type above
+</FormFieldTextArea>
+```
+
+### TextInput
+
+A TextInput FormField.
+
+```js live
+<FormFieldTextInput label="Some Text" placeholder="Type here">
+  Type above
+</FormFieldTextInput>
+```
+
+### TypeAheadInput
+
+A TypeAheadInput FormField.
+
+```js live
+<FormFieldTypeAheadInput
+  label="Language"
+  placeholder="Choose a language"
+  items={['JavaScript', 'Java', 'PHP', 'Perl', 'C', 'C++', 'Rust', 'Lua']}
+>
+  What language do you prefer.
+</FormFieldTypeAheadInput>
+```
+
+### FormField
+
+A custom FormField.
+
+```js live
+<FormField label="Label" htmlFor="submit">
+  <Button type="submit" buttonType="primary" id="submit">
+    Submit
+  </Button>{' '}
+  <Button type="reset">Cancel</Button>
+</FormField>
+```
+
+### Disabled
+
+A FormField can be disabled.
+
+```js live
+<FormFieldTextInput label="Some Text" placeholder="Disabled" disabled>
+  This field is disabled
+</FormFieldTextInput>
+```
+
+### Size
+
+FormFields can have different sizes.
+
+```js live
+<>
+  <FormFieldTextInput label="Small" placeholder="sm" size="sm" />
+  <FormFieldTextInput label="Medium" placeholder="md" size="md" />
+  <FormFieldTextInput label="Large" placeholder="lg" size="lg" />
+</>
+```
+
+### Error
+
+A FormField can indicate it has an error.
+
+```js live
+<FormFieldTextInput label="Some Text" hasError>
+  Text indicating error
+</FormFieldTextInput>
+```

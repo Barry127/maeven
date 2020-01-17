@@ -10,8 +10,7 @@ import { Text } from '../../Text';
 /**
  * TextArea allows for multiline text input.
  */
-export const TextArea: FC<TextAreaProps &
-  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>> = ({
+export const TextArea: FC<FullProps> = ({
   autoSize = true,
   children,
   className,
@@ -63,10 +62,9 @@ export const TextArea: FC<TextAreaProps &
   );
 };
 
-export const TextAreaForwardRef = forwardRef<
-  HTMLTextAreaElement,
-  TextAreaProps & Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>
->((props, ref) => <TextArea {...props} forwardedRef={ref} />);
+export const TextAreaForwardRef = forwardRef<HTMLTextAreaElement, FullProps>(
+  (props, ref) => <TextArea {...props} forwardedRef={ref} />
+);
 
 export interface TextAreaProps {
   /** Wether textarea grows in size when more lines are added */
@@ -89,3 +87,6 @@ export interface TextAreaProps {
   /** TextArea size */
   size?: 'sm' | 'md' | 'lg';
 }
+
+export type FullProps = TextAreaProps &
+  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>;

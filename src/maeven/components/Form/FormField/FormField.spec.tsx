@@ -70,6 +70,16 @@ describe('FormField', () => {
     expect(label).not.toBeInTheDocument();
   });
 
+  it('sets labelId', () => {
+    render(
+      <FormField label="Hello" labelId="LabelId">
+        Hello world!
+      </FormField>
+    );
+    const label = document.querySelector('label');
+    expect(label).toHaveAttribute('id', 'LabelId');
+  });
+
   describe('size', () => {
     it('is md by default', () => {
       render(<FormField />);
