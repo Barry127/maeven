@@ -1,4 +1,5 @@
 export { CheckboxForwardRef as Checkbox } from './Checkbox/Checkbox';
+export { FormField } from './FormField/FormField';
 export { NativeSelectForwardRef as NativeSelect } from './NativeSelect/NativeSelect';
 export { PasswordInputForwardRef as PasswordInput } from './PasswordInput/PasswordInput';
 export { RadioButtonForwardRef as RadioButton } from './RadioButton/RadioButton';
