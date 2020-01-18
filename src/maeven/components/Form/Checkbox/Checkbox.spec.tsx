@@ -129,6 +129,19 @@ describe('Checkbox', () => {
       expect(checkbox?.indeterminate).toBe(true);
       expect(checkbox?.checked).toBe(false);
     });
+
+    it('removes indeterminate state when changed', () => {
+      const { rerender } = render(
+        <Checkbox indeterminate checked onChange={jest.fn()} />
+      );
+      const checkbox = document.querySelector('input');
+      expect(checkbox?.checked).toBe(false);
+      expect(checkbox?.indeterminate).toBe(true);
+
+      rerender(<Checkbox indeterminate={false} checked onChange={jest.fn()} />);
+      expect(checkbox?.checked).toBe(true);
+      expect(checkbox?.indeterminate).toBe(false);
+    });
   });
 
   describe('size', () => {
