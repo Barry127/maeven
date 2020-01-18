@@ -42,6 +42,9 @@ export const Checkbox: FC<FullProps> = ({
       checkboxRef.current.checked = false;
       checkboxRef.current.indeterminate = true;
     }
+    if (checkboxRef.current?.indeterminate && !indeterminate) {
+      checkboxRef.current.indeterminate = false;
+    }
   }, [indeterminate, checked]);
 
   return (
