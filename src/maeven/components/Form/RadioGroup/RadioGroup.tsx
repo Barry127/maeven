@@ -2,7 +2,7 @@ import React, { FC, HTMLAttributes, ReactNode, ChangeEvent } from 'react';
 import clsx from 'clsx';
 
 import { useTheme } from '../../../hooks/useTheme';
-import { RadioButton } from '../';
+import { RadioButton } from '../RadioButton/RadioButton';
 
 import { classes, themeOverride } from './styles';
 

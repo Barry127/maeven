@@ -22,5 +22,12 @@ export default {
     })
   ],
 
-  external: ['clsx', 'csx', 'react', 'typestyle']
+  external: [
+    'clsx',
+    'csx',
+    'downshift',
+    'react',
+    'react-autosize-textarea',
+    'typestyle'
+  ]
 };

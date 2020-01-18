@@ -5,6 +5,9 @@
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "license": "MIT",
+  "files": [
+    "lib"
+  ],
   "private": false,
   "author": {
     "name": "Barry de Kleijn",
@@ -48,6 +51,7 @@
     "customize-cra": "^0.9.1",
     "dashify": "^2.0.0",
     "front-matter": "^3.0.2",
+    "gh-pages": "^2.2.0",
     "husky": "^3.1.0",
     "icon-packs": "^0.6.0",
     "mdx.macro": "^0.2.9",
@@ -77,6 +81,8 @@
     "build": "rollup --config",
     "generate": "node scripts/generate",
     "lint": "eslint src/**/*.ts{,x}",
+    "prepublish": "yarn clear && yarn lint && yarn test:ci && yarn build",
+    "postpublish": "yarn docus:deploy",
     "prestart": "yarn parseData",
     "start": "yarn parseData --watch & react-app-rewired start",
     "parseData": "node scripts/parseData.js",
@@ -84,7 +90,11 @@
     "test:ci": "CI=true yarn test",
     "test:coverage": "react-app-rewired test --coverage --watchAll=false",
     "test:coverage:ci": "react-app-rewired test --coverage --watchAll=false --coverageReporters=text-lcov | coveralls",
-    "docs:build": "yarn parseData && react-app-rewired build"
+    "predocs:build": "yarn clear && yarn parseData",
+    "docs:build": "react-app-rewired build",
+    "predocs:deploy": "yarn docs:build",
+    "docs:deploy": "gh-pages -d build",
+    "postdocs:deploy": "yarn clear"
   },
   "husky": {
     "hooks": {
