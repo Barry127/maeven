@@ -1,4 +1,5 @@
 export { CheckboxForwardRef as Checkbox } from './Checkbox/Checkbox';
+export { Form } from './Form/Form';
 export { FormField } from './FormField/FormField';
 export { FormFieldCheckboxForwardRef as FormFieldCheckbox } from './FormField/FormFieldCheckbox';
 export { FormFieldNativeSelectForwardRef as FormFieldNativeSelect } from './FormField/FormFieldNativeSelect';
