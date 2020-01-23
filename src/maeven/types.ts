@@ -20,10 +20,15 @@ export interface IconOverrides {
   chevronLeft?: MaevenIcon;
   chevronRight?: MaevenIcon;
   chevronUp?: MaevenIcon;
+  close?: MaevenIcon;
+  danger?: MaevenIcon;
   indeterminate?: MaevenIcon;
+  info?: MaevenIcon;
   inlineLoading?: MaevenIcon;
   hidePassword?: MaevenIcon;
   showPassword?: MaevenIcon;
+  success?: MaevenIcon;
+  warning?: MaevenIcon;
 }
 
 export interface Theme {

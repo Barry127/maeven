@@ -28,6 +28,7 @@ export default {
     'downshift',
     'react',
     'react-autosize-textarea',
+    'react-spring',
     'typestyle'
   ]
 };

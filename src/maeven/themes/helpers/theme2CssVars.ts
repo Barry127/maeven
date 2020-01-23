@@ -69,6 +69,15 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-danger-l05': color(theme.colors.semantic.danger)
       .lighten(0.05)
       .toString(),
+    '--maeven-color-danger-l35': color(theme.colors.semantic.danger)
+      .lighten(0.35)
+      .toString(),
+    '--maeven-color-danger-l40': color(theme.colors.semantic.danger)
+      .lighten(0.4)
+      .toString(),
+    '--maeven-color-danger-l50': color(theme.colors.semantic.danger)
+      .lighten(0.5)
+      .toString(),
     '--maeven-color-danger-outline': outlineContrast(
       theme.colors.semantic.danger
     ),
@@ -90,6 +99,15 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-info-l05': color(theme.colors.semantic.info)
       .lighten(0.05)
       .toString(),
+    '--maeven-color-info-l35': color(theme.colors.semantic.info)
+      .lighten(0.35)
+      .toString(),
+    '--maeven-color-info-l40': color(theme.colors.semantic.info)
+      .lighten(0.4)
+      .toString(),
+    '--maeven-color-info-l50': color(theme.colors.semantic.info)
+      .lighten(0.5)
+      .toString(),
     '--maeven-color-info-outline': outlineContrast(theme.colors.semantic.info),
     '--maeven-color-primary': theme.colors.semantic.primary,
     '--maeven-color-primary-text': getTextColorFromBackground(
@@ -108,6 +126,15 @@ export function theme2CssVars(theme: Theme): CSSProperties {
       .toString(),
     '--maeven-color-primary-l05': color(theme.colors.semantic.primary)
       .lighten(0.05)
+      .toString(),
+    '--maeven-color-primary-l35': color(theme.colors.semantic.primary)
+      .lighten(0.35)
+      .toString(),
+    '--maeven-color-primary-l40': color(theme.colors.semantic.primary)
+      .lighten(0.4)
+      .toString(),
+    '--maeven-color-primary-l50': color(theme.colors.semantic.primary)
+      .lighten(0.5)
       .toString(),
     '--maeven-color-primary-outline': outlineContrast(
       theme.colors.semantic.primary
@@ -130,6 +157,15 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-secondary-l05': color(theme.colors.semantic.secondary)
       .lighten(0.05)
       .toString(),
+    '--maeven-color-secondary-l35': color(theme.colors.semantic.secondary)
+      .lighten(0.35)
+      .toString(),
+    '--maeven-color-secondary-l40': color(theme.colors.semantic.secondary)
+      .lighten(0.4)
+      .toString(),
+    '--maeven-color-secondary-l50': color(theme.colors.semantic.secondary)
+      .lighten(0.5)
+      .toString(),
     '--maeven-color-secondary-outline': outlineContrast(
       theme.colors.semantic.secondary
     ),
@@ -151,6 +187,15 @@ export function theme2CssVars(theme: Theme): CSSProperties {
     '--maeven-color-success-l05': color(theme.colors.semantic.success)
       .lighten(0.05)
       .toString(),
+    '--maeven-color-success-l35': color(theme.colors.semantic.success)
+      .lighten(0.35)
+      .toString(),
+    '--maeven-color-success-l40': color(theme.colors.semantic.success)
+      .lighten(0.4)
+      .toString(),
+    '--maeven-color-success-l50': color(theme.colors.semantic.success)
+      .lighten(0.5)
+      .toString(),
     '--maeven-color-success-outline': outlineContrast(
       theme.colors.semantic.success
     ),
@@ -171,6 +216,15 @@ export function theme2CssVars(theme: Theme): CSSProperties {
       .toString(),
     '--maeven-color-warning-l05': color(theme.colors.semantic.warning)
       .lighten(0.05)
+      .toString(),
+    '--maeven-color-warning-l35': color(theme.colors.semantic.warning)
+      .lighten(0.35)
+      .toString(),
+    '--maeven-color-warning-l40': color(theme.colors.semantic.warning)
+      .lighten(0.4)
+      .toString(),
+    '--maeven-color-warning-l50': color(theme.colors.semantic.warning)
+      .lighten(0.5)
       .toString(),
     '--maeven-color-warning-outline': outlineContrast(
       theme.colors.semantic.warning
