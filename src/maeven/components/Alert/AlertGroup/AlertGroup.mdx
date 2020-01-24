@@ -1,0 +1,137 @@
+---
+title: AlertGroup
+path: Components/Alert/AlertGroup
+---
+
+import { AlertGroup, Alert } from 'maeven';
+import { Description, DoDont, Props } from 'docs/components';
+
+# AlertGroup
+
+<Description of="AlertGroup" />
+
+AlertGroups are used for app level Alerts at the top of the screen. Alerts inside an AlertGroup are alway closable and cannot have a springConfig.
+
+<Alert type="warning" title="Warning!" closable={false}>
+  AlertGroup depends on its children to render correctly. Not unmounting an
+  uncontrolled Alert child of AlertGroup in the afterClose method will result in
+  a corrupted layout!
+</Alert>
+
+## Props
+
+<Props of="AlertGroup" />
+
+## Examples
+
+### Uncontrolled
+
+An AlertGroup of uncontrolled Alerts.
+
+```js live withRender
+const Alerts = () => {
+  const [alerts, setAlerts] = useState({
+    a: true,
+    b: true,
+    c: true,
+    d: true
+  });
+
+  const closeAlert = alert => {
+    setAlerts({ ...alerts, [alert]: false });
+  };
+
+  return (
+    <AlertGroup>
+      {alerts.a && (
+        <Alert
+          type="success"
+          title="Alert Title"
+          afterClose={() => closeAlert('a')}
+        >
+          Success Alert
+        </Alert>
+      )}
+      {alerts.b && (
+        <Alert type="info" afterClose={() => closeAlert('b')}>
+          Info Alert
+        </Alert>
+      )}
+      {alerts.c && (
+        <Alert type="warning" afterClose={() => closeAlert('c')}>
+          Warning Alert
+        </Alert>
+      )}
+      {alerts.d && (
+        <Alert
+          type="danger"
+          closable={false}
+          afterClose={() => closeAlert('d')}
+        >
+          Danger Alert (always closable in group)
+        </Alert>
+      )}
+    </AlertGroup>
+  );
+};
+
+render(<Alerts />);
+```
+
+### Controlled
+
+An AlertGroup of controlled Alerts.
+
+```js live withRender
+const ControlledGroup = () => {
+  const [showSuccess, setSuccess] = useState(true);
+  const [showInfo, setInfo] = useState(true);
+  const [showWarning, setWarning] = useState(true);
+  const [showDanger, setDanger] = useState(true);
+
+  return (
+    <AlertGroup>
+      <Alert
+        isOpen={showSuccess}
+        onClose={() => {
+          setSuccess(false);
+        }}
+        type="success"
+        title="Alert Title"
+      >
+        Success Alert
+      </Alert>
+      <Alert
+        isOpen={showInfo}
+        onClose={() => {
+          setInfo(false);
+        }}
+        type="info"
+      >
+        Info Alert
+      </Alert>
+      <Alert
+        isOpen={showWarning}
+        onClose={() => {
+          setWarning(false);
+        }}
+        type="warning"
+      >
+        Warning Alert
+      </Alert>
+      <Alert
+        isOpen={showDanger}
+        onClose={() => {
+          setDanger(false);
+        }}
+        type="danger"
+        closable={false}
+      >
+        Danger Alert (always closable in group)
+      </Alert>
+    </AlertGroup>
+  );
+};
+
+render(<ControlledGroup />);
+```

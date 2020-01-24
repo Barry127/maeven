@@ -117,7 +117,7 @@ describe('Alert', () => {
   describe('afterClose', () => {
     it('calls afterClose when the alert is closed', async () => {
       const afterClose = jest.fn();
-      render(<Alert afterClose={afterClose} />);
+      render(<Alert afterClose={afterClose} springConfig={{ duration: 10 }} />);
       const closeButton = document.querySelector('button') as HTMLButtonElement;
       await act(async () => {
         fireEvent.click(closeButton);
@@ -125,7 +125,7 @@ describe('Alert', () => {
         // Does not close at once
         expect(afterClose.mock.calls).toHaveLength(0);
 
-        await delay(1000);
+        await delay(50);
 
         expect(afterClose.mock.calls).toHaveLength(1);
       });
@@ -137,7 +137,13 @@ describe('Alert', () => {
         ev.preventDefault();
       };
 
-      render(<Alert afterClose={afterClose} onClose={onClose} />);
+      render(
+        <Alert
+          afterClose={afterClose}
+          onClose={onClose}
+          springConfig={{ duration: 10 }}
+        />
+      );
       const closeButton = document.querySelector('button') as HTMLButtonElement;
       await act(async () => {
         fireEvent.click(closeButton);
@@ -145,7 +151,7 @@ describe('Alert', () => {
         // Does not close at once
         expect(afterClose.mock.calls).toHaveLength(0);
 
-        await delay(1000);
+        await delay(50);
 
         expect(afterClose.mock.calls).toHaveLength(0);
       });
@@ -156,18 +162,39 @@ describe('Alert', () => {
     it('calls afterOpen when the alert is closed', async () => {
       const afterOpen = jest.fn();
       const { rerender } = render(
-        <Alert afterOpen={afterOpen} isOpen={false} />
+        <Alert
+          afterOpen={afterOpen}
+          isOpen={false}
+          springConfig={{ duration: 10 }}
+        />
       );
 
       await act(async () => {
-        rerender(<Alert afterOpen={afterOpen} isOpen={true} />);
+        rerender(
+          <Alert
+            afterOpen={afterOpen}
+            isOpen={true}
+            springConfig={{ duration: 10 }}
+          />
+        );
 
         // Does not open at once
         expect(afterOpen.mock.calls).toHaveLength(0);
 
-        await delay(1000);
+        await delay(50);
 
         expect(afterOpen.mock.calls).toHaveLength(1);
+      });
+    });
+
+    it('has no afterOpen by default', async () => {
+      const { rerender } = render(
+        <Alert isOpen={false} springConfig={{ duration: 10 }} />
+      );
+
+      await act(async () => {
+        rerender(<Alert isOpen={true} springConfig={{ duration: 10 }} />);
+        await delay(50);
       });
     });
   });
@@ -183,7 +210,7 @@ describe('Alert', () => {
     });
 
     it('animates on open', async () => {
-      render(<Alert animateOnOpen />);
+      render(<Alert animateOnOpen springConfig={{ duration: 10 }} />);
       const element = document.querySelector(
         `.${classes.alert.split(' ').join('.')}`
       ) as HTMLDivElement;
@@ -191,7 +218,7 @@ describe('Alert', () => {
       expect(Math.round(Number(element.style.opacity))).toBe(0);
 
       await act(async () => {
-        await delay(1000);
+        await delay(50);
         expect(Number(element.style.opacity)).toBe(1);
       });
     });
@@ -258,7 +285,7 @@ describe('Alert', () => {
   describe('onClose', () => {
     it('calls onClose', async () => {
       const onClose = jest.fn();
-      render(<Alert onClose={onClose} />);
+      render(<Alert onClose={onClose} springConfig={{ duration: 10 }} />);
       const element = document.querySelector(
         `.${classes.alert.split(' ').join('.')}`
       );
@@ -270,7 +297,7 @@ describe('Alert', () => {
         fireEvent.click(closeButton);
         expect(onClose.mock.calls).toHaveLength(1);
 
-        await delay(1000);
+        await delay(50);
         expect(element).not.toBeInTheDocument();
       });
     });
@@ -279,7 +306,7 @@ describe('Alert', () => {
       const onClose = (ev: MouseEvent<HTMLButtonElement>) => {
         ev.preventDefault();
       };
-      render(<Alert onClose={onClose} />);
+      render(<Alert onClose={onClose} springConfig={{ duration: 10 }} />);
       const element = document.querySelector(
         `.${classes.alert.split(' ').join('.')}`
       );
@@ -290,7 +317,7 @@ describe('Alert', () => {
       await act(async () => {
         fireEvent.click(closeButton);
 
-        await delay(1000);
+        await delay(50);
         expect(element).toBeInTheDocument();
       });
     });

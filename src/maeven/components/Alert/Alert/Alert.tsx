@@ -29,8 +29,8 @@ import { classes, themeOverride } from './styles';
  */
 export const Alert: FC<AlertProps &
   Omit<HTMLAttributes<HTMLDivElement>, 'title'>> = ({
-  afterClose = () => {},
-  afterOpen = () => {},
+  afterClose,
+  afterOpen,
   animateOnOpen = false,
   children,
   className,
@@ -66,7 +66,14 @@ export const Alert: FC<AlertProps &
         : { opacity: 1, transform: 'scale(1)' },
       enter: { opacity: 1, transform: 'scale(1)' },
       leave: { opacity: 0, transform: 'scale(0.5)' },
-      onDestroyed: isDestroyed => (isDestroyed ? afterClose() : afterOpen()),
+      onDestroyed: isDestroyed =>
+        isDestroyed
+          ? typeof afterClose === 'function'
+            ? afterClose()
+            : undefined
+          : typeof afterOpen === 'function'
+          ? afterOpen()
+          : undefined,
       config: springConfig || config.stiff
     }
   );

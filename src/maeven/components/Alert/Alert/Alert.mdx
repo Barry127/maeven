@@ -3,7 +3,8 @@ title: Alert
 path: Components/Alert/Alert
 ---
 
-import { Alert } from 'maeven';
+import { shieldOff } from 'icon-packs/feather';
+import { Alert, AlertGroup } from 'maeven';
 import { Description, DoDont, Props } from 'docs/components';
 
 # Alert
@@ -141,7 +142,7 @@ Alerts can be shown without an icon.
 Alerts can have a custom icon.
 
 ```js live
-// import { shieldOff } from 'icon-packs/fa'
+// import { shieldOff } from 'icon-packs/feather'
 
 <Alert type="warning" icon={shieldOff} title="Warning">
   Virus protection is disabled!
@@ -206,7 +207,11 @@ Place the Alert near the relevant item.
 
 #### AlertGroup
 
-**Example Here**
+<AlertGroup>
+  <Alert type="warning" icon={shieldOff}>
+    Virus protection has been turned off!
+  </Alert>
+</AlertGroup>
 
 An `AlertGroup` is used at the global context of an app. AlertGroups should be placed at the top of the app.
 

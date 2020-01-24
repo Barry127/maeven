@@ -6,7 +6,7 @@ import { themeOverrideFactory } from '../../../common/themeOverrideFactory';
 
 import { classes as htmlClasses } from '../../Html/styles';
 
-const alert = style({
+export const alert = style({
   position: 'relative',
   display: 'flex',
   padding: 'calc(var(--maeven-base) / 2)',
@@ -28,7 +28,7 @@ const iconContainer = style({
   marginBottom: '0 !important'
 });
 
-const title = style({
+export const title = style({
   display: 'block',
   marginBottom: 'calc(var(--maeven-base) / 2)',
   $nest: {
