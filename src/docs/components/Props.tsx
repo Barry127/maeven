@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { style } from 'typestyle';
 
 import { P, Span } from 'maeven';
@@ -75,11 +75,7 @@ export const Props: FC<PropsProps> = ({ of: propName }) => {
                 </P>
               </td>
               <td>
-                <Span>
-                  {value.defaultValue?.value !== undefined
-                    ? `"${value.defaultValue?.value}"`
-                    : '-'}
-                </Span>
+                <Span>{styleDefaultValue(value.defaultValue?.value)}</Span>
               </td>
             </tr>
           )
@@ -88,6 +84,29 @@ export const Props: FC<PropsProps> = ({ of: propName }) => {
     </table>
   );
 };
+
+function styleDefaultValue(value: any): ReactNode {
+  if (typeof value === 'boolean') {
+    return <code style={{ color: 'purple' }}>{value ? 'true' : 'false'}</code>;
+  }
+
+  if (typeof value === 'number') {
+    return <code style={{ color: 'purple' }}>{value}</code>;
+  }
+
+  if (typeof value === 'string') {
+    if (value.startsWith('(')) return styleFunctionValue(value);
+
+    return <code style={{ color: 'tomato' }}>"{value}"</code>;
+  }
+
+  return value || '-';
+}
+
+// TODO highlight function default values
+function styleFunctionValue(value: ReactNode): ReactNode {
+  return <code>{value}</code>;
+}
 
 type ExistingProp = keyof typeof propsData;
 
