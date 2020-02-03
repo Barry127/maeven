@@ -161,6 +161,7 @@ export const IconBrowser: FC = () => {
 const PACKS = [
   { value: 'ant', text: 'Ant Design Icons' },
   { value: 'blueprint', text: 'Blueprint Icons' },
+  { value: 'bootstrap', text: 'Bootstrap Icons' },
   { value: 'clarity', text: 'Clarity Icons' },
   { value: 'devicons', text: 'Devicons' },
   { value: 'feather', text: 'Feather Icons' },
@@ -169,6 +170,7 @@ const PACKS = [
   { value: 'octicons', text: 'GitHub Octicons' },
   { value: 'ionicons', text: 'Ionicons' },
   { value: 'jam', text: 'JAM Icons' },
+  { value: 'la', text: 'Line Awesome Icons'},
   { value: 'material', text: 'Material Icons' },
   { value: 'remix', text: 'Remix Icons' },
   { value: 'simple', text: 'Simple Icons' },
