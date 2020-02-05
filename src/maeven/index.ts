@@ -9,6 +9,7 @@ export * from './components/Heading';
 export * from './components/Html';
 export * from './components/Icon';
 export * from './components/Link';
+export * from './components/Spinner';
 export * from './components/Text';
 export * from './components/ThemeProvider';
 

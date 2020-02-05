@@ -1,0 +1,138 @@
+---
+title: Spinner
+path: Components/Spinner
+---
+
+import { Spinner } from 'maeven';
+import { Description, DoDont, Props } from 'docs/components';
+
+# Spinner
+
+<Description of="Spinner" />
+
+## Props
+
+<Props of="Spinner" />
+
+## Examples
+
+### Basic
+
+A basic usage of Spinner.
+
+```js live
+<Spinner />
+```
+
+### Text
+
+A spinner can have text.
+
+```js live
+<Spinner text="Loading data..." />
+```
+
+### Sizes
+
+Spinners can have different sizes.
+
+```js live
+<Row gutter={1}>
+  <Col transparent span={24}>
+    <Spinner size="sm" text="Small" />
+  </Col>
+  <Col transparent span={24}>
+    <Spinner size="md" text="Medium" />
+  </Col>
+  <Col transparent span={24}>
+    <Spinner size="lg" text="Large" />
+  </Col>
+  <Col transparent span={24}>
+    <Spinner size={100} text="100px" />
+  </Col>
+</Row>
+```
+
+### Color
+
+Spinners can be styled in different (theme) colors.
+
+```js live
+<div style={{ columns: '4 auto' }}>
+  <Spinner color="black" text="Black" />
+  <Spinner color="blue" text="Blue" />
+  <Spinner color="cyan" text="Cyan" />
+  <Spinner color="darkGrey" text="DarkGrey" />
+  <Spinner color="green" text="Green" />
+  <Spinner color="grey" text="Grey" />
+  <Spinner color="indigo" text="Indigo" />
+  <Spinner color="orange" text="Orange" />
+  <Spinner color="pink" text="Pink" />
+  <Spinner color="purple" text="Purple" />
+  <Spinner color="red" text="Red" />
+  <Spinner color="teal" text="Teal" />
+  <Spinner color="white" text="White" />
+  <Spinner color="yellow" text="Yellow" />
+  <Spinner color="primary" text="Primary" />
+  <Spinner color="secondary" text="Secondary" />
+  <Spinner color="success" text="Success" />
+  <Spinner color="info" text="Info" />
+  <Spinner color="warning" text="Warning" />
+  <Spinner color="danger" text="Danger" />
+</div>
+```
+
+### Spinner overlay
+
+A Spinner can overlay it's children when `spinning` is set to `true`.
+
+```js live withRender
+// import skyline from '@assets/skyline.jpg';
+// import bubbles from '@assets/bubbles.jpg';
+
+const Component = () => {
+  const [s1, setS1] = useState(true);
+  const [s2, setS2] = useState(false);
+  return (
+    <Container>
+      <Row gutter={1}>
+        <Col transparent span={12}>
+          <Card>
+            <Spinner spinning={s1} size={96} color="primary" text="Loading">
+              <CardImage src={skyline} />
+              <H3>Title</H3>
+              <P style={{ paddingBottom: 'var(--maeven-base)' }}>
+                Card content with a short text containing a description.
+              </P>
+            </Spinner>
+            <P>
+              <Button buttonType="primary" onClick={() => setS1(!s1)}>
+                Toggle Spinning
+              </Button>
+            </P>
+          </Card>
+        </Col>
+        <Col transparent span={12}>
+          <Card>
+            <Spinner spinning={s2} size={96} color="primary" delay={200}>
+              <CardImage src={bubbles} />
+              <H3>Delay</H3>
+              <P style={{ paddingBottom: 'var(--maeven-base)' }}>
+                This Spinner will wait for 200ms before showing, this allows to
+                show content without showing just a quickly flashing spinner.
+              </P>
+            </Spinner>
+            <P>
+              <Button buttonType="primary" onClick={() => setS2(!s2)}>
+                Toggle Spinning
+              </Button>
+            </P>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+render(<Component />);
+```
