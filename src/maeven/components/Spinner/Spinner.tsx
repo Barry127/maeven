@@ -43,6 +43,7 @@ export const Spinner: FC<SpinnerProps & HTMLAttributes<HTMLDivElement>> = ({
     }
 
     setSpinning(spinning);
+    return;
   }, [spinning, delay]);
 
   const renderSpinner = useCallback(

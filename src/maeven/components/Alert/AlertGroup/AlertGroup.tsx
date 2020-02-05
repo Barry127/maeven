@@ -15,7 +15,7 @@ import { Text } from '../../Text';
 import { Button } from '../../Button';
 import { chevronLeft, chevronRight } from '../../../common/defaultIcons';
 
-import { Alert } from '../';
+import { Alert } from '../Alert/Alert';
 import { classes, themeOverride } from './styles';
 
 /**
