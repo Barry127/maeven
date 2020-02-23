@@ -38,7 +38,7 @@ export const Select: FC<FullProps> = ({
   forwardedRef,
   hasError = false,
   icon,
-  itemToString = (item: SelectItem): string => String(item.value),
+  itemToString = (item: SelectItem): string => String(item?.value),
   onChange,
   options,
   renderItem,
@@ -236,7 +236,7 @@ export interface SelectProps {
 }
 
 export interface SelectItem {
-  value: any;
+  value?: any;
   [key: string]: any;
 }
 
