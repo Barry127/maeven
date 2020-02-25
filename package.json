@@ -23,7 +23,7 @@
   },
   "homepage": "http://barry127.github.io/maeven/",
   "dependencies": {
-    "clsx": "^1.0.4",
+    "clsx": "^1.1.0",
     "csx": "^10.0.1",
     "downshift": "^4.0.5",
     "react-autosize-textarea": "^7.0.0",
