@@ -25,7 +25,7 @@
   "dependencies": {
     "clsx": "^1.1.0",
     "csx": "^10.0.1",
-    "downshift": "^4.0.5",
+    "downshift": "^4.0.10",
     "react-autosize-textarea": "^7.0.0",
     "react-spring": "^8.0.27",
     "typestyle": "^2.0.4"
