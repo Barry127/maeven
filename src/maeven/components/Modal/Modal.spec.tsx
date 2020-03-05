@@ -363,6 +363,4 @@ describe('Modal', () => {
       expect(element).toHaveClass(classes.type.danger);
     });
   });
-
-  it.skip('', () => {});
 });
