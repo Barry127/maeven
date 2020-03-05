@@ -28,7 +28,9 @@ export default {
     'downshift',
     'react',
     'react-autosize-textarea',
+    'react-dom',
     'react-spring',
+    'react-use-measure',
     'typestyle'
   ]
 };

@@ -26,6 +26,8 @@ export interface IconOverrides {
   info?: MaevenIcon;
   inlineLoading?: MaevenIcon;
   hidePassword?: MaevenIcon;
+  maximize?: MaevenIcon;
+  minimize?: MaevenIcon;
   showPassword?: MaevenIcon;
   success?: MaevenIcon;
   warning?: MaevenIcon;

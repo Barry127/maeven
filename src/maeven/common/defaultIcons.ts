@@ -7,8 +7,9 @@ import { spinKeyframes } from './styles';
  * Default Icons used for components.
  *
  * check, chevronDown, chevronLeft, chevronRight, chevronUp,
- * close, danger, info, eye and eyeOff, minus, success,
- * warning icons are licensed under the MIT License by Feather Icons: https://feathericons.com
+ * close, danger, info, eye and eyeOff, maximize, minimize,
+ * minus, success, warning icons are licensed under the
+ * MIT License by Feather Icons: https://feathericons.com
  */
 
 export const check: MaevenIcon = {
@@ -291,6 +292,100 @@ export const eyeOff: MaevenIcon = {
       }
     },
     { tag: 'line', attrs: { x1: '1', y1: '1', x2: '23', y2: '23' } }
+  ]
+};
+
+export const maximize: MaevenIcon = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'polyline',
+      attrs: {
+        points: '15 3 21 3 21 9'
+      }
+    },
+    {
+      tag: 'polyline',
+      attrs: {
+        points: '9 21 3 21 3 15'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '21',
+        y1: '3',
+        x2: '14',
+        y2: '10'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '3',
+        y1: '21',
+        x2: '10',
+        y2: '14'
+      }
+    }
+  ]
+};
+
+export const minimize: MaevenIcon = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'polyline',
+      attrs: {
+        points: '4 14 10 14 10 20'
+      }
+    },
+    {
+      tag: 'polyline',
+      attrs: {
+        points: '20 10 14 10 14 4'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '14',
+        y1: '10',
+        x2: '21',
+        y2: '3'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '3',
+        y1: '21',
+        x2: '10',
+        y2: '14'
+      }
+    }
   ]
 };
 

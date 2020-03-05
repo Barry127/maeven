@@ -28,6 +28,7 @@
     "downshift": "^4.0.10",
     "react-autosize-textarea": "^7.0.0",
     "react-spring": "^8.0.27",
+    "react-use-measure": "^2.0.0",
     "typestyle": "^2.0.4"
   },
   "peerDependencies": {
@@ -69,6 +70,7 @@
     "react-scripts": "3.3.0",
     "react-test-renderer": "^16.12.0",
     "require-unpkg": "^0.5.2",
+    "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.0",
     "rollup": "^1.27.8",
     "rollup-plugin-typescript2": "^0.25.2",
@@ -118,6 +120,9 @@
     ]
   },
   "jest": {
+    "transformIgnorePatterns": [
+      "\\node_modules/react-spring\\"
+    ],
     "coveragePathIgnorePatterns": [
       "src/index.ts",
       "src/docs"
