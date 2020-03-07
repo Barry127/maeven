@@ -1,0 +1,2 @@
+(this.webpackJsonpmaeven=this.webpackJsonpmaeven||[]).push([[36],{587:function(e,n,a){"use strict";a.r(n);var t=a(9),c=a(0),o=a.n(c),s=a(574),m=a(575);n.default=function(e){var n=e.components;Object(t.a)(e,["components"]);return o.a.createElement(s.MDXTag,{name:"wrapper",components:n},o.a.createElement(s.MDXTag,{name:"h1",components:n},"Icons"),o.a.createElement(m.c,null))}}}]);
+//# sourceMappingURL=36.5271de40.chunk.js.map
