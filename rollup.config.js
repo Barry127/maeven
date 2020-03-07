@@ -30,6 +30,7 @@ export default {
     'react-autosize-textarea',
     'react-dom',
     'react-spring',
+    'react-spring/renderprops',
     'react-use-measure',
     'typestyle'
   ]
