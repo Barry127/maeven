@@ -85,7 +85,7 @@
     "generate": "node scripts/generate",
     "lint": "eslint src/**/*.ts{,x}",
     "prepublish": "yarn clear && yarn lint && yarn test:ci && yarn build",
-    "postpublish": "yarn docus:deploy",
+    "postpublish": "yarn docs:deploy",
     "prestart": "yarn parseData",
     "start": "yarn parseData --watch & react-app-rewired start",
     "parseData": "node scripts/parseData.js",
