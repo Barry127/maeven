@@ -36,7 +36,7 @@ export const FormFieldTextInput: FC<FormFieldTextInputProps> = ({
 
 export const FormFieldTextInputForwardRef = forwardRef<
   HTMLInputElement,
-  FullProps
+  FormFieldTextInputProps
 >((props, ref) => <FormFieldTextInput {...props} forwardedRef={ref} />);
 
 interface FormFieldTextInputProps extends FullProps {

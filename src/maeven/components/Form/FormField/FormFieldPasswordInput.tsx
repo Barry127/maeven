@@ -36,7 +36,7 @@ export const FormFieldPasswordInput: FC<FormFieldPasswordInputProps> = ({
 
 export const FormFieldPasswordInputForwardRef = forwardRef<
   HTMLInputElement,
-  FullProps
+  FormFieldPasswordInputProps
 >((props, ref) => <FormFieldPasswordInput {...props} forwardedRef={ref} />);
 
 interface FormFieldPasswordInputProps extends FullProps {

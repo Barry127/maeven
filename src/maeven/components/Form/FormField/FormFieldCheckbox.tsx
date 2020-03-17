@@ -36,7 +36,7 @@ export const FormFieldCheckbox: FC<FormFieldCheckboxProps> = ({
 
 export const FormFieldCheckboxForwardRef = forwardRef<
   HTMLInputElement,
-  FullProps
+  FormFieldCheckboxProps
 >((props, ref) => <FormFieldCheckbox {...props} forwardedRef={ref} />);
 
 interface FormFieldCheckboxProps extends FullProps {

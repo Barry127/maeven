@@ -36,7 +36,7 @@ export const FormFieldRadioButton: FC<FormFieldRadioButtonProps> = ({
 
 export const FormFieldRadioButtonForwardRef = forwardRef<
   HTMLInputElement,
-  FullProps
+  FormFieldRadioButtonProps
 >((props, ref) => <FormFieldRadioButton {...props} forwardedRef={ref} />);
 
 interface FormFieldRadioButtonProps extends FullProps {

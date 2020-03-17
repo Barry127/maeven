@@ -36,7 +36,7 @@ export const FormFieldTextArea: FC<FormFieldTextAreaProps> = ({
 
 export const FormFieldTextAreaForwardRef = forwardRef<
   HTMLTextAreaElement,
-  FullProps
+  FormFieldTextAreaProps
 >((props, ref) => <FormFieldTextArea {...props} forwardedRef={ref} />);
 
 interface FormFieldTextAreaProps extends FullProps {

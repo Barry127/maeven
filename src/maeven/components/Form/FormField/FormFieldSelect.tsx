@@ -36,7 +36,7 @@ export const FormFieldSelect: FC<FormFieldSelectProps> = ({
 
 export const FormFieldSelectForwardRef = forwardRef<
   HTMLInputElement,
-  FullProps
+  FormFieldSelectProps
 >((props, ref) => <FormFieldSelect {...props} forwardedRef={ref} />);
 
 interface FormFieldSelectProps extends FullProps {

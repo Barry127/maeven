@@ -36,7 +36,7 @@ export const FormFieldNativeSelect: FC<FormFieldNativeSelectProps> = ({
 
 export const FormFieldNativeSelectForwardRef = forwardRef<
   HTMLSelectElement,
-  FullProps
+  FormFieldNativeSelectProps
 >((props, ref) => <FormFieldNativeSelect {...props} forwardedRef={ref} />);
 
 interface FormFieldNativeSelectProps extends FullProps {
