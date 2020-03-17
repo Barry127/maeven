@@ -1,23 +1,6 @@
 import { SyntheticEvent, useEffect, RefObject } from 'react';
 
-import { toggleBlur } from './dom';
-
 const escBlacklist = ['INPUT', 'TEXTAREA', 'SELECT'];
-
-export function useBlur({
-  isOpen,
-  modalContainer
-}: {
-  isOpen: boolean;
-  modalContainer: HTMLDivElement;
-}) {
-  useEffect(() => {
-    if (isOpen) toggleBlur(true, modalContainer);
-    return () => {
-      toggleBlur(false, modalContainer);
-    };
-  }, [isOpen, modalContainer]);
-}
 
 export function useFocusHandling({
   focusAfterClose,
@@ -46,6 +29,8 @@ export function useFocusHandling({
     });
 
     if (isOpen) {
+      opener.blur();
+
       return () => {
         if (
           focusAfterClose &&

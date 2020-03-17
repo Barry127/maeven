@@ -1,61 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import { renderHook } from '@testing-library/react-hooks';
 
-import { useBlur, useFocusHandling, useCloseOnEscape } from './hooks';
-import { createModalContainer, removeModalContainer } from './dom';
-import { classes } from './styles';
+import { useFocusHandling, useCloseOnEscape } from './hooks';
 import { fireEvent } from '@testing-library/react';
-
-describe('useBlur', () => {
-  it('handles blur', async () => {
-    const div = document.createElement('div');
-    document.body.appendChild(div);
-
-    const container = createModalContainer();
-    const { unmount } = renderHook(() =>
-      useBlur({ isOpen: true, modalContainer: container })
-    );
-
-    expect(div).toHaveClass(classes.blurred);
-
-    unmount();
-
-    expect(div).not.toHaveClass(classes.blurred);
-
-    document.body.removeChild(div);
-    removeModalContainer(container);
-  });
-
-  it('handles blur from closed to open to closed', () => {
-    const div = document.createElement('div');
-    document.body.appendChild(div);
-    const container = createModalContainer();
-
-    let isOpen = false;
-
-    const { rerender } = renderHook(() =>
-      useBlur({ isOpen, modalContainer: container })
-    );
-
-    expect(div).not.toHaveClass(classes.blurAnimation);
-    expect(div).not.toHaveClass(classes.blurred);
-
-    isOpen = true;
-    rerender();
-
-    expect(div).toHaveClass(classes.blurAnimation);
-    expect(div).toHaveClass(classes.blurred);
-
-    isOpen = false;
-    rerender();
-
-    expect(div).toHaveClass(classes.blurAnimation);
-    expect(div).not.toHaveClass(classes.blurred);
-
-    document.body.removeChild(div);
-    removeModalContainer(container);
-  });
-});
 
 describe('useFocusHandling', () => {
   it('handles focusAfterOpen', () => {

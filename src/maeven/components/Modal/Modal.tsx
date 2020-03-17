@@ -22,6 +22,7 @@ import { MaevenIcon } from '../../types';
 import { Heading } from '../Heading';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
+import { ThemeProvider } from '../ThemeProvider';
 import {
   close,
   maximize as maximizeIcon,
@@ -30,7 +31,7 @@ import {
 
 import { classes, themeOverride } from './styles';
 import { createModalContainer, removeModalContainer } from './dom';
-import { useCloseOnEscape, useBlur, useFocusHandling } from './hooks';
+import { useCloseOnEscape, useFocusHandling } from './hooks';
 
 const stopPropagation = (ev: MouseEvent<any>) => {
   ev.stopPropagation();
@@ -77,7 +78,6 @@ export const Modal: FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({
   const maximize = useCallback(() => setMaximized(true), []);
   const restore = useCallback(() => setMaximized(false), []);
 
-  useBlur({ isOpen, modalContainer });
   useFocusHandling({
     focusAfterClose,
     focusAfterOpen: focusAfterOpen || modalRef,
@@ -92,9 +92,21 @@ export const Modal: FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({
   }, [modalContainer]);
 
   const modalTransition = useTransition(isOpen, null, {
-    from: { opacity: 0.5, transform: `translate3d(0, -50px, 0)` },
-    enter: { opacity: 1, transform: `translate3d(0, 0, 0)` },
-    leave: { opacity: 0, transform: `translate3d(0, -10px, 0)` },
+    from: {
+      opacity: 0.5,
+      transform: `translate3d(0, -50px, 0)`,
+      backdropFilter: 'blur(0px)'
+    },
+    enter: {
+      opacity: 1,
+      transform: `translate3d(0, 0, 0)`,
+      backdropFilter: 'blur(5px)'
+    },
+    leave: {
+      opacity: 0,
+      transform: `translate3d(0, -10px, 0)`,
+      backdropFilter: 'blur(0px)'
+    },
     config: isOpen
       ? springConfig || { tension: 180, friction: 15 }
       : config.stiff
@@ -104,81 +116,89 @@ export const Modal: FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({
     modalTransition.map(
       ({ item, key, props }) =>
         item && (
-          <div
+          <animated.div
             key={key}
             className={classes.container}
             onClick={closable ? onClose : undefined}
             ref={containerRef}
+            style={{
+              backdropFilter: props.backdropFilter
+            }}
           >
-            <Spring
-              from={{ height: 'auto', width: SIZE_MAP[size] }}
-              to={{
-                height:
-                  maximizable && maximized ? containerBounds.height : 'auto',
-                width:
-                  maximizable && maximized
-                    ? containerBounds.width
-                    : SIZE_MAP[size]
-              }}
-            >
-              {springProps => (
-                <animated.div
-                  className={clsx(
-                    classes.modal,
-                    {
-                      [classes.hasTitle]: !!title,
-                      [classes.isMaximized]: maximized
-                    },
-                    type && classes.type[type],
-                    themeOverride(theme),
-                    className
-                  )}
-                  onClick={stopPropagation}
-                  ref={modalRef}
-                  style={{
-                    ...style,
-                    ...props,
-                    ...springProps
-                  }}
-                  {...restProps}
-                >
-                  {title ? (
-                    <div className={classes.title}>
-                      <Heading level="h3" size="h4">
-                        {icon && <Icon icon={icon} className={classes.icon} />}
-                        {title}
-                      </Heading>
-                      {maximizable && (
-                        <Button
-                          buttonType="link"
-                          onClick={maximized ? restore : maximize}
-                          icon={
-                            maximized
-                              ? theme.iconOverrides?.minimize || minimizeIcon
-                              : theme.iconOverrides?.maximize || maximizeIcon
-                          }
-                          className={classes.button}
-                          aria-label={
-                            maximized ? 'Restore modal' : 'Maximize modal'
-                          }
-                        />
-                      )}
-                      {closable && (
-                        <Button
-                          buttonType="link"
-                          onClick={onClose}
-                          icon={theme.iconOverrides?.close || close}
-                          className={classes.button}
-                          aria-label="Close"
-                        />
-                      )}
-                    </div>
-                  ) : null}
-                  <div className={classes.content}>{children}</div>
-                </animated.div>
-              )}
-            </Spring>
-          </div>
+            <ThemeProvider theme={theme}>
+              <Spring
+                from={{ height: 'auto', width: SIZE_MAP[size] }}
+                to={{
+                  height:
+                    maximizable && maximized ? containerBounds.height : 'auto',
+                  width:
+                    maximizable && maximized
+                      ? containerBounds.width
+                      : SIZE_MAP[size]
+                }}
+              >
+                {springProps => (
+                  <animated.div
+                    className={clsx(
+                      classes.modal,
+                      {
+                        [classes.hasTitle]: !!title,
+                        [classes.isMaximized]: maximized
+                      },
+                      type && classes.type[type],
+                      themeOverride(theme),
+                      className
+                    )}
+                    onClick={stopPropagation}
+                    ref={modalRef}
+                    style={{
+                      ...style,
+                      ...props,
+                      ...springProps,
+                      backdropFilter: 'none'
+                    }}
+                    {...restProps}
+                  >
+                    {title ? (
+                      <div className={classes.title}>
+                        <Heading level="h3" size="h4">
+                          {icon && (
+                            <Icon icon={icon} className={classes.icon} />
+                          )}
+                          {title}
+                        </Heading>
+                        {maximizable && (
+                          <Button
+                            buttonType="link"
+                            onClick={maximized ? restore : maximize}
+                            icon={
+                              maximized
+                                ? theme.iconOverrides?.minimize || minimizeIcon
+                                : theme.iconOverrides?.maximize || maximizeIcon
+                            }
+                            className={classes.button}
+                            aria-label={
+                              maximized ? 'Restore modal' : 'Maximize modal'
+                            }
+                          />
+                        )}
+                        {closable && (
+                          <Button
+                            buttonType="link"
+                            onClick={onClose}
+                            icon={theme.iconOverrides?.close || close}
+                            className={classes.button}
+                            aria-label="Close"
+                          />
+                        )}
+                      </div>
+                    ) : null}
+                    <div className={classes.content}>{children}</div>
+                  </animated.div>
+                )}
+              </Spring>
+            </ThemeProvider>
+          </animated.div>
         )
     ),
     modalContainer

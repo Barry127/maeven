@@ -6,7 +6,7 @@ import { themeOverrideFactory } from '../../common/themeOverrideFactory';
 import { linearGradient } from 'csx';
 
 const container = style({
-  // zIndex: 1000,
+  zIndex: 1000,
   position: 'fixed',
   left: 0,
   right: 0,
@@ -159,15 +159,6 @@ const info = style({
   }
 });
 
-const blurAnimation = style({
-  transition:
-    'filter var(--maeven-animation-default-timing) var(--maeven-animation-default-timing-function)'
-});
-
-const blurred = style({
-  filter: 'blur(7px) saturate(1.5)'
-});
-
 export const classes = {
   container,
   modal: clsx(box, pm0, modal, elevation[3]),
@@ -183,9 +174,7 @@ export const classes = {
     info,
     warning,
     danger
-  },
-  blurAnimation,
-  blurred
+  }
 };
 
 export const themeOverride = themeOverrideFactory('Modal');
