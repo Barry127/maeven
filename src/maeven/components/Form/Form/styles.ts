@@ -8,7 +8,11 @@ import { themeOverrideFactory } from '../../../common/themeOverrideFactory';
 import { classes as formFieldClasses } from '../FormField/styles';
 
 const form = style({
+  marginBottom: 'var(--maeven-base)',
   $nest: {
+    '&:last-child': {
+      marginBottom: 0
+    },
     [`.${formFieldClasses.fieldCol} > button + button`]: {
       marginLeft: 'calc(var(--maeven-base) / 2)'
     }

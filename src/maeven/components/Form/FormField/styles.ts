@@ -5,10 +5,6 @@ import { Theme } from '../../../types';
 import { themeOverrideFactory } from '../../../common/themeOverrideFactory';
 import { responsiveStyle } from '../../../common/responsiveStyle';
 
-const container = style({
-  flexDirection: 'row'
-});
-
 const labelCol = style({
   flexGrow: '0 !important' as NestedCSSProperties['flexGrow'],
   width: '20% !important',
@@ -29,6 +25,22 @@ const labelCol = style({
 
 const fieldCol = style({
   flexGrow: 1
+});
+
+const container = style({
+  flexDirection: 'row',
+  $nest: {
+    '&:last-child': {
+      $nest: {
+        [`& > .${labelCol}`]: {
+          marginBottom: 0
+        },
+        [`& > .${fieldCol}`]: {
+          marginBottom: 0
+        }
+      }
+    }
+  }
 });
 
 const sm = style({
