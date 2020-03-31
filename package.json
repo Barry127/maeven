@@ -57,6 +57,7 @@
     "husky": "^3.1.0",
     "icon-packs": "^0.6.0",
     "mdx.macro": "^0.2.9",
+    "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "prettier-tslint": "^0.4.2",
     "prism-react-renderer": "^1.0.2",
@@ -80,7 +81,7 @@
   },
   "scripts": {
     "clear": "rimraf coverage lib build src/docs/_data",
-    "prebuild": "yarn clear",
+    "prebuild": "yarn clear && node-sass src/maeven/maeven.scss -o lib",
     "build": "rollup --config",
     "generate": "node scripts/generate",
     "lint": "eslint src/**/*.ts{,x}",
