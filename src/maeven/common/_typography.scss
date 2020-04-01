@@ -1,0 +1,5 @@
+@import '../common/mixins';
+
+.mvn-ui-text {
+  @include base-typography();
+}

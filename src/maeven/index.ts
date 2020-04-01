@@ -1,6 +1,7 @@
+export * from './components';
+
 // Components
 export * from './components/Alert';
-export * from './components/Block';
 export * from './components/Button';
 export * from './components/Card';
 export * from './components/Form';

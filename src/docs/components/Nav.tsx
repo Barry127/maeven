@@ -105,7 +105,10 @@ const activeOutline = style({
   }
 });
 
-export const Nav: FC = () => {
+export const Nav: FC<{ isDark: boolean; toggleDark: () => void }> = ({
+  toggleDark,
+  isDark
+}) => {
   const { pathname } = useLocation();
   const outline = useOutline();
 
@@ -120,6 +123,10 @@ export const Nav: FC = () => {
 
   return (
     <Block element="nav" className={navClass}>
+      <label>
+        <input type="checkbox" checked={isDark} onChange={toggleDark} />
+        DarkMode
+      </label>
       <H2 className={p1}>Maeven</H2>
       <ul className={list}>
         {parseChildren(docsData.children as Node[], 3, 'root', outline)}

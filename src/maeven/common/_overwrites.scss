@@ -1,0 +1,19 @@
+@import 'colors';
+@import 'mixins';
+
+@each $name, $color in $mvn-colors {
+  .mvn-background-color-#{$name} {
+    background-color: $color;
+    color: choose-text-color($color);
+  }
+}
+
+@each $name, $color in $mvn-colors-text {
+  .mvn-text-color-#{$name} {
+    color: $color;
+
+    .mvn-dark & {
+      color: map-get($mvn-colors-text-dark, $name);
+    }
+  }
+}

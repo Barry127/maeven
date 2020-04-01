@@ -1,4 +1,9 @@
-import { AllHTMLAttributes, SVGProps } from 'react';
+import {
+  AllHTMLAttributes,
+  SVGProps,
+  ComponentClass,
+  StatelessComponent
+} from 'react';
 import { NestedCSSProperties } from 'typestyle/lib/types';
 
 export interface MaevenIcon {
@@ -130,8 +135,28 @@ export interface Theme {
   };
 }
 
-export type ColorName = keyof Theme['colors']['name'];
+export type ColorName =
+  | 'black'
+  | 'white'
+  | 'darkGrey'
+  | 'grey'
+  | 'lightGrey'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'indigo'
+  | 'pink';
 
-export type SemanticColorName = keyof Theme['colors']['semantic'];
+export type SemanticColorName = 'primary' | 'success' | 'warning' | 'danger';
 
+// remove in 0.2
 export type ThemeColor = ColorName | SemanticColorName;
+
+export type Color = ColorName | SemanticColorName;
+
+export type InstrinctElement = keyof JSX.IntrinsicElements;
+
+export type ReactComponent = ComponentClass<any> | StatelessComponent<any>;

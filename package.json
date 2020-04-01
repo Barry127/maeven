@@ -81,7 +81,8 @@
   },
   "scripts": {
     "clear": "rimraf coverage lib build src/docs/_data",
-    "prebuild": "yarn clear && node-sass src/maeven/maeven.scss -o lib",
+    "css:build": "node-sass src/maeven/maeven.scss -o lib",
+    "prebuild": "yarn clear && yarn css:build",
     "build": "rollup --config",
     "generate": "node scripts/generate",
     "lint": "eslint src/**/*.ts{,x}",

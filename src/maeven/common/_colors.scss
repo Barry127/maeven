@@ -1,0 +1,141 @@
+$black: #182026 !default;
+$white: #ffffff !default;
+
+$dark-grey1: #454f59 !default;
+$dark-grey2: #39434d !default;
+$dark-grey3: #323a42 !default;
+$dark-grey4: #272d33 !default;
+$dark-grey5: #1d2226 !default;
+
+$grey1: #d7dadb !default;
+$grey2: #b4bcc2 !default;
+$grey3: #94a0a8 !default;
+$grey4: #77848f !default;
+$grey5: #5b6975 !default;
+
+$light-grey1: #f5f8fb !default;
+$light-grey2: #ebf1f5 !default;
+$light-grey3: #e1e8ed !default;
+$light-grey4: #d8e1e8 !default;
+$light-grey5: #ced9e0 !default;
+
+$red1: #ff6666 !default;
+$red2: #fd4c4c !default;
+$red3: #f73131 !default;
+$red4: #de2c2c !default;
+$red5: #c42727 !default;
+
+$orange1: #ff9c63 !default;
+$orange2: #fc8b49 !default;
+$orange3: #f4772e !default;
+$orange4: #db6b2a !default;
+$orange5: #c25e25 !default;
+
+$yellow1: #ffd659 !default;
+$yellow2: #ffcf40 !default;
+$yellow3: #ffc926 !default;
+$yellow4: #e5b522 !default;
+$yellow5: #cca11f !default;
+
+$green1: #51fc7b !default;
+$green2: #34e35d !default;
+$green3: #1bc943 !default;
+$green4: #17b03b !default;
+$green5: #149632 !default;
+
+$teal1: #4fffca !default;
+$teal2: #34f7bd !default;
+$teal3: #18e1a5 !default;
+$teal4: #16c792 !default;
+$teal5: #13ad7f !default;
+
+$blue1: #49acf2 !default;
+$blue2: #2b91d9 !default;
+$blue3: #1378bf !default;
+$blue4: #1168a6 !default;
+$blue5: #0e588c !default;
+
+$indigo1: #a66dfc !default;
+$indigo2: #884be3 !default;
+$indigo3: #6d2ec9 !default;
+$indigo4: #5f28b0 !default;
+$indigo5: #512396 !default;
+
+$pink1: #ff59ba !default;
+$pink2: #fe40af !default;
+$pink3: #fc26a4 !default;
+$pink4: #e32293 !default;
+$pink5: #c91e82 !default;
+
+$mvn-color-primary: $blue3 !default;
+$mvn-color-success: $green3 !default;
+$mvn-color-warning: $orange3 !default;
+$mvn-color-danger: $red3 !default;
+
+$mvn-color-background: $light-grey1 !default;
+$mvn-color-background-dark: $dark-grey3 !default;
+
+$mvn-color-text: $black !default;
+$mvn-color-text-dark: $grey1 !default;
+
+$mvn-color-text-selection: rgba($mvn-color-primary, 0.25) !default;
+
+$mvn-colors: (
+  'black': $black,
+  'white': $white,
+  'darkGrey': $dark-grey3,
+  'grey': $grey3,
+  'lightGrey': $light-grey3,
+  'red': $red3,
+  'orange': $orange3,
+  'yellow': $yellow3,
+  'green': $green3,
+  'teal': $teal3,
+  'blue': $blue3,
+  'indigo': $indigo3,
+  'pink': $pink3,
+  'primary': $blue3,
+  'success': $green3,
+  'warning': $orange3,
+  'danger': $red3
+) !default;
+
+$mvn-colors-text: (
+  'black': $black,
+  'white': $white,
+  'darkGrey': $dark-grey3,
+  'grey': $grey4,
+  'lightGrey': $light-grey4,
+  'red': $red4,
+  'orange': $orange4,
+  'yellow': $yellow4,
+  'green': $green4,
+  'teal': $teal4,
+  'blue': $blue4,
+  'indigo': $indigo4,
+  'pink': $pink4,
+  'primary': $blue4,
+  'success': $green4,
+  'warning': $orange4,
+  'danger': $red4
+) !default;
+
+$mvn-colors-text-dark: (
+  'black': $black,
+  'white': $white,
+  'darkGrey': $dark-grey3,
+  'grey': $grey1,
+  'lightGrey': $light-grey1,
+  'red': $red1,
+  'orange': $orange1,
+  'yellow': $yellow1,
+  'green': $green1,
+  'teal': $teal1,
+  'blue': $blue1,
+  'indigo': $indigo1,
+  'pink': $pink1,
+  'primary': $blue1,
+  'success': $green1,
+  'warning': $orange1,
+  'danger': $red1
+) !default;

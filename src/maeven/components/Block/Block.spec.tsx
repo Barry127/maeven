@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
-import { Block } from './Block';
-import { classes, themeOverride } from './styles';
+import { Block, BlockF } from './Block';
+import { Block as ExportedBlock } from './';
 
 describe('Block', () => {
   it('renders a div element with given text', () => {
@@ -34,27 +32,6 @@ describe('Block', () => {
     expect(element.dataset.test).toBe('block-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Block: {
-          color: 'yellow'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Block>Hello world!</Block>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
-  });
-
   it('renders a main element', () => {
     const { getByText } = render(<Block element="main">Hello world!</Block>);
     const element = getByText('Hello world!');
@@ -71,13 +48,44 @@ describe('Block', () => {
     it('has no padding by default', () => {
       const { getByText } = render(<Block>Hello world!</Block>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.padding);
+      expect(element).not.toHaveClass('mvn-block-padding');
     });
 
     it('sets padding', () => {
       const { getByText } = render(<Block padding>Hello world!</Block>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.padding);
+      expect(element).toHaveClass('mvn-block-padding');
+    });
+  });
+
+  describe('background', () => {
+    it('sets background color', () => {
+      const { getByText } = render(
+        <Block background="primary">Hello world!</Block>
+      );
+      const element = getByText('Hello world!');
+      expect(element).toHaveClass('mvn-background-color-primary');
+    });
+  });
+
+  describe('textColor', () => {
+    it('sets text color', () => {
+      const { getByText } = render(<Block textColor="red">Hello world!</Block>);
+      const element = getByText('Hello world!');
+      expect(element).toHaveClass('mvn-text-color-red');
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports BlockForwardRef', () => {
+      expect(ExportedBlock).toBe(BlockF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLElement>();
+      render(<BlockF ref={ref} />);
+      const element = document.querySelector('.mvn-block');
+      expect(ref.current).toBe(element);
     });
   });
 });

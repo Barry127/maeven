@@ -1,0 +1,36 @@
+@import 'common/variables';
+@import 'common/colors';
+@import 'common/typography';
+
+@import 'common/common';
+
+@import 'components/index';
+
+@import 'common/overwrites';
+
+/* Senisible defaults */
+
+body {
+  margin: 0;
+  padding: 0;
+  @include base-typography();
+  font-family: $mvn-font-family;
+  color: $mvn-color-text;
+  background-color: $mvn-color-background;
+  color: $mvn-color-text;
+  transition: animate-transition(background-color);
+
+  &.mvn-dark {
+    background-color: $mvn-color-background-dark;
+    color: $mvn-color-text-dark;
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: $mvn-base;
+}
+
+::selection {
+  background: $mvn-color-text-selection;
+}

@@ -1,51 +1,65 @@
-import React, { FC, AllHTMLAttributes } from 'react';
+import React, { FC, AllHTMLAttributes, forwardRef, Ref } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../hooks/useTheme';
-
-import { classes, themeOverride } from './styles';
+import { InstrinctElement, ReactComponent, Color } from '../../types';
 
 /**
  * A Block is a low level component with sensible theme default styling.
  */
-export const Block: FC<BlockProps & AllHTMLAttributes<HTMLElement>> = ({
+export const Block: FC<AllBlockProps> = ({
+  background,
   children,
   className,
+  component,
   element = 'div',
+  forwardedRef,
   padding = false,
+  textColor,
   ...restProps
 }) => {
-  const theme = useTheme();
-  const Element = element;
+  const Element = component || element;
 
   return (
     <Element
       className={clsx(
-        classes.block,
-        { [classes.padding]: padding },
-        themeOverride(theme),
+        'mvn-block',
+        { 'mvn-block-padding': padding },
+        background && `mvn-background-color-${background}`,
+        textColor && `mvn-text-color-${textColor}`,
         className
       )}
       {...restProps}
+      ref={forwardedRef}
     >
       {children}
     </Element>
   );
 };
 
+export const BlockF = forwardRef<HTMLElement, AllBlockProps>((props, ref) => (
+  <Block {...props} forwardedRef={ref} />
+));
+
+type AllBlockProps = BlockProps & AllHTMLAttributes<HTMLElement | SVGElement>;
+
 export interface BlockProps {
+  /** Background color for Block */
+  background?: Color;
+
+  /** Type of component to render. (overwrites element) */
+  component?: ReactComponent;
+
   /** Type of html element to render. */
-  element?:
-    | 'article'
-    | 'aside'
-    | 'div'
-    | 'footer'
-    | 'header'
-    | 'main'
-    | 'nav'
-    | 'section'
-    | 'span';
+  element?: InstrinctElement;
+
+  forwardedRef?: Ref<HTMLElement>;
 
   /** Wether block contains padding */
   padding?: boolean;
+
+  /** Text color for Block */
+  textColor?: Color;
+
+  /** In order to work with custom custom components */
+  [prop: string]: any;
 }
