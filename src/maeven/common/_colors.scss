@@ -85,7 +85,7 @@ $mvn-color-text-dark: $grey1 !default;
 $mvn-color-text-heading-dark: $mvn-color-text-dark !default;
 $mvn-color-link-dark: $blue2 !default;
 
-$mvn-color-outline: rgba($mvn-color-primary, 0.5) !default;
+$mvn-color-outline: rgba($mvn-color-primary, 0.15) !default;
 $mvn-color-text-selection: rgba($mvn-color-primary, 0.25) !default;
 
 $mvn-colors: (
@@ -132,18 +132,18 @@ $mvn-colors-text-dark: (
   'black': $black,
   'white': $white,
   'darkGrey': $dark-grey3,
-  'grey': $grey1,
-  'lightGrey': $light-grey1,
-  'red': $red1,
-  'orange': $orange1,
-  'yellow': $yellow1,
-  'green': $green1,
-  'teal': $teal1,
-  'blue': $blue1,
+  'grey': $grey2,
+  'lightGrey': $light-grey2,
+  'red': $red2,
+  'orange': $orange2,
+  'yellow': $yellow2,
+  'green': $green2,
+  'teal': $teal2,
+  'blue': $blue2,
   'indigo': $indigo1,
-  'pink': $pink1,
-  'primary': $blue1,
-  'success': $green1,
-  'warning': $orange1,
-  'danger': $red1
+  'pink': $pink2,
+  'primary': $blue2,
+  'success': $green2,
+  'warning': $orange2,
+  'danger': $red2
 ) !default;

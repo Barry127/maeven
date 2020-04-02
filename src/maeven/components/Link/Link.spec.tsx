@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React, { FC, Component } from 'react';
+import React, { FC, Component, createRef } from 'react';
 import { act, render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
-import { Link } from './Link';
-import { classes, themeOverride } from './styles';
+import { Link, LinkF } from './Link';
+import { Link as ExportedLink } from './';
 
 const FunctionalComponent: FC = ({ children, ...restProps }) => (
   <p {...restProps}>{children}</p>
@@ -24,7 +22,7 @@ describe('Link', () => {
     const { getByText } = render(<Link>Hello world!</Link>);
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('A');
-    expect(element).toHaveClass(classes.link);
+    expect(element).toHaveClass('mvn-link');
   });
 
   it('renders functional component as link', () => {
@@ -33,7 +31,7 @@ describe('Link', () => {
     );
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('P');
-    expect(element).toHaveClass(classes.link);
+    expect(element).toHaveClass('mvn-link');
   });
 
   it('renders class component as link', () => {
@@ -42,7 +40,7 @@ describe('Link', () => {
     );
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('SPAN');
-    expect(element).toHaveClass(classes.link);
+    expect(element).toHaveClass('mvn-link');
   });
 
   it('sets className', () => {
@@ -64,49 +62,23 @@ describe('Link', () => {
     expect(element.dataset.test).toBe('link-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Link: {
-          color: 'hotpink'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Link>Hello world!</Link>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
-  });
-
   describe('color', () => {
     it('defaults to theme default', () => {
       const { getByText } = render(<Link>Hello world!</Link>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.default);
-      expect(element).not.toHaveClass(classes.colorStates);
+      expect(element).not.toHaveClass('mvn-link-color-green');
     });
 
     it('sets green color', () => {
       const { getByText } = render(<Link color="green">Hello world!</Link>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.default);
-      expect(element).toHaveClass(classes.color.green);
-      expect(element).toHaveClass(classes.colorStates);
+      expect(element).toHaveClass('mvn-link-color-green');
     });
 
-    it('sets info color', () => {
-      const { getByText } = render(<Link color="info">Hello world!</Link>);
+    it('sets danger color', () => {
+      const { getByText } = render(<Link color="danger">Hello world!</Link>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.default);
-      expect(element).toHaveClass(classes.color.info);
-      expect(element).toHaveClass(classes.colorStates);
+      expect(element).toHaveClass('mvn-link-color-danger');
     });
   });
 
@@ -114,7 +86,7 @@ describe('Link', () => {
     it('has no focus outline class by default', () => {
       const { getByText } = render(<Link>Hello world!</Link>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.focusOutline);
+      expect(element).not.toHaveClass('mvn-link-outline');
     });
 
     it('has a focus outline class when a key is clicked', () => {
@@ -127,7 +99,20 @@ describe('Link', () => {
       });
 
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.focusOutline);
+      expect(element).toHaveClass('mvn-link-outline');
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports LinkForwardRef', () => {
+      expect(ExportedLink).toBe(LinkF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLAnchorElement>();
+      render(<LinkF ref={ref} />);
+      const element = document.querySelector('.mvn-link');
+      expect(ref.current).toBe(element);
     });
   });
 });

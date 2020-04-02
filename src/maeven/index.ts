@@ -8,7 +8,6 @@ export * from './components/Form';
 export * from './components/Grid';
 export * from './components/Heading';
 export * from './components/Icon';
-export * from './components/Link';
 export * from './components/Modal';
 export * from './components/Spinner';
 export * from './components/Text';

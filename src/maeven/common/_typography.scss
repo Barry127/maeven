@@ -78,7 +78,7 @@ $headings: (
 
   &:hover,
   &:focus {
-    color: darken($color: $mvn-color-link, $amount: 10);
+    color: darken($mvn-color-link, 10);
   }
 
   &:focus {
@@ -91,7 +91,7 @@ $headings: (
 
     &:hover,
     &:focus {
-      color: darken($color: $mvn-color-link-dark, $amount: 10);
+      color: darken($mvn-color-link-dark, 10);
     }
   }
 }
