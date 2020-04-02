@@ -1,12 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
 import { Span } from './Html';
-import { themeOverride } from './styles';
 
 describe('Span', () => {
   it('renders an Span element with given text', () => {
@@ -33,24 +30,12 @@ describe('Span', () => {
     expect(element!.dataset.test).toBe('span-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Span: {
-          color: 'green'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme, 'span');
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Span>Hello World!</Span>
-      </ThemeProvider>
-    );
-    const element = document.querySelector('span');
-    expect(element).toHaveClass(expectedClassName);
+  describe('forwarding ref', () => {
+    it('forwards ref', () => {
+      const ref = createRef<HTMLSpanElement>();
+      render(<Span ref={ref} />);
+      const element = document.querySelector('span');
+      expect(ref.current).toBe(element);
+    });
   });
 });

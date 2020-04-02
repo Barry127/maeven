@@ -2,8 +2,6 @@
 @import 'common/colors';
 @import 'common/typography';
 
-@import 'common/common';
-
 @import 'components/index';
 
 @import 'common/overwrites';
@@ -27,8 +25,11 @@ body {
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: $mvn-base;
+  margin: 0 0 $mvn-base;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 ::selection {

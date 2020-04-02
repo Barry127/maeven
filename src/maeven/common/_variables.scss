@@ -8,6 +8,8 @@ $mvn-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 $mvn-font-family-monospace: source-code-pro, Menlo, Monaco, Consolas,
   'Courier New', monospace !default;
 
+$mvn-font-family-heading: $mvn-font-family !default;
+
 $mvn-font-size: $mvn-base !default;
 $mvn-font-size-large: $mvn-base * 1.15 !default;
 $mvn-font-size-small: $mvn-base * 0.85 !default;

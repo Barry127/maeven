@@ -3,34 +3,39 @@ import React, {
   HTMLAttributes,
   AnchorHTMLAttributes,
   LiHTMLAttributes,
-  OlHTMLAttributes
+  OlHTMLAttributes,
+  forwardRef
 } from 'react';
 import clsx from 'clsx';
 
-import { classes, themeOverride } from './styles';
-import { useTheme } from '../../hooks/useTheme';
+import { InstrinctElement } from '../../types';
 
-function createHtmlElement<P extends HTMLAttributes<HTMLElement>>(
-  TagName: keyof typeof classes
-): FC<P> {
-  const HTMLElement: FC<P> = ({ children, className, ...restProps }) => {
-    const theme = useTheme();
-
+function createHtmlElement<P extends HTMLAttributes<HTMLElement | SVGElement>>(
+  TagName: InstrinctElement
+) {
+  const Element: FC<P & { forwardedRef: any }> = ({
+    children,
+    className,
+    forwardedRef,
+    ...restProps
+  }) => {
     return (
       <TagName
-        className={clsx(
-          classes[TagName],
-          themeOverride(theme, TagName),
-          className
-        )}
+        className={clsx(`mvn-${TagName}`, className)}
         {...restProps}
+        {
+          // @ts-ignore
+          ...{ ref: forwardedRef }
+        }
       >
         {children}
       </TagName>
     );
   };
 
-  return HTMLElement;
+  return forwardRef<HTMLElement | SVGElement, P>((props, ref) => (
+    <Element {...props} forwardedRef={ref} />
+  ));
 }
 
 export const A = createHtmlElement<AnchorHTMLAttributes<HTMLAnchorElement>>(

@@ -3,3 +3,116 @@
 .mvn-ui-text {
   @include base-typography();
 }
+
+$headings: (
+  'h1': (
+    3 * $mvn-font-size,
+    3.5 * $mvn-font-size
+  ),
+  'h2': (
+    2.25 * $mvn-font-size,
+    2.5 * $mvn-font-size
+  ),
+  'h3': (
+    1.5 * $mvn-font-size,
+    1.75 * $mvn-font-size
+  ),
+  'h4': (
+    1.25 * $mvn-font-size,
+    1.3 * $mvn-font-size
+  ),
+  'h5': (
+    $mvn-font-size,
+    $mvn-line-height
+  ),
+  'h6': (
+    $mvn-font-size,
+    $mvn-line-height
+  )
+) !default;
+
+@each $tag, $props in $headings {
+  %#{$tag} {
+    @include heading-typography();
+    font-size: nth($props, 1);
+    line-height: nth($props, 2);
+  }
+}
+
+.mvn-h1 {
+  @extend %h1;
+}
+
+.mvn-h2 {
+  @extend %h2;
+}
+
+.mvn-h3 {
+  @extend %h3;
+}
+
+.mvn-h4 {
+  @extend %h4;
+}
+
+.mvn-h5 {
+  @extend %h5;
+  margin-bottom: $mvn-base / 4;
+}
+
+.mvn-h6 {
+  @extend %h6;
+  font-weight: $mvn-font-weight;
+  font-style: italic;
+  margin-bottom: $mvn-base / 4;
+}
+
+.mvn-a {
+  color: $mvn-color-link;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:hover,
+  &:focus {
+    color: darken($color: $mvn-color-link, $amount: 10);
+  }
+
+  &:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+
+  .mvn-dark & {
+    color: $mvn-color-link-dark;
+
+    &:hover,
+    &:focus {
+      color: darken($color: $mvn-color-link-dark, $amount: 10);
+    }
+  }
+}
+
+.mvn-ol,
+.mvn-ul {
+  @include box();
+  padding: 0 0 0 $mvn-base * 2;
+  margin: 0 0 $mvn-base;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.mvn-li {
+  @include box();
+  padding: 0;
+  margin: 0 0 $mvn-base / 2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

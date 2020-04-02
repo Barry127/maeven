@@ -1,12 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
 import { Ol } from './Html';
-import { themeOverride } from './styles';
 
 describe('Ol', () => {
   it('renders an Ol element with given text', () => {
@@ -33,24 +30,12 @@ describe('Ol', () => {
     expect(element!.dataset.test).toBe('ol-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Ol: {
-          color: 'green'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme, 'ol');
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Ol>Hello World!</Ol>
-      </ThemeProvider>
-    );
-    const element = document.querySelector('ol');
-    expect(element).toHaveClass(expectedClassName);
+  describe('forwarding ref', () => {
+    it('forwards ref', () => {
+      const ref = createRef<HTMLOListElement>();
+      render(<Ol ref={ref} />);
+      const element = document.querySelector('ol');
+      expect(ref.current).toBe(element);
+    });
   });
 });

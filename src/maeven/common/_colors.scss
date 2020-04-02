@@ -73,11 +73,19 @@ $mvn-color-warning: $orange3 !default;
 $mvn-color-danger: $red3 !default;
 
 $mvn-color-background: $light-grey1 !default;
+$mvn-color-background-text: $white !default;
 $mvn-color-background-dark: $dark-grey3 !default;
+$mvn-color-background-dark-text: $dark-grey4 !default;
 
 $mvn-color-text: $black !default;
-$mvn-color-text-dark: $grey1 !default;
+$mvn-color-text-heading: $mvn-color-text !default;
+$mvn-color-link: $blue4 !default;
 
+$mvn-color-text-dark: $grey1 !default;
+$mvn-color-text-heading-dark: $mvn-color-text-dark !default;
+$mvn-color-link-dark: $blue2 !default;
+
+$mvn-color-outline: rgba($mvn-color-primary, 0.5) !default;
 $mvn-color-text-selection: rgba($mvn-color-primary, 0.25) !default;
 
 $mvn-colors: (

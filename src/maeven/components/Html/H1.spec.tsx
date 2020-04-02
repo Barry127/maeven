@@ -1,12 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
 import { H1 } from './Html';
-import { themeOverride } from './styles';
 
 describe('H1', () => {
   it('renders an h1 element with given text', () => {
@@ -33,24 +30,12 @@ describe('H1', () => {
     expect(element!.dataset.test).toBe('h1-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        H1: {
-          color: 'green'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme, 'h1');
-
-    render(
-      <ThemeProvider theme={theme}>
-        <H1>Hello World!</H1>
-      </ThemeProvider>
-    );
-    const element = document.querySelector('h1');
-    expect(element).toHaveClass(expectedClassName);
+  describe('forwarding ref', () => {
+    it('forwards ref', () => {
+      const ref = createRef<HTMLHeadingElement>();
+      render(<H1 ref={ref} />);
+      const element = document.querySelector('h1');
+      expect(ref.current).toBe(element);
+    });
   });
 });
