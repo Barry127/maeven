@@ -1,52 +1,57 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, Ref, forwardRef } from 'react';
 import clsx from 'clsx';
 
-import { ThemeColor } from '../../types';
-import { useTheme } from '../../hooks/useTheme';
+import { Block } from '../Block/Block';
 
-import { classes, themeOverride } from './styles';
+import { Color } from '../../types';
 
 /**
  * The Heading component renders headings in a larger size than regular text.
  */
-export const Heading: FC<HeadingProps & HTMLAttributes<HTMLHeadingElement>> = ({
+export const Heading: FC<AllHeadingProps> = ({
   children,
   className,
   color,
-  level: Level,
-  size = Level,
+  level,
+  size = level,
   title,
   truncate = false,
   ...restProps
 }) => {
-  const theme = useTheme();
-
   return (
-    <Level
+    <Block
+      {...restProps}
       className={clsx(
-        classes[size],
-        color && classes.color[color],
+        `mvn-${size}`,
         {
-          [classes.truncate]: truncate
+          [`mvn-heading-truncate`]: truncate
         },
-        themeOverride(theme, Level),
         className
       )}
+      element={level}
       title={
         truncate && !title && typeof children === 'string' ? children : title
       }
-      {...restProps}
+      textColor={color}
     >
       {children}
-    </Level>
+    </Block>
   );
 };
+
+export const HeadingF = forwardRef<HTMLHeadingElement, AllHeadingProps>(
+  (props, ref) => <Heading {...props} forwardedRef={ref} />
+);
+
+type AllHeadingProps = HeadingProps & HTMLAttributes<HTMLHeadingElement>;
 
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface HeadingProps {
   /** Text color for Heading. Defaults to theme's heading color */
-  color?: ThemeColor;
+  color?: Color;
+
+  forwardedRef?: Ref<HTMLHeadingElement>;
 
   /** Heading level */
   level: HeadingLevel;
