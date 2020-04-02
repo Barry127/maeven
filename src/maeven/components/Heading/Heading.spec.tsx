@@ -89,7 +89,7 @@ describe('Heading', () => {
     it('does not truncate by default', () => {
       const { getByText } = render(<Heading level="h1">Hello world!</Heading>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass('mvn-heading-truncate');
+      expect(element).not.toHaveClass('mvn-truncate');
     });
 
     it('sets truncate', () => {
@@ -99,7 +99,7 @@ describe('Heading', () => {
         </Heading>
       );
       const element = getByText('Hello world!');
-      expect(element).toHaveClass('mvn-heading-truncate');
+      expect(element).toHaveClass('mvn-truncate');
     });
   });
 

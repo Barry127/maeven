@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
-import { Text } from './Text';
-import { classes, themeOverride, styleHtmlThemeOverride } from './styles';
+import { Text, TextF } from './Text';
+import { Text as ExportedText } from './';
 
 describe('Text', () => {
   it('renders a div element with given text', () => {
@@ -34,69 +32,17 @@ describe('Text', () => {
     expect(element.dataset.test).toBe('text-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        A: {
-          color: 'indigo'
-        },
-        Text: {
-          color: 'yellow'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-    const styleHtmlOverrideClassName = styleHtmlThemeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Text>Hello world!</Text>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
-    expect(element).not.toHaveClass(styleHtmlOverrideClassName);
-  });
-
-  it('styles Theme overrides for styleHtml', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        A: {
-          color: 'red'
-        },
-        Text: {
-          color: 'blue'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-    const styleHtmlOverrideClassName = styleHtmlThemeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Text styleHtml>Hello world!</Text>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
-    expect(element).toHaveClass(styleHtmlOverrideClassName);
-  });
-
   describe('color', () => {
     it('sets indigo color', () => {
       const { getByText } = render(<Text color="indigo">Hello world!</Text>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.color.indigo);
+      expect(element).toHaveClass('mvn-text-color-indigo');
     });
 
     it('sets danger color', () => {
       const { getByText } = render(<Text color="danger">Hello world!</Text>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.color.danger);
+      expect(element).toHaveClass('mvn-text-color-danger');
     });
   });
 
@@ -118,13 +64,13 @@ describe('Text', () => {
     it('does not style html by default', () => {
       const { getByText } = render(<Text>Hello world!</Text>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.styleHtml);
+      expect(element).not.toHaveClass('mvn-styled-text');
     });
 
     it('styles html', () => {
       const { getByText } = render(<Text styleHtml>Hello world!</Text>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.styleHtml);
+      expect(element).toHaveClass('mvn-styled-text');
     });
   });
 
@@ -132,13 +78,13 @@ describe('Text', () => {
     it('does not truncate by default', () => {
       const { getByText } = render(<Text>Hello world!</Text>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.truncate);
+      expect(element).not.toHaveClass('mvn-truncate');
     });
 
     it('sets truncate', () => {
       const { getByText } = render(<Text truncate>Hello world!</Text>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.truncate);
+      expect(element).toHaveClass('mvn-truncate');
     });
 
     it('it does not set truncate when inline', () => {
@@ -148,7 +94,20 @@ describe('Text', () => {
         </Text>
       );
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.truncate);
+      expect(element).not.toHaveClass('mvn-truncate');
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports TextForwardRef', () => {
+      expect(ExportedText).toBe(TextF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLDivElement>();
+      render(<TextF className="text" ref={ref} />);
+      const element = document.querySelector('.text');
+      expect(ref.current).toBe(element);
     });
   });
 });

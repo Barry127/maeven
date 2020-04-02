@@ -1,0 +1,11 @@
+@import '../../common/typography';
+
+$elements: ('a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'ol', 'ul');
+
+.mvn-styled-text {
+  @each $el in $elements {
+    #{$el} {
+      @extend .mvn-#{$el};
+    }
+  }
+}

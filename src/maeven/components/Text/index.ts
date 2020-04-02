@@ -1,1 +1,1 @@
-export { Text } from './Text';
+export { TextF as Text } from './Text';

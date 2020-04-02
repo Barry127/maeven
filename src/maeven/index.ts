@@ -9,7 +9,6 @@ export * from './components/Grid';
 export * from './components/Icon';
 export * from './components/Modal';
 export * from './components/Spinner';
-export * from './components/Text';
 export * from './components/ThemeProvider';
 
 // Hooks

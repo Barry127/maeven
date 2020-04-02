@@ -1,17 +1,13 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, Ref, forwardRef } from 'react';
 import clsx from 'clsx';
 
-import { Block } from '../Block';
-import { ThemeColor } from '../../types';
-import { useTheme } from '../../hooks/useTheme';
-
-import { classes, themeOverride, styleHtmlThemeOverride } from './styles';
+import { Block } from '../Block/Block';
+import { Color } from '../../types';
 
 /**
  * The Text component is a low level component to style text.
  */
-export const Text: FC<TextProps &
-  (HTMLAttributes<HTMLDivElement> | HTMLAttributes<HTMLSpanElement>)> = ({
+export const Text: FC<AllTextProps> = ({
   children,
   className,
   color,
@@ -21,25 +17,20 @@ export const Text: FC<TextProps &
   truncate = false,
   ...restProps
 }) => {
-  const theme = useTheme();
-
   return (
     <Block
       element={inline ? 'span' : 'div'}
       className={clsx(
-        classes.text,
-        color && classes.color[color],
         {
-          [classes.styleHtml]: styleHtml,
-          [classes.truncate]: truncate && !inline
+          'mvn-styled-text': styleHtml,
+          'mvn-truncate': truncate && !inline
         },
-        styleHtml && styleHtmlThemeOverride(theme),
-        themeOverride(theme),
         className
       )}
       title={
         truncate && !title && typeof children === 'string' ? children : title
       }
+      textColor={color}
       {...restProps}
     >
       {children}
@@ -47,12 +38,21 @@ export const Text: FC<TextProps &
   );
 };
 
+export const TextF = forwardRef<HTMLDivElement | HTMLSpanElement, AllTextProps>(
+  (props, ref) => <Text {...props} forwardedRef={ref} />
+);
+
+type AllTextProps = TextProps &
+  HTMLAttributes<HTMLDivElement | HTMLSpanElement>;
+
 export interface TextProps {
   /** Color for Text. Defaults to theme's text color */
-  color?: ThemeColor;
+  color?: Color;
 
   /** Wether Text is inline (span) or block (div) */
   inline?: boolean;
+
+  forwardedRef?: Ref<HTMLDivElement | HTMLSpanElement>;
 
   /** Style html elements inside text with theme styles */
   styleHtml?: boolean;

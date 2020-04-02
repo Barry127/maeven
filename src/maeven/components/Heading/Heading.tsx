@@ -2,7 +2,6 @@ import React, { FC, HTMLAttributes, Ref, forwardRef } from 'react';
 import clsx from 'clsx';
 
 import { Block } from '../Block/Block';
-
 import { Color } from '../../types';
 
 /**
@@ -24,7 +23,7 @@ export const Heading: FC<AllHeadingProps> = ({
       className={clsx(
         `mvn-${size}`,
         {
-          [`mvn-heading-truncate`]: truncate
+          [`mvn-truncate`]: truncate
         },
         className
       )}
