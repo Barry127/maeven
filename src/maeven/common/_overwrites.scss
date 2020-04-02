@@ -8,6 +8,26 @@
   }
 }
 
+.mvn-background-color-background {
+  background-color: $mvn-color-background;
+  color: choose-text-color($mvn-color-background);
+
+  .mvn-dark & {
+    background-color: $mvn-color-background-dark;
+    color: choose-text-color($mvn-color-background-dark);
+  }
+}
+
+.mvn-background-color-textBackground {
+  background-color: $mvn-color-background-text;
+  color: choose-text-color($mvn-color-background-text);
+
+  .mvn-dark & {
+    background-color: $mvn-color-background-text-dark;
+    color: choose-text-color($mvn-color-background-text-dark);
+  }
+}
+
 @each $name, $color in $mvn-colors-text {
   .mvn-text-color-#{$name} {
     color: $color;

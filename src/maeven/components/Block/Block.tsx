@@ -1,7 +1,12 @@
 import React, { FC, AllHTMLAttributes, forwardRef, Ref } from 'react';
 import clsx from 'clsx';
 
-import { InstrinctElement, ReactComponent, Color } from '../../types';
+import {
+  InstrinctElement,
+  ReactComponent,
+  Color,
+  BackgroundColor
+} from '../../types';
 
 /**
  * A Block is a low level component with sensible theme default styling.
@@ -44,7 +49,7 @@ type AllBlockProps = BlockProps & AllHTMLAttributes<HTMLElement | SVGElement>;
 
 export interface BlockProps {
   /** Background color for Block */
-  background?: Color;
+  background?: BackgroundColor;
 
   /** Type of component to render. (overwrites element) */
   component?: ReactComponent;

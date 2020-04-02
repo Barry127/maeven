@@ -20,3 +20,10 @@ $mvn-font-weight: 400 !default;
 // Sizes
 $mvn-border-radius: $mvn-base / 4 !default;
 $mvn-outline-size: $mvn-base / 5 !default;
+
+// Media
+$mvn-media-xs: 0 !default;
+$mvn-media-sm: 576px !default;
+$mvn-media-md: 768px !default;
+$mvn-media-lg: 992px !default;
+$mvn-media-xl: 1200px !default;
