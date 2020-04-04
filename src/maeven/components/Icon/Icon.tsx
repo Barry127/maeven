@@ -3,61 +3,41 @@ import React, {
   HTMLAttributes,
   DOMElement,
   AllHTMLAttributes,
-  createElement
+  createElement,
+  Ref,
+  forwardRef
 } from 'react';
 import clsx from 'clsx';
-import { style } from 'typestyle';
 
-import { useTheme } from '../../hooks/useTheme';
-import { ThemeColor, MaevenIcon } from '../../types';
-
-import { classes, themeOverride } from './styles';
+import { Block } from '../Block/Block';
+import { MaevenIcon, Color } from '../../types';
 
 /**
  * An Icon represents an action or concept in a visual way.
  */
-export const Icon: FC<IconProps & HTMLAttributes<HTMLSpanElement>> = ({
+export const Icon: FC<AllIconProps> = ({
   children,
   className,
   color,
   fixedWidth = false,
   icon,
-  inverted = false,
   size = '1em',
+  style,
   title,
   ...restProps
 }) => {
-  const theme = useTheme();
-
   const attrs = {
     role: 'img',
     'aria-label': title,
     alt: icon.tag === 'img' ? title : undefined,
     ...icon.attrs,
     className: clsx(
-      classes.icon,
-      { [classes.fixedWidth]: fixedWidth },
-      icon.tag === 'svg' &&
-        style({
-          fill: icon.attrs.stroke
-            ? 'none'
-            : inverted
-            ? 'var(--maeven-color-text-inverted)'
-            : color
-            ? `var(--maeven-color-${color
-                .replace(/([a-z])([A-Z])/g, '$1-$2')
-                .toLowerCase()})`
-            : 'currentColor',
-          stroke: icon.attrs.stroke
-            ? inverted
-              ? 'var(--maeven-color-text-inverted)'
-              : color
-              ? `var(--maeven-color-${color
-                  .replace(/([a-z])([A-Z])/g, '$1-$2')
-                  .toLowerCase()})`
-              : 'currentColor'
-            : 'none'
-        }),
+      'mvn-icon',
+      {
+        'mvn-icon-fw': fixedWidth,
+        'mvn-icon-stroke': icon.tag === 'svg' && !!icon.attrs.stroke,
+        'mvn-icon-fill': icon.tag === 'svg' && !icon.attrs.stroke
+      },
       icon.attrs.className
     )
   };
@@ -78,35 +58,44 @@ export const Icon: FC<IconProps & HTMLAttributes<HTMLSpanElement>> = ({
   }
 
   return (
-    <span
+    <Block
+      {...restProps}
+      element="span"
+      textColor={color}
+      style={{
+        fontSize: size,
+        ...style
+      }}
       className={clsx(
-        classes.container,
-        size !== '1em' && classes.size(size),
-        inverted && classes.containerInverted(color),
-        themeOverride(theme),
+        'mvn-icon-container',
+        size !== '1em' && 'mvn-icon-with-size',
         className
       )}
-      {...restProps}
     >
       {renderChild({ ...icon, attrs })}
-    </span>
+    </Block>
   );
 };
+
+export const IconF = forwardRef<HTMLSpanElement, AllIconProps>((props, ref) => (
+  <Icon {...props} forwardedRef={ref} />
+));
+
+type AllIconProps = IconProps & HTMLAttributes<HTMLSpanElement>;
 
 export interface IconProps {
   children?: never;
 
   /** Color for icon. Defaults to current text color */
-  color?: ThemeColor;
+  color?: Color;
 
   /** Wether icon has a fixed width (same width as size) */
   fixedWidth?: boolean;
 
+  forwardedRef?: Ref<HTMLSpanElement>;
+
   /** Icon to render */
   icon: MaevenIcon;
-
-  /** Invert icon colors */
-  inverted?: boolean;
 
   /** Size for the icon */
   size?: string | number;

@@ -30,7 +30,6 @@ export const IconBrowser: FC = () => {
   const [query, setQuery] = useState('');
   const [color, setColor] = useState('none');
   const [fw, setFw] = useState(false);
-  const [inverted, setInverted] = useState(false);
 
   const matcher = new RegExp(query, 'i');
 
@@ -96,14 +95,6 @@ export const IconBrowser: FC = () => {
                 <input type="checkbox" onChange={() => setFw(!fw)} />
                 FixedWidth
               </label>
-              <br />
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={() => setInverted(!inverted)}
-                />
-                Inverted
-              </label>
             </P>
           </Card>
         </Col>
@@ -144,7 +135,6 @@ export const IconBrowser: FC = () => {
                           : ((color as any) as IconProps['color'])
                       }
                       size="3em"
-                      inverted={inverted}
                     />
                     <br />
                     <Text truncate>{name}</Text>
@@ -170,7 +160,7 @@ const PACKS = [
   { value: 'octicons', text: 'GitHub Octicons' },
   { value: 'ionicons', text: 'Ionicons' },
   { value: 'jam', text: 'JAM Icons' },
-  { value: 'la', text: 'Line Awesome Icons'},
+  { value: 'la', text: 'Line Awesome Icons' },
   { value: 'material', text: 'Material Icons' },
   { value: 'remix', text: 'Remix Icons' },
   { value: 'simple', text: 'Simple Icons' },

@@ -125,6 +125,9 @@
     "transformIgnorePatterns": [
       "\\node_modules/react-spring\\"
     ],
+    "modulePathIgnorePatterns": [
+      "docs"
+    ],
     "coveragePathIgnorePatterns": [
       "src/index.ts",
       "src/docs"
