@@ -1,13 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import { reinit, getStyles } from 'typestyle';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { Row } from './Row';
-import { classes, themeOverride } from './styles';
+import { Row, RowF } from './Row';
+import { Row as ExportedRow } from '../';
 
 describe('Row', () => {
   it('renders div element with given children', () => {
@@ -33,82 +30,48 @@ describe('Row', () => {
     expect(element.dataset.test).toBe('row-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Row: {
-          color: 'teal'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Row>Hello world!</Row>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
-  });
-
   describe('align', () => {
     it('is normal by default', () => {
       const { getByText } = render(<Row>Hello world!</Row>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.align.normal);
+      expect(element).toHaveClass('mvn-grid-row-align-normal');
     });
 
     it('sets top', () => {
       const { getByText } = render(<Row align="top">Hello world!</Row>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.align.top);
+      expect(element).toHaveClass('mvn-grid-row-align-top');
     });
 
     it('sets center', () => {
       const { getByText } = render(<Row align="center">Hello world!</Row>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.align.center);
-    });
-
-    it('sets bottom', () => {
-      const { getByText } = render(<Row align="bottom">Hello world!</Row>);
-      const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.align.bottom);
-    });
-
-    it('sets baseline', () => {
-      const { getByText } = render(<Row align="baseline">Hello world!</Row>);
-      const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.align.baseline);
-    });
-
-    it('sets stretch', () => {
-      const { getByText } = render(<Row align="stretch">Hello world!</Row>);
-      const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.align.stretch);
+      expect(element).toHaveClass('mvn-grid-row-align-center');
     });
   });
 
   describe('gutter', () => {
-    beforeEach(reinit);
-
     it('has no gutter by default', () => {
-      render(<Row>Hello world!</Row>);
-      const styles = getStyles();
-      expect(styles).toContain(
-        'margin-left:calc((var(--maeven-base) * -0) / 2)'
-      );
+      const { getByText } = render(<Row>Hello world!</Row>);
+      const element = getByText('Hello world!');
+      expect(element).not.toHaveClass('mvn-grid-gutter-1');
+      expect(element).not.toHaveClass('mvn-grid-gutter-2');
+      expect(element).not.toHaveClass('mvn-grid-gutter-3');
+      expect(element).not.toHaveClass('mvn-grid-gutter-4');
+      expect(element).not.toHaveClass('mvn-grid-gutter-5');
+      expect(element).not.toHaveClass('mvn-grid-gutter-6');
+      expect(element).not.toHaveClass('mvn-grid-gutter-7');
+      expect(element).not.toHaveClass('mvn-grid-gutter-8');
+      expect(element).not.toHaveClass('mvn-grid-gutter-9');
+      expect(element).not.toHaveClass('mvn-grid-gutter-10');
+      expect(element).not.toHaveClass('mvn-grid-gutter-11');
+      expect(element).not.toHaveClass('mvn-grid-gutter-12');
     });
 
     it('sets gutter', () => {
-      render(<Row gutter={2}>Hello world!</Row>);
-      const styles = getStyles();
-      expect(styles).toContain(
-        'margin-left:calc((var(--maeven-base) * -2) / 2)'
-      );
+      const { getByText } = render(<Row gutter={2}>Hello world!</Row>);
+      const element = getByText('Hello world!');
+      expect(element).toHaveClass('mvn-grid-gutter-2');
     });
   });
 
@@ -116,13 +79,26 @@ describe('Row', () => {
     it('wraps columns by default', () => {
       const { getByText } = render(<Row>Hello world!</Row>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.wrap);
+      expect(element).not.toHaveClass('mvn-grid-row-no-wrap');
     });
 
     it('sets wrap to false', () => {
       const { getByText } = render(<Row wrap={false}>Hello world!</Row>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.noWrap);
+      expect(element).toHaveClass('mvn-grid-row-no-wrap');
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports RowForwardRef', () => {
+      expect(ExportedRow).toBe(RowF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLDivElement>();
+      render(<RowF ref={ref} />);
+      const element = document.querySelector('.mvn-grid-row');
+      expect(ref.current).toBe(element);
     });
   });
 });

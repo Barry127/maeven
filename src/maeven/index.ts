@@ -5,7 +5,6 @@ export * from './components/Alert';
 export * from './components/Button';
 export * from './components/Card';
 export * from './components/Form';
-export * from './components/Grid';
 export * from './components/Icon';
 export * from './components/Modal';
 export * from './components/Spinner';

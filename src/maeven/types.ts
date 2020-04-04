@@ -157,6 +157,8 @@ export type ThemeColor = ColorName | SemanticColorName;
 
 export type Color = ColorName | SemanticColorName;
 
+export type BackgroundColor = Color | 'background' | 'textBackground';
+
 export type InstrinctElement = keyof JSX.IntrinsicElements;
 
 export type ReactComponent = ComponentClass<any> | StatelessComponent<any>;

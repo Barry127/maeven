@@ -1,3 +1,3 @@
-export { Col } from './Col/Col';
-export { Container } from './Container/Container';
-export { Row } from './Row/Row';
+export { ColF as Col } from './Col/Col';
+export { ContainerF as Container } from './Container/Container';
+export { RowF as Row } from './Row/Row';

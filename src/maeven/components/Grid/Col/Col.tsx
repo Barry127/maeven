@@ -1,16 +1,19 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, Ref, forwardRef } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
-import { Block } from '../../Block';
+import { Block } from '../../Block/Block';
+import {
+  InstrinctElement,
+  BackgroundColor,
+  ReactComponent
+} from '../../../types';
 
-import { classes, themeOverride } from './styles';
+import { hiddenToClassName } from './helpers';
 
 /**
  * Grid column.
  */
-export const Col: FC<ColProps &
-  Omit<HTMLAttributes<HTMLElement>, 'hidden'>> = ({
+export const Col: FC<AllColProps> = ({
   children,
   className,
   element = 'div',
@@ -19,46 +22,48 @@ export const Col: FC<ColProps &
   md,
   sm,
   span,
-  transparent = false,
   xl,
-  xs = 24,
+  xs,
   ...restProps
 }) => {
-  const theme = useTheme();
-
   return (
     <Block
+      {...restProps}
       element={element}
       className={clsx(
-        classes.col,
-        span !== undefined && classes.span(span),
-        classes.responsiveCol(theme, { lg, md, sm, span, xl, xs }),
-        typeof hidden !== 'boolean' && classes.responsiveHidden(theme, hidden),
-        {
-          [classes.hidden]: hidden === true,
-          [classes.transparent]: transparent
-        },
-        themeOverride(theme),
+        'mvn-grid-col',
+        span !== undefined && `mvn-col-${span}`,
+        hiddenToClassName(hidden),
+        xs && `mvn-col-xs-${xs}`,
+        sm && `mvn-col-sm-${sm}`,
+        md && `mvn-col-md-${md}`,
+        lg && `mvn-col-lg-${lg}`,
+        xl && `mvn-col-xl-${xl}`,
         className
       )}
-      {...restProps}
     >
       {children}
     </Block>
   );
 };
 
+export const ColF = forwardRef<HTMLElement, AllColProps>((props, ref) => (
+  <Col {...props} forwardedRef={ref} />
+));
+
+type AllColProps = ColProps & Omit<HTMLAttributes<HTMLElement>, 'hidden'>;
+
 export interface ColProps {
+  /** Background color for Col */
+  background?: BackgroundColor;
+
+  /** Type of component to render. (overwrites element) */
+  component?: ReactComponent;
+
   /** Type of html element to render. */
-  element?:
-    | 'article'
-    | 'aside'
-    | 'div'
-    | 'footer'
-    | 'header'
-    | 'main'
-    | 'nav'
-    | 'section';
+  element?: InstrinctElement;
+
+  forwardedRef?: Ref<HTMLElement>;
 
   /**
    * Wether column is hidden
@@ -74,9 +79,6 @@ export interface ColProps {
 
   /** Column span width (based on 24 column grid) */
   span?: number;
-
-  /** Wether column background is transparent */
-  transparent?: boolean;
 
   /** Column span width for xs viewport (based on 24 column grid) */
   xs?: number;

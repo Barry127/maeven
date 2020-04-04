@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { Container } from './Container';
-import { classes, themeOverride } from './styles';
+import { Container, ContainerF } from './Container';
+import { Container as ExportedContainer } from '../';
 
 describe('Container', () => {
   it('renders div element with given children', () => {
@@ -34,25 +32,14 @@ describe('Container', () => {
     expect(element.dataset.test).toBe('container-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Container: {
-          color: 'navy'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Container>Hello world!</Container>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
+  describe('background', () => {
+    it('sets textBackground color', () => {
+      const { getByText } = render(
+        <Container background="textBackground">Hello world!</Container>
+      );
+      const element = getByText('Hello world!');
+      expect(element).toHaveClass('mvn-background-color-textBackground');
+    });
   });
 
   describe('element', () => {
@@ -77,13 +64,26 @@ describe('Container', () => {
     it('is not fluid by default', () => {
       const { getByText } = render(<Container>Hello world!</Container>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.responsive(MaevenDefault));
+      expect(element).toHaveClass('mvn-responsive-grid-container');
     });
 
     it('sets fluid', () => {
       const { getByText } = render(<Container fluid>Hello world!</Container>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.responsive(MaevenDefault));
+      expect(element).not.toHaveClass('mvn-responsive-grid-container');
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports ContainerForwardRef', () => {
+      expect(ExportedContainer).toBe(ContainerF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLDivElement>();
+      render(<ContainerF ref={ref} />);
+      const element = document.querySelector('.mvn-grid-container');
+      expect(ref.current).toBe(element);
     });
   });
 });

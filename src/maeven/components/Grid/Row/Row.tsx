@@ -1,46 +1,40 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, Ref, forwardRef } from 'react';
 import clsx from 'clsx';
-import { style } from 'typestyle';
-
-import { useTheme } from '../../../hooks/useTheme';
-
-import { classes, themeOverride } from './styles';
 
 /**
  * Grid row.
  */
-export const Row: FC<RowProps & HTMLAttributes<HTMLDivElement>> = ({
+export const Row: FC<AllRowProps> = ({
   align = 'normal',
   children,
   className,
+  forwardedRef,
   gutter = 0,
   wrap = true,
   ...restProps
-}) => {
-  const theme = useTheme();
-  const gutterClass = style({
-    //@ts-ignore
-    '--maeven-row-gutter': `calc(var(--maeven-base) * ${gutter})`,
-    marginLeft: `calc((var(--maeven-base) * -${gutter}) / 2)`,
-    marginRight: `calc((var(--maeven-base) * -${gutter}) / 2)`
-  });
+}) => (
+  <div
+    {...restProps}
+    className={clsx(
+      'mvn-grid-row',
+      `mvn-grid-row-align-${align}`,
+      {
+        [`mvn-grid-gutter-${gutter}`]: !!gutter,
+        'mvn-grid-row-no-wrap': !wrap
+      },
+      className
+    )}
+    ref={forwardedRef}
+  >
+    {children}
+  </div>
+);
 
-  return (
-    <div
-      className={clsx(
-        classes.row,
-        classes.align[align],
-        gutterClass,
-        wrap ? classes.wrap : classes.noWrap,
-        themeOverride(theme),
-        className
-      )}
-      {...restProps}
-    >
-      {children}
-    </div>
-  );
-};
+export const RowF = forwardRef<HTMLDivElement, AllRowProps>((props, ref) => (
+  <Row {...props} forwardedRef={ref} />
+));
+
+type AllRowProps = RowProps & HTMLAttributes<HTMLDivElement>;
 
 export interface RowProps {
   /**
@@ -48,10 +42,12 @@ export interface RowProps {
    */
   align?: 'normal' | 'top' | 'center' | 'bottom' | 'baseline' | 'stretch';
 
+  forwardedRef?: Ref<HTMLDivElement>;
+
   /**
    * Gutter between children. Number of times the theme's base size.
    */
-  gutter?: number;
+  gutter?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
   /**
    * Wether line breaks after a width overflow

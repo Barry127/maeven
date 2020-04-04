@@ -1,6 +1,10 @@
 @import 'colors';
 @import 'functions';
 
+.mvn-hidden {
+  display: none;
+}
+
 @each $name, $color in $mvn-colors {
   .mvn-background-color-#{$name} {
     background-color: $color;

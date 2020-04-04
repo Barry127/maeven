@@ -1,17 +1,23 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef, Component, FC } from 'react';
 import { render } from '@testing-library/react';
-import { reinit, getStyles } from 'typestyle';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
+import { Col, ColF } from './Col';
+import { Col as ExportedCol } from '../';
 
-import { Col } from './Col';
-import { classes, themeOverride } from './styles';
+const FunctionalComponent: FC = ({ children, ...restProps }) => (
+  <p {...restProps}>{children}</p>
+);
+
+class ClassComponent extends Component {
+  render() {
+    const { children, ...restProps } = this.props;
+    return <span {...restProps}>{children}</span>;
+  }
+}
 
 describe('Col', () => {
-  beforeEach(reinit);
-
   it('renders div element with given children', () => {
     const { getByText } = render(<Col>Hello world!</Col>);
     const element = getByText('Hello world!');
@@ -35,25 +41,34 @@ describe('Col', () => {
     expect(element.dataset.test).toBe('col-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Col: {
-          color: 'pink'
-        }
-      }
-    };
+  describe('background', () => {
+    it('sets textBackground color', () => {
+      const { getByText } = render(
+        <Col background="textBackground">Hello world!</Col>
+      );
+      const element = getByText('Hello world!');
+      expect(element).toHaveClass('mvn-background-color-textBackground');
+    });
+  });
 
-    const expectedClassName = themeOverride(theme);
+  describe('component', () => {
+    it('renders functional component as link', () => {
+      const { getByText } = render(
+        <Col component={FunctionalComponent}>Hello world!</Col>
+      );
+      const element = getByText('Hello world!');
+      expect(element.tagName).toBe('P');
+      expect(element).toHaveClass('mvn-grid-col');
+    });
 
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Col>Hello world!</Col>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
+    it('renders class component as link', () => {
+      const { getByText } = render(
+        <Col component={ClassComponent}>Hello world!</Col>
+      );
+      const element = getByText('Hello world!');
+      expect(element.tagName).toBe('SPAN');
+      expect(element).toHaveClass('mvn-grid-col');
+    });
   });
 
   describe('element', () => {
@@ -74,16 +89,14 @@ describe('Col', () => {
     it('is not hidden by default', () => {
       const { getByText } = render(<Col>Hello world!</Col>);
       const element = getByText('Hello world!');
-      const styles = getStyles();
 
-      expect(element).not.toHaveClass(classes.hidden);
-      expect(styles.match(/display:none/g)).toBeNull();
+      expect(Array.from(element.classList).join()).not.toContain('hidden');
     });
 
     it('sets hidden with boolean', () => {
       const { getByText } = render(<Col hidden>Hello world!</Col>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.hidden);
+      expect(element).toHaveClass('mvn-hidden');
     });
 
     it('sets hidden with array', () => {
@@ -91,160 +104,109 @@ describe('Col', () => {
         <Col hidden={['md', 'lg', 'xl']}>Hello world!</Col>
       );
       const element = getByText('Hello world!');
-      const styles = getStyles();
 
-      expect(element).not.toHaveClass(classes.hidden);
-      expect(styles.match(/display:none/g)).toHaveLength(3);
+      expect(element).not.toHaveClass('mvn-hidden');
+      expect(element).toHaveClass('mvn-col-hidden-md');
+      expect(element).toHaveClass('mvn-col-hidden-lg');
+      expect(element).toHaveClass('mvn-col-hidden-xl');
     });
 
     it('sets hidden with string', () => {
       const { getByText } = render(<Col hidden="sm">Hello world!</Col>);
       const element = getByText('Hello world!');
-      const styles = getStyles();
 
-      expect(element).not.toHaveClass(classes.hidden);
-      // hidden for sm and xl
-      expect(styles.match(/display:none/g)).toHaveLength(2);
+      expect(element).not.toHaveClass('mvn-hidden');
+      // hidden for sm and xs
+      expect(element).toHaveClass('mvn-col-hidden-sm');
+      expect(element).toHaveClass('mvn-col-hidden-xs');
     });
   });
 
   describe('span width', () => {
-    it('has an auto width by default', () => {
-      render(<Col>Hello world!</Col>);
-      const styles = getStyles();
-
-      // sm md lg xl = 4x (default style removed by reinit)
-      expect(styles.match(/flex:1 1 auto/g)).toHaveLength(4);
-      //xs
-      expect(
-        styles.match(/flex:0 0 calc\(100% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(1);
-    });
-
     it('sets xs', () => {
-      render(
+      const { getByText } = render(
         <Col span={6} xs={12}>
           Hello world!
         </Col>
       );
-      const styles = getStyles();
+      const element = getByText('Hello world!');
 
-      // default-span sm md lg xl
-      expect(
-        styles.match(/flex:0 0 calc\(25% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(5);
-      //xs
-      expect(
-        styles.match(/flex:0 0 calc\(50% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(1);
+      expect(element).toHaveClass('mvn-col-6');
+      expect(element).toHaveClass('mvn-col-xs-12');
     });
 
     it('sets sm', () => {
-      render(
-        <Col span={6} sm={12} xs={0}>
+      const { getByText } = render(
+        <Col span={6} sm={12}>
           Hello world!
         </Col>
       );
-      const styles = getStyles();
+      const element = getByText('Hello world!');
 
-      // default-span md lg xl
-      expect(
-        styles.match(/flex:0 0 calc\(25% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(4);
-      // xs sm
-      expect(
-        styles.match(/flex:0 0 calc\(50% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(2);
+      expect(element).toHaveClass('mvn-col-6');
+      expect(element).toHaveClass('mvn-col-sm-12');
     });
 
     it('sets md', () => {
-      render(
-        <Col span={6} md={12} xs={0}>
+      const { getByText } = render(
+        <Col span={6} md={12}>
           Hello world!
         </Col>
       );
-      const styles = getStyles();
+      const element = getByText('Hello world!');
 
-      // default-span lg xl
-      expect(
-        styles.match(/flex:0 0 calc\(25% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(3);
-      // xs sm md
-      expect(
-        styles.match(/flex:0 0 calc\(50% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(3);
+      expect(element).toHaveClass('mvn-col-6');
+      expect(element).toHaveClass('mvn-col-md-12');
     });
 
     it('sets lg', () => {
-      render(
-        <Col span={6} lg={12} xs={0}>
+      const { getByText } = render(
+        <Col span={6} lg={12}>
           Hello world!
         </Col>
       );
-      const styles = getStyles();
+      const element = getByText('Hello world!');
 
-      // default-span xl
-      expect(
-        styles.match(/flex:0 0 calc\(25% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(2);
-      // xs sm md lg
-      expect(
-        styles.match(/flex:0 0 calc\(50% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(4);
+      expect(element).toHaveClass('mvn-col-6');
+      expect(element).toHaveClass('mvn-col-lg-12');
     });
 
     it('sets xl', () => {
-      render(
-        <Col span={6} xl={12} xs={0}>
+      const { getByText } = render(
+        <Col span={6} xl={12}>
           Hello world!
         </Col>
       );
-      const styles = getStyles();
+      const element = getByText('Hello world!');
 
-      // default-span
-      expect(
-        styles.match(/flex:0 0 calc\(25% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(1);
-      // xs sm md lg xl
-      expect(
-        styles.match(/flex:0 0 calc\(50% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(5);
+      expect(element).toHaveClass('mvn-col-6');
+      expect(element).toHaveClass('mvn-col-xl-12');
     });
 
     it('sets multiple spans', () => {
-      render(
+      const { getByText } = render(
         <Col span={6} md={12} xs={18}>
           Hello world!
         </Col>
       );
-      const styles = getStyles();
+      const element = getByText('Hello world!');
 
-      // default-span lg xl
-      expect(
-        styles.match(/flex:0 0 calc\(25% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(3);
-      // sm md
-      expect(
-        styles.match(/flex:0 0 calc\(50% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(2);
-      //xs
-      expect(
-        styles.match(/flex:0 0 calc\(75% - var\(--maeven-row-gutter\)\)/g)
-      ).toHaveLength(1);
+      expect(element).toHaveClass('mvn-col-6');
+      expect(element).toHaveClass('mvn-col-md-12');
+      expect(element).toHaveClass('mvn-col-xs-18');
     });
   });
 
-  describe('transparent', () => {
-    it('is not transparent by default', () => {
-      const { getByText } = render(<Col>Hello world!</Col>);
-      const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.transparent);
+  describe('forwarding ref', () => {
+    it('exports ColForwardRef', () => {
+      expect(ExportedCol).toBe(ColF);
     });
 
-    it('sets transparent', () => {
-      const { getByText } = render(<Col transparent>Hello world!</Col>);
-      const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.transparent);
+    it('sets ref', () => {
+      const ref = createRef<HTMLElement>();
+      render(<ColF ref={ref} />);
+      const element = document.querySelector('.mvn-grid-col');
+      expect(ref.current).toBe(element);
     });
   });
 });

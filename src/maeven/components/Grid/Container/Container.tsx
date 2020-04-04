@@ -1,50 +1,44 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes, Ref, forwardRef } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
-import { Block } from '../../Block';
-
-import { classes, themeOverride } from './styles';
+import { Block } from '../../Block/Block';
+import { InstrinctElement, BackgroundColor } from '../../../types';
 
 /**
  * The Container component can contain the main content or a grid. It has a maxWidth and centers the content block.
  */
-export const Container: FC<ContainerProps & HTMLAttributes<HTMLElement>> = ({
+export const Container: FC<AllContainerProps> = ({
   children,
   className,
-  element = 'div',
   fluid = false,
   ...restProps
-}) => {
-  const theme = useTheme();
+}) => (
+  <Block
+    className={clsx(
+      'mvn-grid-container',
+      { 'mvn-responsive-grid-container': !fluid },
+      className
+    )}
+    {...restProps}
+  >
+    {children}
+  </Block>
+);
 
-  return (
-    <Block
-      element={element}
-      className={clsx(
-        classes.container,
-        !fluid && classes.responsive(theme),
-        themeOverride(theme),
-        className
-      )}
-      {...restProps}
-    >
-      {children}
-    </Block>
-  );
-};
+export const ContainerF = forwardRef<HTMLElement, AllContainerProps>(
+  (props, ref) => <Container {...props} forwardedRef={ref} />
+);
+
+type AllContainerProps = ContainerProps & HTMLAttributes<HTMLElement>;
 
 export interface ContainerProps {
+  /** Background color for Container content */
+  background?: BackgroundColor;
+
   /** Type of html element to render. */
-  element?:
-    | 'article'
-    | 'aside'
-    | 'div'
-    | 'footer'
-    | 'header'
-    | 'main'
-    | 'nav'
-    | 'section';
+  element?: InstrinctElement;
+
+  forwardedRef?: Ref<HTMLElement>;
 
   /** When Container is fluid, it has no maxWidth */
   fluid?: boolean;
