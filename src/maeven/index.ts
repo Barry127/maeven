@@ -7,7 +7,6 @@ export * from './components/Card';
 export * from './components/Form';
 export * from './components/Icon';
 export * from './components/Modal';
-export * from './components/Spinner';
 export * from './components/ThemeProvider';
 
 // Hooks
