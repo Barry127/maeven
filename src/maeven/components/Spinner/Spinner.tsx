@@ -7,12 +7,11 @@ import React, {
   useEffect
 } from 'react';
 import clsx from 'clsx';
+import { useTransition, useSpring, animated } from 'react-spring';
 
-import { useTheme } from '../../hooks/useTheme';
-import { ThemeColor } from '../../types';
+import { Color } from '../../types';
 import { Text } from '../Text';
 
-import { classes, themeOverride } from './styles';
 import { Circle } from './Circle';
 
 /**
@@ -30,7 +29,11 @@ export const Spinner: FC<SpinnerProps & HTMLAttributes<HTMLDivElement>> = ({
   ...restProps
 }) => {
   const [isSpinning, setSpinning] = useState(spinning);
-  const theme = useTheme();
+  const isSizeNumber = typeof size === 'number';
+
+  // useEffect(() => {
+  //   setSpinning(spinning);
+  // }, [spinning]);
 
   useEffect(() => {
     if (spinning && delay > 0) {
@@ -50,32 +53,48 @@ export const Spinner: FC<SpinnerProps & HTMLAttributes<HTMLDivElement>> = ({
     () => (
       <div
         className={clsx(
-          classes.spinner,
-          className,
-          color && classes.color[color],
-          {
-            [classes.sm]: size === 'sm',
-            [classes.md]: size === 'md',
-            [classes.lg]: size === 'lg'
-          },
-          themeOverride(theme)
+          'mvn-spinner',
+          !isSizeNumber && `mvn-spinner-${size}`,
+          color && `mvn-text-color-${color}`,
+          className
         )}
-        style={typeof size === 'number' ? { ...style, fontSize: size } : style}
+        style={isSizeNumber ? { ...style, fontSize: size } : style}
         {...restProps}
       >
         <Circle />
-        {text && <Text className={classes.text}>{text}</Text>}
+        {text && (
+          <Text inline={!children} className="mvn-spinner-text">
+            {text}
+          </Text>
+        )}
       </div>
     ),
-    [className, color, size, style, text, theme, restProps]
+    [children, className, color, isSizeNumber, size, style, text, restProps]
   );
 
+  const spinnerTransition = useTransition(isSpinning, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 }
+  });
+  const contentStyle = useSpring({
+    opacity: isSpinning ? 0.3 : 1,
+    filter: isSpinning ? 'blur(1px)' : 'blur(0px)'
+  });
+
   return children ? (
-    <div
-      className={clsx(classes.container, { [classes.isSpinning]: isSpinning })}
-    >
-      <div className={classes.content}>{children}</div>
-      {renderSpinner()}
+    <div className="mvn-spinner-container">
+      <animated.div className="mvn-spinner-content" style={contentStyle}>
+        {children}
+      </animated.div>
+      {spinnerTransition.map(
+        ({ item, key, props }) =>
+          item && (
+            <animated.div key={key} style={props}>
+              {renderSpinner()}
+            </animated.div>
+          )
+      )}
     </div>
   ) : isSpinning ? (
     renderSpinner()
@@ -84,7 +103,7 @@ export const Spinner: FC<SpinnerProps & HTMLAttributes<HTMLDivElement>> = ({
 
 export interface SpinnerProps {
   /** Color for spinner */
-  color?: ThemeColor;
+  color?: Color;
 
   /** Delay in ms before showing spinner after spinning is set to true */
   delay?: number;

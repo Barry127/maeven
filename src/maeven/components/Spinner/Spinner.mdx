@@ -38,16 +38,16 @@ Spinners can have different sizes.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={24}>
+  <Col span={24}>
     <Spinner size="sm" text="Small" />
   </Col>
-  <Col transparent span={24}>
+  <Col span={24}>
     <Spinner size="md" text="Medium" />
   </Col>
-  <Col transparent span={24}>
+  <Col span={24}>
     <Spinner size="lg" text="Large" />
   </Col>
-  <Col transparent span={24}>
+  <Col span={24}>
     <Spinner size={100} text="100px" />
   </Col>
 </Row>
@@ -60,23 +60,20 @@ Spinners can be styled in different (theme) colors.
 ```js live
 <div style={{ columns: '4 auto' }}>
   <Spinner color="black" text="Black" />
-  <Spinner color="blue" text="Blue" />
-  <Spinner color="cyan" text="Cyan" />
-  <Spinner color="darkGrey" text="DarkGrey" />
-  <Spinner color="green" text="Green" />
-  <Spinner color="grey" text="Grey" />
-  <Spinner color="indigo" text="Indigo" />
-  <Spinner color="orange" text="Orange" />
-  <Spinner color="pink" text="Pink" />
-  <Spinner color="purple" text="Purple" />
-  <Spinner color="red" text="Red" />
-  <Spinner color="teal" text="Teal" />
   <Spinner color="white" text="White" />
+  <Spinner color="darkGrey" text="DarkGrey" />
+  <Spinner color="grey" text="Grey" />
+  <Spinner color="lightGrey" text="LightGrey" />
+  <Spinner color="red" text="Red" />
+  <Spinner color="orange" text="Orange" />
   <Spinner color="yellow" text="Yellow" />
+  <Spinner color="green" text="Green" />
+  <Spinner color="teal" text="Teal" />
+  <Spinner color="blue" text="Blue" />
+  <Spinner color="indigo" text="Indigo" />
+  <Spinner color="pink" text="Pink" />
   <Spinner color="primary" text="Primary" />
-  <Spinner color="secondary" text="Secondary" />
   <Spinner color="success" text="Success" />
-  <Spinner color="info" text="Info" />
   <Spinner color="warning" text="Warning" />
   <Spinner color="danger" text="Danger" />
 </div>
@@ -96,7 +93,7 @@ const Component = () => {
   return (
     <Container>
       <Row gutter={1}>
-        <Col transparent span={12}>
+        <Col span={12}>
           <Card>
             <Spinner spinning={s1} size={96} color="primary" text="Loading">
               <CardImage src={skyline} />
@@ -112,7 +109,7 @@ const Component = () => {
             </P>
           </Card>
         </Col>
-        <Col transparent span={12}>
+        <Col span={12}>
           <Card>
             <Spinner spinning={s2} size={96} color="primary" delay={200}>
               <CardImage src={bubbles} />
