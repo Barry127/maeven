@@ -31,10 +31,8 @@ Buttons can by styled as different type of buttons.
 ```js live
 <Block padding>
   <P>
-    <Button buttonType="primary">Primary</Button>{' '}
-    <Button buttonType="secondary">Secondary</Button>{' '}
+    <Button buttonType="primary">Primary</Button> <Button>Default</Button>{' '}
     <Button buttonType="link">Link</Button>{' '}
-    <Button buttonType="info">Info</Button>{' '}
     <Button buttonType="success">Success</Button>{' '}
     <Button buttonType="warning">Warning</Button>{' '}
     <Button buttonType="danger">Danger</Button>
@@ -43,14 +41,9 @@ Buttons can by styled as different type of buttons.
     <Button disabled buttonType="primary">
       Disabled Primary
     </Button>{' '}
-    <Button disabled buttonType="secondary">
-      Disabled Secondary
-    </Button>{' '}
+    <Button disabled>Disabled Default</Button>{' '}
     <Button disabled buttonType="link">
       Disabled Link
-    </Button>{' '}
-    <Button disabled buttonType="info">
-      Disabled Info
     </Button>{' '}
     <Button disabled buttonType="success">
       Disabled Success
@@ -59,61 +52,6 @@ Buttons can by styled as different type of buttons.
       Disabled Warning
     </Button>{' '}
     <Button disabled buttonType="danger">
-      Disabled Danger
-    </Button>
-  </P>
-</Block>
-```
-
-### Outline
-
-Buttons can be styled outlined for secondary actions.
-
-```js live
-<Block padding>
-  <P>
-    <Button outline buttonType="primary">
-      Primary
-    </Button>{' '}
-    <Button outline buttonType="secondary">
-      Secondary
-    </Button>{' '}
-    <Button outline buttonType="link">
-      Link
-    </Button>{' '}
-    <Button outline buttonType="info">
-      Info
-    </Button>{' '}
-    <Button outline buttonType="success">
-      Success
-    </Button>{' '}
-    <Button outline buttonType="warning">
-      Warning
-    </Button>{' '}
-    <Button outline buttonType="danger">
-      Danger
-    </Button>
-  </P>
-  <P>
-    <Button outline disabled buttonType="primary">
-      Disabled Primary
-    </Button>{' '}
-    <Button outline disabled buttonType="secondary">
-      Disabled Secondary
-    </Button>{' '}
-    <Button outline disabled buttonType="link">
-      Disabled Link
-    </Button>{' '}
-    <Button outline disabled buttonType="info">
-      Disabled Info
-    </Button>{' '}
-    <Button outline disabled buttonType="success">
-      Disabled Success
-    </Button>{' '}
-    <Button outline disabled buttonType="warning">
-      Disabled Warning
-    </Button>{' '}
-    <Button outline disabled buttonType="danger">
       Disabled Danger
     </Button>
   </P>
@@ -154,19 +92,52 @@ A button can contain icons.
 </>
 ```
 
+### Loading
+
+Buttons can have a loading state.
+
+```js live withRender
+// import { refreshCw } from 'icon-packs/feather';
+
+const Example = () => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (loading) {
+      const to = setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }
+  }, [loading]);
+
+  return (
+    <Button
+      buttonType="primary"
+      icon={refreshCw}
+      loading={loading}
+      onClick={() => setLoading(true)}
+    >
+      Click to toggle
+    </Button>
+  );
+};
+
+render(<Example />);
+```
+
 ### Sizes
 
 Buttons can have different sizes.
 
 ```js live
 <>
-  <Button buttonType="primary" size="sm">
+  <Button icon={userCircleSolid} buttonType="primary" size="sm">
     Small Button
   </Button>{' '}
-  <Button buttonType="primary" size="md">
+  <Button icon={userCircleSolid} buttonType="primary" size="md">
     Medium Button
   </Button>{' '}
-  <Button buttonType="primary" size="lg">
+  <Button icon={userCircleSolid} buttonType="primary" size="lg">
     Large Button
   </Button>
 </>
@@ -177,7 +148,7 @@ Buttons can have different sizes.
 A fluid button takes up the full width.
 
 ```js live
-<Button buttonType="primary" fluid>
+<Button buttonType="primary" fluid size="lg">
   Fluid Button
 </Button>
 ```

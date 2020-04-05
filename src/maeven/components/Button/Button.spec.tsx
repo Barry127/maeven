@@ -4,11 +4,8 @@ import React, { createRef } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { activity } from 'icon-packs/cjs/feather';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
-import { Button, ButtonForwardRef } from './Button';
+import { Button, ButtonF } from './Button';
 import { Button as ExportedButton } from './';
-import { classes, themeOverride } from './styles';
 
 describe('Button', () => {
   it('renders button element with given text', () => {
@@ -35,38 +32,17 @@ describe('Button', () => {
     expect(element?.dataset.test).toBe('button-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Button: {
-          color: 'navy'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Button>Click Me</Button>
-      </ThemeProvider>
-    );
-    const element = document.querySelector('button');
-    expect(element).toHaveClass(expectedClassName);
-  });
-
   describe('active', () => {
     it('is not active by default', () => {
       render(<Button>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).not.toHaveClass(classes.active);
+      expect(element).not.toHaveClass('mvn-button-active');
     });
 
     it('sets active', () => {
       render(<Button active>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.active);
+      expect(element).toHaveClass('mvn-button-active');
     });
 
     it('does not set active when button is disabled', () => {
@@ -76,7 +52,7 @@ describe('Button', () => {
         </Button>
       );
       const element = document.querySelector('button');
-      expect(element).not.toHaveClass(classes.active);
+      expect(element).not.toHaveClass('mvn-button-active');
     });
   });
 
@@ -84,19 +60,20 @@ describe('Button', () => {
     it('defaults to  default style', () => {
       render(<Button>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.buttonTypes.default);
+      expect(element).not.toHaveClass('mvn-button-primary');
+      expect(element).not.toHaveClass('mvn-button-link');
     });
 
     it('sets primary color', () => {
       render(<Button buttonType="primary">Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.buttonTypes.primary);
+      expect(element).toHaveClass('mvn-button-primary');
     });
 
     it('sets link style', () => {
       render(<Button buttonType="link">Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.buttonTypes.link);
+      expect(element).toHaveClass('mvn-button-link');
     });
   });
 
@@ -104,14 +81,12 @@ describe('Button', () => {
     it('is not disabled by default', () => {
       render(<Button>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).not.toHaveClass(classes.disabled);
       expect(element).not.toHaveAttribute('disabled');
     });
 
-    it('sets and styles disabled', () => {
+    it('sets disabled', () => {
       render(<Button disabled>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.disabled);
       expect(element).toHaveAttribute('disabled');
     });
 
@@ -132,13 +107,13 @@ describe('Button', () => {
     it('is not fluid by default', () => {
       render(<Button>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).not.toHaveClass(classes.fluid);
+      expect(element).not.toHaveClass('mvn-button-fluid');
     });
 
     it('sets fluid', () => {
       render(<Button fluid>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.fluid);
+      expect(element).toHaveClass('mvn-button-fluid');
     });
   });
 
@@ -174,17 +149,35 @@ describe('Button', () => {
     });
   });
 
-  describe('outline', () => {
-    it('is not outlined by default', () => {
-      render(<Button>Click Me</Button>);
-      const element = document.querySelector('button');
-      expect(element).not.toHaveClass(classes.outline);
+  describe('loading', () => {
+    it('is not loading by default', () => {
+      render(<Button icon={activity}>Click Me</Button>);
+      const spinner = document.querySelector('.mvn-spinner');
+      expect(spinner).not.toBeInTheDocument();
+      const icon = document.querySelector('.mvn-icon');
+      expect(icon).toBeInTheDocument();
     });
 
-    it('sets outline', () => {
-      render(<Button outline>Click Me</Button>);
+    it('sets loading', () => {
+      render(<Button loading>Click Me</Button>);
+      const spinner = document.querySelector('.mvn-spinner');
+      expect(spinner).toBeInTheDocument();
+    });
+
+    it('is disabled when loading', () => {
+      render(<Button loading>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.outline);
+      expect(element).toHaveAttribute('disabled');
+    });
+
+    it('hides (left) icon when loading', () => {
+      render(
+        <Button loading icon={activity}>
+          Click Me
+        </Button>
+      );
+      const icon = document.querySelector('.mvn-icon');
+      expect(icon).not.toBeInTheDocument();
     });
   });
 
@@ -192,20 +185,20 @@ describe('Button', () => {
     it('is md by default', () => {
       render(<Button>Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).not.toHaveClass(classes.sm);
-      expect(element).not.toHaveClass(classes.lg);
+      expect(element).not.toHaveClass('mvn-button-sm');
+      expect(element).not.toHaveClass('mvn-button-lg');
     });
 
     it('sets sm', () => {
       render(<Button size="sm">Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.sm);
+      expect(element).toHaveClass('mvn-button-sm');
     });
 
     it('sets lg', () => {
       render(<Button size="lg">Click Me</Button>);
       const element = document.querySelector('button');
-      expect(element).toHaveClass(classes.lg);
+      expect(element).toHaveClass('mvn-button-lg');
     });
   });
 
@@ -225,15 +218,13 @@ describe('Button', () => {
 
   describe('forwarding ref', () => {
     it('exports ButtonForwardRef', () => {
-      expect(ExportedButton).toBe(ButtonForwardRef);
+      expect(ExportedButton).toBe(ButtonF);
     });
 
     it('sets ref', () => {
-      let ref = createRef<HTMLButtonElement>();
-
-      render(<ButtonForwardRef ref={ref}>Click Me</ButtonForwardRef>);
-      const element = document.querySelector('button');
-
+      const ref = createRef<HTMLButtonElement>();
+      render(<ButtonF ref={ref} />);
+      const element = document.querySelector('.mvn-button');
       expect(ref.current).toBe(element);
     });
   });

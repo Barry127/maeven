@@ -21,6 +21,10 @@ $mvn-font-weight: 400 !default;
 $mvn-border-radius: $mvn-base / 4 !default;
 $mvn-outline-size: $mvn-base / 5 !default;
 
+$mvn-button-height: $mvn-base * 2 !default;
+$mvn-button-height-small: $mvn-base * 1.5 !default;
+$mvn-button-height-large: $mvn-base * 2.5 !default;
+
 // Media
 $mvn-media-xs: 0 !default;
 $mvn-media-sm: 576px !default;

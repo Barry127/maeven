@@ -1,0 +1,342 @@
+@import '../../common/functions';
+@import '../../common/mixins';
+@import '../../common/typography';
+@import '../../common/variables';
+
+$mvn-button-border: 1px;
+
+$mvn-button-color-background: $light-grey3 !default;
+$mvn-button-color-background-hover: $light-grey4 !default;
+$mvn-button-color-background-active: $light-grey4 !default;
+$mvn-button-color-background-disabled: lighten($mvn-button-color-background, 5);
+
+$mvn-button-background-gradient: linear-gradient(
+  to bottom,
+  rgba($white, 0.8),
+  rgba($white, 0)
+) !default;
+$mvn-button-background-gradient-dark: linear-gradient(
+  to bottom,
+  rgba($white, 0.05),
+  rgba($white, 0)
+) !default;
+
+$mvn-button-box-shadow: inset 0 0 0 $mvn-button-border rgba($black, 0.2),
+  inset 0 (-$mvn-button-border) 0 rgba($black, 0.1) !default;
+$mvn-button-box-shadow-active: inset 0 0 0 $mvn-button-border rgba($black, 0.2),
+  inset 0 $mvn-button-border $mvn-button-border * 2 rgba($black, 0.2) !default;
+$mvn-button-box-shadow-color: inset 0 0 0 $mvn-button-border rgba($black, 0.3),
+  inset 0 (-$mvn-button-border) 0 rgba($black, 0.15) !default;
+$mvn-button-box-shadow-color-active: inset 0 0 0 $mvn-button-border
+    rgba($black, 0.4),
+  inset 0 (-$mvn-button-border) 0 rgba($black, 0.2) !default;
+
+$mvn-button-box-shadow-dark: inset 0 0 0 $mvn-button-border rgba($black, 0.4),
+  inset 0 (-$mvn-button-border) 0 rgba($black, 0.6) !default;
+$mvn-button-box-shadow-active-dark: inset 0 0 0 $mvn-button-border
+    rgba($black, 0.6),
+  inset 0 $mvn-button-border $mvn-button-border * 2 rgba($black, 0.2) !default;
+$mvn-button-box-shadow-color-dark: inset 0 0 0 $mvn-button-border
+  rgba($black, 0.4) !default;
+$mvn-button-box-shadow-color-active-dark: inset 0 0 0 $mvn-button-border
+    rgba($black, 0.4),
+  inset 0 (-$mvn-button-border) 0 rgba($black, 0.2) !default;
+
+$mvn-button-primary: (
+  'default': $mvn-color-primary3,
+  'hover': $mvn-color-primary4,
+  'active': $mvn-color-primary5,
+  'text': $white,
+  'default-dark': $mvn-color-primary3,
+  'hover-dark': $mvn-color-primary4,
+  'active-dark': $mvn-color-primary5,
+  'text-dark': $white,
+);
+
+$mvn-button-success: (
+  'default': $mvn-color-success3,
+  'hover': $mvn-color-success4,
+  'active': $mvn-color-success5,
+  'text': $white,
+  'default-dark': $mvn-color-success3,
+  'hover-dark': $mvn-color-success4,
+  'active-dark': $mvn-color-success5,
+  'text-dark': $white,
+);
+
+$mvn-button-warning: (
+  'default': $mvn-color-warning3,
+  'hover': $mvn-color-warning4,
+  'active': $mvn-color-warning5,
+  'text': $white,
+  'default-dark': $mvn-color-warning3,
+  'hover-dark': $mvn-color-warning4,
+  'active-dark': $mvn-color-warning5,
+  'text-dark': $white,
+);
+
+$mvn-button-danger: (
+  'default': $mvn-color-danger3,
+  'hover': $mvn-color-danger4,
+  'active': $mvn-color-danger5,
+  'text': $white,
+  'default-dark': $mvn-color-danger3,
+  'hover-dark': $mvn-color-danger4,
+  'active-dark': $mvn-color-danger5,
+  'text-dark': $white,
+);
+
+$mvn-button-types: (
+  'primary': $mvn-button-primary,
+  'success': $mvn-button-success,
+  'warning': $mvn-button-warning,
+  'danger': $mvn-button-danger,
+);
+
+@mixin mvn-button-hw($height) {
+  height: $height;
+  min-width: $height;
+}
+
+.mvn-button {
+  @include box();
+  @include base-typography();
+  font-family: $mvn-font-family;
+  line-height: 1;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0 $mvn-button-height / 4;
+  border: 0;
+  border-radius: $mvn-border-radius;
+  background-color: $mvn-button-color-background;
+  background-image: $mvn-button-background-gradient;
+  color: choose-text-color($mvn-button-color-background);
+  cursor: pointer;
+  font-size: $mvn-font-size;
+  @include mvn-button-hw($mvn-button-height);
+  box-shadow: $mvn-button-box-shadow;
+  user-select: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus {
+    outline: none;
+    z-index: 1;
+  }
+
+  &:hover {
+    box-shadow: $mvn-button-box-shadow;
+    background-clip: padding-box;
+    background-color: $mvn-button-color-background-hover;
+  }
+
+  &:active,
+  &.mvn-button-active {
+    box-shadow: $mvn-button-box-shadow-active;
+    background-color: $mvn-button-color-background-active;
+    background-image: none;
+  }
+
+  &.mvn-button-active {
+    pointer-events: none;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    box-shadow: none;
+    background-color: $mvn-button-color-background-disabled;
+    background-image: none;
+    color: rgba(choose-text-color($mvn-button-color-background), 0.6);
+  }
+
+  .mvn-dark & {
+    background-image: $mvn-button-background-gradient-dark;
+    box-shadow: $mvn-button-box-shadow-dark;
+
+    &:active,
+    &.mvn-button-active {
+      box-shadow: $mvn-button-box-shadow-active-dark;
+    }
+  }
+
+  @each $type, $colors in $mvn-button-types {
+    &.mvn-button-#{$type} {
+      box-shadow: $mvn-button-box-shadow-color;
+      background-color: map-get($colors, 'default');
+      background-image: linear-gradient(
+        to bottom,
+        lighten(map-get($colors, 'default'), 5),
+        darken(map-get($colors, 'default'), 5)
+      );
+      // background-image: $mvn-button-background-gradient-color;
+      color: map-get($colors, 'text');
+
+      &:hover {
+        box-shadow: $mvn-button-box-shadow-color;
+        background-color: map-get($colors, 'hover');
+        background-image: linear-gradient(
+          to bottom,
+          lighten(map-get($colors, 'hover'), 5),
+          darken(map-get($colors, 'hover'), 5)
+        );
+      }
+
+      &:active,
+      &.mvn-button-active {
+        box-shadow: $mvn-button-box-shadow-color-active;
+        background-color: map-get($colors, 'active');
+        background-image: none;
+      }
+
+      &:disabled {
+        box-shadow: none;
+        background-color: lighten(map-get($colors, 'default'), 30);
+        background-image: none;
+        color: rgba(map-get($colors, 'text'), 0.8);
+      }
+
+      .mvn-dark & {
+        box-shadow: $mvn-button-box-shadow-color-dark;
+        background-color: map-get($colors, 'default-dark');
+        background-image: linear-gradient(
+          to bottom,
+          lighten(map-get($colors, 'default-dark'), 5),
+          darken(map-get($colors, 'default-dark'), 5)
+        );
+        color: map-get($colors, 'text-dark');
+
+        &:hover {
+          box-shadow: $mvn-button-box-shadow-color-dark;
+          background-color: map-get($colors, 'hover-dark');
+          background-image: linear-gradient(
+            to bottom,
+            lighten(map-get($colors, 'hover-dark'), 5),
+            darken(map-get($colors, 'hover-dark'), 5)
+          );
+        }
+
+        &:active,
+        &.mvn-button-active {
+          box-shadow: $mvn-button-box-shadow-color-active-dark;
+          background-image: none;
+          background-color: map-get($colors, 'active-dark');
+        }
+
+        &:disabled {
+          box-shadow: none;
+          background-color: lighten(map-get($colors, 'default-dark'), 15);
+          background-image: none;
+          color: rgba(map-get($colors, 'text-dark'), 0.8);
+        }
+      }
+    }
+  }
+
+  &.mvn-button-link {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: $mvn-color-link;
+
+    &:hover {
+      box-shadow: $mvn-button-box-shadow;
+      color: darken($mvn-color-link, 10);
+    }
+
+    &:active,
+    &.mvn-button-active {
+      background-color: rgba($mvn-color-text, 0.01);
+      box-shadow: $mvn-button-box-shadow-active;
+      color: darken($mvn-color-link, 10);
+    }
+
+    &:disabled {
+      color: rgba($mvn-color-link, 0.7);
+      background-color: $mvn-button-color-background-disabled;
+    }
+
+    .mvn-dark & {
+      color: $mvn-color-link-dark;
+
+      &:hover {
+        box-shadow: $mvn-button-box-shadow-dark;
+        color: darken($mvn-color-link-dark, 10);
+      }
+
+      &:active,
+      &.mvn-button-active {
+        background-color: rgba($mvn-color-text-dark, 0.05);
+        box-shadow: $mvn-button-box-shadow-active-dark;
+        color: darken($mvn-color-link-dark, 10);
+      }
+
+      &:disabled {
+        color: rgba(choose-text-color($mvn-button-color-background), 0.6);
+        background-color: $mvn-button-color-background-disabled;
+      }
+    }
+  }
+
+  &.mvn-button-focus-outline:focus {
+    z-index: 1;
+    box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline;
+  }
+
+  .mvn-button-text {
+    font-size: 0.95em;
+    display: inline-block;
+    margin: 0 $mvn-base / 4;
+  }
+
+  > .mvn-icon-container {
+    // left icon
+    &:first-child {
+      margin-right: $mvn-base / 4;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    // right icon
+    &:last-child {
+      margin-left: $mvn-base / 4;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  > .mvn-spinner {
+    font-size: 1em;
+    margin-right: $mvn-base / 4;
+  }
+
+  &.mvn-button-sm {
+    @include mvn-button-hw($mvn-button-height-small);
+    padding: 0 $mvn-button-height-small / 4;
+    font-size: $mvn-font-size-small;
+
+    > .mvn-icon-container {
+      margin: 0;
+    }
+  }
+
+  &.mvn-button-lg {
+    @include mvn-button-hw($mvn-button-height-large);
+    padding: 0 $mvn-button-height-large / 4;
+    font-size: $mvn-font-size-large;
+  }
+
+  &.mvn-button-fluid {
+    display: flex;
+    width: 100%;
+  }
+}

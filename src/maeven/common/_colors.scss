@@ -22,14 +22,14 @@ $light-grey5: #ced9e0 !default;
 $red1: #ff6666 !default;
 $red2: #fd4c4c !default;
 $red3: #f73131 !default;
-$red4: #de2c2c !default;
-$red5: #c42727 !default;
+$red4: #eb2f2f !default;
+$red5: #de2c2c !default;
 
-$orange1: #ff9c63 !default;
-$orange2: #fc8b49 !default;
-$orange3: #f4772e !default;
-$orange4: #db6b2a !default;
-$orange5: #c25e25 !default;
+$orange1: #ffa570 !default;
+$orange2: #fc9356 !default;
+$orange3: #f57f3b !default;
+$orange4: #e87838 !default;
+$orange5: #db7235 !default;
 
 $yellow1: #ffd659 !default;
 $yellow2: #ffcf40 !default;
@@ -49,11 +49,11 @@ $teal3: #18e1a5 !default;
 $teal4: #16c792 !default;
 $teal5: #13ad7f !default;
 
-$blue1: #49acf2 !default;
-$blue2: #2b91d9 !default;
-$blue3: #1378bf !default;
-$blue4: #1168a6 !default;
-$blue5: #0e588c !default;
+$blue1: #66bfff !default;
+$blue2: #49acf2 !default;
+$blue3: #2b91d9 !default;
+$blue4: #2680bf !default;
+$blue5: #216fa6 !default;
 
 $indigo1: #a66dfc !default;
 $indigo2: #884be3 !default;
@@ -67,10 +67,29 @@ $pink3: #fc26a4 !default;
 $pink4: #e32293 !default;
 $pink5: #c91e82 !default;
 
-$mvn-color-primary: $blue3 !default;
-$mvn-color-success: $green3 !default;
-$mvn-color-warning: $orange3 !default;
-$mvn-color-danger: $red3 !default;
+$mvn-color-primary1: $blue1 !default;
+$mvn-color-primary2: $blue2 !default;
+$mvn-color-primary3: $blue3 !default;
+$mvn-color-primary4: $blue4 !default;
+$mvn-color-primary5: $blue5 !default;
+
+$mvn-color-success1: $green1 !default;
+$mvn-color-success2: $green2 !default;
+$mvn-color-success3: $green3 !default;
+$mvn-color-success4: $green4 !default;
+$mvn-color-success5: $green5 !default;
+
+$mvn-color-warning1: $orange1 !default;
+$mvn-color-warning2: $orange2 !default;
+$mvn-color-warning3: $orange3 !default;
+$mvn-color-warning4: $orange4 !default;
+$mvn-color-warning5: $orange5 !default;
+
+$mvn-color-danger1: $red1 !default;
+$mvn-color-danger2: $red2 !default;
+$mvn-color-danger3: $red3 !default;
+$mvn-color-danger4: $red4 !default;
+$mvn-color-danger5: $red5 !default;
 
 $mvn-color-background: $light-grey1 !default;
 $mvn-color-background-text: $white !default;
@@ -85,8 +104,8 @@ $mvn-color-text-dark: $grey1 !default;
 $mvn-color-text-heading-dark: $mvn-color-text-dark !default;
 $mvn-color-link-dark: $blue2 !default;
 
-$mvn-color-outline: rgba($mvn-color-primary, 0.15) !default;
-$mvn-color-text-selection: rgba($mvn-color-primary, 0.25) !default;
+$mvn-color-outline: rgba($mvn-color-primary3, 0.5) !default;
+$mvn-color-text-selection: rgba($mvn-color-primary3, 0.25) !default;
 
 $mvn-colors: (
   'black': $black,
@@ -102,10 +121,10 @@ $mvn-colors: (
   'blue': $blue3,
   'indigo': $indigo3,
   'pink': $pink3,
-  'primary': $blue3,
-  'success': $green3,
-  'warning': $orange3,
-  'danger': $red3
+  'primary': $mvn-color-primary3,
+  'success': $mvn-color-success3,
+  'warning': $mvn-color-warning3,
+  'danger': $mvn-color-danger3
 ) !default;
 
 $mvn-colors-text: (
@@ -122,10 +141,10 @@ $mvn-colors-text: (
   'blue': $blue4,
   'indigo': $indigo4,
   'pink': $pink4,
-  'primary': $blue4,
-  'success': $green4,
-  'warning': $orange4,
-  'danger': $red4
+  'primary': $mvn-color-primary4,
+  'success': $mvn-color-success4,
+  'warning': $mvn-color-warning4,
+  'danger': $mvn-color-danger4
 ) !default;
 
 $mvn-colors-text-dark: (
@@ -142,8 +161,8 @@ $mvn-colors-text-dark: (
   'blue': $blue2,
   'indigo': $indigo1,
   'pink': $pink2,
-  'primary': $blue2,
-  'success': $green2,
-  'warning': $orange2,
-  'danger': $red2
+  'primary': $mvn-color-primary2,
+  'success': $mvn-color-success2,
+  'warning': $mvn-color-warning2,
+  'danger': $mvn-color-danger2
 ) !default;

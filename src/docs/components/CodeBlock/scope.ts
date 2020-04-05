@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { style } from 'typestyle';
 import { code, java, javascript1, perl, php, rust } from 'icon-packs/devicons';
 import {
@@ -9,7 +9,7 @@ import {
   fileRegular,
   plusSolid,
   timesSolid,
-  userCircleSolid
+  userCircleSolid,
 } from 'icon-packs/fa';
 import {
   activity,
@@ -23,7 +23,7 @@ import {
   shieldOff,
   tag,
   user,
-  x
+  x,
 } from 'icon-packs/feather';
 import { markGithub, logoGithub } from 'icon-packs/octicons';
 
@@ -36,6 +36,7 @@ import trees from '../../assets/trees.jpg';
 export const scope = {
   ...maeven,
 
+  useEffect,
   useState,
 
   activity,
@@ -71,5 +72,5 @@ export const scope = {
   skyline,
   trees,
 
-  typestyle: style
+  typestyle: style,
 };

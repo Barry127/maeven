@@ -1,1 +1,1 @@
-export { ButtonForwardRef as Button } from './Button';
+export { ButtonF as Button } from './Button';

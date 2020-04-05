@@ -1,18 +1,16 @@
 import React, { FC, ButtonHTMLAttributes, forwardRef, Ref } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../hooks/useTheme';
 import { useOutline } from '../../hooks/useOutline';
 import { SemanticColorName, MaevenIcon } from '../../types';
 
-import { classes, themeOverride } from './styles';
 import { Icon } from '../Icon';
+import { Spinner } from '../Spinner';
 
 /**
  * Buttons execute an action or change the state of an application. Button text helps users understand what action will occur when they click or tap.
  */
-export const Button: FC<ButtonProps &
-  ButtonHTMLAttributes<HTMLButtonElement>> = ({
+export const Button: FC<AllButtonProps> = ({
   active = false,
   buttonType = 'default',
   children,
@@ -22,47 +20,45 @@ export const Button: FC<ButtonProps &
   forwardedRef,
   icon,
   iconRight,
-  outline = false,
+  loading = false,
   size = 'md',
   type = 'button',
   ...restProps
 }) => {
-  const theme = useTheme();
   const styleOutline = useOutline(true);
 
   return (
     <button
+      {...restProps}
       className={clsx(
-        classes.button,
-        classes.buttonTypes[buttonType],
+        'mvn-button',
+        buttonType !== 'default' && `mvn-button-${buttonType}`,
         {
-          [classes.disabled]: disabled,
-          [classes.fluid]: fluid,
-          [classes.active]: active && !disabled,
-          [classes.outline]: outline,
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg',
-          [classes.focusOutline]: styleOutline
+          'mvn-button-fluid': fluid,
+          'mvn-button-active': active && !disabled,
+          'mvn-button-sm': size === 'sm',
+          'mvn-button-lg': size === 'lg',
+          'mvn-button-focus-outline': styleOutline,
         },
-        themeOverride(theme),
         className
       )}
-      disabled={disabled}
+      disabled={disabled || loading}
       ref={forwardedRef}
       type={type}
-      {...restProps}
     >
-      {icon && <Icon icon={icon} className={classes.iconLeft} />}
-      {children && <span className={classes.buttonText}>{children}</span>}
-      {iconRight && <Icon icon={iconRight} className={classes.iconRight} />}
+      {icon && !loading && <Icon icon={icon} />}
+      {loading && <Spinner />}
+      {children && <span className="mvn-button-text">{children}</span>}
+      {iconRight && <Icon icon={iconRight} />}
     </button>
   );
 };
 
-export const ButtonForwardRef = forwardRef<
-  HTMLButtonElement,
-  ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>
->((props, ref) => <Button {...props} forwardedRef={ref} />);
+export const ButtonF = forwardRef<HTMLButtonElement, AllButtonProps>(
+  (props, ref) => <Button {...props} forwardedRef={ref} />
+);
+
+type AllButtonProps = ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export interface ButtonProps {
   /** Should button be styles as active state */
@@ -85,8 +81,8 @@ export interface ButtonProps {
   /** Icon to render after text */
   iconRight?: MaevenIcon;
 
-  /** Weher button is styled as outlined */
-  outline?: boolean;
+  /** Wether button has loading state */
+  loading?: boolean;
 
   /** Button size */
   size?: 'sm' | 'md' | 'lg';

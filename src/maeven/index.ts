@@ -2,7 +2,6 @@ export * from './components';
 
 // Components
 export * from './components/Alert';
-export * from './components/Button';
 export * from './components/Card';
 export * from './components/Form';
 export * from './components/Modal';
