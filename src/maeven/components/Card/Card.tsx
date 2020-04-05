@@ -1,15 +1,14 @@
-import React, { FC, HTMLAttributes, ReactNode } from 'react';
+import React, { FC, HTMLAttributes, ReactNode, forwardRef, Ref } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../hooks/useTheme';
-import { Block } from '../Block';
+import { Block } from '../Block/Block';
 
-import { classes, themeOverride } from './styles';
+import { ReactComponent, InstrinctElement } from '../../types';
 
 /**
  * A Card presents high-level information and can guide the user toward related actions and details.
  */
-export const Card: FC<CardProps & HTMLAttributes<HTMLElement>> = ({
+export const Card: FC<AllCardProps> = ({
   children,
   className,
   element = 'div',
@@ -18,47 +17,48 @@ export const Card: FC<CardProps & HTMLAttributes<HTMLElement>> = ({
   overlay,
   ...restProps
 }) => {
-  const theme = useTheme();
-
-  const tabIndex = interactive ? { tabIndex: -1 } : {};
+  const tabIndex = interactive ? { tabIndex: 0 } : {};
 
   return (
     <Block
+      {...restProps}
       className={clsx(
-        classes.card,
-        classes.elevation[elevation],
+        'mvn-card',
+        elevation && `mvn-card-elevation-${elevation}`,
         {
-          [classes.interactive]: interactive,
-          [classes.overlay]: overlay
+          'mvn-card-interactive': interactive,
+          'mvn-card-has-overlay': overlay,
         },
-        themeOverride(theme),
         className
       )}
       element={element}
+      background="textBackground"
       padding
-      {...restProps}
       {...tabIndex}
     >
-      {overlay && <Block className={classes.overlayElement}>{overlay}</Block>}
+      {overlay && <Block className="mvn-card-overlay">{overlay}</Block>}
       {children}
     </Block>
   );
 };
 
+export const CardF = forwardRef<HTMLElement, AllCardProps>((props, ref) => (
+  <Card {...props} forwardedRef={ref} />
+));
+
+type AllCardProps = CardProps & HTMLAttributes<HTMLElement>;
+
 export interface CardProps {
+  /** Type of component to render. (overwrites element) */
+  component?: ReactComponent;
+
   /** Type of html element to render. */
-  element?:
-    | 'article'
-    | 'aside'
-    | 'div'
-    | 'footer'
-    | 'header'
-    | 'main'
-    | 'nav'
-    | 'section';
+  element?: InstrinctElement;
 
   /** Intensity of drop shadow */
   elevation?: number;
+
+  forwardedRef?: Ref<HTMLElement>;
 
   /** Wether card changes styles on mouse over, used in combination with onClick */
   interactive?: boolean;

@@ -1,0 +1,110 @@
+@import '../../common/colors';
+@import '../../common/functions';
+@import '../../common/variables';
+
+.mvn-card {
+  border-radius: $mvn-border-radius-large;
+  box-shadow: $mvn-elevation-0;
+
+  &.mvn-card-elevation-1 {
+    box-shadow: $mvn-elevation-1;
+  }
+
+  &.mvn-card-elevation-2 {
+    box-shadow: $mvn-elevation-2;
+  }
+
+  &.mvn-card-elevation-3 {
+    box-shadow: $mvn-elevation-3;
+  }
+
+  &.mvn-card-elevation-4 {
+    box-shadow: $mvn-elevation-4;
+  }
+
+  &.mvn-card-has-overlay {
+    position: relative;
+  }
+
+  &.mvn-card-interactive {
+    transition: animate-transition(box-shadow);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      box-shadow: $mvn-elevation-3;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .mvn-card-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: animate-transition(opacity);
+    border-radius: inherit;
+    background: rgba($black, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .mvn-dark & {
+    box-shadow: $mvn-elevation-0-dark;
+
+    &.mvn-card-elevation-1 {
+      box-shadow: $mvn-elevation-1-dark;
+    }
+
+    &.mvn-card-elevation-2 {
+      box-shadow: $mvn-elevation-2-dark;
+    }
+
+    &.mvn-card-elevation-3 {
+      box-shadow: $mvn-elevation-3-dark;
+    }
+
+    &.mvn-card-elevation-4 {
+      box-shadow: $mvn-elevation-4-dark;
+    }
+
+    &.mvn-card-interactive {
+      &:hover,
+      &:focus {
+        box-shadow: $mvn-elevation-3-dark;
+      }
+    }
+  }
+
+  .mvn-card-image {
+    margin: $mvn-base (-$mvn-base);
+
+    .mvn-card-overlay + &,
+    &:first-child {
+      margin-top: (-$mvn-base);
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+    }
+
+    &:last-child {
+      margin-bottom: $mvn-base * -1.375;
+      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: inherit;
+    }
+  }
+}

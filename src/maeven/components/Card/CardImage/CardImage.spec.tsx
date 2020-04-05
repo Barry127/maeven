@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { CardImage } from './CardImage';
-import { themeOverride } from './styles';
+import { CardImage, CardImageF } from './CardImage';
+import { CardImage as ExportedCardImage } from '../';
 
 describe('CardImage', () => {
   it('renders image', () => {
@@ -34,24 +32,16 @@ describe('CardImage', () => {
     expect(element?.dataset.test).toBe('cardimage-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        CardImage: {
-          border: '3px solid green'
-        }
-      }
-    };
+  describe('forwarding ref', () => {
+    it('exports CardImageForwardRef', () => {
+      expect(ExportedCardImage).toBe(CardImageF);
+    });
 
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <CardImage />
-      </ThemeProvider>
-    );
-    const element = document.querySelector('img');
-    expect(element).toHaveClass(expectedClassName);
+    it('sets ref', () => {
+      const ref = createRef<HTMLImageElement>();
+      render(<CardImageF ref={ref} />);
+      const element = document.querySelector('img');
+      expect(ref.current).toBe(element);
+    });
   });
 });

@@ -28,7 +28,7 @@ A basic usage of Card wit an image.
 
 <Container>
   <Row gutter={1}>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card>
         <CardImage src={skyline} />
         <H3>Title</H3>
@@ -38,7 +38,7 @@ A basic usage of Card wit an image.
         </P>
       </Card>
     </Col>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card>
         <CardImage src={bubbles} />
         <H3>Title</H3>
@@ -48,7 +48,7 @@ A basic usage of Card wit an image.
         </P>
       </Card>
     </Col>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card>
         <CardImage src={trees} />
         <H3>Title</H3>
@@ -56,6 +56,7 @@ A basic usage of Card wit an image.
         <P>
           <Button buttonType="primary">Call To Action</Button>
         </P>
+        <CardImage src={trees} />
       </Card>
     </Col>
   </Row>
@@ -71,35 +72,35 @@ Cards can have different elevations (heights) styled with a drop shadow.
 
 <Container>
   <Row gutter={1} wrap={false}>
-    <Col transparent>
+    <Col>
       <Card elevation={0}>
         <CardImage src={skyline} />
         <H3>Elevation 0</H3>
         <P>Card content with a short text containing a description.</P>
       </Card>
     </Col>
-    <Col transparent>
+    <Col>
       <Card elevation={1}>
         <CardImage src={skyline} />
         <H3>Elevation 1</H3>
         <P>Card content with a short text containing a description.</P>
       </Card>
     </Col>
-    <Col transparent>
+    <Col>
       <Card elevation={2}>
         <CardImage src={skyline} />
         <H3>Elevation 2</H3>
         <P>Card content with a short text containing a description.</P>
       </Card>
     </Col>
-    <Col transparent>
+    <Col>
       <Card elevation={3}>
         <CardImage src={skyline} />
         <H3>Elevation 3</H3>
         <P>Card content with a short text containing a description.</P>
       </Card>
     </Col>
-    <Col transparent>
+    <Col>
       <Card elevation={4}>
         <CardImage src={skyline} />
         <H3>Elevation 4</H3>
@@ -112,7 +113,7 @@ Cards can have different elevations (heights) styled with a drop shadow.
 
 ### Interactive
 
-When card is interactive it responds to mouse over.
+When card is interactive it responds to mouse over and tab focus.
 
 ```js live
 // import skyline from '@assets/skyline.jpg';
@@ -121,7 +122,7 @@ When card is interactive it responds to mouse over.
 
 <Container>
   <Row gutter={1}>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card interactive onClick={() => console.log('clicked skyline')}>
         <CardImage src={skyline} />
         <H3>Title</H3>
@@ -131,7 +132,7 @@ When card is interactive it responds to mouse over.
         </P>
       </Card>
     </Col>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card interactive onClick={() => console.log('clicked bubbles')}>
         <CardImage src={bubbles} />
         <H3>Title</H3>
@@ -141,7 +142,7 @@ When card is interactive it responds to mouse over.
         </P>
       </Card>
     </Col>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card interactive onClick={() => console.log('clicked trees')}>
         <CardImage src={trees} />
         <H3>Title</H3>
@@ -166,7 +167,7 @@ An overlay appears on a mouse over.
 
 <Container>
   <Row gutter={1}>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card
         overlay={
           <Text color="white">
@@ -177,7 +178,7 @@ An overlay appears on a mouse over.
         <CardImage src={skyline} />
       </Card>
     </Col>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card
         overlay={
           <Text color="white">
@@ -188,7 +189,7 @@ An overlay appears on a mouse over.
         <CardImage src={bubbles} />
       </Card>
     </Col>
-    <Col transparent span={8}>
+    <Col span={8}>
       <Card
         overlay={
           <Text color="white">

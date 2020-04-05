@@ -96,6 +96,9 @@ $mvn-color-background-text: $white !default;
 $mvn-color-background-dark: $dark-grey3 !default;
 $mvn-color-background-text-dark: $dark-grey4 !default;
 
+$mvn-color-border: $light-grey3;
+$mvn-color-border-dark: $dark-grey2;
+
 $mvn-color-text: $black !default;
 $mvn-color-text-heading: $mvn-color-text !default;
 $mvn-color-link: $blue4 !default;
@@ -124,7 +127,7 @@ $mvn-colors: (
   'primary': $mvn-color-primary3,
   'success': $mvn-color-success3,
   'warning': $mvn-color-warning3,
-  'danger': $mvn-color-danger3
+  'danger': $mvn-color-danger3,
 ) !default;
 
 $mvn-colors-text: (
@@ -144,7 +147,7 @@ $mvn-colors-text: (
   'primary': $mvn-color-primary4,
   'success': $mvn-color-success4,
   'warning': $mvn-color-warning4,
-  'danger': $mvn-color-danger4
+  'danger': $mvn-color-danger4,
 ) !default;
 
 $mvn-colors-text-dark: (
@@ -164,5 +167,5 @@ $mvn-colors-text-dark: (
   'primary': $mvn-color-primary2,
   'success': $mvn-color-success2,
   'warning': $mvn-color-warning2,
-  'danger': $mvn-color-danger2
+  'danger': $mvn-color-danger2,
 ) !default;

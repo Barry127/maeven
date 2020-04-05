@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
-import { Card } from './Card';
-import { classes, themeOverride } from './styles';
+import { Card, CardF } from './Card';
+import { Card as ExportedCard } from './';
 
 describe('Card', () => {
   it('renders div element with given text', () => {
@@ -40,38 +38,17 @@ describe('Card', () => {
     expect(element.dataset.test).toBe('card-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Card: {
-          borderColor: 'hotpink'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Card>Hello world!</Card>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
-  });
-
   describe('elevation', () => {
     it('has no elevation by default', () => {
       const { getByText } = render(<Card>Hello world!</Card>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.elevation[0]);
+      expect(element).not.toHaveClass('mvn-card-elevation-2');
     });
 
     it('sets elevation', () => {
       const { getByText } = render(<Card elevation={2}>Hello world!</Card>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.elevation[2]);
+      expect(element).toHaveClass('mvn-card-elevation-2');
     });
   });
 
@@ -79,15 +56,15 @@ describe('Card', () => {
     it('is not interactive by default', () => {
       const { getByText } = render(<Card>Hello world!</Card>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.interactive);
+      expect(element).not.toHaveClass('mvn-card-interactive');
       expect(element).not.toHaveAttribute('tabindex');
     });
 
     it('sets interactive', () => {
       const { getByText } = render(<Card interactive>Hello world!</Card>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.interactive);
-      expect(element).toHaveAttribute('tabindex', '-1');
+      expect(element).toHaveClass('mvn-card-interactive');
+      expect(element).toHaveAttribute('tabindex', '0');
     });
   });
 
@@ -95,7 +72,7 @@ describe('Card', () => {
     it('has no overlay by default', () => {
       const { getByText } = render(<Card>Hello world!</Card>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.overlay);
+      expect(element).not.toHaveClass('mvn-card-has-overlay');
     });
 
     it('sets overlay', () => {
@@ -104,8 +81,21 @@ describe('Card', () => {
       );
       const element = getByText('Hello world!');
       const overlay = getByText('Overlay').parentElement;
-      expect(element).toHaveClass(classes.overlay);
+      expect(element).toHaveClass('mvn-card-has-overlay');
       expect(overlay?.parentElement).toBe(element);
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports CardForwardRef', () => {
+      expect(ExportedCard).toBe(CardF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLElement>();
+      render(<CardF ref={ref} />);
+      const element = document.querySelector('.mvn-card');
+      expect(ref.current).toBe(element);
     });
   });
 });

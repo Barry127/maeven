@@ -1,2 +1,2 @@
-export { Card } from './Card';
-export { CardImage } from './CardImage/CardImage';
+export { CardF as Card } from './Card';
+export { CardImageF as CardImage } from './CardImage/CardImage';

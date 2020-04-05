@@ -1,3 +1,7 @@
+@function animate-transition($property) {
+  @return $property 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
+}
+
 // Contrast calculations:
 
 $linear-channel-values: 0 0.0003035269835488375 0.000607053967097675
@@ -72,10 +76,6 @@ $linear-channel-values: 0 0.0003035269835488375 0.000607053967097675
   0.9215818562772946 0.9301108583754237 0.938685728457888 0.9473065367331999
   0.9559733532492861 0.9646862478944651 0.9734452903984125 0.9822505503331171
   0.9911020971138298 1;
-
-@function animate-transition($property) {
-  @return $property 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
-}
 
 @function luminance($color) {
   $red: nth($linear-channel-values, red($color) + 1);
