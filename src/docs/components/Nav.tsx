@@ -1,7 +1,6 @@
 import React, { FC, useEffect, KeyboardEvent } from 'react';
 import clsx from 'clsx';
 import { NavLink, useLocation } from 'react-router-dom';
-import { style } from 'typestyle';
 import {
   codeSandboxOutline,
   folderOpenOutline,
@@ -13,97 +12,7 @@ import { Block, H2, Heading, Icon, useOutline } from 'maeven';
 
 import { docsData } from '../_data/docs';
 
-const p1 = style({
-  padding: '0 var(--maeven-base)'
-});
-
-const pl = (n: number) =>
-  style({
-    $nest: {
-      '& > li > a': {
-        paddingLeft: `calc(var(--maeven-base) * ${n})`
-      }
-    }
-  });
-
-const navClass = style({
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  bottom: 0,
-  width: 220,
-  overflowX: 'hidden',
-  overflowY: 'auto'
-});
-
-const list = style({
-  margin: 0,
-  padding: 0,
-  listStyle: 'none'
-});
-
-const checkbox = style({
-  display: 'none',
-  $nest: {
-    '&:checked ~ label .closed': {
-      display: 'none'
-    },
-    '&:not(:checked) ~ label .open': {
-      display: 'none'
-    },
-    '&:not(:checked) ~ ul': {
-      display: 'none'
-    }
-  }
-});
-
-const link = style({
-  border: '1px solid transparent',
-  userSelect: 'none',
-  cursor: 'pointer',
-  padding: '0 var(--maeven-base)',
-  color: 'var(--maeven-color-link)',
-  textDecoration: 'none',
-  display: 'block',
-  lineHeight: 1.75,
-  $nest: {
-    '&:hover': {
-      background: 'var(--maeven-color-grey)'
-    },
-    '&:focus': {
-      outline: 'none',
-      background: 'var(--maeven-color-grey)'
-    },
-    '& svg': {
-      fill: 'var(--maeven-color-text)'
-    }
-  }
-});
-
-const active = style({
-  boxSizing: 'border-box',
-  position: 'relative',
-  color: 'var(--maeven-color-text-inverted)',
-  background: 'var(--maeven-color-link)',
-  margin: 1,
-  $nest: {
-    '&:focus, &:hover': {
-      background: 'var(--maeven-color-link)'
-    },
-    '& svg': {
-      fill: 'var(--maeven-color-text-inverted)'
-    }
-  }
-});
-
-const activeOutline = style({
-  $nest: {
-    '&:focus': {
-      // boxShadow: '0 0 0 2px var(--maeven-color-link)'
-      border: '1px dashed rgba(255,255,255,.5)'
-    }
-  }
-});
+import './nav.scss';
 
 export const Nav: FC<{ isDark: boolean; toggleDark: () => void }> = ({
   toggleDark,
@@ -122,13 +31,13 @@ export const Nav: FC<{ isDark: boolean; toggleDark: () => void }> = ({
   }, [pathname]);
 
   return (
-    <Block element="nav" className={navClass}>
+    <Block element="nav" className="docs-nav">
       <label>
         <input type="checkbox" checked={isDark} onChange={toggleDark} />
         DarkMode
       </label>
-      <H2 className={p1}>Maeven</H2>
-      <ul className={list}>
+      <H2 className="nav-title">Maeven</H2>
+      <ul className="nav-list">
         {parseChildren(docsData.children as Node[], 3, 'root', outline)}
       </ul>
     </Block>
@@ -142,9 +51,9 @@ const DocLink: FC<Node & { parent: string; outline: boolean }> = ({
   outline
 }) => (
   <NavLink
-    className={link}
+    className="nav-link"
     to={`${path.startsWith('/') ? '' : '/'}${path}`}
-    activeClassName={clsx(active, outline && activeOutline)}
+    activeClassName={clsx('nav-link-active', outline && 'nav-link-outline')}
     onKeyDown={keyDown}
   >
     {parent === 'root' && (
@@ -178,18 +87,10 @@ function parseChildren(
         <DocLink {...node} parent={parent} outline={outline} />
       ) : h === 3 ? (
         <>
-          <Heading
-            level="h3"
-            size="h4"
-            style={{
-              marginBottom: 'calc(var(--maeven-base) / 4)',
-              marginTop: 'var(--maeven-base)'
-            }}
-            className={p1}
-          >
+          <Heading level="h3" size="h4" className="nav-title nav-sub-title">
             {node.title}
           </Heading>
-          <ul className={list}>
+          <ul className="nav-list">
             {parseChildren(
               node.children!,
               h + 1,
@@ -204,18 +105,18 @@ function parseChildren(
             type="checkbox"
             name={`${parent}/${node.title}`}
             id={`${parent}/${node.title}`}
-            className={checkbox}
+            className="nav-cb"
           />
           <label
             tabIndex={0}
             onKeyDown={keyDown}
-            className={clsx(link, outline && activeOutline)}
+            className={clsx('nav-link', outline && 'nav-link-outline')}
             htmlFor={`${parent}/${node.title}`}
           >
             <Icon icon={folderOutline} className="closed" />
             <Icon icon={folderOpenOutline} className="open" /> {node.title}
           </label>
-          <ul className={clsx(list, pl(h - 2))}>
+          <ul className={clsx('nav-list', `nav-padding-${h - 2}`)}>
             {parseChildren(
               node.children!,
               h + 1,
@@ -242,7 +143,7 @@ function keyDown(ev: KeyboardEvent<Element>) {
   const keys = [40, 38, 37, 39];
 
   if (keys.includes(ev.keyCode)) {
-    const nodes = Array.from(document.querySelectorAll(`.${link}`));
+    const nodes = Array.from(document.querySelectorAll('.nav-link'));
 
     switch (ev.keyCode) {
       //down

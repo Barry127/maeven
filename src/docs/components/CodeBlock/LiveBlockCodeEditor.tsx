@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import clsx from 'clsx';
 import { LiveEditor } from 'react-live';
 
-import { liveClasses, monokai } from './styles';
+import './monokai.scss';
 
 export const LiveBlockCodeEditor: FC = () => (
-  <LiveEditor className={clsx(liveClasses.editor, monokai)} />
+  <LiveEditor className={clsx('docs-live-editor', 'docs-monokai')} />
 );

@@ -3,7 +3,7 @@ import { minimize2, maximize2, code, eye, eyeOff } from 'icon-packs/feather';
 
 import { Button, Block, Row, Col } from 'maeven';
 
-import { liveClasses } from './styles';
+import './live-block.scss';
 
 export const LiveBlockToolbar: FC<LiveBlockToolbarProps> = ({
   fullscreen,
@@ -13,7 +13,7 @@ export const LiveBlockToolbar: FC<LiveBlockToolbarProps> = ({
   toggleTransparent,
   transparent
 }) => (
-  <Block className={liveClasses.toolbar}>
+  <Block className={'docs-live-toolbar'}>
     <Row>
       <Col xs={12}>
         <Button

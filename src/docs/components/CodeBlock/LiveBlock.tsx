@@ -3,12 +3,13 @@ import { LiveProvider } from 'react-live';
 
 import { Row, Col } from 'maeven';
 
-import { liveClasses } from './styles';
 import { scope } from './scope';
 import { LiveBlockToolbar } from './LiveBlockToolbar';
 import { LiveBlockCodeEditor } from './LiveBlockCodeEditor';
 import { LiveBlockPreview } from './LiveBlockPreview';
 import clsx from 'clsx';
+
+import './live-block.scss';
 
 export const LiveBlock: FC<LiveBlockProps> = ({ code, withRender }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,11 +55,11 @@ export const LiveBlock: FC<LiveBlockProps> = ({ code, withRender }) => {
   return (
     <div
       ref={containerRef}
-      className={liveClasses.container}
+      className="docs-live-container"
       style={fullscreen ? { height: containerHeight } : {}}
     >
       <LiveProvider noInline={withRender} code={code.trim()} scope={scope}>
-        <div className={fullscreen ? liveClasses.fullscreen : undefined}>
+        <div className={fullscreen ? 'docs-fullscreen' : undefined}>
           <LiveBlockToolbar
             fullscreen={fullscreen}
             showCode={showCode}
@@ -70,10 +71,8 @@ export const LiveBlock: FC<LiveBlockProps> = ({ code, withRender }) => {
           <Row>
             <Col
               className={clsx(
-                liveClasses.preview,
-                transparent
-                  ? liveClasses.bg.transparent
-                  : liveClasses.bg.default
+                'docs-live-preview',
+                transparent ? 'docs-bg-transparent' : 'docs-bg-default'
               )}
               span={fullscreen ? (showCode ? 12 : 24) : 24}
             >

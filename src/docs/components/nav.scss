@@ -1,0 +1,128 @@
+@import '../../maeven/common/colors';
+@import '../../maeven/common/mixins';
+@import '../../maeven/common/variables';
+
+.docs-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 210px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .nav-title {
+    padding: 0 $mvn-base;
+  }
+
+  .nav-sub-title {
+    margin-bottom: $mvn-base / 4;
+    margin-top: $mvn-base;
+  }
+
+  .nav-list {
+    @include bpm0();
+    list-style: none;
+  }
+
+  .nav-link {
+    @include box();
+    border: 1px solid transparent;
+    user-select: none;
+    cursor: pointer;
+    padding: 0 $mvn-base;
+    color: $mvn-color-link;
+    text-decoration: none;
+    display: block;
+    line-height: 1.75;
+
+    &:hover,
+    &:focus {
+      background: $light-grey3;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    svg {
+      fill: $mvn-color-text;
+    }
+
+    .mvn-dark & {
+      color: $mvn-color-link-dark;
+
+      &:hover,
+      &:focus {
+        background: $dark-grey1;
+      }
+
+      svg {
+        fill: $mvn-color-text-dark;
+      }
+    }
+  }
+
+  .nav-link-active {
+    position: relative;
+    color: $white;
+    background: $mvn-color-link;
+
+    &:hover,
+    &:focus {
+      background: $mvn-color-link;
+    }
+
+    svg {
+      fill: $white;
+    }
+
+    .mvn-dark & {
+      color: $white;
+      background: $mvn-color-link-dark;
+
+      &:hover,
+      &:focus {
+        background: $mvn-color-link-dark;
+      }
+
+      svg {
+        fill: $white;
+      }
+    }
+  }
+
+  .nav-link-outline:focus {
+    border: 1px dashed rgba($black, 0.5);
+
+    &.nav-link-active {
+      border-color: $white;
+    }
+
+    .mvn-dark & {
+      border-color: $white;
+    }
+  }
+
+  @for $i from 1 to 3 {
+    .nav-padding-#{$i} > li > a {
+      padding-left: $mvn-base * $i;
+    }
+  }
+
+  .nav-cb {
+    display: none;
+
+    &:checked ~ label .closed {
+      display: none;
+    }
+
+    &:not(:checked) ~ label .open {
+      display: none;
+    }
+
+    &:not(:checked) ~ ul {
+      display: none;
+    }
+  }
+}

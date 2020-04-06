@@ -1,0 +1,139 @@
+@import '../../../maeven/common/colors';
+@import '../../../maeven/common/mixins';
+@import '../../../maeven/common/variables';
+
+.docs-live-container {
+  @include box();
+  border: 1px solid $mvn-color-border;
+  border-radius: $mvn-border-radius-large;
+  margin-bottom: $mvn-base;
+
+  .docs-live-toolbar {
+    border-bottom: 1px solid $mvn-color-border;
+    border-top-left-radius: $mvn-border-radius-large;
+    border-top-right-radius: $mvn-border-radius-large;
+    background-color: $mvn-color-background-text;
+    padding: $mvn-base / 4;
+
+    button + button {
+      margin-left: $mvn-base / 4;
+    }
+  }
+
+  .docs-live-preview {
+    padding: $mvn-base;
+    border-bottom-left-radius: $mvn-border-radius-large;
+    border-bottom-right-radius: $mvn-border-radius-large;
+
+    &:not(:first-child) {
+      display: none;
+    }
+
+    &.docs-bg-default {
+      background: $mvn-color-background;
+    }
+
+    &.docs-bg-transparent {
+      background-color: $mvn-color-background-text;
+      background-image: linear-gradient(
+          45deg,
+          $light-grey2 25%,
+          transparent 0,
+          transparent 75%,
+          $light-grey2 0,
+          $light-grey2
+        ),
+        linear-gradient(
+          45deg,
+          $light-grey2 25%,
+          transparent 0,
+          transparent 75%,
+          $light-grey2 0,
+          $light-grey2
+        );
+      background-position: 0 0, 10px 10px;
+      background-size: 20px 20px;
+    }
+  }
+
+  .docs-live-editor {
+    border-bottom-left-radius: $mvn-border-radius-large;
+    border-bottom-right-radius: $mvn-border-radius-large;
+    font-family: $mvn-font-family-monospace;
+    caret-color: #ff8801;
+  }
+
+  .docs-live-error {
+    color: map-get($mvn-colors-text, 'danger');
+    overflow-y: auto;
+  }
+
+  .docs-fullscreen {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    > div:last-child {
+      flex-grow: 1;
+      overflow: 'auto';
+    }
+
+    .docs-live-preview {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .docs-live-editor {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      min-height: calc(100vh - #{$mvn-button-height} - #{$mvn-base / 2} - 1px);
+    }
+  }
+
+  .mvn-dark & {
+    border-color: $mvn-color-border-dark;
+
+    .docs-live-toolbar {
+      border-bottom-color: $mvn-color-border-dark;
+      background-color: $mvn-color-background-text-dark;
+    }
+
+    .docs-live-preview {
+      &.docs-bg-default {
+        background: $mvn-color-background-dark;
+      }
+
+      &.docs-bg-transparent {
+        background-color: $mvn-color-background-text-dark;
+        background-image: linear-gradient(
+            45deg,
+            $dark-grey3 25%,
+            transparent 0,
+            transparent 75%,
+            $dark-grey3 0,
+            $dark-grey3
+          ),
+          linear-gradient(
+            45deg,
+            $dark-grey3 25%,
+            transparent 0,
+            transparent 75%,
+            $dark-grey3 0,
+            $dark-grey3
+          );
+        background-position: 0 0, 10px 10px;
+        background-size: 20px 20px;
+      }
+    }
+
+    .docs-live-error {
+      color: map-get($mvn-colors-text-dark, 'danger');
+    }
+  }
+}

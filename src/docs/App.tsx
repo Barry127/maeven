@@ -25,7 +25,7 @@ export const App: FC = () => {
   return (
     <BrowserRouter>
       <Nav isDark={isDark} toggleDark={toggleDark} />
-      <div style={{ marginLeft: 200 }}>
+      <div style={{ marginLeft: 210 }}>
         <Block background="textBackground" style={{ minHeight: '100vh' }}>
           <Container element="main" className="main">
             <Router />

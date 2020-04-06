@@ -1,56 +1,26 @@
 import React, { FC, ReactNode } from 'react';
-import { style } from 'typestyle';
 
-import { P, Span } from 'maeven';
+import { P, Span, H4 } from 'maeven';
 
 import { propsData } from '../_data/props';
 
-const tableStyles = style({
-  border: 0,
-  marginBottom: 'var(--maeven-base)',
-
-  $nest: {
-    '& thead th': {
-      textAlign: 'left',
-      paddingBottom: 'var(--maeven-base)',
-      $nest: {
-        '& span': {
-          fontSize: 20
-        }
-      }
-    },
-    '& tbody td': {
-      verticalAlign: 'top',
-      borderBottom: '1px solid var(--maeven-color-grey)'
-    },
-    '& tbody tr:last-child td': {
-      borderBottom: 0
-    },
-    '& code': {
-      fontFamily: 'var(--maeven-typography-font-family-monospace)',
-      fontSize: '.9em'
-    },
-    '& td, & th': {
-      padding: 'calc(var(--maeven-base) / 2) var(--maeven-base)'
-    }
-  }
-});
+import './props.scss';
 
 export const Props: FC<PropsProps> = ({ of: propName }) => {
   if (!propsData[propName as ExistingProp]) return null;
 
   return (
-    <table className={tableStyles}>
+    <table className="docs-props-table">
       <thead>
         <tr>
           <th>
-            <Span style={{ fontWeight: 'bold' }}>Name</Span>
+            <H4>Name</H4>
           </th>
           <th>
-            <Span style={{ fontWeight: 'bold' }}>Description</Span>
+            <H4>Description</H4>
           </th>
           <th>
-            <Span style={{ fontWeight: 'bold' }}>Default</Span>
+            <H4>Default</H4>
           </th>
         </tr>
       </thead>
@@ -59,10 +29,8 @@ export const Props: FC<PropsProps> = ({ of: propName }) => {
           ([key, value]) => (
             <tr key={key}>
               <td>
-                <Span style={{ fontWeight: 'bold' }}>
-                  {key}
-                  {value.required && '*'}
-                </Span>
+                {key}
+                {value.required && '*'}
               </td>
               <td>
                 {value.description && <P>{value.description}</P>}
@@ -87,17 +55,17 @@ export const Props: FC<PropsProps> = ({ of: propName }) => {
 
 function styleDefaultValue(value: any): ReactNode {
   if (typeof value === 'boolean') {
-    return <code style={{ color: 'purple' }}>{value ? 'true' : 'false'}</code>;
+    return <code className="boolean">{value ? 'true' : 'false'}</code>;
   }
 
   if (typeof value === 'number') {
-    return <code style={{ color: 'purple' }}>{value}</code>;
+    return <code className="number">{value}</code>;
   }
 
   if (typeof value === 'string') {
     if (value.startsWith('(')) return styleFunctionValue(value);
 
-    return <code style={{ color: 'tomato' }}>"{value}"</code>;
+    return <code className="string">"{value}"</code>;
   }
 
   return value || '-';
