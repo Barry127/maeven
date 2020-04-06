@@ -9,17 +9,14 @@ import React, {
 } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { MaevenIcon } from '../../../types';
 import { Icon } from '../../Icon';
 import { Text } from '../../Text';
 
-import { classes, themeOverride } from './styles';
-
 /**
  * Inputs are the most commonly used form controls and allow for text input.
  */
-export const TextInput: FC<FullProps> = ({
+export const TextInput: FC<AllTextInputProps> = ({
   children,
   className,
   disabled = false,
@@ -33,7 +30,6 @@ export const TextInput: FC<FullProps> = ({
   type = 'text',
   ...restProps
 }) => {
-  const theme = useTheme();
   const rightElementRef = useRef<HTMLDivElement>(null);
   const [rightElementWidth, setRightelementWidth] = useState(0);
 
@@ -48,23 +44,22 @@ export const TextInput: FC<FullProps> = ({
   return (
     <div
       className={clsx(
-        classes.container,
+        'mvn-text-input',
         {
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg',
-          [classes.hasLeftIcon]: !!icon,
-          [classes.hasRightIcon]: !!iconRight,
-          [classes.hasError]: hasError
+          'mvn-text-input-sm': size === 'sm',
+          'mvn-text-input-lg': size === 'lg',
+          'mvn-has-left-icon': !!icon,
+          'mvn-has-right-icon': !!iconRight,
+          'mvn-text-input-error': hasError
         },
-        themeOverride(theme),
         className
       )}
       style={style}
     >
-      <label className={classes.label}>
+      <label className="mvn-text-input-label">
         <input
+          {...restProps}
           ref={forwardedRef}
-          className={classes.input}
           disabled={disabled}
           type={type}
           style={
@@ -74,24 +69,30 @@ export const TextInput: FC<FullProps> = ({
                 }
               : undefined
           }
-          {...restProps}
         />
-        {icon && <Icon className={classes.leftIcon} icon={icon} />}
-        {iconRight && <Icon className={classes.rightIcon} icon={iconRight} />}
+        {icon && <Icon className="mvn-text-input-left-icon" icon={icon} />}
+        {iconRight && (
+          <Icon className="mvn-text-input-right-icon" icon={iconRight} />
+        )}
         {rightElement && (
-          <div ref={rightElementRef} className={classes.rightElement}>
+          <div ref={rightElementRef} className="mvn-text-input-right-element">
             {rightElement}
           </div>
         )}
       </label>
-      {children ? <Text>{children}</Text> : null}
+      {children ? (
+        <Text color={hasError ? 'danger' : undefined}>{children}</Text>
+      ) : null}
     </div>
   );
 };
 
-export const TextInputForwardRef = forwardRef<HTMLInputElement, FullProps>(
+export const TextInputF = forwardRef<HTMLInputElement, AllTextInputProps>(
   (props, ref) => <TextInput {...props} forwardedRef={ref} />
 );
+
+export type AllTextInputProps = TextInputProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export interface TextInputProps {
   /** Wether input is disabled */
@@ -114,6 +115,3 @@ export interface TextInputProps {
   /** Input size */
   size?: 'sm' | 'md' | 'lg';
 }
-
-export type FullProps = TextInputProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;

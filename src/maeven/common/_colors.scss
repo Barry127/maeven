@@ -107,7 +107,10 @@ $mvn-color-text-dark: $grey1 !default;
 $mvn-color-text-heading-dark: $mvn-color-text-dark !default;
 $mvn-color-link-dark: $blue2 !default;
 
-$mvn-color-outline: rgba($mvn-color-primary3, 0.5) !default;
+$mvn-color-focus: $mvn-color-primary3;
+$mvn-color-focus-danger: $mvn-color-danger3;
+$mvn-color-outline: rgba($mvn-color-focus, 0.5) !default;
+$mvn-color-outline-danger: rgba($mvn-color-focus-danger, 0.5) !default;
 $mvn-color-text-selection: rgba($mvn-color-primary3, 0.25) !default;
 
 $mvn-colors: (

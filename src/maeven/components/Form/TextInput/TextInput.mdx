@@ -32,10 +32,10 @@ Text inputs can be disabled.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent>
+  <Col>
     <TextInput disabled value="Disabled" />
   </Col>
-  <Col transparent>
+  <Col>
     <TextInput readOnly value="Read Only" />
   </Col>
 </Row>
@@ -49,13 +49,13 @@ Text inputs can have icons on both sides.
 // import { tag, check } from 'icon-packs/feather';
 
 <Row gutter={1}>
-  <Col transparent>
+  <Col>
     <TextInput icon={tag} placeholder="left" />
   </Col>
-  <Col transparent>
+  <Col>
     <TextInput icon={tag} iconRight={check} placeholder="both" />
   </Col>
-  <Col transparent>
+  <Col>
     <TextInput iconRight={check} placeholder="right" />
   </Col>
 </Row>
@@ -82,22 +82,22 @@ Text inputs can have different sizes.
 // import { user } from 'icon-packs/feather';
 
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput icon={user} size="sm" placeholder="sm" />
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput size="sm" placeholder="sm" />
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput icon={user} size="md" placeholder="md" />
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput size="md" placeholder="md" />
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput icon={user} size="lg" placeholder="lg" />
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput size="lg" placeholder="lg" />
   </Col>
 </Row>
@@ -111,10 +111,10 @@ A text input can indicate it has an error.
 // import { x } from 'icon-packs/feather';
 
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput hasError placeholder="Error..." iconRight={x} />
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextInput hasError placeholder="Error input">
       Text indicating error
     </TextInput>
