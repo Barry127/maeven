@@ -9,19 +9,17 @@ import React, {
 } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { useId } from '../../../hooks/useId';
 import { MaevenIcon } from '../../../types';
 import { eye, eyeOff } from '../../../common/defaultIcons';
 
 import { TextInputProps, TextInput } from '../TextInput/TextInput';
 import { Button } from '../../Button';
-import { classes, themeOverride } from './styles';
 
 /**
  * PasswordInput is a TextInput to handle passwords.
  */
-export const PasswordInput: FC<FullProps> = ({
+export const PasswordInput: FC<AllPasswordProps> = ({
   children,
   className,
   disabled = false,
@@ -39,7 +37,6 @@ export const PasswordInput: FC<FullProps> = ({
   const [visible, setVisible] = useState(false);
   const [selection, setSelection] = useState<Selection>({ start: 0, end: 0 });
 
-  const theme = useTheme();
   const id = useId(propsId);
 
   const focusInput = useCallback(() => {
@@ -79,7 +76,7 @@ export const PasswordInput: FC<FullProps> = ({
 
   return (
     <TextInput
-      className={clsx(themeOverride(theme), className)}
+      className={clsx('mvn-password-input', className)}
       disabled={disabled}
       hasError={hasError}
       icon={icon}
@@ -90,17 +87,12 @@ export const PasswordInput: FC<FullProps> = ({
       rightElement={
         showToggle && !disabled ? (
           <Button
-            className={classes.toggle}
             buttonType="link"
             onClick={toggleVisible}
             onFocus={focusInput}
             ref={buttonRef}
             size={size}
-            icon={
-              visible
-                ? hideIcon || theme.iconOverrides?.hidePassword || eyeOff
-                : showIcon || theme.iconOverrides?.showPassword || eye
-            }
+            icon={visible ? hideIcon || eyeOff : showIcon || eye}
             tabIndex={-1}
           />
         ) : (
@@ -114,9 +106,12 @@ export const PasswordInput: FC<FullProps> = ({
   );
 };
 
-export const PasswordInputForwardRef = forwardRef<HTMLInputElement, FullProps>(
+export const PasswordInputF = forwardRef<HTMLInputElement, AllPasswordProps>(
   (props, ref) => <PasswordInput {...props} forwardedRef={ref} />
 );
+
+export type AllPasswordProps = PasswordInputProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export interface PasswordInputProps
   extends Omit<TextInputProps, 'rightElement' | 'iconRight'> {
@@ -134,6 +129,3 @@ interface Selection {
   start: number | null;
   end: number | null;
 }
-
-export type FullProps = PasswordInputProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
