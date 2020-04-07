@@ -3,16 +3,13 @@ import '@testing-library/jest-dom/extend-expect';
 import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { RadioButton, RadioButtonForwardRef } from './RadioButton';
+import { RadioButton, RadioButtonF } from './RadioButton';
 import { RadioButton as ExportedRadioButton } from '../';
-import { classes, themeOverride } from './styles';
 
 describe('RadioButton', () => {
   it('renders an input radio and sets child text', () => {
     render(<RadioButton>Hello world!</RadioButton>);
-    const container = document.querySelector('label');
+    const container = document.querySelector('.mvn-radio-button');
     const input = document.querySelector('input');
     expect(container).toBeInTheDocument();
     expect(input).toBeInTheDocument();
@@ -24,7 +21,7 @@ describe('RadioButton', () => {
     render(
       <RadioButton className="radio-button-class">Hello world!</RadioButton>
     );
-    const container = document.querySelector('label');
+    const container = document.querySelector('.mvn-radio-button');
     expect(container).toHaveClass('radio-button-class');
   });
 
@@ -37,27 +34,6 @@ describe('RadioButton', () => {
     const input = document.querySelector('input');
     expect(input).toHaveAttribute('id', 'RadioButtonId');
     expect(input?.dataset.test).toBe('radio-button-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        RadioButton: {
-          border: '1px solid green'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <RadioButton>Hello world!</RadioButton>
-      </ThemeProvider>
-    );
-    const container = document.querySelector('label');
-    expect(container).toHaveClass(expectedClassName);
   });
 
   describe('disabled', () => {
@@ -77,46 +53,48 @@ describe('RadioButton', () => {
   describe('hasError', () => {
     it('has no error styling by default', () => {
       render(<RadioButton />);
-      const container = document.querySelector('label');
-      expect(container).not.toHaveClass(classes.hasError);
+      const container = document.querySelector('.mvn-radio-button');
+      expect(container).not.toHaveClass('mvn-radio-button-error');
     });
 
     it('sets error styling', () => {
-      render(<RadioButton hasError />);
-      const container = document.querySelector('label');
-      expect(container).toHaveClass(classes.hasError);
+      render(<RadioButton hasError>Error Text</RadioButton>);
+      const container = document.querySelector('.mvn-radio-button');
+      expect(container).toHaveClass('mvn-radio-button-error');
+      const text = document.querySelector('.mvn-radio-button > .mvn-block');
+      expect(text).toHaveClass('mvn-text-color-danger');
     });
   });
 
   describe('size', () => {
     it('is md by default', () => {
       render(<RadioButton />);
-      const container = document.querySelector('label');
-      expect(container).not.toHaveClass(classes.sm);
-      expect(container).not.toHaveClass(classes.lg);
+      const container = document.querySelector('.mvn-radio-button');
+      expect(container).not.toHaveClass('mvn-radio-button-sm');
+      expect(container).not.toHaveClass('mvn-radio-button-lg');
     });
 
     it('sets sm', () => {
       render(<RadioButton size="sm" />);
-      const container = document.querySelector('label');
-      expect(container).toHaveClass(classes.sm);
+      const container = document.querySelector('.mvn-radio-button');
+      expect(container).toHaveClass('mvn-radio-button-sm');
     });
 
     it('sets lg', () => {
       render(<RadioButton size="lg" />);
-      const container = document.querySelector('label');
-      expect(container).toHaveClass(classes.lg);
+      const container = document.querySelector('.mvn-radio-button');
+      expect(container).toHaveClass('mvn-radio-button-lg');
     });
   });
 
   describe('forwarding ref', () => {
     it('exports RadioButtonForwardRef', () => {
-      expect(ExportedRadioButton).toBe(RadioButtonForwardRef);
+      expect(ExportedRadioButton).toBe(RadioButtonF);
     });
 
     it('sets ref', () => {
       const ref = createRef<HTMLInputElement>();
-      render(<RadioButtonForwardRef ref={ref} />);
+      render(<RadioButtonF ref={ref} />);
       const input = document.querySelector('input');
       expect(ref.current).toBe(input);
     });

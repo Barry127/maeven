@@ -1,15 +1,12 @@
 import React, { FC, InputHTMLAttributes, forwardRef, Ref } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { Text } from '../../Text';
-
-import { classes, themeOverride } from './styles';
 
 /**
  * A RadioButton is one option in a RadioGroup.
  */
-export const RadioButton: FC<FullProps> = ({
+export const RadioButton: FC<AllRadioButtonProps> = ({
   checked,
   children,
   className,
@@ -19,40 +16,42 @@ export const RadioButton: FC<FullProps> = ({
   size = 'md',
   style,
   ...restProps
-}) => {
-  const theme = useTheme();
-
-  return (
-    <label
-      className={clsx(
-        classes.container,
-        {
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg',
-          [classes.hasError]: hasError
-        },
-        themeOverride(theme),
-        className
-      )}
-      style={style}
+}) => (
+  <label
+    className={clsx(
+      'mvn-radio-button',
+      {
+        'mvn-radio-button-sm': size === 'sm',
+        'mvn-radio-button-lg': size === 'lg',
+        'mvn-radio-button-error': hasError
+      },
+      className
+    )}
+    style={style}
+  >
+    <input
+      type="radio"
+      checked={checked}
+      disabled={disabled}
+      ref={forwardedRef}
+      {...restProps}
+    />
+    <div className="mvn-radio-button-circle" />
+    <Text
+      color={hasError ? 'danger' : undefined}
+      className="mvn-radio-button-text"
     >
-      <input
-        type="radio"
-        checked={checked}
-        className={classes.radioButton}
-        disabled={disabled}
-        ref={forwardedRef}
-        {...restProps}
-      />
-      <div className={classes.circle} />
-      <Text className={classes.text}>{children}</Text>
-    </label>
-  );
-};
+      {children}
+    </Text>
+  </label>
+);
 
-export const RadioButtonForwardRef = forwardRef<HTMLInputElement, FullProps>(
+export const RadioButtonF = forwardRef<HTMLInputElement, AllRadioButtonProps>(
   (props, ref) => <RadioButton {...props} forwardedRef={ref} />
 );
+
+export type AllRadioButtonProps = RadioButtonProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export interface RadioButtonProps {
   /** Wether the RadioButton is checked */
@@ -69,6 +68,3 @@ export interface RadioButtonProps {
   /** RadioButton size */
   size?: 'sm' | 'md' | 'lg';
 }
-
-export type FullProps = RadioButtonProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
