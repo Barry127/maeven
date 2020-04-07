@@ -9,19 +9,16 @@ import React, {
   useRef,
   useEffect
 } from 'react';
-import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { inlineLoading } from '../../../common/defaultIcons';
 
 import { TextInputProps, TextInput } from '../TextInput/TextInput';
-import { themeOverride } from './styles';
 import { getSuggestion } from './getSuggestion';
 
 /**
  * TypeAheadInput enhances TextInput to inline autocomplete from a list.
  */
-export const TypeAheadInput: FC<FullProps> = ({
+export const TypeAheadInput: FC<AllTypeAheadInputProps> = ({
   children,
   className,
   disabled = false,
@@ -34,7 +31,6 @@ export const TypeAheadInput: FC<FullProps> = ({
   value: propsValue,
   ...restProps
 }) => {
-  const theme = useTheme();
   const [suppressSuggestion, setSuppressSuggestion] = useState(false);
   const [loading, setLoading] = useState(false);
   const promiseCounter = useRef(0);
@@ -123,17 +119,13 @@ export const TypeAheadInput: FC<FullProps> = ({
 
   return (
     <TextInput
-      className={clsx(themeOverride(theme), className)}
+      className={className}
       disabled={disabled}
       hasError={false}
       size={size}
       onChange={onChange}
       onKeyDown={onKeyDown}
-      iconRight={
-        loading
-          ? theme.iconOverrides?.inlineLoading || inlineLoading
-          : iconRight
-      }
+      iconRight={loading ? inlineLoading : iconRight}
       {...restProps}
     >
       {children}
@@ -141,16 +133,17 @@ export const TypeAheadInput: FC<FullProps> = ({
   );
 };
 
-export const TypeAheadInputForwardRef = forwardRef<HTMLInputElement, FullProps>(
-  (props, ref) => <TypeAheadInput {...props} forwardedRef={ref} />
-);
+export const TypeAheadInputF = forwardRef<
+  HTMLInputElement,
+  AllTypeAheadInputProps
+>((props, ref) => <TypeAheadInput {...props} forwardedRef={ref} />);
+
+export type AllTypeAheadInputProps = TypeAheadInputProps &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export interface TypeAheadInputProps extends TextInputProps {
   items: string[] | syncGetItems | asyncGetItems;
 }
-
-export type FullProps = TypeAheadInputProps &
-  Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
 export type syncGetItems = (value: string) => string[];
 export type asyncGetItems = (value: string) => Promise<string[]>;

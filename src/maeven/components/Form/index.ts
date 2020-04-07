@@ -17,4 +17,4 @@ export { RadioGroup } from './RadioGroup/RadioGroup';
 export { SelectForwardRef as Select } from './Select/Select';
 export { TextAreaF as TextArea } from './TextArea/TextArea';
 export { TextInputF as TextInput } from './TextInput/TextInput';
-export { TypeAheadInputForwardRef as TypeAheadInput } from './TypeAheadInput/TypeAheadInput';
+export { TypeAheadInputF as TypeAheadInput } from './TypeAheadInput/TypeAheadInput';

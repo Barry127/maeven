@@ -3,12 +3,8 @@ import '@testing-library/jest-dom/extend-expect';
 import React, { createRef } from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { TypeAheadInput, TypeAheadInputForwardRef } from './TypeAheadInput';
+import { TypeAheadInput, TypeAheadInputF } from './TypeAheadInput';
 import { TypeAheadInput as ExportedTypeAheadInput } from '../';
-
-import { themeOverride } from './styles';
 
 const items = ['JavaScript', 'Java', 'PHP', 'Perl'];
 const syncItems = () => items;
@@ -49,27 +45,6 @@ describe('TypeAheadInput', () => {
 
     expect(input).toHaveAttribute('id', 'TypeAheadInputId');
     expect(input?.dataset.test).toBe('typeaheadinput-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        TypeAheadInput: {
-          color: 'hotpink'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <TypeAheadInput items={items}>Hello world!</TypeAheadInput>
-      </ThemeProvider>
-    );
-    const container = document.querySelector('label')?.parentElement;
-    expect(container).toHaveClass(expectedClassName);
   });
 
   it('does not autocomplete when backspace is pressed', () => {
@@ -260,12 +235,12 @@ describe('TypeAheadInput', () => {
 
   describe('forwarding ref', () => {
     it('exports TypeAheadInputForwardRef', () => {
-      expect(ExportedTypeAheadInput).toBe(TypeAheadInputForwardRef);
+      expect(ExportedTypeAheadInput).toBe(TypeAheadInputF);
     });
 
     it('sets ref', () => {
       const ref = createRef<HTMLInputElement>();
-      render(<TypeAheadInputForwardRef items={items} ref={ref} />);
+      render(<TypeAheadInputF items={items} ref={ref} />);
       const input = document.querySelector('input');
       expect(ref.current).toBe(input);
     });
