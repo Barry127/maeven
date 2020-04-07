@@ -15,6 +15,6 @@ export { PasswordInputF as PasswordInput } from './PasswordInput/PasswordInput';
 export { RadioButtonForwardRef as RadioButton } from './RadioButton/RadioButton';
 export { RadioGroup } from './RadioGroup/RadioGroup';
 export { SelectForwardRef as Select } from './Select/Select';
-export { TextAreaForwardRef as TextArea } from './TextArea/TextArea';
+export { TextAreaF as TextArea } from './TextArea/TextArea';
 export { TextInputF as TextInput } from './TextInput/TextInput';
 export { TypeAheadInputForwardRef as TypeAheadInput } from './TypeAheadInput/TypeAheadInput';

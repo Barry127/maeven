@@ -2,15 +2,12 @@ import React, { FC, TextareaHTMLAttributes, Ref, forwardRef } from 'react';
 import clsx from 'clsx';
 import TextAreaAutosize from 'react-autosize-textarea';
 
-import { useTheme } from '../../../hooks/useTheme';
-
-import { classes, themeOverride } from './styles';
 import { Text } from '../../Text';
 
 /**
  * TextArea allows for multiline text input.
  */
-export const TextArea: FC<FullProps> = ({
+export const TextArea: FC<AllTextAreaProps> = ({
   autoSize = true,
   children,
   className,
@@ -21,50 +18,49 @@ export const TextArea: FC<FullProps> = ({
   size = 'md',
   rows = 3,
   ...restProps
-}) => {
-  const theme = useTheme();
-
-  return (
-    <div
-      className={clsx(
-        classes.containter,
-        {
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg',
-          [classes.hasError]: hasError
-        },
-        themeOverride(theme),
-        className
+}) => (
+  <div
+    className={clsx(
+      'mvn-text-area',
+      {
+        'mvn-text-area-sm': size === 'sm',
+        'mvn-text-area-lg': size === 'lg',
+        'mvn-text-area-error': hasError
+      },
+      className
+    )}
+  >
+    <label className="mvn-text-area-label">
+      {autoSize ? (
+        <TextAreaAutosize
+          ref={forwardedRef}
+          disabled={disabled}
+          rows={rows}
+          maxRows={maxRows}
+          {...restProps}
+        />
+      ) : (
+        <textarea
+          ref={forwardedRef}
+          className="mvn-text-area-no-auto-size"
+          disabled={disabled}
+          rows={rows}
+          {...restProps}
+        />
       )}
-    >
-      <label className={classes.label}>
-        {autoSize ? (
-          <TextAreaAutosize
-            ref={forwardedRef}
-            className={classes.textArea}
-            disabled={disabled}
-            rows={rows}
-            maxRows={maxRows}
-            {...restProps}
-          />
-        ) : (
-          <textarea
-            ref={forwardedRef}
-            className={clsx(classes.textArea, classes.textAreaNoAutoSize)}
-            disabled={disabled}
-            rows={rows}
-            {...restProps}
-          />
-        )}
-      </label>
-      {children ? <Text>{children}</Text> : null}
-    </div>
-  );
-};
+    </label>
+    {children ? (
+      <Text color={hasError ? 'danger' : undefined}>{children}</Text>
+    ) : null}
+  </div>
+);
 
-export const TextAreaForwardRef = forwardRef<HTMLTextAreaElement, FullProps>(
+export const TextAreaF = forwardRef<HTMLTextAreaElement, AllTextAreaProps>(
   (props, ref) => <TextArea {...props} forwardedRef={ref} />
 );
+
+export type AllTextAreaProps = TextAreaProps &
+  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>;
 
 export interface TextAreaProps {
   /** Wether textarea grows in size when more lines are added */
@@ -87,6 +83,3 @@ export interface TextAreaProps {
   /** TextArea size */
   size?: 'sm' | 'md' | 'lg';
 }
-
-export type FullProps = TextAreaProps &
-  Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>;

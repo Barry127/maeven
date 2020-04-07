@@ -3,6 +3,7 @@
 @import '../../maeven/common/variables';
 
 .docs-nav {
+  @include scrollbars();
   position: fixed;
   top: 0;
   left: 0;
