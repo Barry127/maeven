@@ -2,19 +2,14 @@ import '@testing-library/jest-dom/extend-expect';
 
 import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import { circle } from 'icon-packs/cjs/feather';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { Checkbox, CheckboxForwardRef } from './Checkbox';
+import { Checkbox, CheckboxF } from './Checkbox';
 import { Checkbox as ExportedCheckbox } from '../';
-
-import { classes, themeOverride } from './styles';
 
 describe('Checkbox', () => {
   it('renders an input checkbox and sets child text', () => {
     render(<Checkbox>Hello world!</Checkbox>);
-    const container = document.querySelector('label');
+    const container = document.querySelector('.mvn-checkbox');
     const input = document.querySelector('input');
     expect(container).toBeInTheDocument();
     expect(input).toBeInTheDocument();
@@ -24,7 +19,7 @@ describe('Checkbox', () => {
 
   it('sets className', () => {
     render(<Checkbox className="checkbox-class">Hello world!</Checkbox>);
-    const container = document.querySelector('label');
+    const container = document.querySelector('.mvn-checkbox');
     expect(container).toHaveClass('checkbox-class');
   });
 
@@ -37,47 +32,6 @@ describe('Checkbox', () => {
     const input = document.querySelector('input');
     expect(input).toHaveAttribute('id', 'CheckboxId');
     expect(input?.dataset.test).toBe('checkbox-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Checkbox: {
-          color: 'hotpink'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Checkbox>Hello world!</Checkbox>
-      </ThemeProvider>
-    );
-    const container = document.querySelector('label');
-    expect(container).toHaveClass(expectedClassName);
-  });
-
-  it('sets Theme icon overrides', () => {
-    const Theme = {
-      ...MaevenDefault,
-      iconOverrides: {
-        check: circle
-      }
-    };
-
-    render(
-      <ThemeProvider theme={Theme}>
-        <Checkbox checked onChange={jest.fn()} />
-      </ThemeProvider>
-    );
-
-    const circleTag = document.querySelector('circle');
-    const polyLine = document.querySelector('polyline');
-    expect(polyLine).not.toBeInTheDocument();
-    expect(circleTag).toBeInTheDocument();
   });
 
   describe('disabled', () => {
@@ -97,14 +51,16 @@ describe('Checkbox', () => {
   describe('hasError', () => {
     it('has no error styling by default', () => {
       render(<Checkbox />);
-      const container = document.querySelector('label');
-      expect(container).not.toHaveClass(classes.hasError);
+      const container = document.querySelector('.mvn-checkbox');
+      expect(container).not.toHaveClass('mvn-checkbox-error');
     });
 
     it('sets error styling', () => {
-      render(<Checkbox hasError />);
-      const container = document.querySelector('label');
-      expect(container).toHaveClass(classes.hasError);
+      render(<Checkbox hasError>Error Text</Checkbox>);
+      const container = document.querySelector('.mvn-checkbox');
+      expect(container).toHaveClass('mvn-checkbox-error');
+      const text = document.querySelector('.mvn-checkbox > .mvn-block');
+      expect(text).toHaveClass('mvn-text-color-danger');
     });
   });
 
@@ -147,32 +103,32 @@ describe('Checkbox', () => {
   describe('size', () => {
     it('is md by default', () => {
       render(<Checkbox />);
-      const container = document.querySelector('label');
-      expect(container).not.toHaveClass(classes.sm);
-      expect(container).not.toHaveClass(classes.lg);
+      const container = document.querySelector('.mvn-checkbox');
+      expect(container).not.toHaveClass('mvn-checkbox-sm');
+      expect(container).not.toHaveClass('mvn-checkbox-lg');
     });
 
     it('sets sm', () => {
       render(<Checkbox size="sm" />);
-      const container = document.querySelector('label');
-      expect(container).toHaveClass(classes.sm);
+      const container = document.querySelector('.mvn-checkbox');
+      expect(container).toHaveClass('mvn-checkbox-sm');
     });
 
     it('sets lg', () => {
       render(<Checkbox size="lg" />);
-      const container = document.querySelector('label');
-      expect(container).toHaveClass(classes.lg);
+      const container = document.querySelector('.mvn-checkbox');
+      expect(container).toHaveClass('mvn-checkbox-lg');
     });
   });
 
   describe('forwarding ref', () => {
     it('exports CheckboxForwardRef', () => {
-      expect(ExportedCheckbox).toBe(CheckboxForwardRef);
+      expect(ExportedCheckbox).toBe(CheckboxF);
     });
 
     it('sets ref', () => {
       const ref = createRef<HTMLInputElement>();
-      render(<CheckboxForwardRef ref={ref} />);
+      render(<CheckboxF ref={ref} />);
       const input = document.querySelector('input');
       expect(ref.current).toBe(input);
     });

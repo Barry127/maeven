@@ -1,0 +1,211 @@
+@import '../../../common/functions';
+@import '../../../common/mixins';
+@import '../../../common/variables';
+
+@import '../../Button/button';
+
+.mvn-checkbox {
+  @include bpm0();
+  @include base-typography();
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: $mvn-input-height;
+
+  input:first-child {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    position: absolute;
+
+    &:focus + .mvn-checkbox-box {
+      outline: none;
+      z-index: 1;
+      box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline;
+
+      &.mvn-dark & {
+        background-image: $mvn-button-background-gradient-dark;
+        box-shadow: $mvn-button-box-shadow-dark;
+      }
+    }
+
+    &:active:not(:disabled) + .mvn-checkbox-box {
+      box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline;
+      background-color: $mvn-button-color-background-active;
+      background-image: none;
+    }
+
+    &:disabled + .mvn-checkbox-box {
+      box-shadow: none;
+      background-color: $mvn-button-color-background-disabled;
+      background-image: none;
+      color: rgba(choose-text-color($mvn-button-color-background), 0.6);
+    }
+
+    &:disabled ~ .mvn-checkbox-text {
+      color: rgba($mvn-color-text, 0.6);
+
+      .mvn-dark & {
+        color: rgba($mvn-color-text-dark, 0.6);
+      }
+    }
+
+    &:checked + .mvn-checkbox-box .mvn-icon-container,
+    &:indeterminate + .mvn-checkbox-box .mvn-icon-container {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &:checked:not(:indeterminate) + .mvn-checkbox-box {
+      color: map-get($mvn-button-primary, 'text');
+      box-shadow: $mvn-button-box-shadow-color;
+      background-color: map-get($mvn-button-primary, 'default');
+      background-image: linear-gradient(
+        to bottom,
+        lighten(map-get($mvn-button-primary, 'default'), 5),
+        darken(map-get($mvn-button-primary, 'default'), 5)
+      );
+
+      .mvn-dark & {
+        box-shadow: $mvn-button-box-shadow-color-dark;
+        background-color: map-get($mvn-button-primary, 'default-dark');
+        background-image: linear-gradient(
+          to bottom,
+          lighten(map-get($mvn-button-primary, 'default-dark'), 5),
+          darken(map-get($mvn-button-primary, 'default-dark'), 5)
+        );
+      }
+    }
+
+    &:checked:focus:not(:indeterminate) + .mvn-checkbox-box {
+      border-color: $mvn-color-outline;
+      box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline;
+    }
+
+    &:checked:active:not(:indeterminate) + .mvn-checkbox-box {
+      box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline;
+      background-color: map-get($mvn-button-primary, 'active');
+      background-image: none;
+
+      .mvn-dark & {
+        background-color: map-get($mvn-button-primary, 'active-dark');
+      }
+    }
+
+    &:indeterminate + .mvn-checkbox-box {
+      color: map-get($mvn-button-primary, 'default');
+      box-shadow: 0 0 0 1px map-get($mvn-button-primary, 'default');
+
+      .mvn-dark {
+        color: map-get($mvn-button-primary, 'default-dark');
+        box-shadow: 0 0 0 1px map-get($mvn-button-primary, 'default-dark');
+      }
+    }
+
+    &:indeterminate:disabled + .mvn-checkbox-box {
+      color: rgba($mvn-color-text, 0.6);
+      box-shadow: 0 0 0 1px rgba($mvn-color-text, 0.6);
+    }
+  }
+
+  .mvn-checkbox-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    height: 1em;
+    width: 1em;
+    line-height: 1;
+    border-radius: $mvn-border-radius;
+    background-color: $mvn-button-color-background;
+    background-image: $mvn-button-background-gradient;
+    color: choose-text-color($mvn-button-color-background);
+    box-shadow: $mvn-button-box-shadow;
+    user-select: none;
+    margin-right: $mvn-input-height / 4;
+
+    .mvn-icon-container {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: animate-transition(opacity), animate-transition(transform);
+    }
+  }
+
+  .mvn-checkbox-text {
+    flex-grow: 1;
+    font-size: 1em;
+  }
+
+  &.mvn-checkbox-error {
+    input:first-child {
+      &:focus + .mvn-checkbox-box,
+      &:active + .mvn-checkbox-box {
+        border-color: $mvn-color-outline-danger;
+        box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline-danger;
+      }
+
+      &:not(:checked) + .mvn-checkbox-box {
+        color: map-get($mvn-colors-text, 'danger');
+        border-color: rgba(map-get($mvn-colors-text, 'danger'), 0.6);
+
+        .mvn-dark & {
+          color: map-get($mvn-colors-text-dark, 'danger');
+        }
+      }
+
+      &:checked:not(:indeterminate) + .mvn-checkbox-box {
+        color: map-get($mvn-button-danger, 'text');
+        background-color: map-get($mvn-button-danger, 'default');
+        background-image: linear-gradient(
+          to bottom,
+          lighten(map-get($mvn-button-danger, 'default'), 5),
+          darken(map-get($mvn-button-danger, 'default'), 5)
+        );
+
+        .mvn-dark & {
+          box-shadow: $mvn-button-box-shadow-color-dark;
+          background-color: map-get($mvn-button-danger, 'default-dark');
+          background-image: linear-gradient(
+            to bottom,
+            lighten(map-get($mvn-button-danger, 'default-dark'), 5),
+            darken(map-get($mvn-button-danger, 'default-dark'), 5)
+          );
+        }
+      }
+
+      &:checked:focus:not(:indeterminate) + .mvn-checkbox-box {
+        border-color: $mvn-color-outline-danger;
+        box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline-danger;
+      }
+
+      &:checked:active:not(:indeterminate) + .mvn-checkbox-box {
+        box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline-danger;
+        background-color: map-get($mvn-button-danger, 'active');
+        background-image: none;
+
+        .mvn-dark & {
+          background-color: map-get($mvn-button-danger, 'active-dark');
+        }
+      }
+    }
+  }
+
+  &.mvn-checkbox-sm {
+    height: $mvn-input-height-small;
+    font-size: $mvn-font-size-small;
+
+    .mvn-checkbox-box {
+      margin-right: $mvn-input-height-small / 4;
+    }
+  }
+
+  &.mvn-checkbox-lg {
+    height: $mvn-input-height-large;
+    font-size: $mvn-font-size-large;
+
+    .mvn-checkbox-box {
+      margin-right: $mvn-input-height-large / 4;
+    }
+  }
+}

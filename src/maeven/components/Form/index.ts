@@ -1,4 +1,4 @@
-export { CheckboxForwardRef as Checkbox } from './Checkbox/Checkbox';
+export { CheckboxF as Checkbox } from './Checkbox/Checkbox';
 export { Form } from './Form/Form';
 export { FormField } from './FormField/FormField';
 export { FormFieldCheckboxForwardRef as FormFieldCheckbox } from './FormField/FormFieldCheckbox';

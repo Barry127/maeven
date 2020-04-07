@@ -8,14 +8,11 @@ import React, {
 } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { MaevenIcon } from '../../../types';
 import { mergeRefs } from '../../../common/mergeRefs';
 import { Icon } from '../../Icon';
 import { Text } from '../../Text';
 import { check, minus } from '../../../common/defaultIcons';
-
-import { classes, themeOverride } from './styles';
 
 /**
  * With Checkboxes users can select multiple options in a list.
@@ -34,7 +31,6 @@ export const Checkbox: FC<FullProps> = ({
   style,
   ...restProps
 }) => {
-  const theme = useTheme();
   const checkboxRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -50,13 +46,12 @@ export const Checkbox: FC<FullProps> = ({
   return (
     <label
       className={clsx(
-        classes.container,
+        'mvn-checkbox',
         {
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg',
-          [classes.hasError]: hasError
+          'mvn-checkbox-sm': size === 'sm',
+          'mvn-checkbox-lg': size === 'lg',
+          'mvn-checkbox-error': hasError
         },
-        themeOverride(theme),
         className
       )}
       style={style}
@@ -64,28 +59,28 @@ export const Checkbox: FC<FullProps> = ({
       <input
         type="checkbox"
         checked={checked}
-        className={classes.checkbox}
         disabled={disabled}
         ref={mergeRefs(checkboxRef, forwardedRef)}
         {...restProps}
       />
-      <div className={classes.box}>
+      <div className="mvn-checkbox-box">
         <Icon
-          icon={
-            indeterminate
-              ? indeterminateIcon || theme.iconOverrides?.indeterminate || minus
-              : checkIcon || theme.iconOverrides?.check || check
-          }
+          size=".85em"
+          icon={indeterminate ? indeterminateIcon || minus : checkIcon || check}
           fixedWidth
-          className={classes.icon}
         />
       </div>
-      <Text className={classes.text}>{children}</Text>
+      <Text
+        color={hasError ? 'danger' : undefined}
+        className="mvn-checkbox-text"
+      >
+        {children}
+      </Text>
     </label>
   );
 };
 
-export const CheckboxForwardRef = forwardRef<HTMLInputElement, FullProps>(
+export const CheckboxF = forwardRef<HTMLInputElement, FullProps>(
   (props, ref) => <Checkbox {...props} forwardedRef={ref} />
 );
 
