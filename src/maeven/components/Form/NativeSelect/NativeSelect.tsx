@@ -1,18 +1,15 @@
 import React, { FC, Ref, SelectHTMLAttributes, forwardRef } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { MaevenIcon } from '../../../types';
 import { Icon } from '../../Icon';
 import { Text } from '../../Text';
 import { chevronDown } from '../../../common/defaultIcons';
 
-import { classes, themeOverride } from './styles';
-
 /**
  *With NativeSelect users can select one item from a list of values.
  */
-export const NativeSelect: FC<FullProps> = ({
+export const NativeSelect: FC<AllNativeSelectProps> = ({
   children,
   chevronDownIcon,
   className,
@@ -24,53 +21,47 @@ export const NativeSelect: FC<FullProps> = ({
   size = 'md',
   style,
   ...restProps
-}) => {
-  const theme = useTheme();
-
-  return (
-    <div
-      className={clsx(
-        classes.container,
-        {
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg',
-          [classes.hasIcon]: !!icon,
-          [classes.hasError]: hasError
-        },
-        themeOverride(theme),
-        className
-      )}
-      style={style}
-    >
-      <label className={classes.label}>
-        <select
-          ref={forwardedRef}
-          className={classes.select}
-          disabled={disabled}
-          {...restProps}
-        >
-          {options.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.text || option.value}
-            </option>
-          ))}
-        </select>
-        {icon && <Icon className={classes.icon} icon={icon} />}
-        <Icon
-          className={classes.toggle}
-          icon={
-            chevronDownIcon || theme.iconOverrides?.chevronDown || chevronDown
-          }
-        />
-      </label>
-      {children ? <Text>{children}</Text> : null}
-    </div>
-  );
-};
-
-export const NativeSelectForwardRef = forwardRef<HTMLSelectElement, FullProps>(
-  (props, ref) => <NativeSelect {...props} forwardedRef={ref} />
+}) => (
+  <div
+    className={clsx(
+      'mvn-native-select',
+      {
+        'mvn-native-select-sm': size === 'sm',
+        'mvn-native-select-lg': size === 'lg',
+        'mvn-has-icon': !!icon,
+        'mvn-native-select-error': hasError
+      },
+      className
+    )}
+    style={style}
+  >
+    <label className="mvn-native-select-label">
+      <select ref={forwardedRef} disabled={disabled} {...restProps}>
+        {options.map(option => (
+          <option key={option.value} value={option.value}>
+            {option.text || option.value}
+          </option>
+        ))}
+      </select>
+      {icon && <Icon className="mvn-native-select-icon" icon={icon} />}
+      <Icon
+        className="mvn-native-select-toggle"
+        icon={chevronDownIcon || chevronDown}
+      />
+    </label>
+    {children ? (
+      <Text color={hasError ? 'danger' : undefined}>{children}</Text>
+    ) : null}
+  </div>
 );
+
+export const NativeSelectF = forwardRef<
+  HTMLSelectElement,
+  AllNativeSelectProps
+>((props, ref) => <NativeSelect {...props} forwardedRef={ref} />);
+
+export type AllNativeSelectProps = NativeSelectProps &
+  Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;
 
 export interface NativeSelectProps {
   /** Chevron icon (defaults to Feather icons chevronDown) */
@@ -93,6 +84,3 @@ export interface NativeSelectProps {
   /** Select size */
   size?: 'sm' | 'md' | 'lg';
 }
-
-export type FullProps = NativeSelectProps &
-  Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>;

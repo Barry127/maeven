@@ -4,11 +4,8 @@ import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import { circle } from 'icon-packs/cjs/feather';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { NativeSelect, NativeSelectForwardRef } from './NativeSelect';
+import { NativeSelect, NativeSelectF } from './NativeSelect';
 import { NativeSelect as ExportedNativeSelect } from '../';
-import { classes, themeOverride } from './styles';
 
 const options = [
   { value: 'JavaScript' },
@@ -24,7 +21,7 @@ const options = [
 describe('NativeSelect', () => {
   it('renders select element with options and sets child text', () => {
     render(<NativeSelect options={options}>Hello world!</NativeSelect>);
-    const container = document.querySelector('label')?.parentElement;
+    const container = document.querySelector('.mvn-native-select');
     const select = document.querySelector('select');
     const htmlOptions = document.querySelectorAll('option');
     expect(container).toBeInTheDocument();
@@ -39,7 +36,7 @@ describe('NativeSelect', () => {
         Hello world!
       </NativeSelect>
     );
-    const container = document.querySelector('label')?.parentElement;
+    const container = document.querySelector('.mvn-native-select');
     expect(container).toHaveClass('nativeselect-class');
   });
 
@@ -56,47 +53,6 @@ describe('NativeSelect', () => {
     const select = document.querySelector('select');
     expect(select).toHaveAttribute('id', 'NativeSelectId');
     expect(select?.dataset.test).toBe('nativeselect-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        NativeSelect: {
-          border: '2px dashed blue'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <NativeSelect options={options}>Hello world!</NativeSelect>
-      </ThemeProvider>
-    );
-    const container = document.querySelector('label')?.parentElement;
-    expect(container).toHaveClass(expectedClassName);
-  });
-
-  it('sets Theme icon overrides', () => {
-    const Theme = {
-      ...MaevenDefault,
-      iconOverrides: {
-        chevronDown: circle
-      }
-    };
-
-    render(
-      <ThemeProvider theme={Theme}>
-        <NativeSelect options={options}>Hello world!</NativeSelect>
-      </ThemeProvider>
-    );
-
-    const circleTag = document.querySelector('circle');
-    const polyLine = document.querySelector('polyline');
-    expect(polyLine).not.toBeInTheDocument();
-    expect(circleTag).toBeInTheDocument();
   });
 
   describe('disabled', () => {
@@ -116,22 +72,28 @@ describe('NativeSelect', () => {
   describe('hasError', () => {
     it('has no error styling by default', () => {
       render(<NativeSelect options={options} />);
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).not.toHaveClass(classes.hasError);
+      const container = document.querySelector('.mvn-native-select');
+      expect(container).not.toHaveClass('mvn-native-select-error');
     });
 
     it('sets error styling', () => {
-      render(<NativeSelect options={options} hasError />);
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).toHaveClass(classes.hasError);
+      render(
+        <NativeSelect options={options} hasError>
+          Error Text
+        </NativeSelect>
+      );
+      const container = document.querySelector('.mvn-native-select');
+      expect(container).toHaveClass('mvn-native-select-error');
+      const text = document.querySelector('.mvn-native-select > .mvn-block');
+      expect(text).toHaveClass('mvn-text-color-danger');
     });
   });
 
   describe('icon', () => {
     it('has no icon by default', () => {
       render(<NativeSelect options={options} />);
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).not.toHaveClass(classes.hasIcon);
+      const container = document.querySelector('.mvn-native-select');
+      expect(container).not.toHaveClass('mvn-has-icon');
 
       const circleTag = document.querySelector('circle');
       expect(circleTag).not.toBeInTheDocument();
@@ -139,8 +101,8 @@ describe('NativeSelect', () => {
 
     it('sets icon', () => {
       render(<NativeSelect options={options} icon={circle} />);
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).toHaveClass(classes.hasIcon);
+      const container = document.querySelector('.mvn-native-select');
+      expect(container).toHaveClass('mvn-has-icon');
 
       const circleTag = document.querySelector('circle');
       expect(circleTag).toBeInTheDocument();
@@ -150,32 +112,32 @@ describe('NativeSelect', () => {
   describe('size', () => {
     it('is md by default', () => {
       render(<NativeSelect options={options} />);
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).not.toHaveClass(classes.sm);
-      expect(container).not.toHaveClass(classes.lg);
+      const container = document.querySelector('.mvn-native-select');
+      expect(container).not.toHaveClass('mvn-native-select-sm');
+      expect(container).not.toHaveClass('mvn-native-select-lg');
     });
 
     it('sets sm', () => {
       render(<NativeSelect options={options} size="sm" />);
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).toHaveClass(classes.sm);
+      const container = document.querySelector('.mvn-native-select');
+      expect(container).toHaveClass('mvn-native-select-sm');
     });
 
     it('sets lg', () => {
       render(<NativeSelect options={options} size="lg" />);
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).toHaveClass(classes.lg);
+      const container = document.querySelector('.mvn-native-select');
+      expect(container).toHaveClass('mvn-native-select-lg');
     });
   });
 
   describe('forwarding ref', () => {
     it('exports NativeSelectForwardRef', () => {
-      expect(ExportedNativeSelect).toBe(NativeSelectForwardRef);
+      expect(ExportedNativeSelect).toBe(NativeSelectF);
     });
 
     it('sets ref', () => {
       const ref = createRef<HTMLSelectElement>();
-      render(<NativeSelectForwardRef options={options} ref={ref} />);
+      render(<NativeSelectF options={options} ref={ref} />);
       const select = document.querySelector('select');
       expect(ref.current).toBe(select);
     });

@@ -10,7 +10,7 @@ export { FormFieldSelectForwardRef as FormFieldSelect } from './FormField/FormFi
 export { FormFieldTextAreaForwardRef as FormFieldTextArea } from './FormField/FormFieldTextArea';
 export { FormFieldTextInputForwardRef as FormFieldTextInput } from './FormField/FormFieldTextInput';
 export { FormFieldTypeAheadInputForwardRef as FormFieldTypeAheadInput } from './FormField/FormFieldTypeAheadInput';
-export { NativeSelectForwardRef as NativeSelect } from './NativeSelect/NativeSelect';
+export { NativeSelectF as NativeSelect } from './NativeSelect/NativeSelect';
 export { PasswordInputF as PasswordInput } from './PasswordInput/PasswordInput';
 export { RadioButtonForwardRef as RadioButton } from './RadioButton/RadioButton';
 export { RadioGroup } from './RadioGroup/RadioGroup';
