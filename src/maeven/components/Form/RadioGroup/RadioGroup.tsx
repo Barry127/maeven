@@ -1,15 +1,12 @@
 import React, { FC, HTMLAttributes, ReactNode, ChangeEvent } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { RadioButton } from '../RadioButton/RadioButton';
-
-import { classes, themeOverride } from './styles';
 
 /**
  * use a RadioGroup when you have a few options a user can choose from
  */
-export const RadioGroup: FC<FullProps> = ({
+export const RadioGroup: FC<AllRadioGroupProps> = ({
   children,
   className,
   inline = false,
@@ -20,39 +17,37 @@ export const RadioGroup: FC<FullProps> = ({
   style,
   value: currentValue,
   ...restProps
-}) => {
-  const theme = useTheme();
+}) => (
+  <div
+    className={clsx(
+      'mvn-radio-group',
+      { 'mvn-radio-group-inline': inline },
+      className
+    )}
+    style={style}
+    {...restProps}
+  >
+    {options.map(({ disabled, hasError, label, value }) => (
+      <RadioButton
+        key={value}
+        checked={
+          currentValue === undefined ? undefined : currentValue === value
+        }
+        onChange={onChange}
+        name={name}
+        value={value}
+        disabled={disabled}
+        hasError={hasError}
+        size={size}
+      >
+        {label}
+      </RadioButton>
+    ))}
+  </div>
+);
 
-  return (
-    <div
-      className={clsx(
-        classes.container,
-        { [classes.inline]: inline },
-        themeOverride(theme),
-        className
-      )}
-      style={style}
-      {...restProps}
-    >
-      {options.map(({ disabled, hasError, label, value }) => (
-        <RadioButton
-          key={value}
-          checked={
-            currentValue === undefined ? undefined : currentValue === value
-          }
-          onChange={onChange}
-          name={name}
-          value={value}
-          disabled={disabled}
-          hasError={hasError}
-          size={size}
-        >
-          {label}
-        </RadioButton>
-      ))}
-    </div>
-  );
-};
+export type AllRadioGroupProps = RadioGroupProps &
+  HTMLAttributes<HTMLDivElement>;
 
 export interface RadioGroupProps {
   children?: never;
@@ -80,5 +75,3 @@ export interface RadioGroupProps {
   /** Current value */
   value?: string | number;
 }
-
-export type FullProps = RadioGroupProps & HTMLAttributes<HTMLDivElement>;

@@ -3,11 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
 import { RadioGroup } from './RadioGroup';
-import { classes, themeOverride } from './styles';
-import { classes as radioClasses } from '../RadioButton/styles';
 
 const options = [
   { label: 'Javascript', value: 'js' },
@@ -43,9 +39,7 @@ describe('RadioGroup', () => {
         name="language"
       />
     );
-    const container = document.querySelector(
-      `.${classes.container.split(' ').join('.')}`
-    );
+    const container = document.querySelector('.mvn-radio-group');
     expect(container).toHaveClass('radiogroup-class');
   });
 
@@ -58,71 +52,42 @@ describe('RadioGroup', () => {
         name="language"
       />
     );
-    const container = document.querySelector(
-      `.${classes.container.split(' ').join('.')}`
-    );
+    const container = document.querySelector('.mvn-radio-group');
     expect(container).toHaveAttribute('id', 'RadioGroupId');
     expect(container).toHaveAttribute('data-test', 'radiogroup-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        RadioGroup: {
-          border: '1px dashed grey'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <RadioGroup options={options} name="language" />
-      </ThemeProvider>
-    );
-    const container = document.querySelector(
-      `.${classes.container.split(' ').join('.')}`
-    );
-    expect(container).toHaveClass(expectedClassName);
   });
 
   describe('inline', () => {
     it('is not inline by default', () => {
       render(<RadioGroup options={options} name="language" />);
-      const container = document.querySelector(
-        `.${classes.container.split(' ').join('.')}`
-      );
-      expect(container).not.toHaveClass(classes.inline);
+      const container = document.querySelector('.mvn-radio-group');
+      expect(container).not.toHaveClass('mvn-radio-group-inline');
     });
     it('sets inline', () => {
       render(<RadioGroup inline options={options} name="language" />);
-      const container = document.querySelector(
-        `.${classes.container.split(' ').join('.')}`
-      );
-      expect(container).toHaveClass(classes.inline);
+      const container = document.querySelector('.mvn-radio-group');
+      expect(container).toHaveClass('mvn-radio-group-inline');
     });
   });
 
   describe('size', () => {
     it('is md by default', () => {
       render(<RadioGroup options={options} name="language" />);
-      const firstRadio = document.querySelector(`.${radioClasses.container}`);
-      expect(firstRadio).not.toHaveClass(radioClasses.sm);
-      expect(firstRadio).not.toHaveClass(radioClasses.lg);
+      const firstRadio = document.querySelector(`.mvn-radio-button`);
+      expect(firstRadio).not.toHaveClass('mvn-radio-button-sm');
+      expect(firstRadio).not.toHaveClass('mvn-radio-button-lg');
     });
 
     it('sets sm', () => {
       render(<RadioGroup size="sm" options={options} name="language" />);
-      const firstRadio = document.querySelector(`.${radioClasses.container}`);
-      expect(firstRadio).toHaveClass(radioClasses.sm);
+      const firstRadio = document.querySelector(`.mvn-radio-button`);
+      expect(firstRadio).toHaveClass('mvn-radio-button-sm');
     });
 
     it('sets lg', () => {
       render(<RadioGroup size="lg" options={options} name="language" />);
-      const firstRadio = document.querySelector(`.${radioClasses.container}`);
-      expect(firstRadio).toHaveClass(radioClasses.lg);
+      const firstRadio = document.querySelector(`.mvn-radio-button`);
+      expect(firstRadio).toHaveClass('mvn-radio-button-lg');
     });
   });
 });
