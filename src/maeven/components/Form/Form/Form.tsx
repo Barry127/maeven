@@ -1,37 +1,38 @@
-import React, { FC, FormHTMLAttributes } from 'react';
+import React, { FC, FormHTMLAttributes, forwardRef, Ref } from 'react';
 import clsx from 'clsx';
-
-import { useTheme } from '../../../hooks/useTheme';
-
-import { classes, themeOverride } from './styles';
 
 /**
  * Forms are grouping of input controls that allow a user to submit information to your application.
  */
-export const Form: FC<FormProps & FormHTMLAttributes<HTMLFormElement>> = ({
+export const Form: FC<AllFormProps> = ({
   children,
   className,
+  forwardedRef,
   layout = 'horizontal',
   ...restProps
-}) => {
-  const theme = useTheme();
+}) => (
+  <form
+    {...restProps}
+    className={clsx(
+      'mvn-form',
+      { 'mvn-form-vertical': layout === 'vertical' },
+      className
+    )}
+    ref={forwardedRef}
+  >
+    {children}
+  </form>
+);
 
-  return (
-    <form
-      className={clsx(
-        classes.form,
-        { [classes.vertical]: layout === 'vertical' },
-        themeOverride(theme),
-        className
-      )}
-      {...restProps}
-    >
-      {children}
-    </form>
-  );
-};
+export const FormF = forwardRef<HTMLFormElement, AllFormProps>((props, ref) => (
+  <Form {...props} forwardedRef={ref} />
+));
+
+type AllFormProps = FormProps & FormHTMLAttributes<HTMLFormElement>;
 
 export interface FormProps {
+  forwardedRef?: Ref<HTMLFormElement>;
+
   /** Form layout */
   layout?: 'horizontal' | 'vertical';
 }

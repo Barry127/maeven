@@ -1,0 +1,29 @@
+@import '../../../common/mixins';
+@import '../../../common/variables';
+
+.mvn-form {
+  @include bpm0();
+  margin-bottom: $mvn-base;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.mvn-form-vertical {
+    .mvn-form-field {
+      flex-direction: column;
+
+      .mvn-form-field-label {
+        flex-grow: 1 !important;
+        width: 100% !important;
+        height: auto;
+        text-align: left;
+        margin-bottom: $mvn-base / 4;
+
+        label {
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+}

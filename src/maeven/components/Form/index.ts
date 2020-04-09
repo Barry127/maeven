@@ -1,5 +1,5 @@
 export { CheckboxF as Checkbox } from './Checkbox/Checkbox';
-export { Form } from './Form/Form';
+export { FormF as Form } from './Form/Form';
 export { FormField } from './FormField/FormField';
 export { FormFieldCheckboxF as FormFieldCheckbox } from './FormField/FormFieldCheckbox';
 export { FormFieldNativeSelectF as FormFieldNativeSelect } from './FormField/FormFieldNativeSelect';

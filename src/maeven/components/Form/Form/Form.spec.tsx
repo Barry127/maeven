@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { Form } from './Form';
-import { classes, themeOverride } from './styles';
+import { Form, FormF } from './Form';
+import { Form as ExportedForm } from '../';
 
 describe('Form', () => {
   it('renders form element with given text', () => {
@@ -34,38 +32,30 @@ describe('Form', () => {
     expect(element.dataset.test).toBe('form-data');
   });
 
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Form: {
-          color: 'papayewhip'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <Form>Hello world!</Form>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
-  });
-
   describe('layout', () => {
     it('is horizontal by default', () => {
       const { getByText } = render(<Form>Hello world!</Form>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(classes.vertical);
+      expect(element).not.toHaveClass('mvn-form-vertical');
     });
 
     it('sets vertical', () => {
       const { getByText } = render(<Form layout="vertical">Hello world!</Form>);
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(classes.vertical);
+      expect(element).toHaveClass('mvn-form-vertical');
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports BlockForwardRef', () => {
+      expect(ExportedForm).toBe(FormF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLFormElement>();
+      render(<FormF ref={ref} />);
+      const element = document.querySelector('.mvn-form');
+      expect(ref.current).toBe(element);
     });
   });
 });
