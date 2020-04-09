@@ -2,7 +2,7 @@ import React, { FC, ReactNode, CSSProperties, forwardRef } from 'react';
 
 import { useId } from '../../../hooks/useId';
 
-import { RadioButton, FullProps } from '../RadioButton/RadioButton';
+import { RadioButton, AllRadioButtonProps } from '../RadioButton/RadioButton';
 import { FormField } from './FormField';
 
 /**
@@ -11,6 +11,8 @@ import { FormField } from './FormField';
 export const FormFieldRadioButton: FC<FormFieldRadioButtonProps> = ({
   containerClassName,
   containerStyle,
+  hasError = false,
+  size = 'md',
   label,
   ...restProps
 }) => {
@@ -21,25 +23,29 @@ export const FormFieldRadioButton: FC<FormFieldRadioButtonProps> = ({
     <FormField
       className={containerClassName}
       style={containerStyle}
+      size={size}
       label={label}
       labelId={labelId}
       htmlFor={id}
+      hasError={hasError}
     >
       <RadioButton
         {...restProps}
+        hasError={hasError}
         id={id}
+        size={size}
         aria-describedby={label ? labelId : undefined}
       />
     </FormField>
   );
 };
 
-export const FormFieldRadioButtonForwardRef = forwardRef<
+export const FormFieldRadioButtonF = forwardRef<
   HTMLInputElement,
   FormFieldRadioButtonProps
 >((props, ref) => <FormFieldRadioButton {...props} forwardedRef={ref} />);
 
-interface FormFieldRadioButtonProps extends FullProps {
+interface FormFieldRadioButtonProps extends AllRadioButtonProps {
   /** Classname for FormField container */
   containerClassName?: string;
 

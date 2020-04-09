@@ -2,7 +2,10 @@ import React, { FC, ReactNode, CSSProperties, forwardRef } from 'react';
 
 import { useId } from '../../../hooks/useId';
 
-import { PasswordInput, FullProps } from '../PasswordInput/PasswordInput';
+import {
+  PasswordInput,
+  AllPasswordProps
+} from '../PasswordInput/PasswordInput';
 import { FormField } from './FormField';
 
 /**
@@ -11,6 +14,8 @@ import { FormField } from './FormField';
 export const FormFieldPasswordInput: FC<FormFieldPasswordInputProps> = ({
   containerClassName,
   containerStyle,
+  hasError = false,
+  size = 'md',
   label,
   ...restProps
 }) => {
@@ -21,25 +26,29 @@ export const FormFieldPasswordInput: FC<FormFieldPasswordInputProps> = ({
     <FormField
       className={containerClassName}
       style={containerStyle}
+      size={size}
       label={label}
       labelId={labelId}
       htmlFor={id}
+      hasError={hasError}
     >
       <PasswordInput
         {...restProps}
+        hasError={hasError}
         id={id}
+        size={size}
         aria-describedby={label ? labelId : undefined}
       />
     </FormField>
   );
 };
 
-export const FormFieldPasswordInputForwardRef = forwardRef<
+export const FormFieldPasswordInputF = forwardRef<
   HTMLInputElement,
   FormFieldPasswordInputProps
 >((props, ref) => <FormFieldPasswordInput {...props} forwardedRef={ref} />);
 
-interface FormFieldPasswordInputProps extends FullProps {
+interface FormFieldPasswordInputProps extends AllPasswordProps {
   /** Classname for FormField container */
   containerClassName?: string;
 

@@ -1,5 +1,5 @@
-@function animate-transition($property) {
-  @return $property 0.2s cubic-bezier(0.4, 1, 0.75, 0.9);
+@function animate-transition($property, $timing: 0.2s) {
+  @return $property $timing cubic-bezier(0.4, 1, 0.75, 0.9);
 }
 
 // Contrast calculations:

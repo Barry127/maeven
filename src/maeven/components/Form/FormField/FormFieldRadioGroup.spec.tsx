@@ -33,4 +33,17 @@ describe('FormFieldRadioGroup', () => {
       expect(input).toHaveAttribute('name', 'language');
     }
   });
+
+  it('sets container className', () => {
+    render(
+      <FormFieldRadioGroup
+        name="language"
+        options={radioOptions}
+        onChange={jest.fn()}
+        containerClassName="formfield-class"
+      />
+    );
+    const container = document.querySelector('.mvn-form-field');
+    expect(container).toHaveClass('formfield-class');
+  });
 });

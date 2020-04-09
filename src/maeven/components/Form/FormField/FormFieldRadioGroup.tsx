@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, CSSProperties } from 'react';
 
-import { RadioGroup, FullProps } from '../RadioGroup/RadioGroup';
+import { RadioGroup, AllRadioGroupProps } from '../RadioGroup/RadioGroup';
 import { FormField } from './FormField';
 
 /**
@@ -9,6 +9,7 @@ import { FormField } from './FormField';
 export const FormFieldRadioGroup: FC<FormFieldRadioGroupProps> = ({
   containerClassName,
   containerStyle,
+  size = 'md',
   label,
   ...restProps
 }) => {
@@ -16,14 +17,15 @@ export const FormFieldRadioGroup: FC<FormFieldRadioGroupProps> = ({
     <FormField
       className={containerClassName}
       style={containerStyle}
+      size={size}
       label={label}
     >
-      <RadioGroup {...restProps} />
+      <RadioGroup size={size} {...restProps} />
     </FormField>
   );
 };
 
-interface FormFieldRadioGroupProps extends FullProps {
+interface FormFieldRadioGroupProps extends AllRadioGroupProps {
   /** Classname for FormField container */
   containerClassName?: string;
 

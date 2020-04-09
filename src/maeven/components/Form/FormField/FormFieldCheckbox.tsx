@@ -11,6 +11,8 @@ import { FormField } from './FormField';
 export const FormFieldCheckbox: FC<FormFieldCheckboxProps> = ({
   containerClassName,
   containerStyle,
+  hasError = false,
+  size = 'md',
   label,
   ...restProps
 }) => {
@@ -21,20 +23,24 @@ export const FormFieldCheckbox: FC<FormFieldCheckboxProps> = ({
     <FormField
       className={containerClassName}
       style={containerStyle}
+      size={size}
       label={label}
       labelId={labelId}
       htmlFor={id}
+      hasError={hasError}
     >
       <Checkbox
         {...restProps}
+        hasError={hasError}
         id={id}
+        size={size}
         aria-describedby={label ? labelId : undefined}
       />
     </FormField>
   );
 };
 
-export const FormFieldCheckboxForwardRef = forwardRef<
+export const FormFieldCheckboxF = forwardRef<
   HTMLInputElement,
   FormFieldCheckboxProps
 >((props, ref) => <FormFieldCheckbox {...props} forwardedRef={ref} />);

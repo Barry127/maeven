@@ -1,55 +1,44 @@
 import React, { FC, ReactNode, HTMLAttributes } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { Row, Col } from '../../Grid';
 import { Text } from '../../Text';
-
-import { classes, themeOverride } from './styles';
 
 /**
  * A FormField is a row in a form with or without a label
  */
-
 export const FormField: FC<FormFieldProps & HTMLAttributes<HTMLDivElement>> = ({
   children,
   className,
+  hasError = false,
   htmlFor,
   label,
   labelId,
   size = 'md',
   ...restProps
-}) => {
-  const theme = useTheme();
-
-  return (
-    <Row
-      className={clsx(
-        classes.container,
-        classes.responsiveContainer(theme),
-        {
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg'
-        },
-        themeOverride(theme),
-        className
+}) => (
+  <Row
+    {...restProps}
+    className={clsx(
+      'mvn-form-field',
+      {
+        'mvn-form-field-sm': size === 'sm',
+        'mvn-form-field-lg': size === 'lg'
+      },
+      className
+    )}
+    gutter={1}
+  >
+    <Col className="mvn-form-field-label">
+      {label && (
+        <label htmlFor={htmlFor} id={labelId}>
+          <Text color={hasError ? 'danger' : undefined}>{label}</Text>
+        </label>
       )}
-      {...restProps}
-      gutter={1}
-    >
-      <Col className={classes.labelCol} transparent={true}>
-        {label && (
-          <label htmlFor={htmlFor} id={labelId}>
-            <Text>{label}</Text>
-          </label>
-        )}
-      </Col>
-      <Col className={classes.fieldCol} transparent={true}>
-        {children}
-      </Col>
-    </Row>
-  );
-};
+    </Col>
+    <Col className="mvn-form-field-field">{children}</Col>
+  </Row>
+);
 
 interface FormFieldProps {
   /** Label text */
@@ -57,6 +46,9 @@ interface FormFieldProps {
 
   /** id for label field (for use with aria-describedby) */
   labelId?: string;
+
+  /** Wether form field has an error */
+  hasError?: boolean;
 
   /** id label points to */
   htmlFor?: string;

@@ -121,7 +121,7 @@ export const TypeAheadInput: FC<AllTypeAheadInputProps> = ({
     <TextInput
       className={className}
       disabled={disabled}
-      hasError={false}
+      hasError={hasError}
       size={size}
       onChange={onChange}
       onKeyDown={onKeyDown}
