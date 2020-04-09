@@ -14,7 +14,7 @@ export { NativeSelectF as NativeSelect } from './NativeSelect/NativeSelect';
 export { PasswordInputF as PasswordInput } from './PasswordInput/PasswordInput';
 export { RadioButtonF as RadioButton } from './RadioButton/RadioButton';
 export { RadioGroup } from './RadioGroup/RadioGroup';
-export { SelectForwardRef as Select } from './Select/Select';
+export { SelectF as Select } from './Select/Select';
 export { TextAreaF as TextArea } from './TextArea/TextArea';
 export { TextInputF as TextInput } from './TextInput/TextInput';
 export { TypeAheadInputF as TypeAheadInput } from './TypeAheadInput/TypeAheadInput';

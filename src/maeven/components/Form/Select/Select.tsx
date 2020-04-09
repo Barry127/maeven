@@ -10,7 +10,6 @@ import React, {
 import clsx from 'clsx';
 import { useCombobox } from 'downshift';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { useFocus } from '../../../hooks/useFocus';
 import { MaevenIcon } from '../../../types';
 import { Icon } from '../../Icon';
@@ -19,12 +18,10 @@ import { Button } from '../../Button';
 import { chevronDown, chevronUp } from '../../../common/defaultIcons';
 import { isElementInViewport } from '../../../common/isElementInViewport';
 
-import { classes, themeOverride } from './styles';
-
 /**
  * With Select users can select one item from a list of values
  */
-export const Select: FC<FullProps> = ({
+export const Select: FC<AllSelectProps> = ({
   chevronDownIcon,
   chevronUpIcon,
   children,
@@ -48,7 +45,6 @@ export const Select: FC<FullProps> = ({
   value,
   ...restProps
 }) => {
-  const theme = useTheme();
   const inputContainerRef = useRef<HTMLDivElement>(null);
 
   const [filteredOptions, setFilteredOptions] = useState(options);
@@ -93,21 +89,20 @@ export const Select: FC<FullProps> = ({
   return (
     <div
       className={clsx(
-        classes.container,
+        'mvn-select',
         {
-          [classes.hasIcon]: !!icon,
-          [classes.hasFocus]: hasFocus,
-          [classes.isOpen]: combobox.isOpen && filteredOptions.length > 0,
-          [classes.sm]: size === 'sm',
-          [classes.lg]: size === 'lg',
-          [classes.hasError]: hasError
+          'mvn-has-icon': !!icon,
+          'mvn-select-focus': hasFocus,
+          'mvn-select-open': combobox.isOpen && filteredOptions.length > 0,
+          'mvn-select-sm': size === 'sm',
+          'mvn-select-lg': size === 'lg',
+          'mvn-select-error': hasError
         },
-        themeOverride(theme),
         className
       )}
       style={style}
     >
-      <label className={classes.label} {...combobox.getLabelProps()}>
+      <label className="mvn-select-label" {...combobox.getLabelProps()}>
         <input
           {...combobox.getInputProps({
             ...restProps,
@@ -115,17 +110,16 @@ export const Select: FC<FullProps> = ({
             ref: forwardedRef
           })}
           {...focusProps}
-          className={classes.input}
           readOnly={!searchable}
         />
-        {icon && <Icon className={classes.icon} icon={icon} />}
+        {icon && <Icon icon={icon} />}
         {!searchable && !disabled && (
           <Button
             tabIndex={-1}
             {...combobox.getToggleButtonProps()}
             id={undefined}
             size={size}
-            className={classes.invisibleToggle}
+            className="mvn-select-invisible-toggle"
           />
         )}
         <Button
@@ -135,31 +129,29 @@ export const Select: FC<FullProps> = ({
           }}
           tabIndex={-1}
           size={size}
-          className={classes.toggle}
+          className="mvn-select-toggle"
           buttonType="link"
           disabled={disabled}
           icon={
             combobox.isOpen
-              ? chevronUpIcon || theme.iconOverrides?.chevronUp || chevronUp
-              : chevronDownIcon ||
-                theme.iconOverrides?.chevronDown ||
-                chevronDown
+              ? chevronUpIcon || chevronUp
+              : chevronDownIcon || chevronDown
           }
         />
         <div
-          className={clsx(classes.listContainer, {
-            [classes.hidden]: filteredOptions.length === 0
+          className={clsx('mvn-select-list-container', {
+            'mvn-select-list-container-hidden': filteredOptions.length === 0
           })}
           ref={inputContainerRef}
         >
-          <ul className={classes.list} {...combobox.getMenuProps()}>
+          <ul {...combobox.getMenuProps()}>
             {filteredOptions.map((item, index) => (
               <li key={item.value} {...combobox.getItemProps({ index, item })}>
                 <Text
-                  className={clsx(classes.listItem, {
-                    [classes.highlightedListItem]:
+                  className={clsx({
+                    'mvn-select-highlighted-item':
                       combobox.highlightedIndex === index,
-                    [classes.selectedListItem]: combobox.selectedItem === item
+                    'mvn-select-selected-item': combobox.selectedItem === item
                   })}
                 >
                   {renderItem
@@ -175,14 +167,22 @@ export const Select: FC<FullProps> = ({
           </ul>
         </div>
       </label>
-      {children ? <Text>{children}</Text> : null}
+      {children ? (
+        <Text color={hasError ? 'danger' : undefined}>{children}</Text>
+      ) : null}
     </div>
   );
 };
 
-export const SelectForwardRef = forwardRef<HTMLInputElement, FullProps>(
+export const SelectF = forwardRef<HTMLInputElement, AllSelectProps>(
   (props, ref) => <Select {...props} forwardedRef={ref} />
 );
+
+export type AllSelectProps = SelectProps &
+  Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'onChange' | 'readOnly' | 'size' | 'type'
+  >;
 
 export interface SelectProps {
   /** toggle open icon (defaults to Feather icons chevronDown) */
@@ -239,9 +239,3 @@ export interface SelectItem {
   value?: any;
   [key: string]: any;
 }
-
-export type FullProps = SelectProps &
-  Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'onChange' | 'readOnly' | 'size' | 'type'
-  >;

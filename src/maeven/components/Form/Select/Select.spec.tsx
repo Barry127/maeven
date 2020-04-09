@@ -4,14 +4,11 @@ import React, { createRef } from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 import { circle } from 'icon-packs/cjs/feather';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-import { classes as buttonClasses } from '../../Button/styles';
 import { chevronDown, chevronUp } from '../../../common/defaultIcons';
 import * as elementInViewport from '../../../common/isElementInViewport';
 
-import { Select, SelectForwardRef } from './Select';
+import { Select, SelectF } from './Select';
 import { Select as ExportedSelect } from '../';
-import { classes, themeOverride } from './styles';
 import { MaevenIcon } from 'maeven/types';
 
 jest.mock('../../../common/isElementInViewport');
@@ -37,7 +34,7 @@ describe('Select', () => {
         Hello world!
       </Select>
     );
-    const container = document.querySelector('label')?.parentElement;
+    const container = document.querySelector('.mvn-select');
     const input = document.querySelector('input');
     const button = document.querySelector('button');
     const items = document.querySelectorAll('li');
@@ -53,7 +50,7 @@ describe('Select', () => {
         Hello world!
       </Select>
     );
-    const container = document.querySelector('label')?.parentElement;
+    const container = document.querySelector('.mvn-select');
     expect(container).toHaveClass('select-class');
   });
 
@@ -71,52 +68,6 @@ describe('Select', () => {
     const input = document.querySelector('input');
     expect(input).toHaveAttribute('id', 'SelectId');
     expect(input?.dataset.test).toBe('select-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Select: {
-          color: 'hotpink'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Select options={options} onChange={jest.fn()}>
-          Hello world!
-        </Select>
-      </ThemeProvider>
-    );
-    const container = document.querySelector('label')?.parentElement;
-    expect(container).toHaveClass(expectedClassName);
-  });
-
-  it('sets Theme icon overrides', () => {
-    const Theme = {
-      ...MaevenDefault,
-      iconOverrides: {
-        chevronDown: circle,
-        chevronUp: circle
-      }
-    };
-
-    render(
-      <ThemeProvider theme={Theme}>
-        <Select options={options} onChange={jest.fn()}>
-          Hello world!
-        </Select>
-      </ThemeProvider>
-    );
-
-    const circleTag = document.querySelector('circle');
-    const polyLine = document.querySelector('polyline');
-    expect(polyLine).not.toBeInTheDocument();
-    expect(circleTag).toBeInTheDocument();
   });
 
   it('handles searching inputValue', () => {
@@ -199,7 +150,7 @@ describe('Select', () => {
     );
 
     const list = document.querySelector(
-      `.${classes.listContainer.split(' ').join('.')}`
+      `.mvn-select-list-container`
     ) as HTMLDivElement;
 
     const scrollMock = jest.fn();
@@ -228,19 +179,19 @@ describe('Select', () => {
         </Select>
       );
 
-      const container = document.querySelector('label')?.parentElement;
+      const container = document.querySelector('.mvn-select');
       const button = document.querySelector('button');
 
       expect(document.querySelector('polyline')).toHaveAttribute(
         'points',
         down
       );
-      expect(container).not.toHaveClass(classes.isOpen);
+      expect(container).not.toHaveClass('mvn-select-open');
 
       fireEvent.click(button!);
 
       expect(document.querySelector('polyline')).toHaveAttribute('points', up);
-      expect(container).toHaveClass(classes.isOpen);
+      expect(container).toHaveClass('mvn-select-open');
     });
   });
 
@@ -310,8 +261,8 @@ describe('Select', () => {
           Hello world!
         </Select>
       );
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).not.toHaveClass(classes.hasError);
+      const container = document.querySelector('.mvn-select');
+      expect(container).not.toHaveClass('mvn-select-error');
     });
 
     it('sets error styling', () => {
@@ -320,8 +271,8 @@ describe('Select', () => {
           Hello world!
         </Select>
       );
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).toHaveClass(classes.hasError);
+      const container = document.querySelector('.mvn-select');
+      expect(container).toHaveClass('mvn-select-error');
     });
   });
 
@@ -332,8 +283,8 @@ describe('Select', () => {
           Hello world!
         </Select>
       );
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).not.toHaveClass(classes.hasIcon);
+      const container = document.querySelector('.mvn-select');
+      expect(container).not.toHaveClass('mvn-has-icon');
 
       const circleTag = document.querySelector('circle');
       expect(circleTag).not.toBeInTheDocument();
@@ -345,8 +296,8 @@ describe('Select', () => {
           Hello world!
         </Select>
       );
-      const container = document.querySelector('label')?.parentElement;
-      expect(container).toHaveClass(classes.hasIcon);
+      const container = document.querySelector('.mvn-select');
+      expect(container).toHaveClass('mvn-has-icon');
 
       const circleTag = document.querySelector('circle');
       expect(circleTag).toBeInTheDocument();
@@ -412,14 +363,14 @@ describe('Select', () => {
           Hello world!
         </Select>
       );
-      const container = document.querySelector('label')?.parentElement;
+      const container = document.querySelector('.mvn-select');
       const buttons = document.querySelectorAll('button');
-      expect(container).not.toHaveClass(classes.sm);
-      expect(container).not.toHaveClass(classes.lg);
-      expect(buttons[0]).not.toHaveClass(buttonClasses.sm);
-      expect(buttons[0]).not.toHaveClass(buttonClasses.lg);
-      expect(buttons[1]).not.toHaveClass(buttonClasses.sm);
-      expect(buttons[1]).not.toHaveClass(buttonClasses.lg);
+      expect(container).not.toHaveClass('mvn-select-sm');
+      expect(container).not.toHaveClass('mvn-select-lg');
+      expect(buttons[0]).not.toHaveClass('mvn-button-sm');
+      expect(buttons[0]).not.toHaveClass('mvn-button-lg');
+      expect(buttons[1]).not.toHaveClass('mvn-button-sm');
+      expect(buttons[1]).not.toHaveClass('mvn-button-lg');
     });
 
     it('sets sm', () => {
@@ -428,14 +379,14 @@ describe('Select', () => {
           Hello world!
         </Select>
       );
-      const container = document.querySelector('label')?.parentElement;
+      const container = document.querySelector('.mvn-select');
       const buttons = document.querySelectorAll('button');
-      expect(container).toHaveClass(classes.sm);
-      expect(container).not.toHaveClass(classes.lg);
-      expect(buttons[0]).toHaveClass(buttonClasses.sm);
-      expect(buttons[0]).not.toHaveClass(buttonClasses.lg);
-      expect(buttons[1]).toHaveClass(buttonClasses.sm);
-      expect(buttons[1]).not.toHaveClass(buttonClasses.lg);
+      expect(container).toHaveClass('mvn-select-sm');
+      expect(container).not.toHaveClass('mvn-select-lg');
+      expect(buttons[0]).toHaveClass('mvn-button-sm');
+      expect(buttons[0]).not.toHaveClass('mvn-button-lg');
+      expect(buttons[1]).toHaveClass('mvn-button-sm');
+      expect(buttons[1]).not.toHaveClass('mvn-button-lg');
     });
 
     it('sets lg', () => {
@@ -444,27 +395,25 @@ describe('Select', () => {
           Hello world!
         </Select>
       );
-      const container = document.querySelector('label')?.parentElement;
+      const container = document.querySelector('.mvn-select');
       const buttons = document.querySelectorAll('button');
-      expect(container).not.toHaveClass(classes.sm);
-      expect(container).toHaveClass(classes.lg);
-      expect(buttons[0]).not.toHaveClass(buttonClasses.sm);
-      expect(buttons[0]).toHaveClass(buttonClasses.lg);
-      expect(buttons[1]).not.toHaveClass(buttonClasses.sm);
-      expect(buttons[1]).toHaveClass(buttonClasses.lg);
+      expect(container).not.toHaveClass('mvn-select-sm');
+      expect(container).toHaveClass('mvn-select-lg');
+      expect(buttons[0]).not.toHaveClass('mvn-button-sm');
+      expect(buttons[0]).toHaveClass('mvn-button-lg');
+      expect(buttons[1]).not.toHaveClass('mvn-button-sm');
+      expect(buttons[1]).toHaveClass('mvn-button-lg');
     });
   });
 
   describe('forwarding ref', () => {
     it('exports SelectForwardRef', () => {
-      expect(ExportedSelect).toBe(SelectForwardRef);
+      expect(ExportedSelect).toBe(SelectF);
     });
 
     it('sets ref', () => {
       const ref = createRef<HTMLInputElement>();
-      render(
-        <SelectForwardRef options={options} onChange={jest.fn()} ref={ref} />
-      );
+      render(<SelectF options={options} onChange={jest.fn()} ref={ref} />);
       const input = document.querySelector('input');
       expect(ref.current).toBe(input);
     });
