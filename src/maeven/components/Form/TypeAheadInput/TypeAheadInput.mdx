@@ -48,13 +48,13 @@ const Controlled = props => {
 
 render(
   <Row gutter={1}>
-    <Col transparent>
+    <Col>
       <H4>Controlled input with items as array</H4>
       <Controlled
         items={['JavaScript', 'Java', 'PHP', 'Perl', 'C', 'C++', 'Rust', 'Lua']}
       />
     </Col>
-    <Col transparent>
+    <Col>
       <H4>Controlled input with items as syncGetItems</H4>
       <Controlled
         items={() => [

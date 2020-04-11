@@ -24,14 +24,12 @@ export default {
 
   external: [
     'clsx',
-    'csx',
     'downshift',
     'react',
     'react-autosize-textarea',
     'react-dom',
     'react-spring',
     'react-spring/renderprops',
-    'react-use-measure',
-    'typestyle'
+    'react-use-measure'
   ]
 };

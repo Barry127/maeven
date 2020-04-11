@@ -1,8 +1,23 @@
 @import 'colors';
 @import 'functions';
 
+@keyframes mvn-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .mvn-hidden {
   display: none;
+}
+
+.mvn-spin {
+  animation: mvn-spin 1s linear infinite;
+  transform-origin: center center;
 }
 
 @each $name, $color in $mvn-colors {

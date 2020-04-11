@@ -24,12 +24,10 @@
   "homepage": "http://barry127.github.io/maeven/",
   "dependencies": {
     "clsx": "^1.1.0",
-    "csx": "^10.0.1",
     "downshift": "^4.0.10",
     "react-autosize-textarea": "^7.0.0",
     "react-spring": "^8.0.27",
-    "react-use-measure": "^2.0.0",
-    "typestyle": "^2.0.4"
+    "react-use-measure": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^16.12.0",

@@ -32,10 +32,10 @@ Textarea autosizing can be on or off.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent>
+  <Col>
     <TextArea placeholder="I will grow in height as my input grows" />
   </Col>
-  <Col transparent>
+  <Col>
     <TextArea autoSize={false} placeholder="I will not grow in height" />
   </Col>
 </Row>
@@ -47,10 +47,10 @@ Textareas can be disabled.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent>
+  <Col>
     <TextArea disabled value="Disabled" />
   </Col>
-  <Col transparent>
+  <Col>
     <TextArea readOnly value="Read Only" />
   </Col>
 </Row>
@@ -62,13 +62,13 @@ Textareas can have different sizes.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={8}>
+  <Col span={8}>
     <TextArea size="sm" placeholder="sm" />
   </Col>
-  <Col transparent span={8}>
+  <Col span={8}>
     <TextArea size="md" placeholder="md" />
   </Col>
-  <Col transparent span={8}>
+  <Col span={8}>
     <TextArea size="lg" placeholder="lg" />
   </Col>
 </Row>
@@ -80,10 +80,10 @@ A textarea can indicate it has an error.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextArea hasError placeholder="Error..." />
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <TextArea hasError placeholder="Error...">
       Text indicating error
     </TextArea>

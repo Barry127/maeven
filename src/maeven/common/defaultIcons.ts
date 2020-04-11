@@ -1,7 +1,4 @@
-import { style } from 'typestyle';
-
 import { MaevenIcon } from '../types';
-import { spinKeyframes } from './styles';
 
 /**
  * Default Icons used for components.
@@ -498,13 +495,7 @@ export const inlineLoading: MaevenIcon = {
     {
       tag: 'path',
       attrs: {
-        className: style({
-          animationName: spinKeyframes,
-          animationDuration: '1s',
-          animationIterationCount: 'infinite',
-          animationTimingFunction: 'linear',
-          transformOrigin: 'center center'
-        }),
+        className: 'mvn-spin',
         d: 'M12 3a9 9 0 0 1 9 9h-2a7 7 0 0 0-7-7V3z'
       }
     }
