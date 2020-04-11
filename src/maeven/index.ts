@@ -1,7 +1,6 @@
 export * from './components';
 
 // Components
-export * from './components/Alert';
 export * from './components/Modal';
 export * from './components/ThemeProvider';
 

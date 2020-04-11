@@ -1,0 +1,114 @@
+@import '../../../common/colors';
+@import '../../../common/functions';
+@import '../../../common/mixins';
+@import '../../../common/variables';
+
+@import '../Alert/alert';
+
+.mvn-alert-group {
+  @include bpm0();
+  display: flex;
+  transition: animate-transition(background-color);
+
+  .mvn-alert-group-nav {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    transition: animate-transition(background-color);
+
+    > * {
+      color: inherit !important;
+    }
+
+    > div {
+      font-size: 0.85em;
+      user-select: none;
+    }
+
+    button {
+      @include flat-button();
+    }
+  }
+
+  .mvn-alert {
+    flex: 1;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    color: inherit;
+    align-items: center;
+
+    .mvn-alert-icon {
+      margin-bottom: 0;
+      color: inherit;
+      margin-left: $mvn-base / 2;
+    }
+
+    .mvn-alert-content {
+      color: inherit;
+
+      .mvn-alert-title {
+        color: inherit;
+        line-height: inherit;
+        display: inline-block;
+        font-size: 1em;
+        margin-bottom: 0;
+        font-weight: 'bold';
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &::after {
+          content: '\00a0';
+        }
+      }
+
+      button {
+        height: 1.8em;
+        float: right;
+        margin: 0;
+        box-shadow: inset 0 0 0 $mvn-button-border rgba($white, 0.4),
+          inset 0 (-$mvn-button-border) 0 rgba($white, 0.6);
+
+        + button {
+          margin-right: $mvn-base / 2;
+        }
+
+        &:hover {
+          box-shadow: inset 0 0 0 $mvn-button-border rgba($white, 0.4),
+            inset 0 (-$mvn-button-border) 0 rgba($white, 0.6);
+        }
+
+        &:active {
+          box-shadow: inset 0 0 0 $mvn-button-border rgba($white, 0.6),
+            inset 0 $mvn-button-border $mvn-button-border * 2 rgba($white, 0.2);
+        }
+
+        &.mvn-button-focus-outline:focus {
+          box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline;
+        }
+      }
+    }
+
+    .mvn-alert-close {
+      position: unset;
+
+      button {
+        color: inherit !important;
+      }
+    }
+  }
+
+  @each $name, $color in $mvn-alert-types {
+    &.mvn-alert-group-#{$name} {
+      background-color: map-get($mvn-colors-text, $color);
+      color: $white;
+
+      .mvn-alert-group-nav {
+        background-color: darken(map-get($mvn-colors-text, $color), 7.5);
+      }
+    }
+  }
+}

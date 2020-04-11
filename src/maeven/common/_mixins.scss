@@ -48,6 +48,24 @@
   word-wrap: normal;
 }
 
+@mixin flat-button() {
+  box-shadow: none !important;
+  color: inherit !important;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+
+  &.mvn-button-focus-outline:focus {
+    box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline !important;
+  }
+}
+
 @mixin scrollbars(
   $background: $mvn-color-background,
   $background-dark: $mvn-color-background-dark,

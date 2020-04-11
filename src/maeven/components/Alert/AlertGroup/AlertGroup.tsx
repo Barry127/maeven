@@ -6,23 +6,27 @@ import React, {
   cloneElement,
   useEffect,
   ReactElement,
-  isValidElement
+  isValidElement,
+  Ref,
+  forwardRef
 } from 'react';
 import clsx from 'clsx';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { Text } from '../../Text';
 import { Button } from '../../Button';
 import { chevronLeft, chevronRight } from '../../../common/defaultIcons';
 
-import { Alert } from '../Alert/Alert';
-import { classes, themeOverride } from './styles';
+import { Alert, AlertF } from '../Alert/Alert';
 
 /**
  * AlertGroup groups several Alerts in one group.
  */
-export const AlertGroup: FC<AlertGroupProps &
-  HTMLAttributes<HTMLDivElement>> = ({ children, className, ...restProps }) => {
+export const AlertGroup: FC<AllAlertGroupProps> = ({
+  children,
+  className,
+  forwardedRef,
+  ...restProps
+}) => {
   const [index, setIndex] = useState(0);
   const [alerts, setAlerts] = useState<ReactElement[]>([]);
 
@@ -36,12 +40,11 @@ export const AlertGroup: FC<AlertGroupProps &
         .filter(isValidElement)
         .filter(
           (child: ReactElement<any>) =>
-            child.type === Alert && child.props?.isOpen !== false
+            (child.type === Alert || child.type === AlertF) &&
+            child.props?.isOpen !== false
         )
     );
   }, [children]);
-
-  const theme = useTheme();
 
   const next = useCallback(() => {
     const currentIndex = Math.min(index, alerts.length - 1);
@@ -60,23 +63,16 @@ export const AlertGroup: FC<AlertGroupProps &
 
   return (
     <div
+      {...restProps}
       className={clsx(
-        classes.alertGroup,
-        {
-          [classes.danger]: currentAlert.props.type === 'danger',
-          [classes.info]:
-            currentAlert.props.type === 'info' ||
-            currentAlert.props.type === undefined,
-          [classes.success]: currentAlert.props.type === 'success',
-          [classes.warning]: currentAlert.props.type === 'warning'
-        },
-        themeOverride(theme),
+        'mvn-alert-group',
+        `mvn-alert-group-${currentAlert.props.type || 'info'}`,
         className
       )}
-      {...restProps}
+      ref={forwardedRef}
     >
       {alerts.length > 1 && (
-        <Text className={classes.nav}>
+        <Text className="mvn-alert-group-nav">
           <Button
             buttonType="link"
             onClick={prev}
@@ -102,4 +98,12 @@ export const AlertGroup: FC<AlertGroupProps &
   );
 };
 
-export interface AlertGroupProps {}
+export const AlertGroupF = forwardRef<HTMLDivElement, AllAlertGroupProps>(
+  (props, ref) => <AlertGroup {...props} forwardedRef={ref} />
+);
+
+type AllAlertGroupProps = AlertGroupProps & HTMLAttributes<HTMLDivElement>;
+
+export interface AlertGroupProps {
+  forwardedRef?: Ref<HTMLDivElement>;
+}

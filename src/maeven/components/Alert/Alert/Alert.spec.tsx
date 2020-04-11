@@ -1,30 +1,24 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, createRef } from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 import { circle } from 'icon-packs/cjs/feather';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { Alert } from './Alert';
-import { classes, themeOverride } from './styles';
+import { Alert, AlertF } from './Alert';
+import { Alert as ExportedAlert } from '../';
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 describe('Alert', () => {
   it('renders alert with icon and given text', () => {
     render(<Alert>Hello world!</Alert>);
-    const element = document.querySelector(
-      `.${classes.alert.split(' ').join('.')}`
-    );
+    const element = document.querySelector('.mvn-alert');
     expect(element).toHaveTextContent('Hello world!');
   });
 
   it('sets className', () => {
     render(<Alert className="alert-class">Hello world!</Alert>);
-    const element = document.querySelector(
-      `.${classes.alert.split(' ').join('.')}`
-    );
+    const element = document.querySelector('.mvn-alert');
     expect(element).toHaveClass('alert-class');
   });
 
@@ -34,84 +28,9 @@ describe('Alert', () => {
         Hello world!
       </Alert>
     );
-    const element = document.querySelector(
-      `.${classes.alert.split(' ').join('.')}`
-    ) as HTMLDivElement;
+    const element = document.querySelector('.mvn-alert') as HTMLDivElement;
     expect(element).toHaveAttribute('id', 'AlertId');
     expect(element.dataset.test).toBe('alert-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Alert: {
-          color: 'tomato'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Alert>Hello world!</Alert>
-      </ThemeProvider>
-    );
-    const element = document.querySelector(
-      `.${classes.alert.split(' ').join('.')}`
-    );
-    expect(element).toHaveClass(expectedClassName);
-  });
-
-  it('styles Theme close icon override', () => {
-    const theme = {
-      ...MaevenDefault,
-      iconOverrides: {
-        close: circle
-      }
-    };
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Alert showIcon={false}>Hello world!</Alert>
-      </ThemeProvider>
-    );
-    const circleEl = document.querySelector('circle');
-    expect(circleEl).toBeInTheDocument();
-  });
-
-  it('styles Theme icon overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      iconOverrides: {
-        danger: circle,
-        info: circle,
-        success: circle,
-        warning: circle
-      }
-    };
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Alert closable={false} type="info">
-          Hello world!
-        </Alert>
-        <Alert closable={false} type="success">
-          Hello world!
-        </Alert>
-        <Alert closable={false} type="warning">
-          Hello world!
-        </Alert>
-        <Alert closable={false} type="danger">
-          Hello world!
-        </Alert>
-      </ThemeProvider>
-    );
-    const circles = document.querySelectorAll('circle');
-    const lines = document.querySelectorAll('line');
-    expect(circles).toHaveLength(4);
-    expect(lines).toHaveLength(0);
   });
 
   describe('afterClose', () => {
@@ -202,18 +121,14 @@ describe('Alert', () => {
   describe('animateOnOpen', () => {
     it('does not animate by default', () => {
       render(<Alert />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      ) as HTMLDivElement;
+      const element = document.querySelector('.mvn-alert') as HTMLDivElement;
 
       expect(Number(element.style.opacity)).toBe(1);
     });
 
     it('animates on open', async () => {
       render(<Alert animateOnOpen springConfig={{ duration: 10 }} />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      ) as HTMLDivElement;
+      const element = document.querySelector('.mvn-alert') as HTMLDivElement;
 
       expect(Math.round(Number(element.style.opacity))).toBe(0);
 
@@ -259,25 +174,19 @@ describe('Alert', () => {
   describe('isOpen', () => {
     it('is visible when isOpen is true', () => {
       render(<Alert isOpen />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      );
+      const element = document.querySelector('.mvn-alert');
       expect(element).toBeInTheDocument();
     });
 
     it('is not visible when isOpen is false', () => {
       render(<Alert isOpen={false} />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      );
+      const element = document.querySelector('.mvn-alert');
       expect(element).not.toBeInTheDocument();
     });
 
     it('is visible (uncontrolled) when isOpen is not set', () => {
       render(<Alert />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      );
+      const element = document.querySelector('.mvn-alert');
       expect(element).toBeInTheDocument();
     });
   });
@@ -286,9 +195,7 @@ describe('Alert', () => {
     it('calls onClose', async () => {
       const onClose = jest.fn();
       render(<Alert onClose={onClose} springConfig={{ duration: 10 }} />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      );
+      const element = document.querySelector('.mvn-alert');
       const closeButton = document.querySelector('button') as HTMLButtonElement;
 
       expect(element).toBeInTheDocument();
@@ -307,9 +214,7 @@ describe('Alert', () => {
         ev.preventDefault();
       };
       render(<Alert onClose={onClose} springConfig={{ duration: 10 }} />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      );
+      const element = document.querySelector('.mvn-alert');
       const closeButton = document.querySelector('button') as HTMLButtonElement;
 
       expect(element).toBeInTheDocument();
@@ -375,18 +280,27 @@ describe('Alert', () => {
   describe('type', () => {
     it('is info by default', () => {
       render(<Alert />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      );
-      expect(element).toHaveClass(classes.info);
+      const element = document.querySelector('.mvn-alert');
+      expect(element).toHaveClass('mvn-alert-info');
     });
 
     it('sets warning type', () => {
       render(<Alert type="warning" />);
-      const element = document.querySelector(
-        `.${classes.alert.split(' ').join('.')}`
-      );
-      expect(element).toHaveClass(classes.warning);
+      const element = document.querySelector('.mvn-alert');
+      expect(element).toHaveClass('mvn-alert-warning');
+    });
+  });
+
+  describe('forwarding ref', () => {
+    it('exports AlertForwardRef', () => {
+      expect(ExportedAlert).toBe(AlertF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLDivElement>();
+      render(<AlertF ref={ref} />);
+      const element = document.querySelector('.mvn-alert');
+      expect(ref.current).toBe(element);
     });
   });
 });

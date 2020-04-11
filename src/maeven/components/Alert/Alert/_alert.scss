@@ -1,0 +1,129 @@
+@import '../../../common/colors';
+@import '../../../common/mixins';
+@import '../../../common/variables';
+
+@import '../../Button/button';
+
+$mvn-alert-types: (
+  'info': 'primary',
+  'success': 'success',
+  'warning': 'warning',
+  'danger': 'danger'
+) !default;
+
+.mvn-alert {
+  @include bpm0();
+  position: relative;
+  display: flex;
+  padding: $mvn-base / 2;
+  border: 1px solid transparent;
+  border-radius: $mvn-border-radius;
+  margin-bottom: $mvn-base;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .mvn-alert-icon {
+    margin-right: $mvn-base / 2;
+  }
+
+  .mvn-alert-content {
+    flex-grow: 1;
+
+    button {
+      color: inherit;
+      background: none;
+      height: 2em;
+      font-size: 0.85em;
+      margin: 0 $mvn-base / 2;
+      box-shadow: inset 0 0 0 $mvn-button-border rgba($mvn-color-text, 0.4),
+        inset 0 (-$mvn-button-border) 0 rgba($mvn-color-text, 0.6);
+
+      .mvn-dark & {
+        box-shadow: inset 0 0 0 $mvn-button-border rgba($white, 0.4),
+          inset 0 (-$mvn-button-border) 0 rgba($white, 0.6);
+      }
+
+      + button {
+        margin-left: 0;
+      }
+
+      &:hover {
+        box-shadow: inset 0 0 0 $mvn-button-border rgba($mvn-color-text, 0.4),
+          inset 0 (-$mvn-button-border) 0 rgba($mvn-color-text, 0.6);
+        background: rgba($white, 0.1);
+
+        .mvn-dark & {
+          box-shadow: inset 0 0 0 $mvn-button-border rgba($white, 0.4),
+            inset 0 (-$mvn-button-border) 0 rgba($white, 0.6);
+        }
+      }
+
+      &:active {
+        background: rgba($white, 0.2);
+        box-shadow: inset 0 0 0 $mvn-button-border rgba($mvn-color-text, 0.6),
+          inset 0 $mvn-button-border $mvn-button-border * 2
+            rgba($mvn-color-text, 0.2);
+
+        .mvn-dark & {
+          box-shadow: inset 0 0 0 $mvn-button-border rgba($white, 0.6),
+            inset 0 $mvn-button-border $mvn-button-border * 2 rgba($white, 0.2);
+        }
+      }
+
+      &.mvn-button-focus-outline:focus {
+        box-shadow: 0 0 0 $mvn-outline-size $mvn-color-outline;
+      }
+    }
+  }
+
+  .mvn-alert-close {
+    color: $mvn-color-text;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    > button {
+      @include flat-button();
+    }
+  }
+
+  .mvn-alert-title {
+    display: block;
+    margin-bottom: $mvn-base / 2;
+
+    &:last-child {
+      margin-bottom: $mvn-base / 2;
+    }
+
+    .mvn-dark & {
+      color: $white;
+    }
+  }
+
+  &.mvn-alert-closable {
+    padding-right: $mvn-input-height;
+  }
+
+  @each $name, $color in $mvn-alert-types {
+    &.mvn-alert-#{$name} {
+      border-color: map-get($mvn-colors-text, $color);
+      background: mix($white, map-get($mvn-colors, $color), 85);
+
+      .mvn-alert-icon {
+        color: map-get($mvn-colors-text, $color);
+      }
+
+      .mvn-dark & {
+        color: $white;
+        background: mix($white, map-get($mvn-colors, $color), 0);
+        border-color: map-get($mvn-colors-text-dark, $color);
+
+        .mvn-alert-icon {
+          color: mix($white, map-get($mvn-colors, $color), 65);
+        }
+      }
+    }
+  }
+}

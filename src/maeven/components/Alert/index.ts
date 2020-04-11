@@ -1,2 +1,2 @@
-export { Alert } from './Alert/Alert';
-export { AlertGroup } from './AlertGroup/AlertGroup';
+export { AlertF as Alert } from './Alert/Alert';
+export { AlertGroupF as AlertGroup } from './AlertGroup/AlertGroup';

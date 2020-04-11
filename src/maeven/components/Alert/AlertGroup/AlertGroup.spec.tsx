@@ -1,13 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '../../..';
-
-import { AlertGroup } from './AlertGroup';
+import { AlertGroup, AlertGroupF } from './AlertGroup';
+import { AlertGroup as ExportedAlertGroup } from '../';
 import { Alert } from '../';
-import { classes, themeOverride } from './styles';
 
 describe('AlertGroup', () => {
   it('renders div element with given children', () => {
@@ -18,9 +16,7 @@ describe('AlertGroup', () => {
         <p>Alert 3</p>
       </AlertGroup>
     );
-    const element = document.querySelector(
-      `.${classes.alertGroup.split(' ').join('.')}`
-    );
+    const element = document.querySelector('.mvn-alert-group');
     expect(element).toHaveTextContent('1 / 2Alert 1');
   });
 
@@ -30,9 +26,7 @@ describe('AlertGroup', () => {
         <Alert />
       </AlertGroup>
     );
-    const element = document.querySelector(
-      `.${classes.alertGroup.split(' ').join('.')}`
-    );
+    const element = document.querySelector('.mvn-alert-group');
     expect(element).toHaveClass('alertgroup-class');
   });
 
@@ -43,35 +37,10 @@ describe('AlertGroup', () => {
       </AlertGroup>
     );
     const element = document.querySelector(
-      `.${classes.alertGroup.split(' ').join('.')}`
+      '.mvn-alert-group'
     ) as HTMLDivElement;
     expect(element).toHaveAttribute('id', 'AlertGroupId');
     expect(element.dataset.test).toBe('alertgroup-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        AlertGroup: {
-          color: 'khaki'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <AlertGroup>
-          <Alert />
-        </AlertGroup>
-      </ThemeProvider>
-    );
-    const element = document.querySelector(
-      `.${classes.alertGroup.split(' ').join('.')}`
-    );
-    expect(element).toHaveClass(expectedClassName);
   });
 
   it('makes alert always closable', () => {
@@ -93,9 +62,7 @@ describe('AlertGroup', () => {
       </AlertGroup>
     );
 
-    const element = document.querySelector(
-      `.${classes.alertGroup.split(' ').join('.')}`
-    );
+    const element = document.querySelector('.mvn-alert-group');
     const buttons = document.querySelectorAll('button');
     const prev = buttons[0] as HTMLButtonElement;
     const next = buttons[1] as HTMLButtonElement;
@@ -130,7 +97,7 @@ describe('AlertGroup', () => {
       </AlertGroup>
     );
 
-    const nav = document.querySelector(`.${classes.nav}`);
+    const nav = document.querySelector('.mvn-alert-group-nav');
     expect(nav).toHaveTextContent('1 / 2');
   });
 
@@ -141,15 +108,26 @@ describe('AlertGroup', () => {
       </AlertGroup>
     );
 
-    const nav = document.querySelector(`.${classes.nav}`);
+    const nav = document.querySelector('.mvn-alert-group-nav');
     expect(nav).not.toBeInTheDocument();
   });
 
   it('does not render an AlertGroup when there are no Children', () => {
     render(<AlertGroup />);
-    const element = document.querySelector(
-      `.${classes.alertGroup.split(' ').join('.')}`
-    );
+    const element = document.querySelector('.mvn-alert-group');
     expect(element).not.toBeInTheDocument();
+  });
+
+  describe('forwarding ref', () => {
+    it('exports AlertGroupForwardRef', () => {
+      expect(ExportedAlertGroup).toBe(AlertGroupF);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLDivElement>();
+      render(<AlertGroupF ref={ref} />);
+      const element = document.querySelector('.mvn-alert-group');
+      expect(ref.current).toBe(element);
+    });
   });
 });

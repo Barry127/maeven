@@ -61,16 +61,16 @@ Alerts can be styled in four different types.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="info">Info Alert</Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="success">Success Alert</Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="warning">Warning Alert</Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="danger">Danger Alert</Alert>
   </Col>
 </Row>
@@ -82,22 +82,22 @@ Alerts can have a title.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="info" title="Info Title">
       Info message content.
     </Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="success" title="Success Title">
       Success message content.
     </Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="warning" title="Warning Title">
       Warning message content.
     </Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="danger" title="Danger Title">
       Danger message content.
     </Alert>
@@ -111,10 +111,10 @@ Alerts with the `closable` prop set to `false` have no close button.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert type="success">This Alert is closable.</Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert title="Not closable" closable={false}>
       This alert has no close button.
     </Alert>
@@ -128,10 +128,10 @@ Alerts can be shown without an icon.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert>This Alert has an icon.</Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert showIcon={false}>This alert has no icon.</Alert>
   </Col>
 </Row>
@@ -159,7 +159,7 @@ Alerts can have a custom icon.
 
 ```js live
 <Row gutter={1}>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert
       type="success"
       onClose={() => {
@@ -172,7 +172,7 @@ Alerts can have a custom icon.
       Success Alert with onClose and afterClose.
     </Alert>
   </Col>
-  <Col transparent span={12}>
+  <Col span={12}>
     <Alert
       type="warning"
       onClose={ev => {

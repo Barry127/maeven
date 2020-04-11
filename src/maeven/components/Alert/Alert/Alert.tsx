@@ -4,12 +4,13 @@ import React, {
   MouseEvent,
   ReactNode,
   useState,
-  useCallback
+  useCallback,
+  Ref,
+  forwardRef
 } from 'react';
 import clsx from 'clsx';
 import { animated, useTransition, config, SpringConfig } from 'react-spring';
 
-import { useTheme } from '../../../hooks/useTheme';
 import { MaevenIcon } from '../../../types';
 import { Icon } from '../../Icon';
 import { Text } from '../../Text';
@@ -22,19 +23,17 @@ import {
   warning
 } from '../../../common/defaultIcons';
 
-import { classes, themeOverride } from './styles';
-
 /**
  * Alerts are banners that communicate a message with a severity attached to it. They grab the user’s attention to provide critical information needed in context.
  */
-export const Alert: FC<AlertProps &
-  Omit<HTMLAttributes<HTMLDivElement>, 'title'>> = ({
+export const Alert: FC<AllAlertProps> = ({
   afterClose,
   afterOpen,
   animateOnOpen = false,
   children,
   className,
   closable = true,
+  forwardedRef,
   icon,
   isOpen,
   onClose: propsOnClose,
@@ -46,7 +45,6 @@ export const Alert: FC<AlertProps &
   ...restProps
 }) => {
   const [isOpenState, setOpen] = useState(true);
-  const theme = useTheme();
 
   const onClose = useCallback(
     (ev: MouseEvent<HTMLButtonElement>) => {
@@ -78,12 +76,7 @@ export const Alert: FC<AlertProps &
     }
   );
 
-  const defaultIcons = {
-    danger: theme.iconOverrides?.danger || danger,
-    info: theme.iconOverrides?.info || info,
-    success: theme.iconOverrides?.success || success,
-    warning: theme.iconOverrides?.warning || warning
-  };
+  const defaultIcons = { danger, info, success, warning };
 
   return (
     <>
@@ -92,40 +85,39 @@ export const Alert: FC<AlertProps &
           item && (
             <animated.div
               className={clsx(
-                classes.alert,
-                classes[type],
-                themeOverride(theme),
+                'mvn-alert',
+                `mvn-alert-${type}`,
+                { 'mvn-alert-closable': closable },
                 className
               )}
               key={key}
               style={{ ...style, ...props }}
               aria-live="assertive"
               role="alert"
+              ref={forwardedRef}
               {...restProps}
             >
               {showIcon && (
                 <div
-                  className={clsx(classes.iconContainer, {
-                    [classes.title]: !!title
+                  className={clsx('mvn-alert-icon', {
+                    'mvn-h4': !!title
                   })}
                 >
-                  <Icon
-                    className={classes.icon}
-                    icon={icon ? icon : defaultIcons[type]}
-                  />
+                  <Icon icon={icon ? icon : defaultIcons[type]} />
                 </div>
               )}
-              <Text className={classes.content}>
-                {title && <strong className={classes.title}>{title}</strong>}
+              <Text className="mvn-alert-content">
+                {title && (
+                  <strong className="mvn-h4 mvn-alert-title">{title}</strong>
+                )}
                 {children}
               </Text>
               {closable && (
-                <div className={classes.closeContainer}>
+                <div className="mvn-alert-close">
                   <Button
                     buttonType="link"
                     onClick={onClose}
-                    icon={theme.iconOverrides?.close || close}
-                    className={classes.close}
+                    icon={close}
                     aria-label="Close"
                   />
                 </div>
@@ -136,6 +128,12 @@ export const Alert: FC<AlertProps &
     </>
   );
 };
+
+export const AlertF = forwardRef<HTMLDivElement, AllAlertProps>(
+  (props, ref) => <Alert {...props} forwardedRef={ref} />
+);
+
+type AllAlertProps = AlertProps & Omit<HTMLAttributes<HTMLDivElement>, 'title'>;
 
 export interface AlertProps {
   /** Called when close animation is finished, use this method to remove alert from state */
@@ -149,6 +147,8 @@ export interface AlertProps {
 
   /** Wether Alert is closable */
   closable?: boolean;
+
+  forwardedRef?: Ref<HTMLDivElement>;
 
   /** Icon to render, defaults to default icon for alert type */
   icon?: MaevenIcon;
