@@ -17,19 +17,16 @@ import { SpringConfig, useTransition, animated, config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops';
 import useMeasure from 'react-use-measure';
 
-import { useTheme } from '../../hooks/useTheme';
 import { MaevenIcon } from '../../types';
 import { Heading } from '../Heading';
 import { Icon } from '../Icon';
 import { Button } from '../Button';
-import { ThemeProvider } from '../ThemeProvider';
 import {
   close,
   maximize as maximizeIcon,
   minimize as minimizeIcon
 } from '../../common/defaultIcons';
 
-import { classes, themeOverride } from './styles';
 import { createModalContainer, removeModalContainer } from './dom';
 import { useCloseOnEscape, useFocusHandling } from './hooks';
 
@@ -66,7 +63,6 @@ export const Modal: FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({
   type,
   ...restProps
 }) => {
-  const theme = useTheme();
   const modalContainer = useMemo(() => createModalContainer(), []);
   const modalRef = useRef(null);
   const [maximized, setMaximized] = useState(false);
@@ -118,86 +114,75 @@ export const Modal: FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({
         item && (
           <animated.div
             key={key}
-            className={classes.container}
+            className="mvn-modal-container"
             onClick={closable ? onClose : undefined}
             ref={containerRef}
             style={{
               backdropFilter: props.backdropFilter
             }}
           >
-            <ThemeProvider theme={theme}>
-              <Spring
-                from={{ height: 'auto', width: SIZE_MAP[size] }}
-                to={{
-                  height:
-                    maximizable && maximized ? containerBounds.height : 'auto',
-                  width:
-                    maximizable && maximized
-                      ? containerBounds.width
-                      : SIZE_MAP[size]
-                }}
-              >
-                {springProps => (
-                  <animated.div
-                    className={clsx(
-                      classes.modal,
-                      {
-                        [classes.hasTitle]: !!title,
-                        [classes.isMaximized]: maximized
-                      },
-                      type && classes.type[type],
-                      themeOverride(theme),
-                      className
-                    )}
-                    onClick={stopPropagation}
-                    ref={modalRef}
-                    style={{
-                      ...style,
-                      ...props,
-                      ...springProps,
-                      backdropFilter: 'none'
-                    }}
-                    {...restProps}
-                  >
-                    {title ? (
-                      <div className={classes.title}>
-                        <Heading level="h3" size="h4">
-                          {icon && (
-                            <Icon icon={icon} className={classes.icon} />
-                          )}
-                          {title}
-                        </Heading>
-                        {maximizable && (
-                          <Button
-                            buttonType="link"
-                            onClick={maximized ? restore : maximize}
-                            icon={
-                              maximized
-                                ? theme.iconOverrides?.minimize || minimizeIcon
-                                : theme.iconOverrides?.maximize || maximizeIcon
-                            }
-                            className={classes.button}
-                            aria-label={
-                              maximized ? 'Restore modal' : 'Maximize modal'
-                            }
-                          />
-                        )}
-                        {closable && (
-                          <Button
-                            buttonType="link"
-                            onClick={onClose}
-                            icon={theme.iconOverrides?.close || close}
-                            className={classes.button}
-                            aria-label="Close"
-                          />
-                        )}
-                      </div>
-                    ) : null}
-                    <div className={classes.content}>{children}</div>
-                  </animated.div>
-                )}
-              </Spring>
-            </ThemeProvider>
+            <Spring
+              from={{ height: 'auto', width: SIZE_MAP[size] }}
+              to={{
+                height:
+                  maximizable && maximized ? containerBounds.height : 'auto',
+                width:
+                  maximizable && maximized
+                    ? containerBounds.width
+                    : SIZE_MAP[size]
+              }}
+            >
+              {springProps => (
+                <animated.div
+                  className={clsx(
+                    'mvn-modal',
+                    {
+                      'mvn-has-title': !!title,
+                      'mvn-modal-maximized': maximized
+                    },
+                    type && `mvn-modal-${type}`,
+                    className
+                  )}
+                  onClick={stopPropagation}
+                  ref={modalRef}
+                  style={{
+                    ...style,
+                    ...props,
+                    ...springProps,
+                    backdropFilter: 'none'
+                  }}
+                  {...restProps}
+                >
+                  {title ? (
+                    <div className="mvn-modal-title">
+                      <Heading level="h3" size="h4">
+                        {icon && <Icon icon={icon} />}
+                        {title}
+                      </Heading>
+                      {maximizable && (
+                        <Button
+                          buttonType="link"
+                          onClick={maximized ? restore : maximize}
+                          icon={maximized ? minimizeIcon : maximizeIcon}
+                          aria-label={
+                            maximized ? 'Restore modal' : 'Maximize modal'
+                          }
+                        />
+                      )}
+                      {closable && (
+                        <Button
+                          buttonType="link"
+                          onClick={onClose}
+                          icon={close}
+                          aria-label="Close"
+                        />
+                      )}
+                    </div>
+                  ) : null}
+                  <div className="mvn-modal-content">{children}</div>
+                </animated.div>
+              )}
+            </Spring>
           </animated.div>
         )
     ),
@@ -243,5 +228,5 @@ export interface ModalProps {
   title?: ReactNode;
 
   /** Type styling for Modal */
-  type?: 'primary' | 'success' | 'info' | 'warning' | 'danger';
+  type?: 'primary' | 'success' | 'warning' | 'danger';
 }

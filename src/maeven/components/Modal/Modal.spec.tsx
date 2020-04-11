@@ -5,10 +5,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { circle } from 'icon-packs/cjs/feather';
 
-import { MaevenDefault, ThemeProvider } from '../..';
-
 import { Modal } from './Modal';
-import { classes, modal, themeOverride } from './styles';
 
 //@ts-ignore
 window.ResizeObserver = ResizeObserver;
@@ -27,7 +24,7 @@ describe('Modal', () => {
       </Modal>
     );
 
-    const element = document.querySelector(`.${modal}`);
+    const element = document.querySelector('.mvn-modal');
     expect(element).toHaveClass('modal-class');
   });
 
@@ -38,52 +35,9 @@ describe('Modal', () => {
       </Modal>
     );
 
-    const element = document.querySelector(`.${modal}`) as HTMLDivElement;
+    const element = document.querySelector('.mvn-modal') as HTMLDivElement;
     expect(element).toHaveAttribute('id', 'ModalId');
     expect(element.dataset.test).toBe('modal-data');
-  });
-
-  it('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        Modal: {
-          color: 'hotpink'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Modal isOpen>Hello world!</Modal>
-      </ThemeProvider>
-    );
-    const element = document.querySelector(`.${modal}`);
-    expect(element).toHaveClass(expectedClassName);
-  });
-
-  it('styles Theme icon overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      iconOverrides: {
-        close: circle,
-        minimize: circle,
-        maximize: circle
-      }
-    };
-
-    render(
-      <ThemeProvider theme={theme}>
-        <Modal isOpen maximizable title="Hello World">
-          Hello world!
-        </Modal>
-      </ThemeProvider>
-    );
-
-    const circles = document.querySelectorAll('circle');
-    expect(circles).toHaveLength(2);
   });
 
   describe('closable', () => {
@@ -138,14 +92,14 @@ describe('Modal', () => {
     it('sets isOpen as true', () => {
       render(<Modal isOpen>Hello world!</Modal>);
 
-      const modalElement = document.querySelector(`.${modal}`);
+      const modalElement = document.querySelector('.mvn-modal');
       expect(modalElement).toBeInTheDocument();
     });
 
     it('sets isOpen as false', () => {
       render(<Modal isOpen={false}>Hello world!</Modal>);
 
-      const modalElement = document.querySelector(`.${modal}`);
+      const modalElement = document.querySelector('.mvn-modal');
       expect(modalElement).not.toBeInTheDocument();
     });
   });
@@ -207,7 +161,7 @@ describe('Modal', () => {
     it('is md by default', () => {
       render(<Modal isOpen>Hello world!</Modal>);
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
       expect(element).toHaveStyle('width: 576px');
     });
@@ -219,7 +173,7 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
       expect(element).toHaveStyle('width: 300px');
     });
@@ -231,7 +185,7 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
       expect(element).toHaveStyle('width: 864px');
     });
@@ -243,7 +197,7 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
       expect(element).toHaveStyle('width: 1152px');
     });
@@ -253,7 +207,7 @@ describe('Modal', () => {
     it('has no title by default', () => {
       render(<Modal isOpen>Hello world!</Modal>);
 
-      const title = document.querySelector(`.${classes.title}`);
+      const title = document.querySelector('.mvn-modal-title');
       expect(title).not.toBeInTheDocument();
     });
 
@@ -264,7 +218,7 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const title = document.querySelector(`.${classes.title}`);
+      const title = document.querySelector('.mvn-modal-title');
       expect(title).toBeInTheDocument();
       expect(title).toHaveTextContent('Hello title');
     });
@@ -274,13 +228,12 @@ describe('Modal', () => {
     it('has no type by default', () => {
       render(<Modal isOpen>Hello world!</Modal>);
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
-      expect(element).not.toHaveClass(classes.type.primary);
-      expect(element).not.toHaveClass(classes.type.success);
-      expect(element).not.toHaveClass(classes.type.info);
-      expect(element).not.toHaveClass(classes.type.warning);
-      expect(element).not.toHaveClass(classes.type.danger);
+      expect(element).not.toHaveClass('mvn-modal-primary');
+      expect(element).not.toHaveClass('mvn-modal-success');
+      expect(element).not.toHaveClass('mvn-modal-warning');
+      expect(element).not.toHaveClass('mvn-modal-danger');
     });
 
     it('sets primary', () => {
@@ -290,13 +243,12 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
-      expect(element).toHaveClass(classes.type.primary);
-      expect(element).not.toHaveClass(classes.type.success);
-      expect(element).not.toHaveClass(classes.type.info);
-      expect(element).not.toHaveClass(classes.type.warning);
-      expect(element).not.toHaveClass(classes.type.danger);
+      expect(element).toHaveClass('mvn-modal-primary');
+      expect(element).not.toHaveClass('mvn-modal-success');
+      expect(element).not.toHaveClass('mvn-modal-warning');
+      expect(element).not.toHaveClass('mvn-modal-danger');
     });
 
     it('sets success', () => {
@@ -306,29 +258,12 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
-      expect(element).not.toHaveClass(classes.type.primary);
-      expect(element).toHaveClass(classes.type.success);
-      expect(element).not.toHaveClass(classes.type.info);
-      expect(element).not.toHaveClass(classes.type.warning);
-      expect(element).not.toHaveClass(classes.type.danger);
-    });
-
-    it('sets info', () => {
-      render(
-        <Modal isOpen type="info">
-          Hello world!
-        </Modal>
-      );
-
-      const element = document.querySelector(`.${modal}`);
-
-      expect(element).not.toHaveClass(classes.type.primary);
-      expect(element).not.toHaveClass(classes.type.success);
-      expect(element).toHaveClass(classes.type.info);
-      expect(element).not.toHaveClass(classes.type.warning);
-      expect(element).not.toHaveClass(classes.type.danger);
+      expect(element).not.toHaveClass('mvn-modal-primary');
+      expect(element).toHaveClass('mvn-modal-success');
+      expect(element).not.toHaveClass('mvn-modal-warning');
+      expect(element).not.toHaveClass('mvn-modal-danger');
     });
 
     it('sets warning', () => {
@@ -338,13 +273,12 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
-      expect(element).not.toHaveClass(classes.type.primary);
-      expect(element).not.toHaveClass(classes.type.success);
-      expect(element).not.toHaveClass(classes.type.info);
-      expect(element).toHaveClass(classes.type.warning);
-      expect(element).not.toHaveClass(classes.type.danger);
+      expect(element).not.toHaveClass('mvn-modal-primary');
+      expect(element).not.toHaveClass('mvn-modal-success');
+      expect(element).toHaveClass('mvn-modal-warning');
+      expect(element).not.toHaveClass('mvn-modal-danger');
     });
 
     it('sets danger', () => {
@@ -354,13 +288,12 @@ describe('Modal', () => {
         </Modal>
       );
 
-      const element = document.querySelector(`.${modal}`);
+      const element = document.querySelector('.mvn-modal');
 
-      expect(element).not.toHaveClass(classes.type.primary);
-      expect(element).not.toHaveClass(classes.type.success);
-      expect(element).not.toHaveClass(classes.type.info);
-      expect(element).not.toHaveClass(classes.type.warning);
-      expect(element).toHaveClass(classes.type.danger);
+      expect(element).not.toHaveClass('mvn-modal-primary');
+      expect(element).not.toHaveClass('mvn-modal-success');
+      expect(element).not.toHaveClass('mvn-modal-warning');
+      expect(element).toHaveClass('mvn-modal-danger');
     });
   });
 });
