@@ -1,5 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
-import { style } from 'typestyle';
+import React, { FC, useState, useEffect, useCallback } from 'react';
 import { search } from 'icon-packs/feather';
 //@ts-ignore
 import unpkg from 'require-unpkg';
@@ -9,14 +8,15 @@ import {
   Row,
   Col,
   Card,
-  P,
-  MaevenDefault,
   Select,
   Text,
   TextInput,
+  Checkbox,
   Icon
 } from 'maeven';
 import { IconProps } from 'maeven/components/Icon/Icon';
+
+import './icon-browser.scss';
 
 // no localStorage because icon-packs exceeds max size
 unpkg.cache.set = function(k: string, v: any) {
@@ -32,6 +32,9 @@ export const IconBrowser: FC = () => {
   const [fw, setFw] = useState(false);
 
   const matcher = new RegExp(query, 'i');
+
+  const onChangePack = useCallback(ev => setPack(ev.selectedItem?.value), []);
+  const onChangeColor = useCallback(ev => setColor(ev.selectedItem?.value), []);
 
   useEffect(() => {
     let cancelled = false;
@@ -52,7 +55,7 @@ export const IconBrowser: FC = () => {
   }, [pack]);
 
   return (
-    <Container fluid>
+    <Container fluid className="docs-icon-browser">
       <Row gutter={1}>
         <Col>
           <TextInput
@@ -70,7 +73,7 @@ export const IconBrowser: FC = () => {
             <br />
             <Select
               value={pack}
-              onChange={ev => setPack(ev.selectedItem?.value)}
+              onChange={onChangePack}
               options={PACKS}
               renderItem={item => <>{item.text}</>}
               itemToString={item => item.text}
@@ -81,21 +84,14 @@ export const IconBrowser: FC = () => {
           <Card>
             <label htmlFor="color">Color:</label>
             <br />
-            <Select
-              value={color}
-              onChange={ev => setColor(ev.selectedItem?.value)}
-              options={COLORS}
-            />
+            <Select value={color} onChange={onChangeColor} options={COLORS} />
           </Card>
         </Col>
         <Col>
           <Card>
-            <P>
-              <label>
-                <input type="checkbox" onChange={() => setFw(!fw)} />
-                FixedWidth
-              </label>
-            </P>
+            <Checkbox onChange={() => setFw(!fw)} checked={fw}>
+              FixedWidth
+            </Checkbox>
           </Card>
         </Col>
       </Row>
@@ -120,7 +116,7 @@ export const IconBrowser: FC = () => {
                   position: 'relative'
                 }}
               >
-                <Card interactive className={interactiveCard}>
+                <Card interactive className="docs-interactive-card">
                   <div
                     style={{
                       textAlign: 'center'
@@ -170,62 +166,27 @@ const PACKS = [
 
 const COLORS: { value: string }[] = [
   { value: 'none' },
-  ...Object.keys(MaevenDefault.colors.name).reduce((map, colorName) => {
-    return [...map, { value: colorName }];
-  }, [] as { value: string }[]),
-  ...Object.keys(MaevenDefault.colors.semantic).reduce((map, colorName) => {
-    return [...map, { value: colorName }];
-  }, [] as { value: string }[])
+  { value: 'black' },
+  { value: 'white' },
+  { value: 'darkGrey' },
+  { value: 'grey' },
+  { value: 'lightGrey' },
+  { value: 'red' },
+  { value: 'orange' },
+  { value: 'yellow' },
+  { value: 'green' },
+  { value: 'teal' },
+  { value: 'blue' },
+  { value: 'indigo' },
+  { value: 'pink' },
+  { value: 'primary' },
+  { value: 'success' },
+  { value: 'warning' },
+  { value: 'danger' }
 ];
 
 interface Pack {
   [name: string]: MaevenIcon;
-}
-
-export const interactiveCard = style({
-  width: '6em',
-  height: '6em',
-  position: 'absolute',
-  transition: makeTransitionFor([
-    'boxShadow',
-    'width',
-    'height',
-    'top',
-    'left'
-  ]),
-  top: 0,
-  left: 0,
-  $nest: {
-    '& > div': {
-      transition: makeTransitionFor(['padding'])
-    },
-    '& > div > span:first-child': {
-      transition: makeTransitionFor(['color', 'font-size'])
-    },
-    '&:focus': {
-      zIndex: 2,
-      width: '12em',
-      height: '12em',
-      top: '-3em',
-      left: '-3em',
-      background: 'white',
-      $nest: {
-        '& > div': {
-          paddingTop: '1.5em'
-        },
-        '& > div > span:first-child': {
-          fontSize: '5.5em'
-        },
-        '& > div > div:last-child': {
-          marginTop: '.5em'
-        }
-      }
-    }
-  }
-});
-
-function makeTransitionFor(keys: string[]): string {
-  return keys.map(key => `${key} .2s cubic-bezier(0.4,1,0.75,0.9)`).join(',');
 }
 
 interface Cache {
