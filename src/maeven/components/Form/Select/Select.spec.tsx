@@ -46,7 +46,12 @@ describe('Select', () => {
 
   it('sets className', () => {
     render(
-      <Select className="select-class" options={options} onChange={jest.fn()}>
+      <Select
+        initialValue={{ value: 'non exisiting' }}
+        className="select-class"
+        options={options}
+        onChange={jest.fn()}
+      >
         Hello world!
       </Select>
     );
@@ -73,7 +78,7 @@ describe('Select', () => {
   it('handles searching inputValue', () => {
     render(
       <Select
-        value={null as any}
+        initialValue={{ value: null }}
         searchable
         options={[{ value: null }, ...options]}
         onChange={jest.fn()}
@@ -115,7 +120,6 @@ describe('Select', () => {
   });
 
   it('checks if list needs to be scrolled in view', () => {
-    jest.useFakeTimers();
     const isElementInViewport = elementInViewport.isElementInViewport as jest.Mock;
 
     render(
@@ -129,18 +133,20 @@ describe('Select', () => {
     expect(isElementInViewport.mock.calls).toHaveLength(0);
 
     const button = document.querySelector('button') as HTMLButtonElement;
+    const list = document.querySelector(
+      `.mvn-select-list-container`
+    ) as HTMLDivElement;
 
     act(() => {
       fireEvent.click(button);
     });
 
-    jest.runAllTimers();
+    list.dispatchEvent(new Event('transitionend'));
 
     expect(isElementInViewport.mock.calls).toHaveLength(1);
   });
 
   it('scrolls list into view', () => {
-    jest.useFakeTimers();
     const isElementInViewport = elementInViewport.isElementInViewport as jest.Mock;
 
     render(
@@ -166,7 +172,7 @@ describe('Select', () => {
       fireEvent.click(button);
     });
 
-    jest.runAllTimers();
+    list.dispatchEvent(new Event('transitionend'));
 
     expect(scrollMock.mock.calls).toHaveLength(1);
   });
@@ -192,6 +198,190 @@ describe('Select', () => {
 
       expect(document.querySelector('polyline')).toHaveAttribute('points', up);
       expect(container).toHaveClass('mvn-select-open');
+      fireEvent.click(button!);
+      expect(container).not.toHaveClass('mvn-select-open');
+    });
+  });
+
+  describe('keyboard events', () => {
+    beforeAll(() => {
+      Element.prototype.scrollTo = jest.fn();
+    });
+
+    afterAll(() => {
+      delete Element.prototype.scrollTo;
+    });
+
+    it('selects opens and highlights first item on arrow down', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+      const firstItem = document.querySelector('li:first-child > div');
+
+      fireEvent.keyDown(input!, { key: 'ArrowDown' });
+
+      expect(container).toHaveClass('mvn-select-open');
+      expect(firstItem).toHaveClass('mvn-select-highlighted-item');
+    });
+
+    it('selects item on enter', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+      const firstItem = document.querySelector('li:first-child > div');
+
+      fireEvent.keyDown(input!, { key: 'ArrowDown' });
+
+      expect(input).toHaveValue('');
+      expect(container).toHaveClass('mvn-select-open');
+      expect(firstItem).toHaveClass('mvn-select-highlighted-item');
+
+      fireEvent.keyDown(input!, { key: 'Enter' });
+
+      expect(input).toHaveValue('JavaScript');
+    });
+
+    it('selects item on click', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+      const firstItem = document.querySelector('li:first-child > div');
+      const thirdLi = document.querySelector('li:nth-child(3)');
+
+      fireEvent.keyDown(input!, { key: 'ArrowDown' });
+
+      expect(input).toHaveValue('');
+      expect(container).toHaveClass('mvn-select-open');
+      expect(firstItem).toHaveClass('mvn-select-highlighted-item');
+
+      fireEvent.mouseDown(thirdLi!);
+      fireEvent.click(thirdLi!);
+      fireEvent.mouseUp(thirdLi!);
+
+      expect(input).toHaveValue('PHP');
+    });
+
+    it('selects second item on 2 times arrow down', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+      const firstItem = document.querySelector('li:first-child > div');
+      const secondItem = document.querySelector('li:nth-child(2) > div');
+
+      fireEvent.keyDown(input!, { key: 'ArrowDown' });
+
+      expect(container).toHaveClass('mvn-select-open');
+      expect(firstItem).toHaveClass('mvn-select-highlighted-item');
+      expect(secondItem).not.toHaveClass('mvn-select-highlighted-item');
+
+      fireEvent.keyDown(input!, { key: 'ArrowDown' });
+
+      expect(firstItem).not.toHaveClass('mvn-select-highlighted-item');
+      expect(secondItem).toHaveClass('mvn-select-highlighted-item');
+    });
+
+    it('selects opens and highlights last item on arrow up', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+      const firstItem = document.querySelector('li:last-child > div');
+
+      fireEvent.keyDown(input!, { key: 'ArrowUp' });
+
+      expect(container).toHaveClass('mvn-select-open');
+      expect(firstItem).toHaveClass('mvn-select-highlighted-item');
+    });
+
+    it('selects second last item on 2 times arrow up', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+      const lastItem = document.querySelector('li:last-child > div');
+      const secondLastItem = document.querySelector('li:nth-child(7) > div');
+
+      fireEvent.keyDown(input!, { key: 'ArrowUp' });
+
+      expect(container).toHaveClass('mvn-select-open');
+      expect(lastItem).toHaveClass('mvn-select-highlighted-item');
+      expect(secondLastItem).not.toHaveClass('mvn-select-highlighted-item');
+
+      fireEvent.keyDown(input!, { key: 'ArrowUp' });
+
+      expect(lastItem).not.toHaveClass('mvn-select-highlighted-item');
+      expect(secondLastItem).toHaveClass('mvn-select-highlighted-item');
+    });
+
+    it('close menu on escape', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+
+      fireEvent.keyDown(input!, { key: 'ArrowDown' });
+
+      expect(container).toHaveClass('mvn-select-open');
+
+      fireEvent.keyDown(input!, { key: 'Escape' });
+
+      expect(container).not.toHaveClass('mvn-select-open');
+    });
+
+    it('highlights item on mouse over', () => {
+      render(<Select options={options} />);
+      const container = document.querySelector('.mvn-select');
+      const input = document.querySelector('input');
+      const firstItem = document.querySelector('li:first-child > div');
+      const secondLi = document.querySelector('li:nth-child(2)');
+      const secondItem = document.querySelector('li:nth-child(2) > div');
+
+      fireEvent.keyDown(input!, { key: 'ArrowDown' });
+
+      expect(container).toHaveClass('mvn-select-open');
+      expect(firstItem).toHaveClass('mvn-select-highlighted-item');
+
+      fireEvent.mouseEnter(secondLi!);
+
+      expect(secondItem).toHaveClass('mvn-select-highlighted-item');
+    });
+  });
+
+  describe('onBlur', () => {
+    it('passes control to onBlur from props', () => {
+      const onBlur = jest.fn();
+      render(
+        <Select
+          initialValue={{ value: 'Rust' }}
+          options={options}
+          onBlur={onBlur}
+        />
+      );
+
+      const input = document.querySelector('input');
+      expect(onBlur).toBeCalledTimes(0);
+
+      fireEvent.blur(input!);
+
+      expect(onBlur).toBeCalledTimes(1);
+    });
+
+    it('does not call blur when clicking an item', () => {
+      const onBlur = jest.fn();
+      render(
+        <Select
+          initialValue={{ value: 'Rust' }}
+          options={options}
+          onBlur={onBlur}
+        />
+      );
+
+      const input = document.querySelector('input');
+      const item = document.querySelector('li');
+
+      expect(onBlur).toBeCalledTimes(0);
+
+      fireEvent.mouseDown(item!);
+      fireEvent.blur(input!);
+
+      expect(onBlur).toBeCalledTimes(0);
     });
   });
 

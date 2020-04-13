@@ -72,11 +72,11 @@ export const IconBrowser: FC = () => {
             <label htmlFor="pack">Icon Pack:</label>
             <br />
             <Select
-              value={pack}
+              initialValue={{ value: 'feather' }}
               onChange={onChangePack}
               options={PACKS}
               renderItem={item => <>{item.text}</>}
-              itemToString={item => item.text}
+              itemToString={item => item?.text}
             />
           </Card>
         </Col>
@@ -84,7 +84,11 @@ export const IconBrowser: FC = () => {
           <Card>
             <label htmlFor="color">Color:</label>
             <br />
-            <Select value={color} onChange={onChangeColor} options={COLORS} />
+            <Select
+              initialValue={{ value: color }}
+              onChange={onChangeColor}
+              options={COLORS}
+            />
           </Card>
         </Col>
         <Col>

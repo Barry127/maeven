@@ -24,7 +24,7 @@
   "homepage": "http://barry127.github.io/maeven/",
   "dependencies": {
     "clsx": "^1.1.0",
-    "downshift": "^4.0.10",
+    "downshift": "^5.1.0",
     "react-autosize-textarea": "^7.0.0",
     "react-spring": "^8.0.27",
     "react-use-measure": "^2.0.0"

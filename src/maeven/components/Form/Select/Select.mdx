@@ -79,14 +79,14 @@ const options = [
 ];
 
 const Controlled = props => {
-  const [value, setValue] = useState('Rust');
+  const [value, setValue] = useState({ value: 'Rust' });
   return (
     <Select
       {...props}
-      value={value}
-      onChange={ev => ev.selectedItem && setValue(ev.selectedItem.value)}
+      initialValue={value}
+      onChange={ev => ev.selectedItem && setValue(ev.selectedItem)}
     >
-      Value: <i>{value}</i>
+      Value: <i>{value.value}</i>
     </Select>
   );
 };
