@@ -24,7 +24,6 @@ export default {
 
   external: [
     'clsx',
-    'downshift',
     'react',
     'react-autosize-textarea',
     'react-dom',

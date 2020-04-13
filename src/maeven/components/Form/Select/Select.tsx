@@ -19,7 +19,7 @@ import { Text } from '../../Text';
 import { Button } from '../../Button';
 import { chevronDown, chevronUp } from '../../../common/defaultIcons';
 import { isElementInViewport } from '../../../common/isElementInViewport';
-import { mergeRefs } from 'maeven/common/mergeRefs';
+import { mergeRefs } from '../../../common/mergeRefs';
 
 /**
  * With Select users can select one item from a list of values
