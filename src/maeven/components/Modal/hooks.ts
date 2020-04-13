@@ -66,7 +66,10 @@ export function useCloseOnEscape({
         //@ts-ignore
         const tagName = ev.target && ev.target.tagName;
 
-        if (ev.keyCode === 27 && !escBlacklist.includes(tagName)) {
+        if (
+          (ev.key === 'Escape' || ev.keyCode === 27) &&
+          !escBlacklist.includes(tagName)
+        ) {
           onClose(ev);
         }
       };
