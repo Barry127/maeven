@@ -23,7 +23,7 @@ export const App: FC = () => {
     setDark(!isDark);
   }, [isDark]);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Nav isDark={isDark} toggleDark={toggleDark} />
       <div style={{ marginLeft: 210 }}>
         <Block background="textBackground" style={{ minHeight: '100vh' }}>

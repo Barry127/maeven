@@ -23,19 +23,25 @@ When `MyButton` is focussed using tab it will have a 3px blue outline. When focu
 const MyButton = () => {
   const outline = useOutline();
 
-  const MyButtonClass = typestyle({
-    $nest: {
-      '&:focus': {
-        fontWeight: 'bold',
-        outline: outline ? '3px solid dodgerblue' : 'none'
-      }
-    }
-  });
+  const MyButtonClass = outline ? 'my-button outline' : 'my-button';
 
   return (
     <button className={MyButtonClass}>Focus me using keyboard or mouse</button>
   );
 };
 
-render(<MyButton />);
+render(
+  <>
+    <style>{`
+  .my-button:focus {
+    font-weight: bold;
+  }
+  
+  .my-button.outline:focus {
+    outline: 3px solid dodgerblue
+  }
+  `}</style>
+    <MyButton />
+  </>
+);
 ```
