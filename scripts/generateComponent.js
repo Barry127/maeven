@@ -36,7 +36,6 @@ module.exports = async () => {
 
   const componentPath = path.join(parentPath, name);
   const shortPath = componentPath.slice(componentPath.indexOf('src'));
-  const className = name.slice(0, 1).toLowerCase() + name.slice(1);
 
   console.log('');
 
@@ -53,7 +52,7 @@ module.exports = async () => {
 
   fs.writeFileSync(
     path.join(componentPath, `${name}.tsx`),
-    templates.component(name, className, nested)
+    templates.component(name, nested)
   );
   console.log(chalk.italic(`created ${shortPath}/${name}.tsx`));
 
@@ -70,8 +69,8 @@ module.exports = async () => {
   console.log(chalk.italic(`created ${shortPath}/${name}.mdx`));
 
   fs.writeFileSync(
-    path.join(componentPath, 'styles.ts'),
-    templates.styles(name, className, nested)
+    path.join(componentPath, `_${dashify(name)}.scss`),
+    templates.styles(name, nested)
   );
   console.log(chalk.italic(`created ${shortPath}/styles.ts`));
 
@@ -95,32 +94,43 @@ module.exports = async () => {
     parentIndexContent.splice(
       spliceIndex,
       0,
-      `export { ${name} } from './${name}/${name}';`
+      `export { ${name}F as ${name} } from './${name}/${name}';`
     );
 
     fs.writeFileSync(parentIndexFile, parentIndexContent.join('\n'));
     console.log(`updated ${shortPath.replace(`/${parent}`, '')}/index.ts`);
   } else {
-    const indexPath = path.join(paths.maeven, 'index.ts');
+    const indexPath = path.join(paths.maeven, 'components', 'index.ts');
     const indexData = fs.readFileSync(indexPath, 'utf8').split('\n');
-    const startIndex = indexData.indexOf('// Components') + 1;
-    const endIndex = indexData.indexOf('// Hooks');
 
-    let spliceIndex = startIndex;
+    let spliceIndex = 0;
 
-    for (let i = startIndex; i < endIndex; i++) {
-      const line = indexData[i];
-      if (line.startsWith(`export *`) && line.slice(28) < name) {
-        spliceIndex = i + 1;
+    indexData.forEach((line, index) => {
+      if (line.startsWith(`export *`) && line.slice(17) < name) {
+        spliceIndex = index + 1;
       }
-    }
+    });
 
-    indexData.splice(spliceIndex, 0, `export * from './components/${name}';`);
+    indexData.splice(spliceIndex, 0, `export * from './${name}';`);
 
     fs.writeFileSync(indexPath, indexData.join('\n'));
-    console.log(
-      `updated ${shortPath.replace(`/components/${name}`, '')}/index.ts`
-    );
+    console.log(`updated ${shortPath.replace(`/${name}`, '')}/index.ts`);
+
+    const scssPath = path.join(paths.maeven, 'components', '_index.scss');
+    const scssData = fs.readFileSync(scssPath, 'utf8').split('\n');
+
+    spliceIndex = 0;
+
+    scssData.forEach((line, index) => {
+      if (line.startsWith(`@import`) && line.slice(9) < name) {
+        spliceIndex = index + 1;
+      }
+    });
+
+    scssData.splice(spliceIndex, 0, `@import '${name}/${dashify(name)}';`);
+
+    fs.writeFileSync(scssPath, scssData.join('\n'));
+    console.log(`updated ${shortPath.replace(`/${name}`, '')}/_index.scss`);
   }
 
   console.log('');
@@ -194,98 +204,91 @@ function validateName(name) {
 }
 
 const templates = {
-  index: name => `export { ${name} } from './${name}';`,
+  index: name => `export { ${name}F as ${name} } from './${name}';`,
 
-  component: (name, className, nested) =>
-    `import React, { FC, HTMLAttributes } from 'react';
+  component: (name, nested) =>
+    `import React, { FC, Ref, HTMLAttributes, forwardRef } from 'react';
 import clsx from 'clsx';
-
-import { useTheme } from '${nested ? '../' : ''}../../hooks/useTheme';
-
-import { classes, themeOverride } from './styles';
 
 /**
  * ${name} description
  */
-export const ${name}: FC<${name}Props & HTMLAttributes<HTMLDivElement>> = ({
+export const ${name}: FC<All${name}Props> = ({
   children,
   className,
+  forwardedRef,
   ...restProps
-}) => {
-  const theme = useTheme();
+}) => (
+  <div
+    {...restProps}
+    className={clsx('mvn-${dashify(name)}', className)}
+    ref={forwardedRef}
+  >
+    {children}
+  </div>
+);
 
-  return (
-    <div
-      className={clsx(classes.${className}, themeOverride(theme), className)}
-      {...restProps}
-    >
-      {children}
-    </div>
-  );
-};
+export const ${name}F = forwardRef<HTMLDivElement, All${name}Props>((props, ref) => (
+  <${name} {...props} forwardedRef={ref} />
+));
 
-export interface ${name}Props {}
+type All${name}Props = ${name}Props & HTMLAttributes<HTMLDivElement>;
+
+export interface ${name}Props {
+  forwardedRef?: Ref<HTMLDivElement>;
+}
 `,
 
   spec: (name, nested) =>
     `import '@testing-library/jest-dom/extend-expect';
 
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 
-import { MaevenDefault, ThemeProvider } from '${nested ? '../' : ''}../..';
+import { ${name}, ${name}F } from './${name}';
+import { ${name} as Exported${name} } from '.${nested ? '.' : ''}/';
 
-import { ${name} } from './${name}';
-import { classes, themeOverride } from './styles';
 
 describe('${name}', () => {
-  it.skip('renders div element with given text', () => {
-    const { getByText } = render(<${name}>Hello world!</${name}>);
-    const element = getByText('Hello world!');
-    expect(element.tagName).toBe('DIV');
+  it('renders div element with given text', () => {
+    render(<${name}>Hello world!</${name}>);
+    const element = document.querySelector('.${dashify(name)}')
+    expect(element!.tagName).toBe('DIV');
   });
 
-  it.skip('sets className', () => {
-    const { getByText } = render(
+  it('sets className', () => {
+    render(
       <${name} className="${name.toLowerCase()}-class">Hello world!</${name}>
     );
-    const element = getByText('Hello world!');
+    const element = document.querySelector('.${dashify(name)}')
     expect(element).toHaveClass('${name.toLowerCase()}-class');
   });
 
-  it.skip('passes props', () => {
-    const { getByText } = render(
+  it('passes props', () => {
+    render(
       <${name} id="${name}Id" data-test="${name.toLowerCase()}-data">
         Hello world!
       </${name}>
     );
-    const element = getByText('Hello world!');
+    const element = document.querySelector('.${dashify(name)}')
     expect(element).toHaveAttribute('id', '${name}Id');
-    expect(element.dataset.test).toBe('${name.toLowerCase()}-data');
-  });
-
-  it.skip('styles Theme overrides', () => {
-    const theme = {
-      ...MaevenDefault,
-      styleOverrides: {
-        ${name}: {
-          color: 'hotpink'
-        }
-      }
-    };
-
-    const expectedClassName = themeOverride(theme);
-
-    const { getByText } = render(
-      <ThemeProvider theme={theme}>
-        <${name}>Hello world!</${name}>
-      </ThemeProvider>
-    );
-    const element = getByText('Hello world!');
-    expect(element).toHaveClass(expectedClassName);
+    expect(element).toHaveAttribute('data-test', '${name.toLowerCase()}-data');
   });
 
   it.skip('', () => {});
+
+  describe('forwarding ref', () => {
+    it('exports ${name}ForwardRef', () => {
+      expect(Exported${name}).toBe(${name}F);
+    });
+
+    it('sets ref', () => {
+      const ref = createRef<HTMLDivElement>();
+      render(<${name}F ref={ref} />);
+      const element = document.querySelector('.${dashify(name)}');
+      expect(ref.current).toBe(element);
+    });
+  });
 });
 `,
 
@@ -317,23 +320,27 @@ A basic usage of ${name}.
 \`\`\`
 `,
 
-  styles: (name, className, nested) =>
-    `import clsx from 'clsx';
-import { style } from 'typestyle';
+  styles: (name, nested) =>
+    `@import '${nested ? '../' : ''}../../common/mixins';
 
-import { box, pm0 } from '${nested ? '../' : ''}../../common/styles';
-import { themeOverrideFactory } from '${
-      nested ? '../' : ''
-    }../../common/themeOverrideFactory';
-
-const ${className} = style({
-  color: 'red'
-});
-
-export const classes = {
-  ${className}: clsx(box, pm0, ${className})
-};
-
-export const themeOverride = themeOverrideFactory('${name}');
+.${dashify(name)} {
+  @include bpm0();
+  color: red;
+}
 `
 };
+
+function dashify(str) {
+  return str
+    .split('')
+    .map((letter, index) => {
+      if (index === 0) {
+        return letter.toLowerCase();
+      }
+      if (letter.toLowerCase() !== letter) {
+        return `-${letter.toLowerCase()}`;
+      }
+      return letter;
+    })
+    .join('');
+}

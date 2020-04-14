@@ -40,24 +40,22 @@ module.exports = async () => {
 
   console.log('');
 
-  const indexPath = path.join(paths.maeven, 'index.ts');
+  const indexPath = path.join(paths.maeven, 'hooks', 'index.ts');
   const indexData = fs.readFileSync(indexPath, 'utf8').split('\n');
-  const startIndex = indexData.indexOf('// Hooks') + 1;
-  const endIndex = indexData.indexOf('// Themes');
+  const startIndex = 0;
 
   let spliceIndex = startIndex;
 
-  for (let i = startIndex; i < endIndex; i++) {
-    const line = indexData[i];
-    if (line.startsWith(`export *`) && line.slice(23) < name) {
-      spliceIndex = i + 1;
+  indexData.forEach((line, index) => {
+    if (line.startsWith(`export *`) && line.slice(17) < name) {
+      spliceIndex = index + 1;
     }
-  }
+  });
 
-  indexData.splice(spliceIndex, 0, `export * from './hooks/${name}';`);
+  indexData.splice(spliceIndex, 0, `export * from './${name}';`);
 
   fs.writeFileSync(indexPath, indexData.join('\n'));
-  console.log(`updated ${shortPath.replace(`/hooks/${name}`, '')}/index.ts`);
+  console.log(`updated ${shortPath.replace(`/${name}`, '')}/index.ts`);
 
   console.log('');
   console.log('');
@@ -115,7 +113,7 @@ const templates = {
 
 import { ${name} } from './${name}';
 
-describe('useTheme', () => {
+describe('${name}', () => {
   it.skip('', () => {});
 });
 `,
