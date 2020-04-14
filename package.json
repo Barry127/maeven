@@ -6,7 +6,8 @@
   "module": "lib/esm/index.js",
   "license": "MIT",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "private": false,
   "author": {
