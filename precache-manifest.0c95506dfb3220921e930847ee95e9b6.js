@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c2963c7ca6969f7467b12acafe75b1f1",
+    "revision": "9848c3daadeec539e794b7ff9f5fcace",
     "url": "/maeven/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/maeven/static/css/1.1f28dd37.chunk.css"
   },
   {
-    "revision": "320c265b91ac430fa94b",
-    "url": "/maeven/static/css/main.118128e4.chunk.css"
+    "revision": "1238175ccf53774a1a66",
+    "url": "/maeven/static/css/main.75728a22.chunk.css"
   },
   {
     "revision": "48953cf78d7ada56c4b9",
@@ -220,7 +220,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/maeven/static/js/9.a40f1f04.chunk.js"
   },
   {
-    "revision": "320c265b91ac430fa94b",
+    "revision": "1238175ccf53774a1a66",
     "url": "/maeven/static/js/main.6821ada9.chunk.js"
   },
   {
