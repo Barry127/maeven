@@ -183,31 +183,31 @@ $mvn-grid-xl-width: 1140px !default;
 
   // col hidden
   @include media-xs {
-    &.col-hidden-xs {
+    &.mvn-col-hidden-xs {
       display: none;
     }
   }
 
   @include media-sm {
-    &.col-hidden-sm {
+    &.mvn-col-hidden-sm {
       display: none;
     }
   }
 
   @include media-md {
-    &.col-hidden-md {
+    &.mvn-col-hidden-md {
       display: none;
     }
   }
 
   @include media-lg {
-    &.col-hidden-lg {
+    &.mvn-col-hidden-lg {
       display: none;
     }
   }
 
   @include media-xl {
-    &.col-hidden-xl {
+    &.mvn-col-hidden-xl {
       display: none;
     }
   }
