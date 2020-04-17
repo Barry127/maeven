@@ -103,6 +103,14 @@ export const Modal: FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({
       transform: `translate3d(0, -10px, 0)`,
       backdropFilter: 'blur(0px)'
     },
+    onDestroyed: isDestroyed =>
+      isDestroyed
+        ? typeof afterClose === 'function'
+          ? afterClose()
+          : undefined
+        : typeof afterOpen === 'function'
+        ? afterOpen()
+        : undefined,
     config: isOpen
       ? springConfig || { tension: 180, friction: 15 }
       : config.stiff
