@@ -1,3 +1,20 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "Consolas",
+    "Menlo",
+    "Monospace",
+    "autosize",
+    "clsx",
+    "dashify",
+    "docgen",
+    "focusring",
+    "lcov",
+    "maeven",
+    "prebuild",
+    "predocs",
+    "prepub",
+    "shorthash",
+    "textfield"
+  ]
 }

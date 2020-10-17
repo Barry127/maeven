@@ -1,0 +1,22 @@
+//@ts-ignore
+import { importMDX } from 'mdx.macro';
+import React, { FC, lazy, Suspense } from 'react';
+import { componentMap } from '../_docs/componentMap';
+
+const Content = lazy(() => importMDX('{{FILENAME}}'));
+
+export const meta = {{META}};
+
+export const Page: FC = () => {
+  console.log(
+    'useTitle',
+    meta.title === 'Maeven' ? 'Maeven' : `${meta.title} | Maeven`
+  );
+  // useTitle(meta.title === 'Maeven' ? 'Maeven' : `${meta.title} | Maeven`);
+
+  return (
+    <Suspense fallback={<h2>Loading...</h2>}>
+      <Content components={componentMap} />
+    </Suspense>
+  );
+};

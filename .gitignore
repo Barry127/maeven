@@ -2,8 +2,14 @@
 
 /coverage
 /build
+/dist
 /lib
-/src/docs/_data
+.old
+
+/pages/generated
+
+/.next/
+/out/
 
 .DS_Store
 .env.local

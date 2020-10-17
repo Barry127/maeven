@@ -1,66 +1,54 @@
-import React, { FC, AllHTMLAttributes, forwardRef, Ref } from 'react';
-import clsx from 'clsx';
-
-import {
-  InstrinctElement,
-  ReactComponent,
-  Color,
-  BackgroundColor
-} from '../../types';
+import React, {
+  AllHTMLAttributes,
+  ComponentClass,
+  forwardRef,
+  ForwardRefExoticComponent,
+  FunctionComponent
+} from 'react';
+import { BackgroundColor, Color } from '../../types';
 
 /**
  * A Block is a low level component with sensible theme default styling.
  */
-export const Block: FC<AllBlockProps> = ({
-  background,
-  children,
-  className,
-  component,
-  element = 'div',
-  forwardedRef,
-  padding = false,
-  textColor,
-  ...restProps
-}) => {
-  const Element = component || element;
+export const Block: ForwardRefExoticComponent<BlockProps> = forwardRef<
+  HTMLElement,
+  BlockProps
+>(
+  (
+    {
+      background,
+      children,
+      className,
+      component,
+      element = 'div',
+      textColor,
+      ...props
+    },
+    ref
+  ) => {
+    const Element = component || element;
 
-  return (
-    <Element
-      className={clsx(
-        'mvn-block',
-        { 'mvn-block-padding': padding },
-        background && `mvn-background-color-${background}`,
-        textColor && `mvn-text-color-${textColor}`,
-        className
-      )}
-      {...restProps}
-      ref={forwardedRef}
-    >
-      {children}
-    </Element>
-  );
-};
+    return (
+      <Element ref={ref} {...props}>
+        {children}
+      </Element>
+    );
+  }
+);
 
-export const BlockF = forwardRef<HTMLElement, AllBlockProps>((props, ref) => (
-  <Block {...props} forwardedRef={ref} />
-));
-
-type AllBlockProps = BlockProps & AllHTMLAttributes<HTMLElement | SVGElement>;
-
-export interface BlockProps {
+export interface BlockProps
+  extends AllHTMLAttributes<HTMLElement | SVGElement> {
   /** Background color for Block */
   background?: BackgroundColor;
 
   /** Type of component to render. (overwrites element) */
-  component?: ReactComponent;
+  component?: ComponentClass<any> | FunctionComponent<any>;
 
   /** Type of html element to render. */
-  element?: InstrinctElement;
-
-  forwardedRef?: Ref<HTMLElement>;
+  element?: keyof JSX.IntrinsicElements;
 
   /** Wether block contains padding */
-  padding?: boolean;
+  // padding?: boolean;
 
   /** Text color for Block */
   textColor?: Color;

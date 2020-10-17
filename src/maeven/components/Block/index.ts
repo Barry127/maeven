@@ -1,1 +1,1 @@
-export { BlockF as Block } from './Block';
+export { Block } from './Block';

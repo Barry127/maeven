@@ -1,15 +1,11 @@
 {
   "name": "maeven",
   "version": "0.2.3",
-  "description": "React Components",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "description": "React Components for modern web apps",
+  "main": "cjs/index.js",
+  "module": "index.mjs",
   "license": "MIT",
-  "files": [
-    "lib",
-    "src"
-  ],
-  "private": false,
+  "private": true,
   "author": {
     "name": "Barry de Kleijn",
     "email": "kleijn.barry@gmail.com",
@@ -24,80 +20,67 @@
   },
   "homepage": "http://barry127.github.io/maeven/",
   "dependencies": {
-    "clsx": "^1.1.0",
-    "react-autosize-textarea": "^7.0.0",
+    "@types/color": "^3.0.1",
+    "clsx": "^1.1.1",
+    "color": "^3.1.3",
+    "react-autosize-textarea": "^7.1.0",
     "react-spring": "^8.0.27",
-    "react-use-measure": "^2.0.0"
+    "react-use-measure": "^2.0.2"
   },
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/react-hooks": "^3.2.1",
-    "@types/dashify": "^1.0.0",
-    "@types/jest": "24.0.23",
-    "@types/node": "12.12.14",
-    "@types/react": "16.9.14",
-    "@types/react-dom": "16.9.4",
-    "@types/react-router-dom": "^5.1.3",
-    "chalk": "^3.0.0",
-    "chokidar": "^3.3.0",
-    "coveralls": "^3.0.9",
-    "customize-cra": "^0.9.1",
-    "dashify": "^2.0.0",
-    "front-matter": "^3.0.2",
-    "gh-pages": "^2.2.0",
-    "husky": "^3.1.0",
-    "icon-packs": "^0.6.0",
-    "mdx.macro": "^0.2.9",
-    "node-sass": "^4.13.1",
-    "prettier": "^1.19.1",
-    "prettier-tslint": "^0.4.2",
-    "prism-react-renderer": "^1.0.2",
-    "prompts": "^2.3.0",
-    "react": "^16.12.0",
-    "react-app-rewired": "^2.1.5",
-    "react-docgen-typescript": "^1.16.1",
-    "react-dom": "^16.12.0",
-    "react-live": "^2.2.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.0",
-    "react-test-renderer": "^16.12.0",
-    "require-unpkg": "^0.5.2",
-    "resize-observer-polyfill": "^1.5.1",
-    "rimraf": "^3.0.0",
-    "rollup": "^1.27.8",
-    "rollup-plugin-typescript2": "^0.25.2",
-    "shorthash": "^0.0.2",
-    "tslib": "^1.10.0",
-    "typescript": "^3.7.2"
+    "@babel/preset-env": "^7.12.1",
+    "@mdx-js/loader": "^1.6.18",
+    "@next/mdx": "^9.5.5",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/react-hooks": "^3.4.2",
+    "@testing-library/user-event": "^12.1.7",
+    "@types/jest": "^24.0.0",
+    "@types/mdx-js__react": "^1.5.3",
+    "@types/node": "^12.0.0",
+    "@types/prettier": "^2.1.2",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.6",
+    "chokidar": "^3.4.2",
+    "coveralls": "^3.1.0",
+    "gh-pages": "^3.1.0",
+    "jest": "^26.5.3",
+    "next": "^9.5.5",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.1.2",
+    "react": "^16.13.1",
+    "react-docgen-typescript": "^1.20.5",
+    "react-dom": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
   },
   "scripts": {
-    "clear": "rimraf coverage lib build src/docs/_data",
-    "css:build": "node-sass src/maeven/maeven.scss -o lib --output-style compressed",
-    "prebuild": "yarn clear && yarn css:build",
-    "build": "rollup --config",
-    "generate": "node scripts/generate",
+    "clear": "rimraf coverage dist pages/generated",
+    "prebuild": "yarn dist:prepare",
+    "build": "cd dist && yarn build",
     "lint": "eslint src/**/*.ts{,x}",
-    "prepublish": "yarn clear && yarn lint && yarn test:ci && yarn build",
-    "postpublish": "yarn docs:deploy",
-    "prestart": "yarn parseData",
-    "start": "yarn parseData --watch & react-app-rewired start",
-    "parseData": "node scripts/parseData.js",
-    "test": "react-app-rewired test",
-    "test:ci": "CI=true yarn test",
-    "test:coverage": "react-app-rewired test --coverage --watchAll=false",
-    "test:coverage:ci": "react-app-rewired test --coverage --watchAll=false --coverageReporters=text-lcov | coveralls",
-    "predocs:build": "yarn clear && yarn parseData",
-    "docs:build": "react-app-rewired build",
+    "parse": "yarn ts scripts/parse.ts",
+    "start": "yarn parse --watch & next",
+    "test": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "test:coverage:ci": "jest --coverage --watchAll=false --coverageReporters=text-lcov | coveralls",
+    "predocs:build": "yarn clear && yarn parse",
+    "docs:build": "next build && next export",
     "predocs:deploy": "yarn docs:build",
-    "docs:deploy": "gh-pages -d build",
-    "postdocs:deploy": "yarn clear"
+    "docs:deploy": "gh-pages -d out",
+    "postdocs:deploy": "yarn clear",
+    "dist:prepare": "yarn clear && mkdir dist && cp -r src dist/src && cp tsconfig.maeven.json dist/tsconfig.json && cp LICENSE rollup.config.js dist/ && yarn ts scripts/makePackageJson.ts",
+    "prepub": "yarn dist:prepare",
+    "pub": "echo \"PUB\"",
+    "prepublishOnly": "echo \"Use pub to publish\" && exit 1",
+    "ts": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' ts-node"
   },
   "husky": {
     "hooks": {
@@ -120,15 +103,23 @@
     ]
   },
   "jest": {
+    "preset": "ts-jest",
+    "globals": {
+      "ts-jest": {
+        "tsConfig": {
+          "jsx": "react"
+        }
+      }
+    },
     "transformIgnorePatterns": [
-      "\\node_modules/react-spring\\"
+      "/node_modules/react-spring/"
+    ],
+    "setupFilesAfterEnv": [
+      "./src/setupTests.ts"
     ],
     "modulePathIgnorePatterns": [
-      "docs"
-    ],
-    "coveragePathIgnorePatterns": [
-      "src/index.ts",
-      "src/docs"
+      ".old",
+      ".next"
     ]
   }
 }
