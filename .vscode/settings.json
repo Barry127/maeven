@@ -14,6 +14,7 @@
     "prebuild",
     "predocs",
     "prepub",
+    "renderprops",
     "shorthash",
     "textfield"
   ]

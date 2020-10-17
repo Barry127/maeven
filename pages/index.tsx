@@ -3,11 +3,9 @@ import React from 'react';
 
 const IndexPage = () => (
   <>
-    <h1>Hello Next.js 👋</h1>
+    <h1>Hello Next.js </h1>
     <p>
-      <Link href="/test">
-        <a>Test</a>
-      </Link>
+      <Link href="/test">Test</Link>
     </p>
   </>
 );
