@@ -12,7 +12,7 @@ import { BackgroundColor, Color } from '../../types';
 import classes from './html.module.scss';
 
 function createHtmlElement<
-  P extends HTMLAttributes<HTMLElement>,
+  P extends Omit<HTMLAttributes<HTMLElement>, 'color'>,
   E = HTMLElement
 >(tagName: keyof JSX.IntrinsicElements) {
   const Element: FC<P & BlockProps & { forwardedRef: any }> = ({
@@ -26,7 +26,11 @@ function createHtmlElement<
   }) => (
     <Block
       {...props}
-      className={clsx(classes[tagName], className)}
+      className={clsx(
+        classes[tagName],
+        { [classes['has-color']]: props.color },
+        className
+      )}
       element={tagName}
       ref={forwardedRef}
     >
@@ -40,7 +44,7 @@ function createHtmlElement<
 }
 
 export const A = createHtmlElement<
-  AnchorHTMLAttributes<HTMLAnchorElement> & TextColorStylingProps,
+  AnchorHTMLAttributes<HTMLAnchorElement> & ColorStylingProps,
   HTMLAnchorElement
 >('a');
 export const H1 = createHtmlElement<
@@ -89,14 +93,14 @@ export const Ul = createHtmlElement<
 >('ul');
 
 interface ExtendedStylingProps {
-  /** Background color for Block */
+  /** Background color for Element */
   background?: BackgroundColor;
 
-  /** Text color for Block */
-  textColor?: Color | 'inherit';
+  /** Text color for Element */
+  color?: Color | 'inherit';
 }
 
-interface TextColorStylingProps {
-  /** Text color for Block */
-  textColor?: Color | 'inherit';
+interface ColorStylingProps {
+  /** Text color for Element */
+  color?: Color | 'inherit';
 }

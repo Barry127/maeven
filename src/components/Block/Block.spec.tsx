@@ -62,9 +62,9 @@ describe('Block', () => {
     });
   });
 
-  describe('textColor', () => {
+  describe('color', () => {
     it('sets text color', () => {
-      render(<Block textColor="red">Hello world!</Block>);
+      render(<Block color="red">Hello world!</Block>);
       const element = document.querySelector('.block');
       expect(element).toHaveClass(colorClasses['text-red']);
     });

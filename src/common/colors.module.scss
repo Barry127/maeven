@@ -52,22 +52,6 @@ $colors: (
     :global(.mvn-dark) & {
       color: var(--mvn-color-text-#{$dashedColor}-dark);
     }
-
-    &a,
-    &h1,
-    &h2,
-    &h3,
-    &h4,
-    &h5,
-    &h6,
-    &p,
-    &span {
-      color: var(--mvn-color-text-#{$dashedColor});
-
-      :global(.mvn-dark) & {
-        color: var(--mvn-color-text-#{$dashedColor}-dark);
-      }
-    }
   }
 }
 
@@ -76,21 +60,5 @@ $colors: (
 
   :global(.mvn-dark) & {
     color: inherit;
-  }
-
-  &a,
-  &h1,
-  &h2,
-  &h3,
-  &h4,
-  &h5,
-  &h6,
-  &p,
-  &span {
-    color: inherit;
-
-    :global(.mvn-dark) & {
-      color: inherit;
-    }
   }
 }

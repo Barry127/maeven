@@ -21,11 +21,11 @@ export const Block: ForwardRefExoticComponent<BlockProps> = forwardRef<
     {
       background,
       children,
+      color,
       className,
       component,
       element = 'div',
       padding = false,
-      textColor,
       ...props
     },
     ref
@@ -39,7 +39,7 @@ export const Block: ForwardRefExoticComponent<BlockProps> = forwardRef<
           classes.block,
           { [classes.padding]: padding },
           background && colorClasses[`background-${background}`],
-          textColor && colorClasses[`text-${textColor}`],
+          color && colorClasses[`text-${color}`],
           className
         )}
         ref={ref}
@@ -54,6 +54,9 @@ export interface BlockProps extends AllHTMLAttributes<HTMLElement> {
   /** Background color for Block */
   background?: BackgroundColor;
 
+  /** Text color for Block */
+  color?: Color | 'inherit';
+
   /** Type of component to render. (overwrites element) */
   component?: ComponentClass<any> | FunctionComponent<any>;
 
@@ -62,9 +65,6 @@ export interface BlockProps extends AllHTMLAttributes<HTMLElement> {
 
   /** Wether block contains padding */
   padding?: boolean;
-
-  /** Text color for Block */
-  textColor?: Color;
 
   /** In order to work with custom custom components */
   [prop: string]: any;
