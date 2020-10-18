@@ -1,6 +1,0 @@
-import React, { FC } from 'react';
-import { Route, Switch } from 'react-router-dom';
-
-{{IMPORTS}}
-
-export const Router: FC = () => <Switch>{{ROUTES}}</Switch>;

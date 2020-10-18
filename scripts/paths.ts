@@ -3,14 +3,15 @@ import path from 'path';
 
 const src = path.join(__dirname, '..', 'src');
 const dist = path.join(__dirname, '..', 'dist');
-const maeven = path.join(src, 'maeven');
+const docs = path.join(__dirname, '..', 'pages', 'docs');
 
 export const paths = {
-  components: path.join(maeven, 'components'),
+  components: path.join(src, 'components'),
+  hooks: path.join(src, 'hooks'),
   generated: path.join(__dirname, '..', 'pages', 'generated'),
-  pages: path.join(__dirname, '..', 'docs'),
   src,
-  dist
+  dist,
+  docs
 };
 
 export const files = {
@@ -35,22 +36,4 @@ export function getComponentPaths() {
 
   _listDir(paths.components);
   return components;
-}
-
-export function getPagesPaths() {
-  const pages: string[] = [];
-
-  function _listDir(dir: string) {
-    fs.readdirSync(dir).forEach((file) => {
-      const fullFile = path.join(dir, file);
-      if (fs.statSync(fullFile).isDirectory()) {
-        _listDir(fullFile);
-      } else if (file.endsWith('.md') || file.endsWith('.mdx')) {
-        pages.push(fullFile);
-      }
-    });
-  }
-
-  _listDir(paths.pages);
-  return pages;
 }

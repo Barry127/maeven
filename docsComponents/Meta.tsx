@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 export const Meta: FC<MetaProps> = ({ title }) => (
   <Head>
-    <title>{title}</title>
+    <title>{title} | Maeven</title>
   </Head>
 );
 

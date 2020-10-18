@@ -1,0 +1,93 @@
+import { dashify } from '../dashify';
+
+export const componentTemplate = (name: string) =>
+  `import clsx from 'clsx';
+import React, {
+  forwardRef,
+  ForwardRefExoticComponent,
+  HTMLAttributes
+} from 'react';
+import classes from './${dashify(name)}.module.scss';
+
+/**
+ * ${name} description
+ */
+export const ${name}: ForwardRefExoticComponent<${name}Props> = forwardRef<
+  HTMLDivElement,
+  ${name}Props
+>(({ children, className, ...props }, ref) => (
+  <div {...props} className={clsx(classes.${dashify(
+    name
+  )}, className)} ref={ref}>
+    {children}
+  </div>
+));
+
+export interface ${name}Props extends HTMLAttributes<HTMLDivElement> {
+
+}
+`;
+
+export const indexTemplate = (name: string) =>
+  `export { ${name}} from './${name}';
+export type { ${name}Props } from './${name}';
+`;
+
+export const mdxTemplate = (name: string) =>
+  `import { Meta } from 'docsComponents';
+import { ${name} } from 'src';
+
+<Meta title={${name}} />
+
+# ${name}
+
+${name} description
+`;
+
+export const specTemplate = (name: string) =>
+  `import { render } from '@testing-library/react'
+import React, { createRef } from 'react';
+import { ${name} } from './${name}';
+
+describe('${name}', () => {
+  it('renders div element with given text', () => {
+    //TODO
+  });
+
+  it('sets className', () => {
+    render(
+      <${name} className="${name.toLowerCase()}-class">Hello world!</${name}>
+    );
+    // const element = document.querySelector('.${dashify(name)}')
+    // expect(element).toHaveClass('${name.toLowerCase()}-class');
+  });
+
+  it('passes props', () => {
+    render(
+      <${name} id="${name}Id" data-test="${name.toLowerCase()}-data">
+        Hello world!
+      </${name}>
+    );
+    // const element = document.querySelector('.${dashify(name)}')
+    // expect(element).toHaveAttribute('id', '${name}Id');
+    // expect(element).toHaveAttribute('data-test', '${name.toLowerCase()}-data');
+  });
+
+  it.skip('', () => {});
+
+  describe('forwarding ref', () => {
+    it('sets ref', () => {
+      const ref = createRef<HTMLDivElement>();
+      render(<${name} ref={ref} />);
+      // const element = document.querySelector('.${dashify(name)}');
+      // expect(ref.current).toBe(element);
+    })
+  });
+})
+`;
+
+export const stylesTemplate = (name: string) =>
+  `.${dashify(name)} {
+  color: red;
+}
+`;
