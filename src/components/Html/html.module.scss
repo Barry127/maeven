@@ -1,0 +1,79 @@
+@mixin heading {
+  color: var(--mvn-color-text-heading);
+  font-family: var(--mvn-typography-font-family-heading);
+  font-weight: 600;
+  line-height: var(--mvn-typography-line-height-heading);
+}
+
+$headings: (
+  'h1': 4.8rem,
+  'h2': 3.6rem,
+  'h3': 2.4rem,
+  'h4': 2rem,
+  'h5': 1.6rem,
+  'h6': 1.6rem
+);
+
+@each $tag, $size in $headings {
+  .#{$tag} {
+    @include heading();
+    font-size: $size;
+    margin: 0 0 1.6rem;
+  }
+}
+
+.h5,
+.h6 {
+  margin-bottom: 0.4rem;
+}
+
+.h6 {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.a {
+  color: var(--mvn-color-text-link);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    filter: brightness(80%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  :global(.mvn-dark) & {
+    color: var(--mvn-color-text-link-dark);
+  }
+}
+
+.p {
+  margin: 0 0 1.6rem 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ol,
+.ul {
+  padding: 0 0 0 2em;
+  margin: 0 0 1.6rem 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.li {
+  padding: 0;
+  margin: 0 0 0.4rem 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

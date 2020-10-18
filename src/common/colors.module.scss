@@ -19,16 +19,6 @@ $colors: (
 );
 
 @each $color, $dashedColor in $colors {
-  .text-#{$color} {
-    color: var(--mvn-color-text-#{$dashedColor});
-
-    :global(.mvn-dark) & {
-      color: var(--mvn-color-text-#{$dashedColor}-dark);
-    }
-  }
-}
-
-@each $color, $dashedColor in $colors {
   .background-#{$color} {
     background: var(--mvn-#{$dashedColor});
     color: var(--mvn-#{$dashedColor}-background-text);
@@ -52,5 +42,55 @@ $colors: (
   :global(.mvn-dark) & {
     background: var(--mvn-color-background-text-dark);
     color: var(--mvn-color-text-dark);
+  }
+}
+
+@each $color, $dashedColor in $colors {
+  .text-#{$color} {
+    color: var(--mvn-color-text-#{$dashedColor});
+
+    :global(.mvn-dark) & {
+      color: var(--mvn-color-text-#{$dashedColor}-dark);
+    }
+
+    &a,
+    &h1,
+    &h2,
+    &h3,
+    &h4,
+    &h5,
+    &h6,
+    &p,
+    &span {
+      color: var(--mvn-color-text-#{$dashedColor});
+
+      :global(.mvn-dark) & {
+        color: var(--mvn-color-text-#{$dashedColor}-dark);
+      }
+    }
+  }
+}
+
+.text-inherit {
+  color: inherit;
+
+  :global(.mvn-dark) & {
+    color: inherit;
+  }
+
+  &a,
+  &h1,
+  &h2,
+  &h3,
+  &h4,
+  &h5,
+  &h6,
+  &p,
+  &span {
+    color: inherit;
+
+    :global(.mvn-dark) & {
+      color: inherit;
+    }
   }
 }
