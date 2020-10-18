@@ -1,3 +1,21 @@
+export type ColorName =
+  | 'black'
+  | 'white'
+  | 'darkGrey'
+  | 'grey'
+  | 'lightGrey'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'indigo'
+  | 'pink';
+export type SemanticColor = 'primary' | 'success' | 'warning' | 'danger';
+export type Color = ColorName | SemanticColor;
+export type BackgroundColor = Color | 'background' | 'textBackground';
+
 export interface Theme {
   name: string;
   base?: string | number;
@@ -136,6 +154,24 @@ export interface ThemeColors {
   success?: string;
   warning?: string;
   danger?: string;
+
+  blackBackgroundText?: string;
+  whiteBackgroundText?: string;
+  darkGreyBackgroundText?: string;
+  greyBackgroundText?: string;
+  lightGreyBackgroundText?: string;
+  redBackgroundText?: string;
+  orangeBackgroundText?: string;
+  yellowBackgroundText?: string;
+  greenBackgroundText?: string;
+  tealBackgroundText?: string;
+  blueBackgroundText?: string;
+  indigoBackgroundText?: string;
+  pinkBackgroundText?: string;
+  primaryBackgroundText?: string;
+  successBackgroundText?: string;
+  warningBackgroundText?: string;
+  dangerBackgroundText?: string;
 
   textBlack?: string;
   textWhite?: string;

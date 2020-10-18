@@ -37,7 +37,7 @@ export const mdxTemplate = (name: string) =>
   `import { Meta } from 'docsComponents';
 import { ${name} } from 'src';
 
-<Meta title={${name}} />
+<Meta title="${name}" />
 
 # ${name}
 
@@ -51,15 +51,17 @@ import { ${name} } from './${name}';
 
 describe('${name}', () => {
   it('renders div element with given text', () => {
-    //TODO
+    render(<${name}>Hello world!</${name}>);
+    const element = document.querySelector('.${dashify(name)}');
+    expect(element?.tagName).toBe('DIV');
   });
 
   it('sets className', () => {
     render(
       <${name} className="${name.toLowerCase()}-class">Hello world!</${name}>
     );
-    // const element = document.querySelector('.${dashify(name)}')
-    // expect(element).toHaveClass('${name.toLowerCase()}-class');
+    const element = document.querySelector('.${dashify(name)}')
+    expect(element).toHaveClass('${name.toLowerCase()}-class');
   });
 
   it('passes props', () => {
@@ -68,9 +70,9 @@ describe('${name}', () => {
         Hello world!
       </${name}>
     );
-    // const element = document.querySelector('.${dashify(name)}')
-    // expect(element).toHaveAttribute('id', '${name}Id');
-    // expect(element).toHaveAttribute('data-test', '${name.toLowerCase()}-data');
+    const element = document.querySelector('.${dashify(name)}')
+    expect(element).toHaveAttribute('id', '${name}Id');
+    expect(element).toHaveAttribute('data-test', '${name.toLowerCase()}-data');
   });
 
   it.skip('', () => {});
@@ -79,8 +81,8 @@ describe('${name}', () => {
     it('sets ref', () => {
       const ref = createRef<HTMLDivElement>();
       render(<${name} ref={ref} />);
-      // const element = document.querySelector('.${dashify(name)}');
-      // expect(ref.current).toBe(element);
+      const element = document.querySelector('.${dashify(name)}');
+      expect(ref.current).toBe(element);
     })
   });
 })

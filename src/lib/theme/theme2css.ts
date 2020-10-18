@@ -134,6 +134,24 @@ export function theme2css(theme: CompleteTheme): string {
   --mvn-warning: ${theme.colors.warning};
   --mvn-danger: ${theme.colors.danger};
 
+  --mvn-black-background-text: ${theme.colors.blackBackgroundText};
+  --mvn-white-background-text: ${theme.colors.whiteBackgroundText};
+  --mvn-dark-grey-background-text: ${theme.colors.darkGreyBackgroundText};
+  --mvn-grey-background-text: ${theme.colors.greyBackgroundText};
+  --mvn-light-grey-background-text: ${theme.colors.lightGreyBackgroundText};
+  --mvn-red-background-text: ${theme.colors.redBackgroundText};
+  --mvn-orange-background-text: ${theme.colors.orangeBackgroundText};
+  --mvn-yellow-background-text: ${theme.colors.yellowBackgroundText};
+  --mvn-green-background-text: ${theme.colors.greenBackgroundText};
+  --mvn-teal-background-text: ${theme.colors.tealBackgroundText};
+  --mvn-blue-background-text: ${theme.colors.blueBackgroundText};
+  --mvn-indigo-background-text: ${theme.colors.indigoBackgroundText};
+  --mvn-pink-background-text: ${theme.colors.pinkBackgroundText};
+  --mvn-primary-background-text: ${theme.colors.primaryBackgroundText};
+  --mvn-success-background-text: ${theme.colors.successBackgroundText};
+  --mvn-warning-background-text: ${theme.colors.warningBackgroundText};
+  --mvn-danger-background-text: ${theme.colors.dangerBackgroundText};
+
   --mvn-color-text-black: ${theme.colors.textBlack};
   --mvn-color-text-white: ${theme.colors.textWhite};
   --mvn-color-text-dark-grey: ${theme.colors.textDarkGrey};

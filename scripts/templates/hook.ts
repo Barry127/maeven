@@ -15,7 +15,7 @@ export const mdxTemplate = (name: string) =>
   `import { Meta } from 'docsComponents';
 import { ${name} } from 'src';
 
-<Meta title={${name}} />
+<Meta title="${name}" />
 
 # ${name}
 
