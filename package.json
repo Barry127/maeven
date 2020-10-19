@@ -91,7 +91,7 @@
     "lint": "eslint src/**/*.ts{,x}",
     "parse": "yarn ts scripts/parse.ts",
     "start": "yarn parse --watch & next",
-    "test": "jest --watchAll",
+    "test": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:coverage:ci": "jest --coverage --watchAll=false --coverageReporters=text-lcov | coveralls",
     "predocs:build": "yarn clear && yarn parse",
@@ -107,7 +107,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn test --watchAll=false"
+      "pre-commit": "yarn lint && yarn test --watch=false"
     }
   },
   "eslintConfig": {

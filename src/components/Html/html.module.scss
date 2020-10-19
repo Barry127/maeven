@@ -26,6 +26,10 @@ $headings: (
         color: var(--mvn-color-text-heading-dark);
       }
     }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 

@@ -3,7 +3,6 @@ import React, {
   AllHTMLAttributes,
   ComponentClass,
   forwardRef,
-  ForwardRefExoticComponent,
   FunctionComponent
 } from 'react';
 import colorClasses from '../../common/colors.module.scss';
@@ -13,10 +12,7 @@ import classes from './block.module.scss';
 /**
  * A Block is a low level component with sensible theme default styling.
  */
-export const Block: ForwardRefExoticComponent<BlockProps> = forwardRef<
-  HTMLElement,
-  BlockProps
->(
+export const Block = forwardRef<HTMLElement, BlockProps | AnyProps>(
   (
     {
       background,
@@ -65,7 +61,9 @@ export interface BlockProps extends AllHTMLAttributes<HTMLElement> {
 
   /** Wether block contains padding */
   padding?: boolean;
+}
 
+interface AnyProps {
   /** In order to work with custom custom components */
   [prop: string]: any;
 }
