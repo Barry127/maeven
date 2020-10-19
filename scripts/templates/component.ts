@@ -2,17 +2,13 @@ import { dashify } from '../dashify';
 
 export const componentTemplate = (name: string) =>
   `import clsx from 'clsx';
-import React, {
-  forwardRef,
-  ForwardRefExoticComponent,
-  HTMLAttributes
-} from 'react';
+import React, { forwardRef, HTMLAttributes } from 'react';
 import classes from './${dashify(name)}.module.scss';
 
 /**
  * ${name} description
  */
-export const ${name}: ForwardRefExoticComponent<${name}Props> = forwardRef<
+export const ${name} = forwardRef<
   HTMLDivElement,
   ${name}Props
 >(({ children, className, ...props }, ref) => (

@@ -1,0 +1,25 @@
+@import '../../../common/mixins';
+
+.container {
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.responsive {
+  @include media-sm {
+    max-width: 540px;
+  }
+
+  @include media-md {
+    max-width: 720px;
+  }
+
+  @include media-lg {
+    max-width: 960px;
+  }
+
+  @include media-xl {
+    max-width: 1140px;
+  }
+}

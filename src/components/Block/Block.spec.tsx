@@ -1,8 +1,19 @@
 import { render } from '@testing-library/react';
-import React, { createRef } from 'react';
+import React, { Component, createRef, FC } from 'react';
 import colorClasses from '../../common/colors.module.scss';
 import { Block } from './Block';
 import classes from './block.module.scss';
+
+const FunctionalComponent: FC = ({ children, ...restProps }) => (
+  <p {...restProps}>{children}</p>
+);
+
+class ClassComponent extends Component {
+  render() {
+    const { children, ...restProps } = this.props;
+    return <span {...restProps}>{children}</span>;
+  }
+}
 
 describe('Block', () => {
   it('renders div element with given text', () => {
@@ -67,6 +78,20 @@ describe('Block', () => {
       render(<Block color="red">Hello world!</Block>);
       const element = document.querySelector('.block');
       expect(element).toHaveClass(colorClasses['text-red']);
+    });
+  });
+
+  describe('component', () => {
+    it('renders functional component as link', () => {
+      render(<Block component={FunctionalComponent}>Hello world!</Block>);
+      const element = document.querySelector('.block');
+      expect(element?.tagName).toBe('P');
+    });
+
+    it('renders class component as link', () => {
+      render(<Block component={ClassComponent}>Hello world!</Block>);
+      const element = document.querySelector('.block');
+      expect(element?.tagName).toBe('SPAN');
     });
   });
 

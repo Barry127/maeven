@@ -11,6 +11,7 @@
     "focusring",
     "lcov",
     "maeven",
+    "mixins",
     "prebuild",
     "predocs",
     "prepub",

@@ -1,0 +1,125 @@
+@import '../../../common/mixins';
+
+.col {
+  flex: 1 1 auto;
+  margin: 0 calc(var(--mvn-grid-gutter) / 2) var(--mvn-grid-gutter)
+    calc(var(--mvn-grid-gutter) / 2);
+}
+
+@for $i from 1 through 24 {
+  $size: ($i / 24) * 100%;
+
+  // col span sizes
+  .col-#{$i},
+  .xl-#{$i} {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(#{$size} - var(--mvn-grid-gutter));
+    width: calc(#{$size} - var(--mvn-grid-gutter));
+    max-width: calc(#{$size} - var(--mvn-grid-gutter));
+
+    @include media-xs {
+      flex: 1 1 100%;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+// col media sizes
+
+//lg
+@for $i from 1 through 24 {
+  $size: ($i / 24) * 100%;
+
+  @media (max-width: $mvn-media-xl - 0.01) {
+    .lg-#{$i} {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: calc(#{$size} - var(--mvn-grid-gutter));
+      width: calc(#{$size} - var(--mvn-grid-gutter));
+      max-width: calc(#{$size} - var(--mvn-grid-gutter));
+    }
+  }
+}
+
+//md
+@for $i from 1 through 24 {
+  $size: ($i / 24) * 100%;
+
+  @media (max-width: $mvn-media-lg - 0.01) {
+    .md-#{$i} {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: calc(#{$size} - var(--mvn-grid-gutter));
+      width: calc(#{$size} - var(--mvn-grid-gutter));
+      max-width: calc(#{$size} - var(--mvn-grid-gutter));
+    }
+  }
+}
+
+//sm
+@for $i from 1 through 24 {
+  $size: ($i / 24) * 100%;
+
+  @media (max-width: $mvn-media-md - 0.01) {
+    .sm-#{$i} {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: calc(#{$size} - var(--mvn-grid-gutter));
+      width: calc(#{$size} - var(--mvn-grid-gutter));
+      max-width: calc(#{$size} - var(--mvn-grid-gutter));
+    }
+  }
+}
+
+//xs
+@for $i from 1 through 24 {
+  $size: ($i / 24) * 100%;
+
+  @media (max-width: $mvn-media-sm - 0.01) {
+    .xs-#{$i} {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: calc(#{$size} - var(--mvn-grid-gutter));
+      width: calc(#{$size} - var(--mvn-grid-gutter));
+      max-width: calc(#{$size} - var(--mvn-grid-gutter));
+    }
+  }
+}
+
+// col hidden
+
+.hidden {
+  display: none;
+}
+
+@include media-xs {
+  .hidden-xs {
+    display: none;
+  }
+}
+
+@include media-sm {
+  .hidden-sm {
+    display: none;
+  }
+}
+
+@include media-md {
+  .hidden-md {
+    display: none;
+  }
+}
+
+@include media-lg {
+  .hidden-lg {
+    display: none;
+  }
+}
+
+@include media-xl {
+  .hidden-xl {
+    display: none;
+  }
+}

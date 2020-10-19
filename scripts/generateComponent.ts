@@ -101,7 +101,10 @@ export async function generateComponent() {
 
   console.log('');
 
-  if (nested) {
+  if (
+    nested &&
+    !fs.existsSync(path.join(paths.docs, 'components', parent || ''))
+  ) {
     fs.mkdirSync(path.join(paths.docs, 'components', parent || ''));
     console.log(chalk.italic(`created docs/components/${name}`));
   }
