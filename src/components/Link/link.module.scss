@@ -1,0 +1,19 @@
+.link {
+  cursor: pointer;
+
+  &.outline:focus {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      bottom: calc(var(--mvn-border-radius) / -2);
+      border-radius: var(--mvn-border-radius);
+      box-shadow: 0 0 0px var(--mvn-size-outline) var(--mvn-color-outline);
+      content: '';
+      left: calc(var(--mvn-border-radius) / -2);
+      position: absolute;
+      right: calc(var(--mvn-border-radius) / -2);
+      top: calc(var(--mvn-border-radius) / -2);
+    }
+  }
+}

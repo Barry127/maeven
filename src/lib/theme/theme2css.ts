@@ -187,6 +187,10 @@ export function theme2css(theme: CompleteTheme): string {
   --mvn-color-text-warning-dark: ${theme.colors.textWarningDark};
   --mvn-color-text-danger-dark: ${theme.colors.textDangerDark};
 
+  --mvn-border-radius: ${theme.sizes.borderRadius};
+  --mvn-border-radius-large: ${theme.sizes.borderRadiusLarge};
+  --mvn-size-outline: ${theme.sizes.outline};
+
   --mvn-transition-duration: ${theme.animations.duration};
   --mvn-transition-timing-function: ${theme.animations.timingFunction};
 

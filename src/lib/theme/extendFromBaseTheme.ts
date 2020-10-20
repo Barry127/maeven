@@ -3,6 +3,7 @@ import { numberToPx } from '../numberToPx';
 import {
   Theme,
   ThemeColors,
+  ThemeSizes,
   ThemeTransition,
   ThemeTypography
 } from '../../types';
@@ -13,12 +14,13 @@ import {
 } from './defaults';
 
 export function extendFromBaseTheme(theme: Theme): CompleteTheme {
-  const { animations, base, colors, name, typography } = theme;
+  const { animations, base, colors, name, sizes, typography } = theme;
 
   return {
     name,
     base: numberToPx(base || 10),
     colors: extendColors(colors),
+    sizes: extendSizes(sizes),
     typography: extendTypography(typography),
     animations: { ...defaultAnimations, ...animations }
   };
@@ -257,6 +259,15 @@ function extendColors(colors?: ThemeColors): Complete<ThemeColors> {
       colors?.textDangerDark || colors?.danger2 || baseColors.red2,
 
     ...baseColors
+  };
+}
+
+function extendSizes(sizes?: ThemeSizes): Complete<ThemeSizes> {
+  return {
+    borderRadius: '0.4rem',
+    borderRadiusLarge: '0.8rem',
+    outline: '0.3rem',
+    ...sizes
   };
 }
 

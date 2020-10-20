@@ -20,6 +20,7 @@ export interface Theme {
   name: string;
   base?: string | number;
   colors?: ThemeColors;
+  sizes?: ThemeSizes;
   typography?: ThemeTypography;
   animations?: ThemeTransition;
 }
@@ -207,6 +208,12 @@ export interface ThemeColors {
   textSuccessDark?: string;
   textWarningDark?: string;
   textDangerDark?: string;
+}
+
+export interface ThemeSizes {
+  borderRadius: string | number;
+  borderRadiusLarge: string | number;
+  outline: string | number;
 }
 
 export interface ThemeTransition {

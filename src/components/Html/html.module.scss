@@ -54,6 +54,10 @@ $headings: (
   &:focus {
     text-decoration: underline;
     filter: brightness(80%);
+
+    :global(.mvn-dark) & {
+      filter: brightness(120%);
+    }
   }
 
   &:focus {

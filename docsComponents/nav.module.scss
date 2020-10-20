@@ -1,0 +1,56 @@
+.nav {
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid var(--mvn-color-border);
+  padding: 1rem;
+  transition: background var(--mvn-transition-duration)
+    var(--mvn-transition-timing-function);
+
+  :global(.mvn-dark) & {
+    border-color: var(--mvn-color-border-dark);
+  }
+
+  a {
+    font-weight: 500;
+    padding: 0 1rem;
+    color: var(--mvn-color-text) !important;
+
+    :global(.mvn-dark) & {
+      color: var(--mvn-color-text-dark) !important;
+    }
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &.active {
+      color: var(--mvn-color-text-primary) !important;
+      text-decoration: none;
+      filter: none;
+
+      :global(.mvn-dark) & {
+        color: var(--mvn-color-text-primary-dark) !important;
+      }
+    }
+  }
+}
+
+.logo {
+  vertical-align: middle;
+  height: 2em;
+  width: 2em;
+  margin-right: 1rem;
+}
+
+.left {
+}
+
+.right {
+  text-align: right;
+}

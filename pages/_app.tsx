@@ -1,9 +1,12 @@
+import { Footer } from 'docsComponents/Footer';
 import { MDXProvider } from 'docsComponents/MDXProvider';
+import { Nav } from 'docsComponents/Nav';
+import { Block, ThemeProvider } from 'maeven';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { FC } from 'react';
-import { ThemeProvider } from 'src/components/ThemeProvider/ThemeProvider';
 import maeven from 'src/themes/maeven';
+import classes from './app.module.scss';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => (
   <MDXProvider>
@@ -12,8 +15,13 @@ const App: FC<AppProps> = ({ Component, pageProps }) => (
       <title>Maeven</title>
     </Head>
     <ThemeProvider theme={maeven}>
-      <nav>NAVBAR</nav>
-      <Component {...pageProps} />
+      <Block background="textBackground" className={classes.app}>
+        <Nav />
+        <div className={classes.content}>
+          <Component {...pageProps} />
+        </div>
+        <Footer />
+      </Block>
     </ThemeProvider>
   </MDXProvider>
 );

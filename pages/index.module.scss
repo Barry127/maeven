@@ -1,3 +1,11 @@
-.red {
-  color: #c00;
+.hero {
+  padding: 5rem;
+
+  .container {
+    text-align: center;
+
+    > p {
+      font-size: 1.5em;
+    }
+  }
 }
