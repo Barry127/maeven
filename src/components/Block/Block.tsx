@@ -63,7 +63,7 @@ export interface BlockProps extends AllHTMLAttributes<HTMLElement> {
   padding?: boolean;
 }
 
-interface AnyProps {
+interface AnyProps extends BlockProps {
   /** In order to work with custom custom components */
   [prop: string]: any;
 }

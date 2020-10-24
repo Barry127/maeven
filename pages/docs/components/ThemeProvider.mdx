@@ -1,11 +1,27 @@
-import Head from 'next/head';
-import { ThemeProvider } from 'src';
-import maeven from 'src/themes/maeven';
+import { Description, Meta, Props } from 'docsComponents';
 
-<Head>
-  <title>ThemeProvider | Maeven</title>
-</Head>
+<Meta title="ThemeProvider" />
 
 # ThemeProvider
 
-bla bla
+<Description of="ThemeProvider" />
+
+## Props
+
+<Props of="ThemeProvider" />
+
+## Examples
+
+### Basic
+
+A basic example.
+
+```js live
+// import maeven from 'maeven/themes/maeven'
+
+<ThemeProvider theme={maeven}>
+  <Block>
+    All child components and deeply nested components have this theme.
+  </Block>
+</ThemeProvider>
+```

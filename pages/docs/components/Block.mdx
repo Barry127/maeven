@@ -1,11 +1,15 @@
-import { Meta } from 'docsComponents';
+import { Description, DoDont, Meta, Props } from 'docsComponents';
 import { Block } from 'src';
 
 <Meta title="block" />
 
 # Block
 
-Block description
+<Description of="Block" />
+
+## Props
+
+<Props of="Block" />
 
 ## Examples
 
@@ -13,12 +17,15 @@ Block description
 
 A basic usage of Block.
 
+```jsx live
 <Block>Block content</Block>
+```
 
 ### Background color
 
 A Block can be styled with different background colors.
 
+```jsx live
 <>
   <Block padding background="black">
     Black
@@ -78,11 +85,13 @@ A Block can be styled with different background colors.
     TextBackground
   </Block>
 </>
+```
 
 ### Color
 
 A Block can be styled with different text colors.
 
+```jsx live
 <>
   <Block color="black">Black</Block>
   <Block color="white">White</Block>
@@ -102,12 +111,13 @@ A Block can be styled with different text colors.
   <Block color="warning">Warning</Block>
   <Block color="danger">Danger</Block>
 </>
+```
 
 ## Design Guidelines
 
 Use Block as a building block for other components.
 
-{/_ <DoDont
-do={['Use Block as a building block.']}
-dont={['Use block for text content. The Text component for that.']}
-/> _/}
+<DoDont
+  do={['Use Block as a building block.']}
+  dont={['Use block for text content. The Text component for that.']}
+/>

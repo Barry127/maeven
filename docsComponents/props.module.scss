@@ -1,0 +1,79 @@
+.table {
+  border: 0;
+  margin-bottom: 1.6rem;
+  width: 100%;
+  border-collapse: collapse;
+
+  thead th {
+    text-align: left;
+    padding-bottom: 0.8rem;
+  }
+
+  tbody td {
+    vertical-align: top;
+    border-top: 1px solid var(--mvn-color-border);
+    padding: 0.8rem 0;
+
+    :global(.mvn-dark) & {
+      border-color: var(--mvn-color-border-dark);
+    }
+  }
+
+  tbody tr:nth-child(odd) td {
+    background: var(--mvn-color-background);
+
+    :global(.mvn-dark) & {
+      background: var(--mvn-color-background-dark);
+    }
+  }
+
+  th:first-child {
+    padding-left: 0.8rem;
+  }
+
+  td:first-child {
+    width: 132px;
+    font-weight: bold;
+    padding-left: 0.8rem;
+  }
+
+  td:nth-child(2),
+  th:nth-child(2) {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  td:last-child {
+    width: 132px;
+    padding-right: 0.8rem;
+  }
+
+  code {
+    font-family: var(--mvn-typography-font-family-monospace);
+    font-size: 0.9em;
+
+    &.boolean {
+      color: var(--mvn-color-text-indigo);
+
+      :global(.mvn-dark) & {
+        color: var(--mvn-color-text-indigo-dark);
+      }
+    }
+
+    &.number {
+      color: var(--mvn-color-text-indigo);
+
+      :global(.mvn-dark) & {
+        color: var(--mvn-color-text-indigo-dark);
+      }
+    }
+
+    &.string {
+      color: var(--mvn-color-text-orange);
+
+      :global(.mvn-dark) & {
+        color: var(--mvn-color-text-orange-dark);
+      }
+    }
+  }
+}

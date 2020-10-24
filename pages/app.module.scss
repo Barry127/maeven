@@ -5,7 +5,11 @@
   transition: background var(--mvn-transition-duration)
     var(--mvn-transition-timing-function);
 
-  > .content {
+  .content {
     flex-grow: 1;
+  }
+
+  .main {
+    margin-top: 1rem;
   }
 }

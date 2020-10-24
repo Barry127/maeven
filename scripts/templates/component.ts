@@ -30,14 +30,17 @@ export type { ${name}Props } from './${name}';
 `;
 
 export const mdxTemplate = (name: string) =>
-  `import { Meta } from 'docsComponents';
-import { ${name} } from 'src';
+  `import { Description, Meta, Props } from 'docsComponents';
 
 <Meta title="${name}" />
 
 # ${name}
 
-${name} description
+<Description of="${name}" />
+
+## Props
+
+<Props of="${name}" />
 `;
 
 export const specTemplate = (name: string) =>

@@ -1,0 +1,47 @@
+{
+  "Maeven": "/docs",
+  "Components": {
+    "isOpen": true,
+    "basePath": "/docs/components",
+    "children": {
+      "Block": "/docs/components/Block",
+      "Grid": {
+        "basePath": "/docs/components/Grid",
+        "children": {
+          "Grid": "/docs/components/Grid",
+          "Col": "/docs/components/Grid/Col",
+          "Container": "/docs/components/Grid/Container",
+          "Row": "/docs/components/Grid/Row"
+        }
+      },
+      "Heading": "/docs/components/Heading",
+      "HTML": {
+        "basePath": "/docs/components/Html",
+        "children": {
+          "HTML": "/docs/components/Html",
+          "A": "/docs/components/Html/A",
+          "H1": "/docs/components/Html/H1",
+          "H2": "/docs/components/Html/H2",
+          "H3": "/docs/components/Html/H3",
+          "H4": "/docs/components/Html/H4",
+          "H5": "/docs/components/Html/H5",
+          "H6": "/docs/components/Html/H6",
+          "Li": "/docs/components/Html/Li",
+          "Ol": "/docs/components/Html/Ol",
+          "P": "/docs/components/Html/P",
+          "Span": "/docs/components/Html/Span",
+          "Ul": "/docs/components/Html/Ul"
+        }
+      },
+      "Link": "/docs/components/Link",
+      "ThemeProvider": "/docs/components/ThemeProvider"
+    }
+  },
+  "Hooks": {
+    "isOpen": true,
+    "basePath": "/docs/hooks",
+    "children": {
+      "useOutline": "/docs/hooks/useOutline"
+    }
+  }
+}

@@ -23,7 +23,8 @@ export const Container = forwardRef<HTMLElement, ContainerProps>(
   )
 );
 
-export interface ContainerProps extends HTMLAttributes<HTMLElement> {
+export interface ContainerProps
+  extends Omit<HTMLAttributes<HTMLElement>, 'color'> {
   /** Background color for Container content */
   background?: BackgroundColor;
 

@@ -1,0 +1,40 @@
+.container {
+  margin-left: 1rem;
+  padding: 1rem;
+  border-left: 1px solid var(--mvn-color-border);
+  position: fixed;
+  font-size: 0.9em;
+
+  :global(.mvn-dark) & {
+    border-color: var(--mvn-color-border-dark);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li > ul {
+    padding-left: 1em;
+  }
+
+  a {
+    color: var(--mvn-color-text) !important;
+
+    :global(.mvn-dark) & {
+      color: var(--mvn-color-text-dark) !important;
+    }
+
+    &:hover,
+    &:focus,
+    &.active {
+      text-decoration: none;
+      color: var(--mvn-color-text-primary) !important;
+
+      :global(.mvn-dark) & {
+        color: var(--mvn-color-text-primary-dark) !important;
+      }
+    }
+  }
+}

@@ -78,7 +78,8 @@ export type SpanSize =
   | 23
   | 24;
 
-export interface ColProps extends Omit<HTMLAttributes<HTMLElement>, 'hidden'> {
+export interface ColProps
+  extends Omit<HTMLAttributes<HTMLElement>, 'hidden' | 'color'> {
   /** Background color for Col */
   background?: BackgroundColor;
 

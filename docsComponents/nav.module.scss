@@ -1,4 +1,5 @@
 .nav {
+  z-index: 1;
   position: sticky;
   top: 0;
   border-bottom: 1px solid var(--mvn-color-border);
@@ -11,20 +12,13 @@
   }
 
   a {
+    font-size: 1.1em;
     font-weight: 500;
     padding: 0 1rem;
     color: var(--mvn-color-text) !important;
 
     :global(.mvn-dark) & {
       color: var(--mvn-color-text-dark) !important;
-    }
-
-    &:first-child {
-      padding-left: 0;
-    }
-
-    &:last-child {
-      padding-right: 0;
     }
 
     &:hover,
@@ -49,8 +43,15 @@
 }
 
 .left {
+  a:first-child {
+    padding-left: 0;
+  }
 }
 
 .right {
   text-align: right;
+
+  a:last-child {
+    padding-right: 0;
+  }
 }

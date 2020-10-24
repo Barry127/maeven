@@ -1,0 +1,20 @@
+.anchor {
+  position: absolute;
+  margin-top: -6rem;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  height: 0;
+  width: 0;
+}
+
+.hash {
+  margin-left: 1rem;
+  opacity: 0;
+  line-height: inherit;
+
+  :global(h2:hover) > &,
+  :global(h3:hover) > & {
+    opacity: 1;
+  }
+}

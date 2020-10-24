@@ -44,31 +44,31 @@ function createHtmlElement<
 }
 
 export const A = createHtmlElement<
-  AnchorHTMLAttributes<HTMLAnchorElement> & ColorStylingProps,
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'color>'> & ColorStylingProps,
   HTMLAnchorElement
 >('a');
 export const H1 = createHtmlElement<
-  HTMLAttributes<HTMLHeadingElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
   HTMLHeadingElement
 >('h1');
 export const H2 = createHtmlElement<
-  HTMLAttributes<HTMLHeadingElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
   HTMLHeadingElement
 >('h2');
 export const H3 = createHtmlElement<
-  HTMLAttributes<HTMLHeadingElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
   HTMLHeadingElement
 >('h3');
 export const H4 = createHtmlElement<
-  HTMLAttributes<HTMLHeadingElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
   HTMLHeadingElement
 >('h4');
 export const H5 = createHtmlElement<
-  HTMLAttributes<HTMLHeadingElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
   HTMLHeadingElement
 >('h5');
 export const H6 = createHtmlElement<
-  HTMLAttributes<HTMLHeadingElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
   HTMLHeadingElement
 >('h6');
 export const Li = createHtmlElement<
@@ -80,11 +80,11 @@ export const Ol = createHtmlElement<
   HTMLOListElement
 >('ol');
 export const P = createHtmlElement<
-  HTMLAttributes<HTMLParagraphElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLParagraphElement>, 'color'> & ExtendedStylingProps,
   HTMLParagraphElement
 >('p');
 export const Span = createHtmlElement<
-  HTMLAttributes<HTMLSpanElement> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLSpanElement>, 'color'> & ExtendedStylingProps,
   HTMLSpanElement
 >('span');
 export const Ul = createHtmlElement<

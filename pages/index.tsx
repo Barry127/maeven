@@ -1,5 +1,4 @@
 import { Block, Container, H1, P } from 'maeven';
-import Link from 'next/link';
 import React from 'react';
 import classes from './index.module.scss';
 
