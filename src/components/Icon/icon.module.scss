@@ -1,0 +1,49 @@
+.container {
+  font-size: 1em;
+  line-height: 0;
+  vertical-align: -0.125em;
+
+  &.with-size {
+    vertical-align: middle;
+  }
+}
+
+.icon {
+  height: 1em;
+
+  &.fw {
+    width: 1em;
+  }
+
+  &.stroke {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  &.fill {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  // Ant Design Two Tone Styling
+  :global(.secondaryfill) {
+    opacity: 0.2;
+  }
+
+  // Clarity Variations Styling
+  :global(.clr-i-alert) {
+    fill: var(--mvn-color-text-warning);
+
+    :global(.lbl-dark) & {
+      fill: var(--mvn-color-text-warning-dark);
+    }
+  }
+
+  :global(.clr-i-badge) {
+    fill: var(--mvn-color-text-danger);
+
+    :global(.lbl-dark) & {
+      fill: var(--mvn-color-text-danger-dark);
+    }
+  }
+}

@@ -11,6 +11,7 @@
     "clsx",
     "dashify",
     "docgen",
+    "flowtype",
     "focusring",
     "lcov",
     "maeven",
@@ -20,6 +21,7 @@
     "predocs",
     "prepub",
     "renderprops",
+    "secondaryfill",
     "shorthash",
     "textfield"
   ]

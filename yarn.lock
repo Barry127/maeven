@@ -1872,6 +1872,14 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
+"@types/react@^16.9.9":
+  version "16.9.53"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.53.tgz#40cd4f8b8d6b9528aedd1fff8fcffe7a112a3d23"
+  integrity sha512-4nW60Sd4L7+WMXH1D6jCdVftuW7j4Za6zdp6tJ33Rqv0nk1ZAmQKML9ZLD4H0dehA3FZxXR/GM8gXplf82oNGw==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^3.0.2"
+
 "@types/stack-utils@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.0.tgz#7036640b4e21cc2f259ae826ce843d277dad8cff"
@@ -5524,6 +5532,13 @@ husky@^4.3.0:
     please-upgrade-node "^3.2.0"
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
+
+icon-packs@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/icon-packs/-/icon-packs-0.8.0.tgz#7f890e346482fc6977edb56d6d52310bfc57e1b0"
+  integrity sha512-uvS17GBLi5uLb6Lxc4Ug9ulipY8EEvt5L8npFr5p79ejhxPYsv2G2f+u+dmYaFMZYzY3uBJKC9SmdTf/k8Zyuw==
+  dependencies:
+    "@types/react" "^16.9.9"
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"

@@ -1,3 +1,11 @@
+import { AllHTMLAttributes, SVGProps } from 'react';
+
+export interface MaevenIcon {
+  tag: keyof JSX.IntrinsicElements;
+  attrs: AllHTMLAttributes<any> & SVGProps<any>;
+  children?: this[] | string;
+}
+
 export type ColorName =
   | 'black'
   | 'white'
