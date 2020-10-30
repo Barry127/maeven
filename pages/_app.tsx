@@ -16,40 +16,42 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
 
   return (
-    <MDXProvider>
-      <Head>
-        <link rel="shortcut icon" href="/maeven/favicon.ico" />
-        <title>Maeven</title>
-      </Head>
-      <ThemeProvider theme={maeven}>
-        <Block background="textBackground" className={classes.app}>
-          <Nav />
-          {router.pathname.startsWith('/docs') ? (
-            <div className={classes.content}>
-              <Row wrap={false}>
-                <SideNav nav={docsNav} />
-                <Col element="main" className={classes.main}>
-                  <Container>
-                    <Row gutter={1}>
-                      <Col md={24} lg={18} xl={18} element="article">
-                        <Component {...pageProps} />
-                      </Col>
-                      <TableOfContent />
-                    </Row>
-                  </Container>
-                </Col>
-              </Row>
-            </div>
-          ) : (
-            <main className={classes.content}>
-              <Component {...pageProps} />
-            </main>
-          )}
+    <React.StrictMode>
+      <MDXProvider>
+        <Head>
+          <link rel="shortcut icon" href="/maeven/favicon.ico" />
+          <title>Maeven</title>
+        </Head>
+        <ThemeProvider theme={maeven}>
+          <Block background="textBackground" className={classes.app}>
+            <Nav />
+            {router.pathname.startsWith('/docs') ? (
+              <div className={classes.content}>
+                <Row wrap={false}>
+                  <SideNav nav={docsNav} />
+                  <Col element="main" className={classes.main}>
+                    <Container>
+                      <Row gutter={1}>
+                        <Col md={24} lg={18} xl={18} element="article">
+                          <Component {...pageProps} />
+                        </Col>
+                        <TableOfContent />
+                      </Row>
+                    </Container>
+                  </Col>
+                </Row>
+              </div>
+            ) : (
+              <main className={classes.content}>
+                <Component {...pageProps} />
+              </main>
+            )}
 
-          <Footer />
-        </Block>
-      </ThemeProvider>
-    </MDXProvider>
+            <Footer />
+          </Block>
+        </ThemeProvider>
+      </MDXProvider>
+    </React.StrictMode>
   );
 };
 

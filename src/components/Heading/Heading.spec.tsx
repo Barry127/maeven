@@ -1,8 +1,5 @@
 import { render } from '@testing-library/react';
 import React, { createRef } from 'react';
-import colorClasses from '../../common/colors.module.scss';
-import utilityClasses from '../../common/utility.module.scss';
-import htmlClasses from '../Html/html.module.scss';
 import { Heading } from './Heading';
 
 describe('Heading', () => {
@@ -10,14 +7,14 @@ describe('Heading', () => {
     const { getByText } = render(<Heading level="h1">Hello world!</Heading>);
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('H1');
-    expect(element).toHaveClass(htmlClasses.h1);
+    expect(element).toHaveClass('h1');
   });
 
   it('renders h5 element with given text', () => {
     const { getByText } = render(<Heading level="h5">Hello world!</Heading>);
     const element = getByText('Hello world!');
     expect(element.tagName).toBe('H5');
-    expect(element).toHaveClass(htmlClasses.h5);
+    expect(element).toHaveClass('h5');
   });
 
   it('sets className', () => {
@@ -49,7 +46,7 @@ describe('Heading', () => {
         </Heading>
       );
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(colorClasses['text-green']);
+      expect(element).toHaveClass('text-green');
     });
 
     it('sets primary color', () => {
@@ -59,7 +56,7 @@ describe('Heading', () => {
         </Heading>
       );
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(colorClasses['text-primary']);
+      expect(element).toHaveClass('text-primary');
     });
   });
 
@@ -68,7 +65,7 @@ describe('Heading', () => {
       const { getByText } = render(<Heading level="h2">Hello world!</Heading>);
       const element = getByText('Hello world!');
       expect(element).toBe(element);
-      expect(element).toHaveClass(htmlClasses.h2);
+      expect(element).toHaveClass('h2');
     });
 
     it('it sets h3 size for a h1 level', () => {
@@ -79,8 +76,8 @@ describe('Heading', () => {
       );
       const element = getByText('Hello world!');
       expect(element).toBe(element);
-      expect(element).toHaveClass(htmlClasses.h3);
-      expect(element).not.toHaveClass(htmlClasses.h1);
+      expect(element).toHaveClass('h3');
+      expect(element).not.toHaveClass('h1');
     });
   });
 
@@ -88,7 +85,7 @@ describe('Heading', () => {
     it('does not truncate by default', () => {
       const { getByText } = render(<Heading level="h1">Hello world!</Heading>);
       const element = getByText('Hello world!');
-      expect(element).not.toHaveClass(utilityClasses.truncate);
+      expect(element).not.toHaveClass('truncate');
     });
 
     it('sets truncate', () => {
@@ -98,7 +95,7 @@ describe('Heading', () => {
         </Heading>
       );
       const element = getByText('Hello world!');
-      expect(element).toHaveClass(utilityClasses.truncate);
+      expect(element).toHaveClass('truncate');
     });
   });
 

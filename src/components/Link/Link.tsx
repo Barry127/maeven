@@ -8,7 +8,6 @@ import React, {
 import { useOutline } from '../../hooks';
 import { Color } from '../../types';
 import { Block } from '../Block';
-import htmlClasses from '../Html/html.module.scss';
 import classes from './link.module.scss';
 
 /**
@@ -22,12 +21,9 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps | AnyProps>(
       <Block
         {...props}
         className={clsx(
-          htmlClasses.a,
-          classes.link,
-          {
-            [classes.outline]: outline,
-            [htmlClasses['has-color']]: props.color
-          },
+          'mvn--link',
+          classes.a,
+          { [classes['has-color']]: props.color, [classes.outline]: outline },
           className
         )}
         element="a"
@@ -41,7 +37,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps | AnyProps>(
 
 export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Styling color for link, defaults to theme's link color */
-  color?: Color;
+  color?: Color | 'inherit';
 
   /** Custom component to use instead of html anchor element */
   component?: ComponentClass<any> | FunctionComponent<any>;

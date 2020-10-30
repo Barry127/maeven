@@ -1,7 +1,7 @@
-import { P } from 'src';
+import { P } from 'maeven';
 import props from 'pages/generated/props.json';
 import React, { FC, ReactNode } from 'react';
-import htmlClasses from 'src/components/Html/html.module.scss';
+import headingClasses from 'src/components/Heading/heading.module.scss';
 import classes from './props.module.scss';
 
 export const Props: FC<{ of: string }> = ({ of }) => {
@@ -11,9 +11,9 @@ export const Props: FC<{ of: string }> = ({ of }) => {
     <table className={classes.table}>
       <thead>
         <tr>
-          <th className={htmlClasses.h4}>Name</th>
-          <th className={htmlClasses.h4}>Description</th>
-          <th className={htmlClasses.h4}>Default</th>
+          <th className={headingClasses.h4}>Name</th>
+          <th className={headingClasses.h4}>Description</th>
+          <th className={headingClasses.h4}>Default</th>
         </tr>
       </thead>
       <tbody>

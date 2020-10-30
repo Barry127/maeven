@@ -21,6 +21,7 @@ export const Row = forwardRef<HTMLDivElement, RowProps>(
     <div
       {...props}
       className={clsx(
+        'mvn--row',
         classes.row,
         classes[align],
         { [classes['no-wrap']]: !wrap },

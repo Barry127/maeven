@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React, { forwardRef, HTMLAttributes } from 'react';
-import { Block } from '../../Block';
 import { BackgroundColor } from '../../../types';
+import { Block } from '../../Block';
 import classes from './container.module.scss';
 
 /**
@@ -12,6 +12,7 @@ export const Container = forwardRef<HTMLElement, ContainerProps>(
     <Block
       {...props}
       className={clsx(
+        'mvn--container',
         classes.container,
         { [classes.responsive]: !fluid },
         className

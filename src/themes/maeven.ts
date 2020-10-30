@@ -1,7 +1,7 @@
 import { colors } from '../lib/theme/defaults';
-import { Theme } from '../types';
+import { PartialTheme } from '../types';
 
-const theme: Theme = {
+const theme: PartialTheme = {
   name: 'Maeven',
   colors: {
     primaryBackgroundText: colors.white,

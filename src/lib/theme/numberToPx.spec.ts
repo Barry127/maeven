@@ -1,6 +1,6 @@
 import { numberToPx } from './numberToPx';
 
-describe('lib/numberToPx', () => {
+describe('lib/theme/numberToPx', () => {
   it('converts number values to strings with px values', () => {
     expect(numberToPx(10)).toBe('10px');
     expect(numberToPx(3.14)).toBe('3.14px');

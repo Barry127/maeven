@@ -7,8 +7,8 @@ import React, {
   LiHTMLAttributes,
   OlHTMLAttributes
 } from 'react';
-import { Block, BlockProps } from '../Block';
 import { BackgroundColor, Color } from '../../types';
+import { Block, BlockProps } from '../Block';
 import classes from './html.module.scss';
 
 function createHtmlElement<
@@ -27,6 +27,7 @@ function createHtmlElement<
     <Block
       {...props}
       className={clsx(
+        `mvn--${tagName}`,
         classes[tagName],
         { [classes['has-color']]: props.color },
         className
@@ -44,31 +45,31 @@ function createHtmlElement<
 }
 
 export const A = createHtmlElement<
-  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'color>'> & ColorStylingProps,
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'color'> & ColorStylingProps,
   HTMLAnchorElement
 >('a');
 export const H1 = createHtmlElement<
-  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ColorStylingProps,
   HTMLHeadingElement
 >('h1');
 export const H2 = createHtmlElement<
-  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ColorStylingProps,
   HTMLHeadingElement
 >('h2');
 export const H3 = createHtmlElement<
-  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ColorStylingProps,
   HTMLHeadingElement
 >('h3');
 export const H4 = createHtmlElement<
-  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ColorStylingProps,
   HTMLHeadingElement
 >('h4');
 export const H5 = createHtmlElement<
-  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ColorStylingProps,
   HTMLHeadingElement
 >('h5');
 export const H6 = createHtmlElement<
-  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ExtendedStylingProps,
+  Omit<HTMLAttributes<HTMLHeadingElement>, 'color'> & ColorStylingProps,
   HTMLHeadingElement
 >('h6');
 export const Li = createHtmlElement<

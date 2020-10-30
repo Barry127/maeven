@@ -33,3 +33,10 @@ $mvn-media-xl: 1200px;
     @content;
   }
 }
+
+%truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}

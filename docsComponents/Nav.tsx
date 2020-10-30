@@ -1,20 +1,13 @@
 import clsx from 'clsx';
-import { Block, Col, Container, Link, Row } from 'maeven';
+import { Block, Col, Container, Link, Row, useDarkMode } from 'maeven';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import classes from './nav.module.scss';
 
 export const Nav: FC = () => {
   const router = useRouter();
-  const [isDark, setDark] = useState(false);
-
-  useEffect(() => {
-    if (isDark) document.body.classList.add('mvn-dark');
-    return () => {
-      document.body.classList.remove('mvn-dark');
-    };
-  }, [isDark]);
+  const [isDark, toggleDark] = useDarkMode();
 
   return (
     <Block element="nav" background="textBackground" className={classes.nav}>
@@ -49,11 +42,7 @@ export const Nav: FC = () => {
             <Link href="https://github.com/Barry127/maeven" target="_blank">
               GitHub
             </Link>
-            <input
-              type="checkbox"
-              checked={isDark}
-              onChange={(ev) => setDark(ev.target.checked)}
-            />
+            <input type="checkbox" checked={isDark} onChange={toggleDark} />
           </Col>
         </Row>
       </Container>

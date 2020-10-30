@@ -24,13 +24,22 @@ export type SemanticColor = 'primary' | 'success' | 'warning' | 'danger';
 export type Color = ColorName | SemanticColor;
 export type BackgroundColor = Color | 'background' | 'textBackground';
 
-export interface Theme {
+export interface PartialTheme {
   name: string;
   base?: string | number;
   colors?: ThemeColors;
   sizes?: ThemeSizes;
   typography?: ThemeTypography;
   animations?: ThemeTransition;
+}
+
+export interface Theme extends Complete<PartialTheme> {
+  base: string;
+  colors: Complete<ThemeColors>;
+  sizes: Complete<ThemeSizes>;
+  typography: Complete<ThemeTypography>;
+  animations: Complete<ThemeTransition>;
+  isDark: boolean;
 }
 
 export interface ThemeColors {
@@ -138,9 +147,11 @@ export interface ThemeColors {
   text?: string;
   textHeading?: string;
   textLink?: string;
+  textLinkHover?: string;
   textDark?: string;
   textHeadingDark?: string;
   textLinkDark?: string;
+  textLinkHoverDark?: string;
 
   focus?: string;
   focusDanger?: string;
@@ -236,3 +247,7 @@ export interface ThemeTypography {
   lineHeight?: number | string;
   lineHeightHeading?: number | string;
 }
+
+export type Complete<T> = {
+  [K in keyof T]-?: T[K];
+};

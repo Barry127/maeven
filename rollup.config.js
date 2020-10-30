@@ -21,7 +21,6 @@ export default {
     }
   ],
 
-  preserveModules: true,
   plugins: [
     progress(),
     typescript(),
@@ -46,8 +45,10 @@ export default {
     'react',
     'react-autosize-textarea',
     'react-dom',
+    'react-hooks-global-state',
     'react-spring',
     'react-spring/renderprops',
-    'react-use-measure'
+    'react-use-measure',
+    'typestyle'
   ]
 };

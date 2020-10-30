@@ -1,8 +1,6 @@
 import { render } from '@testing-library/react';
 import React, { Component, createRef, FC } from 'react';
-import colorClasses from '../../../common/colors.module.scss';
 import { Col } from './Col';
-import classes from './col.module.scss';
 
 const FunctionalComponent: FC = ({ children, ...restProps }) => (
   <p {...restProps}>{children}</p>
@@ -43,7 +41,7 @@ describe('Col', () => {
     it('sets textBackground color', () => {
       render(<Col background="textBackground">Hello world!</Col>);
       const element = document.querySelector('.col');
-      expect(element).toHaveClass(colorClasses['background-textBackground']);
+      expect(element).toHaveClass('background-textBackground');
     });
   });
 
@@ -86,27 +84,27 @@ describe('Col', () => {
     it('sets hidden with boolean', () => {
       render(<Col hidden>Hello world!</Col>);
       const element = document.querySelector('.col');
-      expect(element).toHaveClass(classes.hidden);
+      expect(element).toHaveClass('hidden');
     });
 
     it('sets hidden with array', () => {
       render(<Col hidden={['md', 'lg', 'xl']}>Hello world!</Col>);
       const element = document.querySelector('.col');
 
-      expect(element).not.toHaveClass(classes.hidden);
-      expect(element).toHaveClass(classes['hidden-md']);
-      expect(element).toHaveClass(classes['hidden-lg']);
-      expect(element).toHaveClass(classes['hidden-xl']);
+      expect(element).not.toHaveClass('hidden');
+      expect(element).toHaveClass('hidden-md');
+      expect(element).toHaveClass('hidden-lg');
+      expect(element).toHaveClass('hidden-xl');
     });
 
     it('sets hidden with string', () => {
       render(<Col hidden="sm">Hello world!</Col>);
       const element = document.querySelector('.col');
 
-      expect(element).not.toHaveClass(classes.hidden);
+      expect(element).not.toHaveClass('hidden');
       // hidden for sm and xs
-      expect(element).toHaveClass(classes['hidden-sm']);
-      expect(element).toHaveClass(classes['hidden-xs']);
+      expect(element).toHaveClass('hidden-sm');
+      expect(element).toHaveClass('hidden-xs');
     });
   });
 
@@ -119,8 +117,8 @@ describe('Col', () => {
       );
       const element = document.querySelector('.col');
 
-      expect(element).toHaveClass(classes['col-6']);
-      expect(element).toHaveClass(classes['xs-12']);
+      expect(element).toHaveClass('col-6');
+      expect(element).toHaveClass('xs-12');
     });
 
     it('sets sm', () => {
@@ -131,8 +129,8 @@ describe('Col', () => {
       );
       const element = document.querySelector('.col');
 
-      expect(element).toHaveClass(classes['col-6']);
-      expect(element).toHaveClass(classes['sm-12']);
+      expect(element).toHaveClass('col-6');
+      expect(element).toHaveClass('sm-12');
     });
 
     it('sets md', () => {
@@ -143,8 +141,8 @@ describe('Col', () => {
       );
       const element = document.querySelector('.col');
 
-      expect(element).toHaveClass(classes['col-6']);
-      expect(element).toHaveClass(classes['md-12']);
+      expect(element).toHaveClass('col-6');
+      expect(element).toHaveClass('md-12');
     });
 
     it('sets lg', () => {
@@ -155,8 +153,8 @@ describe('Col', () => {
       );
       const element = document.querySelector('.col');
 
-      expect(element).toHaveClass(classes['col-6']);
-      expect(element).toHaveClass(classes['lg-12']);
+      expect(element).toHaveClass('col-6');
+      expect(element).toHaveClass('lg-12');
     });
 
     it('sets xl', () => {
@@ -167,8 +165,8 @@ describe('Col', () => {
       );
       const element = document.querySelector('.col');
 
-      expect(element).toHaveClass(classes['col-6']);
-      expect(element).toHaveClass(classes['xl-12']);
+      expect(element).toHaveClass('col-6');
+      expect(element).toHaveClass('xl-12');
     });
 
     it('sets multiple spans', () => {
@@ -179,9 +177,9 @@ describe('Col', () => {
       );
       const element = document.querySelector('.col');
 
-      expect(element).toHaveClass(classes['col-6']);
-      expect(element).toHaveClass(classes['md-12']);
-      expect(element).toHaveClass(classes['xs-18']);
+      expect(element).toHaveClass('col-6');
+      expect(element).toHaveClass('md-12');
+      expect(element).toHaveClass('xs-18');
     });
   });
 

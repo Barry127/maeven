@@ -1,6 +1,7 @@
-import { CompleteTheme } from './extendFromBaseTheme';
+import color from 'color';
+import { Theme } from '../../types';
 
-export function theme2css(theme: CompleteTheme): string {
+export function theme2css(theme: Theme): string {
   return `:root {
   --mvn-base: ${theme.base};
 
@@ -108,9 +109,11 @@ export function theme2css(theme: CompleteTheme): string {
   --mvn-color-text: ${theme.colors.text};
   --mvn-color-text-heading: ${theme.colors.textHeading};
   --mvn-color-text-link: ${theme.colors.textLink};
+  --mvn-color-text-link-hover: ${theme.colors.textLinkHover};
   --mvn-color-text-dark: ${theme.colors.textDark};
   --mvn-color-text-heading-dark: ${theme.colors.textHeadingDark};
   --mvn-color-text-link-dark: ${theme.colors.textLinkDark};
+  --mvn-color-text-link-hover-dark: ${theme.colors.textLinkHoverDark};
 
   --mvn-color-focus: ${theme.colors.focus};
   --mvn-color-focus-danger: ${theme.colors.focusDanger};
@@ -169,6 +172,60 @@ export function theme2css(theme: CompleteTheme): string {
   --mvn-color-text-success: ${theme.colors.textSuccess};
   --mvn-color-text-warning: ${theme.colors.textWarning};
   --mvn-color-text-danger: ${theme.colors.textDanger};
+
+  --mvn-color-text-black-d10: ${color(theme.colors.textBlack)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-white-d10: ${color(theme.colors.textWhite)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-dark-grey-d10: ${color(theme.colors.textDarkGrey)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-grey-d10: ${color(theme.colors.textGrey)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-light-grey-d10: ${color(theme.colors.textLightGrey)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-red-d10: ${color(theme.colors.textRed)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-orange-d10: ${color(theme.colors.textOrange)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-yellow-d10: ${color(theme.colors.textYellow)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-green-d10: ${color(theme.colors.textGreen)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-teal-d10: ${color(theme.colors.textTeal)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-blue-d10: ${color(theme.colors.textBlue)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-indigo-d10: ${color(theme.colors.textIndigo)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-pink-d10: ${color(theme.colors.textPink)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-primary-d10: ${color(theme.colors.textPrimary)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-success-d10: ${color(theme.colors.textSuccess)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-warning-d10: ${color(theme.colors.textWarning)
+    .darken(0.1)
+    .toString()};
+  --mvn-color-text-danger-d10: ${color(theme.colors.textDanger)
+    .darken(0.1)
+    .toString()};
+  
+
   --mvn-color-text-black-dark: ${theme.colors.textBlackDark};
   --mvn-color-text-white-dark: ${theme.colors.textWhiteDark};
   --mvn-color-text-dark-grey-dark: ${theme.colors.textDarkGreyDark};
@@ -187,6 +244,58 @@ export function theme2css(theme: CompleteTheme): string {
   --mvn-color-text-warning-dark: ${theme.colors.textWarningDark};
   --mvn-color-text-danger-dark: ${theme.colors.textDangerDark};
 
+  --mvn-color-text-black-dark-l10: ${color(theme.colors.textBlackDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-white-dark-l10: ${color(theme.colors.textWhiteDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-dark-grey-dark-l10: ${color(theme.colors.textDarkGreyDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-grey-dark-l10: ${color(theme.colors.textGreyDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-light-grey-dark-l10: ${color(theme.colors.textLightGreyDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-red-dark-l10: ${color(theme.colors.textRedDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-orange-dark-l10: ${color(theme.colors.textOrangeDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-yellow-dark-l10: ${color(theme.colors.textYellowDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-green-dark-l10: ${color(theme.colors.textGreenDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-teal-dark-l10: ${color(theme.colors.textTealDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-blue-dark-l10: ${color(theme.colors.textBlueDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-indigo-dark-l10: ${color(theme.colors.textIndigoDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-pink-dark-l10: ${color(theme.colors.textPinkDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-primary-dark-l10: ${color(theme.colors.textPrimaryDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-success-dark-l10: ${color(theme.colors.textSuccessDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-warning-dark-l10: ${color(theme.colors.textWarningDark)
+    .lighten(0.1)
+    .toString()};
+  --mvn-color-text-danger-dark-l10: ${color(theme.colors.textDangerDark)
+    .lighten(0.1)
+    .toString()};
+
   --mvn-border-radius: ${theme.sizes.borderRadius};
   --mvn-border-radius-large: ${theme.sizes.borderRadiusLarge};
   --mvn-size-outline: ${theme.sizes.outline};
@@ -195,7 +304,9 @@ export function theme2css(theme: CompleteTheme): string {
   --mvn-transition-timing-function: ${theme.animations.timingFunction};
 
   --mvn-typography-font-family: ${theme.typography.fontFamily};
-  --mvn-typography-font-family-monospace: ${theme.typography.fontFamilyMonospace};
+  --mvn-typography-font-family-monospace: ${
+    theme.typography.fontFamilyMonospace
+  };
   --mvn-typography-font-family-heading: ${theme.typography.fontFamilyHeading};
   --mvn-typography-line-height: ${theme.typography.lineHeight};
   --mvn-typography-line-height-heading: ${theme.typography.lineHeightHeading}; 

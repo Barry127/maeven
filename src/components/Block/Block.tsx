@@ -5,7 +5,6 @@ import React, {
   forwardRef,
   FunctionComponent
 } from 'react';
-import colorClasses from '../../common/colors.module.scss';
 import { BackgroundColor, Color } from '../../types';
 import classes from './block.module.scss';
 
@@ -32,10 +31,13 @@ export const Block = forwardRef<HTMLElement, BlockProps | AnyProps>(
       <Element
         {...props}
         className={clsx(
+          'mvn--block',
           classes.block,
-          { [classes.padding]: padding },
-          background && colorClasses[`background-${background}`],
-          color && colorClasses[`text-${color}`],
+          {
+            [classes.padding]: padding,
+            [classes[`background-${background}`]]: background,
+            [classes[`text-${color}`]]: color
+          },
           className
         )}
         ref={ref}

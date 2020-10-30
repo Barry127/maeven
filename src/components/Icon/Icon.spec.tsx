@@ -2,10 +2,8 @@ import { render } from '@testing-library/react';
 import { circleSolid } from 'icon-packs/cjs/fa';
 import { activity } from 'icon-packs/cjs/feather';
 import React, { createRef } from 'react';
-import colorClasses from '../../common/colors.module.scss';
 import { MaevenIcon } from '../../types';
 import { Icon } from './Icon';
-import classes from './icon.module.scss';
 
 const imgIcon: MaevenIcon = {
   tag: 'img',
@@ -17,22 +15,22 @@ const imgIcon: MaevenIcon = {
 describe('Icon', () => {
   it('renders span element with icon', () => {
     render(<Icon icon={activity} />);
-    const element = document.querySelector('span');
+    const element = document.querySelector('.mvn--icon');
     expect(element).toBeInTheDocument();
     expect(element?.firstChild?.nodeName).toBe('svg');
   });
 
   it('sets className', () => {
     render(<Icon icon={activity} className="icon-class" />);
-    const element = document.querySelector('span');
+    const element = document.querySelector('.mvn--icon');
     expect(element).toHaveClass('icon-class');
   });
 
   it('passes props', () => {
     render(<Icon icon={activity} id="IconId" data-test="icon-data" />);
-    const element = document.querySelector('span');
+    const element = document.querySelector('.mvn--icon');
     expect(element).toHaveAttribute('id', 'IconId');
-    expect(element?.dataset.test).toBe('icon-data');
+    expect(element).toHaveAttribute('data-test', 'icon-data');
   });
 
   // it.skip('', () => {});
@@ -40,20 +38,20 @@ describe('Icon', () => {
   describe('color', () => {
     it('sets indigo color', () => {
       render(<Icon icon={activity} color="indigo" />);
-      const container = document.querySelector('span');
-      expect(container).toHaveClass(colorClasses['text-indigo']);
+      const container = document.querySelector('.mvn--icon');
+      expect(container).toHaveClass('text-indigo');
     });
 
     it('sets darGrey color', () => {
       render(<Icon icon={activity} color="darkGrey" />);
-      const container = document.querySelector('span');
-      expect(container).toHaveClass(colorClasses['text-darkGrey']);
+      const container = document.querySelector('.mvn--icon');
+      expect(container).toHaveClass('text-darkGrey');
     });
 
     it('sets danger color', () => {
       render(<Icon icon={circleSolid} color="danger" />);
-      const container = document.querySelector('span');
-      expect(container).toHaveClass(colorClasses['text-danger']);
+      const container = document.querySelector('.mvn--icon');
+      expect(container).toHaveClass('text-danger');
     });
   });
 
@@ -61,32 +59,32 @@ describe('Icon', () => {
     it('has no fixed width by default', () => {
       render(<Icon icon={activity} />);
       const icon = document.querySelector('svg');
-      expect(icon).not.toHaveClass(classes.fw);
+      expect(icon).not.toHaveClass('fw');
     });
 
     it('sets fixed width', () => {
       render(<Icon icon={activity} fixedWidth />);
       const icon = document.querySelector('svg');
-      expect(icon).toHaveClass(classes.fw);
+      expect(icon).toHaveClass('fw');
     });
   });
 
   describe('size', () => {
     it('is 1em by default', () => {
       render(<Icon icon={activity} />);
-      const container = document.querySelector('span');
+      const container = document.querySelector('.mvn--icon');
       expect(container).toHaveStyle('font-size:1em');
     });
 
     it('sets size with a number', () => {
       render(<Icon icon={activity} size={24} />);
-      const container = document.querySelector('span');
+      const container = document.querySelector('.mvn--icon');
       expect(container).toHaveStyle('font-size:24px');
     });
 
     it('sets size with a string', () => {
       render(<Icon icon={activity} size="3em" />);
-      const container = document.querySelector('span');
+      const container = document.querySelector('.mvn--icon');
       expect(container).toHaveStyle('font-size:3em');
     });
   });
@@ -128,7 +126,7 @@ describe('Icon', () => {
     it('sets ref', () => {
       const ref = createRef<HTMLSpanElement>();
       render(<Icon icon={activity} ref={ref} />);
-      const element = document.querySelector('span');
+      const element = document.querySelector('.mvn--icon');
       expect(ref.current).toBe(element);
     });
   });

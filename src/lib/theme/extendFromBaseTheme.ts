@@ -1,10 +1,11 @@
 import color from 'color';
-import { numberToPx } from '../numberToPx';
+import { numberToPx } from './numberToPx';
 import {
+  Complete,
+  PartialTheme,
   Theme,
   ThemeColors,
   ThemeSizes,
-  ThemeTransition,
   ThemeTypography
 } from '../../types';
 import {
@@ -13,7 +14,9 @@ import {
   typography as defaultTypography
 } from './defaults';
 
-export function extendFromBaseTheme(theme: Theme): CompleteTheme {
+export function extendFromBaseTheme(
+  theme: PartialTheme
+): Omit<Theme, 'isDark'> {
   const { animations, base, colors, name, sizes, typography } = theme;
 
   return {
@@ -58,9 +61,19 @@ function extendColors(colors?: ThemeColors): Complete<ThemeColors> {
     text: colors?.text || baseColors.black,
     textHeading: colors?.text || baseColors.black,
     textLink: colors?.textPrimary || baseColors.blue4,
+    textLinkHover:
+      colors?.textLinkHover ||
+      color(colors?.textPrimary || baseColors.blue4)
+        .darken(0.1)
+        .toString(),
     textDark: colors?.textDark || baseColors.grey1,
     textHeadingDark: colors?.textDark || baseColors.grey1,
     textLinkDark: colors?.textPrimaryDark || baseColors.blue2,
+    textLinkHoverDark:
+      colors?.textLinkHoverDark ||
+      color(colors?.textPrimaryDark || baseColors.blue2)
+        .lighten(0.1)
+        .toString(),
     focus: colors?.focus || colors?.primary3 || baseColors.blue3,
     focusDanger: colors?.focusDanger || colors?.danger3 || baseColors.red3,
     outline:
@@ -281,17 +294,6 @@ function extendTypography(
     ...baseTypography
   };
 }
-
-export interface CompleteTheme extends Complete<Theme> {
-  base: string;
-  colors: Complete<ThemeColors>;
-  typography: Complete<ThemeTypography>;
-  animations: Complete<ThemeTransition>;
-}
-
-type Complete<T> = {
-  [K in keyof T]-?: T[K];
-};
 
 function bestContrast(background: string, text: string, textDark: string) {
   const colorBackground = color(background);

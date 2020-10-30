@@ -34,6 +34,7 @@ export const Col = forwardRef<HTMLElement, ColProps>(
       {...props}
       element={element}
       className={clsx(
+        'mvn--col',
         classes.col,
         span !== undefined && classes[`col-${span}`],
         hiddenToClassName(hidden),

@@ -64,6 +64,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
         element="span"
         style={{ fontSize: size, ...style }}
         className={clsx(
+          'mvn--icon',
           classes.container,
           {
             [classes['with-size']]: size !== '1em'

@@ -1,19 +1,51 @@
-.link {
+@import '../../common/colors';
+
+.a {
+  text-decoration: none;
   cursor: pointer;
 
-  &.outline:focus {
-    position: relative;
-    z-index: 1;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 
-    &::before {
-      bottom: calc(var(--mvn-border-radius) / -2);
-      border-radius: var(--mvn-border-radius);
-      box-shadow: 0 0 0px var(--mvn-size-outline) var(--mvn-color-outline);
-      content: '';
-      left: calc(var(--mvn-border-radius) / -2);
-      position: absolute;
-      right: calc(var(--mvn-border-radius) / -2);
-      top: calc(var(--mvn-border-radius) / -2);
+  &:focus {
+    outline: none;
+  }
+
+  &:not(.has-color) {
+    color: var(--mvn-color-text-link);
+
+    &:hover,
+    &:focus {
+      color: var(--mvn-color-text-link-hover);
     }
+  }
+
+  :global(.mvn-dark) & {
+    &:not(.has-color) {
+      color: var(--mvn-color-text-link-dark);
+
+      &:hover,
+      &:focus {
+        color: var(--mvn-color-text-link-hover-dark);
+      }
+    }
+  }
+}
+
+.outline:focus {
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    bottom: calc(var(--mvn-border-radius) / -2);
+    border-radius: var(--mvn-border-radius);
+    box-shadow: 0 0 0px var(--mvn-size-outline) var(--mvn-color-outline);
+    content: '';
+    left: calc(var(--mvn-border-radius) / -2);
+    position: absolute;
+    right: calc(var(--mvn-border-radius) / -2);
+    top: calc(var(--mvn-border-radius) / -2);
   }
 }

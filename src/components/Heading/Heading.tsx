@@ -1,10 +1,8 @@
 import clsx from 'clsx';
 import React, { forwardRef, HTMLAttributes } from 'react';
 import { Color } from '../../types';
-import utilityClasses from '../../common/utility.module.scss';
 import { Block } from '../Block';
-import htmlClasses from '../Html/html.module.scss';
-
+import classes from './heading.module.scss';
 /**
  * The Heading component renders headings in a larger size than regular text.
  */
@@ -24,11 +22,10 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     <Block
       {...props}
       className={clsx(
-        htmlClasses[size],
-        {
-          [htmlClasses['has-color']]: props.color,
-          [utilityClasses.truncate]: truncate
-        },
+        'mvn--heading',
+        `mvn--${level}`,
+        classes[size],
+        { [classes['has-color']]: props.color, [classes.truncate]: truncate },
         className
       )}
       element={level}
