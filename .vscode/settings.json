@@ -17,10 +17,12 @@
     "maeven",
     "mixins",
     "monokai",
+    "octicons",
     "prebuild",
     "predocs",
     "prepub",
     "renderprops",
+    "rerender",
     "secondaryfill",
     "shorthash",
     "textfield"

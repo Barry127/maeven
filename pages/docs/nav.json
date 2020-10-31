@@ -35,6 +35,7 @@
       },
       "Icon": "/docs/components/Icon",
       "Link": "/docs/components/Link",
+      "Spinner": "/docs/components/Spinner",
       "ThemeProvider": "/docs/components/ThemeProvider"
     }
   },

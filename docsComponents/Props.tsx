@@ -74,6 +74,7 @@ function styleDefaultValue(value: any): ReactNode {
 }
 
 function formatType(type: any): ReactNode {
+  if (type.raw === 'ReactNode') return type.raw;
   if (type.raw === 'boolean') return type.raw;
   if (type?.raw?.includes('|')) return type.raw;
   if (type.name === 'enum') {

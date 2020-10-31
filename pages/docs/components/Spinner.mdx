@@ -1,0 +1,78 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="Spinner" />
+
+# Spinner
+
+<Description of="Spinner" />
+
+## Props
+
+<Props of="Spinner" />
+
+## Examples
+
+### Basic
+
+A basic usage of Spinner.
+
+```js live
+<Spinner />
+```
+
+### Text
+
+A spinner can have text.
+
+```js live
+<Spinner text="Loading data..." />
+```
+
+### Sizes
+
+Spinners can have different sizes.
+
+```js live
+<Row gutter={1}>
+  <Col span={24}>
+    <Spinner size="1em" text="1em" />
+  </Col>
+  <Col span={24}>
+    <Spinner size="2em" text="2em" />
+  </Col>
+  <Col span={24}>
+    <Spinner size="3em" text="3em" />
+  </Col>
+  <Col span={24}>
+    <Spinner size={96} text="96px" />
+  </Col>
+</Row>
+```
+
+### Color
+
+Spinners can be styled in different (theme) colors.
+
+```js live
+<div style={{ columns: '4 auto' }}>
+  <Spinner color="black" text="Black" />
+  <Spinner color="white" text="White" />
+  <Spinner color="darkGrey" text="DarkGrey" />
+  <Spinner color="grey" text="Grey" />
+  <Spinner color="lightGrey" text="LightGrey" />
+  <Spinner color="red" text="Red" />
+  <Spinner color="orange" text="Orange" />
+  <Spinner color="yellow" text="Yellow" />
+  <Spinner color="green" text="Green" />
+  <Spinner color="teal" text="Teal" />
+  <Spinner color="blue" text="Blue" />
+  <Spinner color="indigo" text="Indigo" />
+  <Spinner color="pink" text="Pink" />
+  <Spinner color="primary" text="Primary" />
+  <Spinner color="success" text="Success" />
+  <Spinner color="warning" text="Warning" />
+  <Spinner color="danger" text="Danger" />
+</div>
+```
+
+### TODO: Overlay on card
