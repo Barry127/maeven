@@ -43,7 +43,7 @@ export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   component?: ComponentClass<any> | FunctionComponent<any>;
 }
 
-interface AnyProps {
+interface AnyProps extends LinkProps {
   /** In order to work with custom custom components */
   [prop: string]: any;
 }

@@ -12,7 +12,8 @@ interface DocList {
 export function parseProps() {
   return withDefaultConfig({
     propFilter,
-    shouldExtractLiteralValuesFromEnum: true
+    shouldExtractLiteralValuesFromEnum: true,
+    shouldExtractValuesFromUnion: true
   })
     .parse(getComponentPaths())
     .reduce((componentsList, component) => {

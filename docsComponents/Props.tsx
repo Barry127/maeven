@@ -28,11 +28,8 @@ export const Props: FC<{ of: string }> = ({ of }) => {
               <td>
                 {value.description && <P>{value.description}</P>}
                 <P>
-                  <code>
-                    {value.type.name === 'enum'
-                      ? value.type.raw
-                      : value.type.name}
-                  </code>
+                  <code>{formatType(value.type)}</code>
+                  {/* <pre>{JSON.stringify(value.type, null, 2)}</pre> */}
                 </P>
               </td>
               <td>{styleDefaultValue(value.defaultValue?.value)}</td>
@@ -74,4 +71,22 @@ function styleDefaultValue(value: any): ReactNode {
   }
 
   return value || '-';
+}
+
+function formatType(type: any): ReactNode {
+  if (type.raw === 'boolean') return type.raw;
+  if (type?.raw?.includes('|')) return type.raw;
+  if (type.name === 'enum') {
+    let values = type.value;
+    if (type.value.length > 20) {
+      values = [
+        ...type.value.slice(0, 18),
+        { value: `... ${type.value.length - 19} more ...` },
+        ...type.value.slice(-1)
+      ];
+    }
+    return values.map((value: any) => value.value).join(' | ');
+  }
+
+  return type.name;
 }
