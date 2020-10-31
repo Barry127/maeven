@@ -1,4 +1,4 @@
-import { Description, Meta, Props } from 'docsComponents';
+import { Description, DoDont, Meta, Props } from 'docsComponents';
 
 <Meta title="Icon" />
 
@@ -9,3 +9,105 @@ import { Description, Meta, Props } from 'docsComponents';
 ## Props
 
 <Props of="Icon" />
+
+## Examples
+
+### Basic
+
+A basic Icon.
+
+```js live
+// import { arrowLeftCircle, arrowRightCircle } from 'icon-packs/feather';
+
+<P>
+  <Icon icon={arrowLeftCircle} /> Hello World <Icon icon={arrowRightCircle} />
+</P>
+```
+
+### Color
+
+Icons can be styled in different (theme) colors.
+
+```js live
+// import { circleSolid } from 'icon-packs/fa';
+
+<H2>
+  <Icon icon={circleSolid} color="black" />{' '}
+  <Icon icon={circleSolid} color="white" />{' '}
+  <Icon icon={circleSolid} color="darkGrey" />{' '}
+  <Icon icon={circleSolid} color="grey" />{' '}
+  <Icon icon={circleSolid} color="lightGrey" />{' '}
+  <Icon icon={circleSolid} color="red" />{' '}
+  <Icon icon={circleSolid} color="orange" />{' '}
+  <Icon icon={circleSolid} color="yellow" />{' '}
+  <Icon icon={circleSolid} color="green" />{' '}
+  <Icon icon={circleSolid} color="teal" />{' '}
+  <Icon icon={circleSolid} color="blue" />{' '}
+  <Icon icon={circleSolid} color="indigo" />{' '}
+  <Icon icon={circleSolid} color="pink" />{' '}
+  <Icon icon={circleSolid} color="primary" />{' '}
+  <Icon icon={circleSolid} color="success" />{' '}
+  <Icon icon={circleSolid} color="warning" />{' '}
+  <Icon icon={circleSolid} color="danger" />
+</H2>
+```
+
+### Fixed Width
+
+Icons with fixed width have a 1:1 height/width ratio.
+
+```js live
+// import { markGithub, logoGithub } from 'icon-packs/octicons';
+
+<>
+  <H4>
+    Normal: <Icon icon={markGithub} /> <Icon icon={logoGithub} />
+  </H4>
+  <H4>
+    Fixed Width: <Icon icon={markGithub} fixedWidth />{' '}
+    <Icon icon={logoGithub} fixedWidth />
+  </H4>
+</>
+```
+
+### Sizes
+
+Icons can have different sizes.
+
+```js live
+// import { checkCircle } from 'icon-packs/feather';
+
+<>
+  <P>
+    Regular: <Icon icon={checkCircle} />
+  </P>
+  <P>
+    1em: <Icon icon={checkCircle} size="1em" />
+  </P>
+  <P>
+    2em: <Icon icon={checkCircle} size="2em" />
+  </P>
+  <P>
+    3em: <Icon icon={checkCircle} size="3em" />
+  </P>
+  <P>
+    4em: <Icon icon={checkCircle} size="4em" />
+  </P>
+  <P>
+    5em: <Icon icon={checkCircle} size="5em" />
+  </P>
+</>
+```
+
+## Design Guidelines
+
+Use icons to clarify information or actions. Always make sure icons are accessible.
+
+<DoDont
+  do={[
+    'Use an icon in conjunction with descriptive text when used in a button or link.',
+    'If used in an interactive element without text, the element should always have an aria-label.',
+    'If used as an illustration / indicator or part of text the icon should have a title.'
+  ]}
+  dont={['Use icons to show pictures.']}
+/>

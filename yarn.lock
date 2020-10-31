@@ -5624,10 +5624,10 @@ husky@^4.3.0:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
-icon-packs@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/icon-packs/-/icon-packs-0.8.0.tgz#7f890e346482fc6977edb56d6d52310bfc57e1b0"
-  integrity sha512-uvS17GBLi5uLb6Lxc4Ug9ulipY8EEvt5L8npFr5p79ejhxPYsv2G2f+u+dmYaFMZYzY3uBJKC9SmdTf/k8Zyuw==
+icon-packs@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/icon-packs/-/icon-packs-0.8.1.tgz#81b564a4eb615fee798b2c79dcbaad3bb940f733"
+  integrity sha512-ZDX0o9oJGsv7498FbVw7u1CdvuVyNB1wgA4AivaZMKgWcoGioXC+X0FejVDbdjv96ChVIPqDkn8sYGhdiw8d0Q==
   dependencies:
     "@types/react" "^16.9.9"
 

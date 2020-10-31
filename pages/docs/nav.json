@@ -33,6 +33,7 @@
           "Ul": "/docs/components/Html/Ul"
         }
       },
+      "Icon": "/docs/components/Icon",
       "Link": "/docs/components/Link",
       "ThemeProvider": "/docs/components/ThemeProvider"
     }
