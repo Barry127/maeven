@@ -9745,10 +9745,10 @@ react-test-renderer@^16.12.0:
     react-is "^16.8.6"
     scheduler "^0.19.1"
 
-react-use-measure@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-use-measure/-/react-use-measure-2.0.0.tgz#f49b5cbde4cc18f5061d726a8a3db9fcd2244998"
-  integrity sha512-aYosukh38+eqjgNExd/OKEM0n5YSbl5niYYq3OAUWywf3deUjpnVfGMnwTmjF32+Owqr1sc3KKZku9n72lAaPA==
+react-use-measure@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-use-measure/-/react-use-measure-2.0.2.tgz#06b4f99b887d5dfcd7b7167a2da063d97ec8f62f"
+  integrity sha512-/+eSmQiU2ePNTwFCXX4JPrQNMvyu3sWrSDi/n5F6IMXwboB46IvtU8VHvG7Nc+egvtM7sBJKwmUx/vx6KIRDog==
   dependencies:
     debounce "^1.2.0"
 
