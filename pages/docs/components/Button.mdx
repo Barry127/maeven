@@ -1,0 +1,150 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="Button" />
+
+# Button
+
+<Description of="Button" />
+
+## Props
+
+<Props of="Button" />
+
+### Basic
+
+A basic usage of Button.
+
+```js live
+<Button onClick={() => alert('Button Clicked')}>Click Me!</Button>
+```
+
+### buttonType
+
+Buttons can by styled as different type of buttons.
+
+```js live
+<Block>
+  <H4>Active</H4>
+  <P>
+    <Button buttonType="primary">Primary</Button> <Button>Default</Button>{' '}
+    <Button buttonType="link">Link</Button>{' '}
+    <Button buttonType="success">Success</Button>{' '}
+    <Button buttonType="warning">Warning</Button>{' '}
+    <Button buttonType="danger">Danger</Button>
+  </P>
+  <H4>Disabled</H4>
+  <P>
+    <Button disabled buttonType="primary">
+      Primary
+    </Button>{' '}
+    <Button disabled>Default</Button>{' '}
+    <Button disabled buttonType="link">
+      Link
+    </Button>{' '}
+    <Button disabled buttonType="success">
+      Success
+    </Button>{' '}
+    <Button disabled buttonType="warning">
+      Warning
+    </Button>{' '}
+    <Button disabled buttonType="danger">
+      Disabled Danger
+    </Button>
+  </P>
+</Block>
+```
+
+### Icons
+
+A button can contain icons.
+
+```js live
+// import { refreshCw } from 'icon-packs/feather';
+// import {
+//   userCircleSolid,
+//   caretDownSolid,
+//   arrowLeftSolid,
+//   arrowRightSolid,
+//   fileRegular,
+//   timesSolid,
+//   plusSolid
+// } from 'icon-packs/fa';
+
+<>
+  <Button buttonType="primary" icon={refreshCw}>
+    Refresh
+  </Button>{' '}
+  <Button icon={userCircleSolid} iconRight={caretDownSolid}>
+    Profile
+  </Button>{' '}
+  <Button buttonType="warning" iconRight={arrowRightSolid}>
+    Next
+  </Button>{' '}
+  <Button icon={fileRegular} iconRight={timesSolid}>
+    Upload...
+  </Button>{' '}
+  <Button buttonType="success" icon={plusSolid} />{' '}
+  <Button icon={arrowLeftSolid} iconRight={arrowRightSolid} />
+</>
+```
+
+### Loading
+
+Buttons can have a loading state.
+
+```js live withRender
+// import { refreshCw } from 'icon-packs/feather';
+
+const Example = () => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (loading) {
+      const to = setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }
+  }, [loading]);
+
+  return (
+    <Button
+      buttonType="primary"
+      icon={refreshCw}
+      loading={loading}
+      onClick={() => setLoading(true)}
+    >
+      Click to toggle
+    </Button>
+  );
+};
+
+render(<Example />);
+```
+
+### Sizes
+
+Buttons can have different sizes.
+
+```js live
+<>
+  <Button icon={userCircleSolid} buttonType="primary" size="sm">
+    Small Button
+  </Button>{' '}
+  <Button icon={userCircleSolid} buttonType="primary" size="md">
+    Medium Button
+  </Button>{' '}
+  <Button icon={userCircleSolid} buttonType="primary" size="lg">
+    Large Button
+  </Button>
+</>
+```
+
+### Fluid
+
+A fluid button takes up the full width.
+
+```js live
+<Button buttonType="primary" fluid>
+  Fluid Button
+</Button>
+```

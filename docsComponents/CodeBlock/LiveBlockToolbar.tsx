@@ -1,4 +1,5 @@
-import { Block, Col, Row } from 'maeven';
+import { code, eye, eyeOff, maximize2, minimize2 } from 'icon-packs/feather';
+import { Block, Button, Col, Row } from 'maeven';
 import React, { FC } from 'react';
 import classes from './code-block.module.scss';
 
@@ -13,27 +14,26 @@ export const LiveBlockToolbar: FC<LiveBlockToolbarProps> = ({
   <Block className={classes.toolbar}>
     <Row>
       <Col xs={12}>
-        <button
+        <Button
+          buttonType="link"
           onClick={toggleTransparent}
+          icon={transparent ? eyeOff : eye}
           title="Toggle transparent background"
-          style={transparent ? { background: 'transparent' } : {}}
-        >
-          o.0
-        </button>
+        />
       </Col>
       <Col xs={12} style={{ textAlign: 'right' }}>
-        <button
+        <Button
+          buttonType={showCode ? 'primary' : 'link'}
+          icon={code}
           onClick={toggleCode}
           title={showCode ? 'Hide code' : 'Show code'}
-        >
-          ...
-        </button>
-        <button
+        />
+        <Button
+          buttonType="link"
           onClick={toggleFullscreen}
           title={fullscreen ? 'Minimize' : 'Maximize'}
-        >
-          {fullscreen ? '-' : '+'}
-        </button>
+          icon={fullscreen ? minimize2 : maximize2}
+        />
       </Col>
     </Row>
   </Block>

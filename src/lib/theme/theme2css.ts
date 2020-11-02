@@ -98,6 +98,50 @@ export function theme2css(theme: Theme): string {
   --mvn-danger4: ${theme.colors.danger4};
   --mvn-danger5: ${theme.colors.danger5};
 
+  --mvn-primary1-d5: ${color(theme.colors.primary1).darken(0.05).toString()};
+  --mvn-primary1-l5: ${color(theme.colors.primary1).lighten(0.05).toString()};
+  --mvn-primary2-d5: ${color(theme.colors.primary2).darken(0.05).toString()};
+  --mvn-primary2-l5: ${color(theme.colors.primary2).lighten(0.05).toString()};
+  --mvn-primary3-d5: ${color(theme.colors.primary3).darken(0.05).toString()};
+  --mvn-primary3-l5: ${color(theme.colors.primary3).lighten(0.05).toString()};
+  --mvn-primary4-d5: ${color(theme.colors.primary4).darken(0.05).toString()};
+  --mvn-primary4-l5: ${color(theme.colors.primary4).lighten(0.05).toString()};
+  --mvn-primary5-d5: ${color(theme.colors.primary5).darken(0.05).toString()};
+  --mvn-primary5-l5: ${color(theme.colors.primary5).lighten(0.05).toString()};
+
+  --mvn-success1-d5: ${color(theme.colors.success1).darken(0.05).toString()};
+  --mvn-success1-l5: ${color(theme.colors.success1).lighten(0.05).toString()};
+  --mvn-success2-d5: ${color(theme.colors.success2).darken(0.05).toString()};
+  --mvn-success2-l5: ${color(theme.colors.success2).lighten(0.05).toString()};
+  --mvn-success3-d5: ${color(theme.colors.success3).darken(0.05).toString()};
+  --mvn-success3-l5: ${color(theme.colors.success3).lighten(0.05).toString()};
+  --mvn-success4-d5: ${color(theme.colors.success4).darken(0.05).toString()};
+  --mvn-success4-l5: ${color(theme.colors.success4).lighten(0.05).toString()};
+  --mvn-success5-d5: ${color(theme.colors.success5).darken(0.05).toString()};
+  --mvn-success5-l5: ${color(theme.colors.success5).lighten(0.05).toString()};
+
+  --mvn-warning1-d5: ${color(theme.colors.warning1).darken(0.05).toString()};
+  --mvn-warning1-l5: ${color(theme.colors.warning1).lighten(0.05).toString()};
+  --mvn-warning2-d5: ${color(theme.colors.warning2).darken(0.05).toString()};
+  --mvn-warning2-l5: ${color(theme.colors.warning2).lighten(0.05).toString()};
+  --mvn-warning3-d5: ${color(theme.colors.warning3).darken(0.05).toString()};
+  --mvn-warning3-l5: ${color(theme.colors.warning3).lighten(0.05).toString()};
+  --mvn-warning4-d5: ${color(theme.colors.warning4).darken(0.05).toString()};
+  --mvn-warning4-l5: ${color(theme.colors.warning4).lighten(0.05).toString()};
+  --mvn-warning5-d5: ${color(theme.colors.warning5).darken(0.05).toString()};
+  --mvn-warning5-l5: ${color(theme.colors.warning5).lighten(0.05).toString()};
+
+  --mvn-danger1-d5: ${color(theme.colors.danger1).darken(0.05).toString()};
+  --mvn-danger1-l5: ${color(theme.colors.danger1).lighten(0.05).toString()};
+  --mvn-danger2-d5: ${color(theme.colors.danger2).darken(0.05).toString()};
+  --mvn-danger2-l5: ${color(theme.colors.danger2).lighten(0.05).toString()};
+  --mvn-danger3-d5: ${color(theme.colors.danger3).darken(0.05).toString()};
+  --mvn-danger3-l5: ${color(theme.colors.danger3).lighten(0.05).toString()};
+  --mvn-danger4-d5: ${color(theme.colors.danger4).darken(0.05).toString()};
+  --mvn-danger4-l5: ${color(theme.colors.danger4).lighten(0.05).toString()};
+  --mvn-danger5-d5: ${color(theme.colors.danger5).darken(0.05).toString()};
+  --mvn-danger5-l5: ${color(theme.colors.danger5).lighten(0.05).toString()};
+
   --mvn-color-background: ${theme.colors.background};
   --mvn-color-background-text: ${theme.colors.backgroundText};
   --mvn-color-background-dark: ${theme.colors.backgroundDark};
@@ -136,6 +180,14 @@ export function theme2css(theme: Theme): string {
   --mvn-success: ${theme.colors.success};
   --mvn-warning: ${theme.colors.warning};
   --mvn-danger: ${theme.colors.danger};
+
+  --mvn-light-grey-l30: ${color(theme.colors.lightGrey)
+    .lighten(0.3)
+    .toString()};
+  --mvn-primary-l30: ${color(theme.colors.primary).lighten(0.3).toString()};
+  --mvn-success-l30: ${color(theme.colors.success).lighten(0.3).toString()};
+  --mvn-warning-l30: ${color(theme.colors.warning).lighten(0.3).toString()};
+  --mvn-danger-l30: ${color(theme.colors.danger).lighten(0.3).toString()};
 
   --mvn-black-background-text: ${theme.colors.blackBackgroundText};
   --mvn-white-background-text: ${theme.colors.whiteBackgroundText};

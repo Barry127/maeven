@@ -40,3 +40,10 @@ $mvn-media-xl: 1200px;
   white-space: nowrap;
   word-wrap: normal;
 }
+
+@function animate-transition(
+  $property,
+  $timing: var(--mvn-transition-duration)
+) {
+  @return $property $timing var(--mvn-transition-timing-function);
+}

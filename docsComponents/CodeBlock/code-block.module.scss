@@ -12,15 +12,13 @@
     border-top-left-radius: var(--mvn-border-radius-large);
     border-top-right-radius: var(--mvn-border-radius-large);
     background-color: var(--mvn-light-grey2);
-    padding: 0.8rem;
 
-    button + button {
-      margin-left: 0.8rem;
+    button {
+      position: relative;
     }
 
     :global(.mvn-dark) & {
       border-color: var(--mvn-color-border-dark);
-      // background-color: var(--mvn-color-background-text-dark);
       background-color: var(--mvn-dark-grey3);
     }
   }
@@ -120,7 +118,7 @@
     .editor {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      //min-height minus toolbar;
+      min-height: calc(100vh - 4.1rem);
     }
   }
 }

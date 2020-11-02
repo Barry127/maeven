@@ -5,6 +5,7 @@
     "basePath": "/docs/components",
     "children": {
       "Block": "/docs/components/Block",
+      "Button": "/docs/components/Button",
       "Grid": {
         "basePath": "/docs/components/Grid",
         "children": {
