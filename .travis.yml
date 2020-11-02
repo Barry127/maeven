@@ -5,6 +5,6 @@ cache:
   npm: false
 script:
   - yarn lint
-  - yarn test:coverage
+  - yarn test --watch=false
   - yarn build
   - yarn coveralls
