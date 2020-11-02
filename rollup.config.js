@@ -24,7 +24,9 @@ export default {
   plugins: [
     progress(),
     typescript(),
-    babel(),
+    babel({
+      babelHelpers: 'bundled'
+    }),
     postcss({
       modules: {
         generateScopedName: 'mvn_[hash:base64:5]'
@@ -48,7 +50,6 @@ export default {
     'react-hooks-global-state',
     'react-spring',
     'react-spring/renderprops',
-    'react-use-measure',
-    'typestyle'
+    'react-use-measure'
   ]
 };

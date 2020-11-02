@@ -40,6 +40,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
       }
 
       setSpinning(spinning);
+      return;
     }, [delay, spinning]);
 
     const renderSpinner = useCallback(

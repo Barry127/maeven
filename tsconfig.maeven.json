@@ -22,6 +22,6 @@
     "target": "es2015",
     "outDir": "build"
   },
-  "include": ["src"],
+  "include": ["next-env.d.ts", "src"],
   "exclude": ["src/**/*.spec.ts{,x}"]
 }
