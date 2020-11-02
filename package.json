@@ -101,7 +101,7 @@
     "start": "yarn parse --watch & next",
     "test": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:coverage:ci": "jest --coverage --watch=false --coverageReporters=lcov && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "coveralls < coverage/lcov.info",
     "predocs:build": "yarn clear && yarn parse",
     "docs:build": "next build && next export",
     "predocs:deploy": "yarn docs:build",
