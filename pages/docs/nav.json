@@ -5,7 +5,13 @@
     "basePath": "/docs/components",
     "children": {
       "Block": "/docs/components/Block",
-      "Button": "/docs/components/Button",
+      "Button": {
+        "basePath": "/docs/components/Button",
+        "children": {
+          "Button": "/docs/components/Button/Button",
+          "ButtonGroup": "/docs/components/Button/ButtonGroup"
+        }
+      },
       "Grid": {
         "basePath": "/docs/components/Grid",
         "children": {

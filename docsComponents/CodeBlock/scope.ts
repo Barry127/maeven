@@ -1,11 +1,17 @@
 import {
+  alignCenterSolid,
+  alignLeftSolid,
+  alignRightSolid,
   arrowLeftSolid,
   arrowRightSolid,
+  boldSolid,
   caretDownSolid,
   circleSolid,
   fileRegular,
+  italicSolid,
   plusSolid,
   timesSolid,
+  underlineSolid,
   userCircleSolid
 } from 'icon-packs/fa';
 import {
@@ -28,18 +34,24 @@ export const scope = {
   useState,
 
   /** icons */
+  alignCenterSolid,
+  alignLeftSolid,
+  alignRightSolid,
   arrowLeftCircle,
   arrowLeftSolid,
   arrowRightCircle,
   arrowRightSolid,
+  boldSolid,
   caretDownSolid,
   checkCircle,
   circleSolid,
   fileRegular,
+  italicSolid,
   logoGithub,
   markGithub,
   plusSolid,
   refreshCw,
   timesSolid,
+  underlineSolid,
   userCircleSolid
 };

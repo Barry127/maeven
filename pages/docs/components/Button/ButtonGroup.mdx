@@ -1,0 +1,105 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="ButtonGroup" />
+
+# ButtonGroup
+
+<Description of="ButtonGroup" />
+
+## Props
+
+<Props of="ButtonGroup" />
+
+### Basic
+
+A basic usage of ButtonGroup.
+
+```js live
+// import { arrowLeftSolid, arrowRightSolid } from 'icon-packs/fa';
+
+<ButtonGroup>
+  <Button icon={arrowLeftSolid} />
+  <P>This will not be rendered</P>
+  <Button icon={arrowRightSolid} />
+</ButtonGroup>
+```
+
+### Toggle
+
+A group with toggle buttons.
+
+```js live withRender
+// import { boldSolid, italicSolid, underlineSolid } from 'icon-packs/fa';
+
+const Group = () => {
+  const [bold, setBold] = useState(false);
+  const [italic, setItalic] = useState(false);
+  const [underline, setUnderline] = useState(false);
+
+  return (
+    <ButtonGroup>
+      <Button
+        icon={boldSolid}
+        buttonType={bold ? 'primary' : 'default'}
+        onClick={() => setBold(!bold)}
+      />
+      <Button
+        icon={italicSolid}
+        buttonType={italic ? 'primary' : 'default'}
+        onClick={() => setItalic(!italic)}
+      />
+      <Button
+        icon={underlineSolid}
+        buttonType={underline ? 'primary' : 'default'}
+        onClick={() => setUnderline(!underline)}
+      />
+    </ButtonGroup>
+  );
+};
+
+render(<Group />);
+```
+
+### Sizes
+
+ButtonGroups can have different sizes.
+
+```js live
+// import { alignCenterSolid, alignLeftSolid, alignRightSolid } from 'icon-packs/fa';
+
+<Row gutter={1} align="center">
+  <Col style={{ textAlign: 'center' }}>
+    <ButtonGroup size="sm">
+      <Button icon={alignLeftSolid} />
+      <Button icon={alignCenterSolid} />
+      <Button icon={alignRightSolid} />
+    </ButtonGroup>
+  </Col>
+  <Col style={{ textAlign: 'center' }}>
+    <ButtonGroup size="md">
+      <Button icon={alignLeftSolid} />
+      <Button icon={alignCenterSolid} />
+      <Button icon={alignRightSolid} />
+    </ButtonGroup>
+  </Col>
+  <Col style={{ textAlign: 'center' }}>
+    <ButtonGroup size="lg">
+      <Button icon={alignLeftSolid} />
+      <Button icon={alignCenterSolid} />
+      <Button icon={alignRightSolid} />
+    </ButtonGroup>
+  </Col>
+</Row>
+```
+
+### Fluid
+
+A fluid button group takes up the full width.
+
+```js live
+<ButtonGroup fluid>
+  <Button>One</Button>
+  <Button>Two</Button>
+  <Button>Three</Button>
+</ButtonGroup>
+```
