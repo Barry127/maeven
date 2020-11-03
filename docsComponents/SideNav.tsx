@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { Block, Col } from 'maeven';
+import { menu, x } from 'icon-packs/feather';
+import { Block, Button, Col } from 'maeven';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, {
@@ -14,7 +15,10 @@ import useMeasure from 'react-use-measure';
 import classes from './side-nav.module.scss';
 
 export const SideNav: FC<SideNavProps> = ({ nav }) => {
+  const [menuOpen, setOpen] = useState(false);
   const [navHeight, setNavHeight] = useState(0);
+  const toggleMenu = useCallback(() => setOpen(!menuOpen), [menuOpen]);
+  const closeMenu = useCallback(() => setOpen(false), []);
 
   useLayoutEffect(() => {
     setNavHeight(
@@ -23,36 +27,62 @@ export const SideNav: FC<SideNavProps> = ({ nav }) => {
   }, [setNavHeight]);
 
   return (
-    <Col
-      className={classes.container}
-      hidden={['md', 'sm', 'xs']}
-      role="complementary"
-      background="background"
-    >
-      <Block
-        padding
-        className={classes.content}
-        style={{
-          top: navHeight,
-          minHeight: `calc(100vh - ${navHeight}px)`,
-          maxHeight: `calc(100vh - ${navHeight}px)`
-        }}
+    <>
+      <Button
+        className={classes.hamburger}
+        icon={menuOpen ? x : menu}
+        onClick={toggleMenu}
+      />
+      <Col
+        className={clsx(classes.container, { [classes.open]: menuOpen })}
+        hidden={['md', 'sm', 'xs']}
+        role="complementary"
+        background="background"
       >
-        <ul>
-          {Object.entries(nav).map(([name, item]) =>
-            typeof item === 'string' ? (
-              <NavLink key={item} name={name} path={item} />
-            ) : (
-              <NavMenu key={name} name={name} nav={item} />
-            )
-          )}
-        </ul>
-      </Block>
-    </Col>
+        <Block
+          padding
+          className={classes.content}
+          style={{
+            top: navHeight,
+            minHeight: `calc(100vh - ${navHeight}px)`,
+            maxHeight: `calc(100vh - ${navHeight}px)`
+          }}
+        >
+          <ul>
+            {Object.entries(nav).map(([name, item]) =>
+              typeof item === 'string' ? (
+                <NavLink
+                  closeMenu={closeMenu}
+                  key={item}
+                  name={name}
+                  path={item}
+                />
+              ) : (
+                <NavMenu
+                  closeMenu={closeMenu}
+                  key={name}
+                  name={name}
+                  nav={item}
+                />
+              )
+            )}
+          </ul>
+        </Block>
+        <Button
+          className={classes.hamburger}
+          icon={menuOpen ? x : menu}
+          onClick={toggleMenu}
+        />
+      </Col>
+    </>
   );
 };
 
-const NavLink: FC<{ name: string; path: string }> = ({ name, path }) => {
+const NavLink: FC<{ closeMenu: () => void; name: string; path: string }> = ({
+  closeMenu,
+  name,
+  path
+}) => {
   const router = useRouter();
   return (
     <li>
@@ -60,6 +90,7 @@ const NavLink: FC<{ name: string; path: string }> = ({ name, path }) => {
         <a
           href={path}
           className={clsx({ [classes.active]: router.pathname === path })}
+          onClick={closeMenu}
         >
           {name}
         </a>
@@ -68,7 +99,11 @@ const NavLink: FC<{ name: string; path: string }> = ({ name, path }) => {
   );
 };
 
-const NavMenu: FC<{ name: string; nav: Nav }> = ({ name, nav }) => {
+const NavMenu: FC<{ closeMenu: () => void; name: string; nav: Nav }> = ({
+  closeMenu,
+  name,
+  nav
+}) => {
   const router = useRouter();
   const [ref, { height }] = useMeasure();
   const [isOpen, setOpen] = useState(
@@ -107,9 +142,19 @@ const NavMenu: FC<{ name: string; nav: Nav }> = ({ name, nav }) => {
         <ul ref={ref}>
           {Object.entries(nav.children).map(([name, item]) =>
             typeof item === 'string' ? (
-              <NavLink key={item} name={name} path={item} />
+              <NavLink
+                closeMenu={closeMenu}
+                key={item}
+                name={name}
+                path={item}
+              />
             ) : (
-              <NavMenu key={name} name={name} nav={item} />
+              <NavMenu
+                closeMenu={closeMenu}
+                key={name}
+                name={name}
+                nav={item}
+              />
             )
           )}
         </ul>
