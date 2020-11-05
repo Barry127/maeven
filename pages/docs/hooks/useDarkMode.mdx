@@ -1,0 +1,38 @@
+import { Meta } from 'docsComponents';
+
+<Meta title="useDarkMode" />
+
+# useDarkMode
+
+useDarkMode returns wether current theme is dark mode and a function to toggle dark mode.
+
+## signature
+
+```ts
+function useDarkMode(): [boolean, () => void];
+```
+
+## Example
+
+Toggle dark mode.
+
+```js live withRender
+const DarkMode = () => {
+  const [isDark, toggleDark] = useDarkMode();
+
+  return (
+    <>
+      <H4>{isDark ? 'Dark Mode' : 'Light Mode'}</H4>
+      <Button size="lg" onClick={toggleDark}>
+        Toggle
+      </Button>
+    </>
+  );
+};
+
+render(
+  <>
+    <DarkMode />
+  </>
+);
+```

@@ -50,6 +50,7 @@
     "isOpen": true,
     "basePath": "/docs/hooks",
     "children": {
+      "useDarkMode": "/docs/hooks/useDarkMode",
       "useOutline": "/docs/hooks/useOutline"
     }
   }
