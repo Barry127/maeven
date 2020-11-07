@@ -58,6 +58,7 @@
     "basePath": "/docs/hooks",
     "children": {
       "useDarkMode": "/docs/hooks/useDarkMode",
+      "useId": "/docs/hooks/useId",
       "useOutline": "/docs/hooks/useOutline"
     }
   }

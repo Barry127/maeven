@@ -1,0 +1,52 @@
+import { Meta } from 'docsComponents';
+
+<Meta title="useId" />
+
+# useId
+
+useId returns the id from its argument or if no id given it returns a unique id.
+
+## signature
+
+```ts
+function useId(id: string | { id?: string } = {}): string;
+```
+
+## Example
+
+Use cases for useId.
+
+```js live withRender
+const Example = ({ idArgument }) => {
+  const id = useId(idArgument);
+
+  return (
+    <P>
+      Id is: <i>{id}</i>
+    </P>
+  );
+};
+
+render(
+  <Row gutter={1}>
+    <Col>
+      <Card>
+        <H4>Id as string</H4>
+        <Example idArgument="FromString" />
+      </Card>
+    </Col>
+    <Col>
+      <Card>
+        <H4>Id from props object</H4>
+        <Example idArgument={{ id: 'FromObject' }} />
+      </Card>
+    </Col>
+    <Col>
+      <Card>
+        <H4>Unique generated id</H4>
+        <Example />
+      </Card>
+    </Col>
+  </Row>
+);
+```
