@@ -25,6 +25,7 @@
     "rerender",
     "secondaryfill",
     "shorthash",
+    "tabindex",
     "textfield"
   ]
 }

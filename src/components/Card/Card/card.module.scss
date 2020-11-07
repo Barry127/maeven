@@ -1,0 +1,108 @@
+@import '../../../common/mixins';
+
+.card {
+  border: 1px solid var(--mvn-color-border);
+  border-radius: var(--mvn-border-radius-large);
+
+  :global(.mvn-dark) & {
+    border-color: var(--mvn-color-border-dark);
+  }
+
+  > *:not(:global(.mvn--card-image)) {
+    margin-left: 1.6rem;
+    margin-right: 1.6rem;
+
+    &:first-child {
+      margin-top: 1.6rem;
+    }
+
+    &:last-child {
+      margin-bottom: 1.6rem;
+    }
+  }
+}
+
+.elevation-1 {
+  box-shadow: $elevation1;
+
+  :global(.mvn-dark) & {
+    box-shadow: $elevation1-dark;
+  }
+}
+
+.elevation-2 {
+  box-shadow: $elevation2;
+
+  :global(.mvn-dark) & {
+    box-shadow: $elevation2-dark;
+  }
+}
+
+.elevation-3 {
+  box-shadow: $elevation3;
+
+  :global(.mvn-dark) & {
+    box-shadow: $elevation3-dark;
+  }
+}
+
+.elevation-4 {
+  box-shadow: $elevation4;
+
+  :global(.mvn-dark) & {
+    box-shadow: $elevation4-dark;
+  }
+}
+
+.has-overlay {
+  position: relative;
+}
+
+.interactive {
+  cursor: pointer;
+  transition: animate-transition(box-shadow);
+
+  &:hover,
+  &:focus {
+    box-shadow: $elevation3;
+
+    :global(.mvn-dark) & {
+      box-shadow: $elevation3-dark;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.overlay {
+  align-items: center;
+  background: var(--mvn-color-background-text-dark-a80);
+  border-radius: inherit;
+  bottom: 0;
+  color: var(--mvn-color-text-dark);
+  display: flex;
+  justify-content: center;
+  left: 0;
+  margin: 0 !important;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: animate-transition(opacity);
+  right: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  :global(.mvn-dark) & {
+    background: var(--mvn-color-background-text-a60);
+    color: var(--mvn-color-text);
+  }
+
+  & + :global(.mvn--card-image) {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+}

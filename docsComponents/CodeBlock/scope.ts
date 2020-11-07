@@ -29,6 +29,11 @@ export const scope = {
   ...maeven,
   maeven: theme,
 
+  /** assets */
+  bubbles: '/maeven/assets/bubbles.jpg',
+  skyline: '/maeven/assets/skyline.jpg',
+  trees: '/maeven/assets/trees.jpg',
+
   /** React */
   useEffect,
   useState,

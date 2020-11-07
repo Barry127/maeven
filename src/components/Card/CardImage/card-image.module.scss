@@ -1,0 +1,20 @@
+.container {
+  &:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    margin-bottom: calc(var(--mvn-border-radius-large) * -1);
+  }
+
+  &:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  img {
+    border-radius: inherit;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+  }
+}

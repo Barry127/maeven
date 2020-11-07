@@ -12,6 +12,13 @@
           "ButtonGroup": "/docs/components/Button/ButtonGroup"
         }
       },
+      "Card": {
+        "basePath": "/docs/components/Card",
+        "children": {
+          "Card": "/docs/components/Card/Card",
+          "CardImage": "/docs/components/Card/CardImage"
+        }
+      },
       "Grid": {
         "basePath": "/docs/components/Grid",
         "children": {

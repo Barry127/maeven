@@ -47,3 +47,30 @@ $mvn-media-xl: 1200px;
 ) {
   @return $property $timing var(--mvn-transition-timing-function);
 }
+
+$elevation-color: rgba(0, 0, 0, 0.15);
+$elevation-color-dark: rgba(19, 8, 8, 0.3);
+
+$elevation1: 0 1px 1px $elevation-color, 0 2px 2px $elevation-color,
+  0 4px 4px $elevation-color !default;
+$elevation2: 0 1px 1px $elevation-color, 0 2px 2px $elevation-color,
+  0 4px 4px $elevation-color, 0 8px 8px $elevation-color !default;
+$elevation3: 0 1px 1px $elevation-color, 0 2px 2px $elevation-color,
+  0 4px 4px $elevation-color, 0 8px 8px $elevation-color,
+  0 16px 16px $elevation-color !default;
+$elevation4: 0 1px 1px $elevation-color, 0 2px 2px $elevation-color,
+  0 4px 4px $elevation-color, 0 8px 8px $elevation-color,
+  0 16px 16px $elevation-color, 0 32px 32px $elevation-color !default;
+
+$elevation1-dark: 0 1px 1px $elevation-color-dark,
+  0 2px 2px $elevation-color-dark, 0 4px 4px $elevation-color-dark !default;
+$elevation2-dark: 0 1px 1px $elevation-color-dark,
+  0 2px 2px $elevation-color-dark, 0 4px 4px $elevation-color-dark,
+  0 8px 8px $elevation-color-dark !default;
+$elevation3-dark: 0 1px 1px $elevation-color-dark,
+  0 2px 2px $elevation-color-dark, 0 4px 4px $elevation-color-dark,
+  0 8px 8px $elevation-color-dark, 0 16px 16px $elevation-color-dark !default;
+$elevation4-dark: 0 1px 1px $elevation-color-dark,
+  0 2px 2px $elevation-color-dark, 0 4px 4px $elevation-color-dark,
+  0 8px 8px $elevation-color-dark, 0 16px 16px $elevation-color-dark,
+  0 32px 32px $elevation-color-dark !default;

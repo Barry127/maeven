@@ -147,6 +147,21 @@ export function theme2css(theme: Theme): string {
   --mvn-color-background-dark: ${theme.colors.backgroundDark};
   --mvn-color-background-text-dark: ${theme.colors.backgroundTextDark};
 
+  --mvn-color-background-text-a60: ${color(theme.colors.backgroundText)
+    .alpha(0.6)
+    .toString()};
+  --mvn-color-background-text-a80: ${color(theme.colors.backgroundText)
+    .alpha(0.8)
+    .toString()};
+  --mvn-color-background-text-dark-a80: ${color(theme.colors.backgroundTextDark)
+    .alpha(0.8)
+    .toString()};
+    --mvn-color-background-text-dark-a60: ${color(
+      theme.colors.backgroundTextDark
+    )
+      .alpha(0.6)
+      .toString()};
+
   --mvn-color-border: ${theme.colors.border};
   --mvn-color-border-dark: ${theme.colors.borderDark};
 
