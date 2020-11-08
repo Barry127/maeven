@@ -19,6 +19,13 @@
           "CardImage": "/docs/components/Card/CardImage"
         }
       },
+      "Form": {
+        "basePath": "/docs/components/Form",
+        "children": {
+          "Form": "/docs/components/Form/Form",
+          "FormField": "/docs/components/Form/FormField"
+        }
+      },
       "Grid": {
         "basePath": "/docs/components/Grid",
         "children": {

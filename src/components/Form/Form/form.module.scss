@@ -1,0 +1,104 @@
+@import '../../../common/mixins';
+
+.form {
+  margin-bottom: 1.6rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.label {
+  @extend %truncate;
+  flex-grow: 1;
+  margin-bottom: 0.8rem;
+  max-width: 25.6rem;
+  text-align: right;
+  width: 20%;
+}
+
+.field {
+  margin-bottom: 0.8rem;
+
+  :global(.mvn--button) + :global(.mvn--button) {
+    margin-left: 0.8rem;
+  }
+
+  :global(.mvn--button-group .mvn--button) {
+    margin-left: 0;
+  }
+}
+
+.sm {
+  .label {
+    font-size: 1.4rem;
+    line-height: 3.2rem;
+  }
+}
+
+.md {
+  .label {
+    font-size: 1.6rem;
+    line-height: 4rem;
+  }
+}
+
+.lg {
+  .label {
+    font-size: 1.8rem;
+    line-height: 4.8rem;
+  }
+}
+
+.row:last-child {
+  .label,
+  .field {
+    margin-bottom: 0;
+  }
+}
+
+.has-error .label {
+  color: var(--mvn-color-text-danger);
+
+  :global(.mvn-dark) & {
+    color: var(--mvn-color-text-danger-dark);
+  }
+}
+
+.vertical {
+  .row {
+    flex-direction: column;
+
+    &:last-child .label {
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  .label {
+    flex-grow: 1;
+    line-height: var(--mvn-line-height);
+    max-width: none;
+    margin-bottom: 0.4rem;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+@include media-xs {
+  .row {
+    flex-direction: column;
+
+    &:last-child .label {
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  .label {
+    flex-grow: 1;
+    line-height: var(--mvn-line-height);
+    max-width: none;
+    margin-bottom: 0.4rem;
+    text-align: left;
+    width: 100%;
+  }
+}

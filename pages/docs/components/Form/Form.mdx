@@ -1,0 +1,37 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="Form" />
+
+# Form
+
+<Description of="Form" />
+
+## Props
+
+<Props of="Form" />
+
+## Examples
+
+### Basic
+
+A basic usage of Form.
+
+```js live withRender
+const FullForm = () => {
+  return (
+    <Container>
+      <Form onSubmit={(ev) => ev.preventDefault()}>
+        {' '}
+        <FormField>
+          <Button type="submit" buttonType="primary">
+            Save
+          </Button>
+          <Button type="reset">Cancel</Button>
+        </FormField>
+      </Form>
+    </Container>
+  );
+};
+
+render(<FullForm />);
+```
