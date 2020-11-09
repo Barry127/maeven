@@ -23,7 +23,8 @@
         "basePath": "/docs/components/Form",
         "children": {
           "Form": "/docs/components/Form/Form",
-          "FormField": "/docs/components/Form/FormField"
+          "FormField": "/docs/components/Form/FormField",
+          "TextInput": "/docs/components/Form/TextInput"
         }
       },
       "Grid": {

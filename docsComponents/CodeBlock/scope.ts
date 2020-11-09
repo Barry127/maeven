@@ -17,8 +17,13 @@ import {
 import {
   arrowLeftCircle,
   arrowRightCircle,
+  check,
   checkCircle,
-  refreshCw
+  helpCircle,
+  refreshCw,
+  tag,
+  user,
+  x
 } from 'icon-packs/feather';
 import { markGithub, logoGithub } from 'icon-packs/octicons';
 import * as maeven from 'maeven';
@@ -48,15 +53,20 @@ export const scope = {
   arrowRightSolid,
   boldSolid,
   caretDownSolid,
+  check,
   checkCircle,
   circleSolid,
   fileRegular,
+  helpCircle,
   italicSolid,
   logoGithub,
   markGithub,
   plusSolid,
   refreshCw,
+  tag,
   timesSolid,
   underlineSolid,
-  userCircleSolid
+  user,
+  userCircleSolid,
+  x
 };

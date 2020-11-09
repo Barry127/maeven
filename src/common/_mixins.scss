@@ -74,3 +74,43 @@ $elevation4-dark: 0 1px 1px $elevation-color-dark,
   0 2px 2px $elevation-color-dark, 0 4px 4px $elevation-color-dark,
   0 8px 8px $elevation-color-dark, 0 16px 16px $elevation-color-dark,
   0 32px 32px $elevation-color-dark !default;
+
+@mixin input-mixin {
+  background: var(--mvn-color-background-text);
+  border: 1px solid var(--mvn-color-border);
+  border-radius: var(--mvn-border-radius);
+  box-sizing: border-box;
+  color: var(--mvn-color-text);
+  flex-grow: 1;
+  font-family: var(--mvn-typography-font-family);
+  line-height: var(--mvn-typography-line-height);
+  margin: 0;
+  width: 100%;
+
+  :global(.mvn-dark) & {
+    background: var(--mvn-color-background-text-dark);
+    border-color: var(--mvn-color-border-dark);
+    color: var(--mvn-color-text-dark);
+  }
+
+  &:focus {
+    outline: none;
+    z-index: 1;
+    border-color: var(--mvn-color-outline);
+    box-shadow: 0 0 0 var(--mvn-size-outline) var(--mvn-color-outline);
+  }
+
+  &::placeholder {
+    color: currentColor;
+    opacity: 0.5;
+  }
+
+  &:disabled {
+    background: var(--mvn-color-background);
+    color: var(--mvn-color-text-grey);
+
+    :global(.mvn-dark) & {
+      background: var(--mvn-dark-grey1);
+    }
+  }
+}

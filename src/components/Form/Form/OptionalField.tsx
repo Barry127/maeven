@@ -10,7 +10,7 @@ export const OptionalField: FC<OptionalFieldProps> = ({
   ...props
 }) =>
   label ? (
-    <FormField label="label" {...props}>
+    <FormField label={label} {...props}>
       {children}
     </FormField>
   ) : (

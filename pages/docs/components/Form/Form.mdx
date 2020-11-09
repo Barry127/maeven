@@ -19,17 +19,15 @@ A basic usage of Form.
 ```js live withRender
 const FullForm = () => {
   return (
-    <Container>
-      <Form onSubmit={(ev) => ev.preventDefault()}>
-        {' '}
-        <FormField>
-          <Button type="submit" buttonType="primary">
-            Save
-          </Button>
-          <Button type="reset">Cancel</Button>
-        </FormField>
-      </Form>
-    </Container>
+    <Form onSubmit={(ev) => ev.preventDefault()}>
+      <TextInput label="Username" icon={user} />
+      <FormField>
+        <Button type="submit" buttonType="primary">
+          Save
+        </Button>
+        <Button type="reset">Cancel</Button>
+      </FormField>
+    </Form>
   );
 };
 

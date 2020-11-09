@@ -1,0 +1,149 @@
+@import '../../../common/mixins';
+
+.container {
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  line-height: 1;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 0.4rem;
+  }
+}
+
+.input {
+  @include input-mixin();
+  width: 100%;
+
+  &:focus ~ .icon {
+    opacity: 0.85;
+  }
+}
+
+.icon {
+  opacity: 0.6;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.right-element {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  z-index: 1;
+}
+
+.sm {
+  .input {
+    font-size: 1.4rem;
+    height: 3.2rem;
+    padding: 0 0.8rem;
+  }
+
+  .text,
+  .label {
+    font-size: 1.4rem;
+  }
+
+  .icon.left {
+    left: 1rem;
+  }
+
+  .icon.right {
+    right: 1rem;
+  }
+
+  &.has-left-icon .input {
+    padding-left: calc(3 * 1rem);
+  }
+
+  &.has-right-icon .input {
+    padding-right: calc(3 * 1rem);
+  }
+}
+
+.md {
+  .input {
+    font-size: 1.6rem;
+    height: 4rem;
+    padding: 0 1.2rem;
+  }
+
+  .text,
+  .label {
+    font-size: 1.6rem;
+  }
+
+  .icon.left {
+    left: 1.2rem;
+  }
+
+  .icon.right {
+    right: 1.2rem;
+  }
+
+  &.has-left-icon .input {
+    padding-left: calc(3 * 1.2rem);
+  }
+
+  &.has-right-icon .input {
+    padding-right: calc(3 * 1.2rem);
+  }
+}
+
+.lg {
+  .input {
+    font-size: 1.8rem;
+    height: 4rem;
+    padding: 0 1.6rem;
+  }
+
+  .text,
+  .label {
+    font-size: 1.8rem;
+  }
+
+  .icon.left {
+    left: 1.2rem;
+  }
+
+  .icon.right {
+    right: 1.2rem;
+  }
+
+  &.has-left-icon .input {
+    padding-left: calc(3 * 1.2rem);
+  }
+
+  &.has-right-icon .input {
+    padding-right: calc(3 * 1.2rem);
+  }
+}
+
+.has-error {
+  .input {
+    border-color: var(--mvn-danger1);
+
+    &:focus {
+      border-color: var(--mvn-color-outline-danger);
+      box-shadow: 0 0 0 var(--mvn-size-outline) var(--mvn-color-outline-danger);
+    }
+  }
+
+  .input,
+  .text,
+  .label {
+    color: var(--mvn-color-text-danger);
+
+    :global(.mvn-dark) & {
+      color: var(--mvn-color-text-danger-dark);
+    }
+  }
+}

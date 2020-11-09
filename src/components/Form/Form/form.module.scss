@@ -14,7 +14,8 @@
   margin-bottom: 0.8rem;
   max-width: 25.6rem;
   text-align: right;
-  width: 20%;
+  width: 25.6rem;
+  min-width: 25.6rem;
 }
 
 .field {
@@ -74,13 +75,17 @@
     }
   }
 
-  .label {
+  label.label {
     flex-grow: 1;
-    line-height: var(--mvn-line-height);
+    line-height: var(--mvn-typography-line-height) !important;
     max-width: none;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
     text-align: left;
-    width: 100%;
+    width: calc(100% - var(--mvn-grid-gutter));
+  }
+
+  div.label {
+    display: none;
   }
 }
 
@@ -89,16 +94,20 @@
     flex-direction: column;
 
     &:last-child .label {
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.2rem;
     }
   }
 
-  .label {
+  label.label {
     flex-grow: 1;
-    line-height: var(--mvn-line-height);
+    line-height: var(--mvn-typography-line-height) !important;
     max-width: none;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
     text-align: left;
-    width: 100%;
+    width: calc(100% - var(--mvn-grid-gutter));
+  }
+
+  div.label {
+    display: none;
   }
 }
