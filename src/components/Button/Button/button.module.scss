@@ -231,6 +231,10 @@ $semanticTypes: ('primary', 'success', 'warning', 'danger');
   }
 }
 
+.spinner:last-child {
+  margin-right: 0 !important;
+}
+
 .sm {
   font-size: 1.4rem;
   height: 3.2rem;

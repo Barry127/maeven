@@ -31,6 +31,7 @@ export interface PartialTheme {
   sizes?: ThemeSizes;
   typography?: ThemeTypography;
   animations?: ThemeTransition;
+  iconOverrides?: ThemeIconOverrides;
 }
 
 export interface Theme extends Complete<PartialTheme> {
@@ -227,6 +228,11 @@ export interface ThemeColors {
   textSuccessDark?: string;
   textWarningDark?: string;
   textDangerDark?: string;
+}
+
+export interface ThemeIconOverrides {
+  passwordHide?: MaevenIcon;
+  passwordShow?: MaevenIcon;
 }
 
 export interface ThemeSizes {

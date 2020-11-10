@@ -24,6 +24,7 @@
         "children": {
           "Form": "/docs/components/Form/Form",
           "FormField": "/docs/components/Form/FormField",
+          "PasswordInput": "/docs/components/Form/PasswordInput",
           "TextInput": "/docs/components/Form/TextInput"
         }
       },

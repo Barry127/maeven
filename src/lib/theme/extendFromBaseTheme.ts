@@ -17,7 +17,15 @@ import {
 export function extendFromBaseTheme(
   theme: PartialTheme
 ): Omit<Theme, 'isDark'> {
-  const { animations, base, colors, name, sizes, typography } = theme;
+  const {
+    animations,
+    base,
+    colors,
+    iconOverrides,
+    name,
+    sizes,
+    typography
+  } = theme;
 
   return {
     name,
@@ -25,7 +33,8 @@ export function extendFromBaseTheme(
     colors: extendColors(colors),
     sizes: extendSizes(sizes),
     typography: extendTypography(typography),
-    animations: { ...defaultAnimations, ...animations }
+    animations: { ...defaultAnimations, ...animations },
+    iconOverrides: iconOverrides || {}
   };
 }
 
