@@ -25,7 +25,8 @@
           "Form": "/docs/components/Form/Form",
           "FormField": "/docs/components/Form/FormField",
           "PasswordInput": "/docs/components/Form/PasswordInput",
-          "TextInput": "/docs/components/Form/TextInput"
+          "TextInput": "/docs/components/Form/TextInput",
+          "TypeAheadInput": "/docs/components/Form/TypeAheadInput"
         }
       },
       "Grid": {

@@ -92,6 +92,28 @@ describe('TextInput', () => {
     });
   });
 
+  describe('loading', () => {
+    it('is not loading by default', () => {
+      render(<TextInput iconRight={activity} />);
+      const spinner = document.querySelector('.mvn--spinner');
+      expect(spinner).not.toBeInTheDocument();
+      const icon = document.querySelector('.mvn--icon');
+      expect(icon).toBeInTheDocument();
+    });
+
+    it('sets loading', () => {
+      render(<TextInput loading />);
+      const spinner = document.querySelector('.mvn--spinner');
+      expect(spinner).toBeInTheDocument();
+    });
+
+    it('hides (right) icon when loading', () => {
+      render(<TextInput loading iconRight={activity} />);
+      const icon = document.querySelector('.mvn--icon');
+      expect(icon).not.toBeInTheDocument();
+    });
+  });
+
   describe('rightElement', () => {
     it('has no right element by default', () => {
       render(<TextInput />);
@@ -108,14 +130,6 @@ describe('TextInput', () => {
       expect(rightElementContainer).toBeInTheDocument();
       expect(button).toBeInTheDocument();
     });
-
-    // it('sets paddingRight style on input', () => {
-    //   render(<TextInput rightElement={<button>Click Me</button>} />);
-    //   const input = document.querySelector('input');
-    //   const container = document.querySelector('.mvn--text-input');
-    //   console.log(container?.innerHTML);
-    //   expect(input).toHaveAttribute('style', `padding-right`);
-    // });
   });
 
   describe('size', () => {

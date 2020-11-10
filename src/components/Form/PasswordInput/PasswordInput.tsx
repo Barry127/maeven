@@ -7,7 +7,7 @@ import React, {
   useState
 } from 'react';
 import { passwordHide, passwordShow } from '../../../common/defaultIcons';
-import { useId, useTheme } from '../../../hooks';
+import { useTheme } from '../../../hooks';
 import { mergeRefs } from '../../../lib/mergeRefs';
 import { MaevenIcon } from '../../../types';
 import { ControlButton } from '../../Button';
@@ -36,7 +36,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const [visible, setVisible] = useState(false);
     const [selection, setSelection] = useState<Selection>({ start: 0, end: 0 });
-    const id = useId(props);
     const { iconOverrides } = useTheme();
 
     const focusInput = useCallback(() => {
@@ -80,7 +79,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         className={clsx('mvn--password-input', className)}
         disabled={disabled}
         hasError={hasError}
-        id={id}
         onBlur={onBlur}
         ref={mergeRefs(ref, inputRef)}
         rightElement={
@@ -109,7 +107,10 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 );
 
 export interface PasswordInputProps
-  extends Omit<TextInputProps, 'iconRight' | 'rightElement' | 'type'> {
+  extends Omit<
+    TextInputProps,
+    'iconRight' | 'loading' | 'rightElement' | 'type'
+  > {
   /** Icon for hide password toggle (defaults to Feather icons eyeOff) */
   hideIcon?: MaevenIcon;
 

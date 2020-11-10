@@ -39,6 +39,41 @@ Text inputs can be disabled.
 </>
 ```
 
+### Loading
+
+TextInputs can have a loading state.
+
+```js live withRender
+// import { tag } from 'icon-packs/feather';
+
+const Example = () => {
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState('');
+  const to = useRef();
+
+  const onChange = (ev) => {
+    clearTimeout(to.current);
+    setLoading(true);
+    setValue(ev.target.value);
+    to.current = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  };
+
+  return (
+    <TextInput
+      iconRight={tag}
+      loading={loading}
+      onChange={onChange}
+      placeholder="Start typing to toggle loading state..."
+      value={value}
+    />
+  );
+};
+
+render(<Example />);
+```
+
 ### Icons
 
 Text inputs can have icons on both sides.

@@ -11,6 +11,7 @@ import { useId } from '../../../hooks';
 import { MaevenIcon } from '../../../types';
 import { Block } from '../../Block';
 import { Icon } from '../../Icon';
+import { Spinner } from '../../Spinner';
 import { OptionalField } from '../Form';
 import classes from './text-input.module.scss';
 
@@ -27,6 +28,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       icon,
       iconRight,
       label,
+      loading = false,
       rightElement,
       size = 'md',
       style,
@@ -63,7 +65,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             classes[size],
             {
               [classes['has-left-icon']]: !!icon,
-              [classes['has-right-icon']]: !!iconRight,
+              [classes['has-right-icon']]: !!iconRight || loading,
               [classes['has-error']]: hasError
             },
             className
@@ -88,12 +90,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             {icon && (
               <Icon className={clsx(classes.icon, classes.left)} icon={icon} />
             )}
-            {iconRight && (
+            {iconRight && !loading && (
               <Icon
                 className={clsx(classes.icon, classes.right)}
                 icon={iconRight}
               />
             )}
+            {loading && <Spinner size="1em" className={classes.spinner} />}
             {rightElement && (
               <div ref={rightElementRef} className={classes['right-element']}>
                 {rightElement}
@@ -123,6 +126,9 @@ export interface TextInputProps
 
   /** Label text */
   label?: ReactNode;
+
+  /** Wether button has loading state */
+  loading?: boolean;
 
   /** Element to render on right side of input */
   rightElement?: JSX.Element;

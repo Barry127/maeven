@@ -8,8 +8,11 @@ import { PasswordInput } from './PasswordInput';
 describe('PasswordInput', () => {
   it('renders div element with given text', () => {
     render(<PasswordInput>Hello world!</PasswordInput>);
-    const element = document.querySelector('.mvn--password-input');
-    expect(element?.tagName).toBe('DIV');
+    const container = document.querySelector('.mvn--password-input');
+    const input = document.querySelector('input');
+    expect(container).toBeInTheDocument();
+    expect(input).toBeInTheDocument();
+    expect(container).toHaveTextContent('Hello world!');
   });
 
   it('sets className', () => {
@@ -63,6 +66,20 @@ describe('PasswordInput', () => {
       render(<PasswordInput disabled />);
       const button = document.querySelector('button');
       expect(button).not.toBeInTheDocument();
+    });
+  });
+
+  describe('hasError', () => {
+    it('has no error styling by default', () => {
+      render(<PasswordInput />);
+      const container = document.querySelector('.mvn--password-input');
+      expect(container).not.toHaveClass('has-error');
+    });
+
+    it('sets error styling', () => {
+      render(<PasswordInput hasError>Error Text</PasswordInput>);
+      const container = document.querySelector('.mvn--password-input');
+      expect(container).toHaveClass('has-error');
     });
   });
 

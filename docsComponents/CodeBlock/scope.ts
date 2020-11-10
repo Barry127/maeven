@@ -28,7 +28,7 @@ import {
 } from 'icon-packs/feather';
 import { markGithub, logoGithub } from 'icon-packs/octicons';
 import * as maeven from 'maeven';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import theme from 'src/themes/maeven';
 
 export const scope = {
@@ -42,6 +42,7 @@ export const scope = {
 
   /** React */
   useEffect,
+  useRef,
   useState,
 
   /** icons */
