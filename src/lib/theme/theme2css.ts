@@ -179,6 +179,20 @@ export function theme2css(theme: Theme): string {
   --mvn-color-outline: ${theme.colors.outline};
   --mvn-color-outline-danger: ${theme.colors.outlineDanger};
   --mvn-color-text-selection: ${theme.colors.textSelection};
+  --mvn-color-scrollbar: ${theme.colors.scrollbar};
+  --mvn-color-scrollbar-a20: ${color(theme.colors.scrollbar)
+    .alpha(0.2)
+    .toString()};
+  --mvn-color-scrollbar-a50: ${color(theme.colors.scrollbar)
+    .alpha(0.5)
+    .toString()};
+  --mvn-color-scrollbar-dark: ${theme.colors.scrollbarDark};
+  --mvn-color-scrollbar-dark-a20: ${color(theme.colors.scrollbarDark)
+    .alpha(0.2)
+    .toString()};
+  --mvn-color-scrollbar-dark-a50: ${color(theme.colors.scrollbarDark)
+    .alpha(0.5)
+    .toString()};
 
   --mvn-dark-grey: ${theme.colors.darkGrey};
   --mvn-grey: ${theme.colors.grey};

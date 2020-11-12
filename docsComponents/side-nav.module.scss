@@ -11,6 +11,7 @@
 }
 
 .content {
+  @include scrollbars();
   position: sticky;
   overflow-y: auto;
 
@@ -104,5 +105,10 @@
     right: 0;
     max-width: none;
     z-index: 10;
+
+    & + * {
+      height: 0;
+      overflow: hidden;
+    }
   }
 }

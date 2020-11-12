@@ -114,3 +114,43 @@ $elevation4-dark: 0 1px 1px $elevation-color-dark,
     }
   }
 }
+
+@mixin scrollbars(
+  $background: var(--mvn-color-background),
+  $background-dark: var(--mvn-color-background-dark),
+  $width: 1.2rem
+) {
+  &::-webkit-scrollbar {
+    background: transparent;
+    position: absolute;
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--mvn-color-scrollbar-a20);
+    border: 1px solid $background;
+    border-radius: calc(#{$width} / 2);
+    min-height: calc(#{$width} * 2);
+
+    &:hover {
+      background: var(--mvn-color-scrollbar-a50);
+    }
+
+    :global(.mvn-dark) & {
+      background: var(--mvn-color-scrollbar-dark-a20);
+      border: 1px solid $background-dark;
+
+      &:hover {
+        background: var(--mvn-color-scrollbar-dark-a50);
+      }
+    }
+  }
+}

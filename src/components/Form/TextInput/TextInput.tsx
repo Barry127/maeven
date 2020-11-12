@@ -70,6 +70,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             },
             className
           )}
+          style={style}
         >
           <label className={classes.label}>
             <input

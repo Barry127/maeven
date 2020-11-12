@@ -25,6 +25,7 @@
           "Form": "/docs/components/Form/Form",
           "FormField": "/docs/components/Form/FormField",
           "PasswordInput": "/docs/components/Form/PasswordInput",
+          "TextArea": "/docs/components/Form/TextArea",
           "TextInput": "/docs/components/Form/TextInput",
           "TypeAheadInput": "/docs/components/Form/TypeAheadInput"
         }

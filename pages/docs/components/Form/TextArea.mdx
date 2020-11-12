@@ -1,0 +1,101 @@
+import { Description, DoDont, Meta, Props } from 'docsComponents';
+
+<Meta title="TextArea" />
+
+# TextArea
+
+<Description of="TextArea" />
+
+## Props
+
+<Props of="TextArea" />
+
+## Examples
+
+### Basic
+
+A basic TextArea.
+
+```js live
+<TextArea placeholder="Type here...">
+  Children are placed under the textarea
+</TextArea>
+```
+
+### Autosize
+
+Textarea autosize can be on or off.
+
+```js live
+<Row gutter={1}>
+  <Col>
+    <TextArea placeholder="I will grow in height as my input grows" />
+  </Col>
+  <Col>
+    <TextArea autoSize={false} placeholder="I will not grow in height" />
+  </Col>
+</Row>
+```
+
+### Disabled
+
+TextArea can be disabled.
+
+```js live
+<Row gutter={1}>
+  <Col>
+    <TextArea disabled value="Disabled" />
+  </Col>
+  <Col>
+    <TextArea readOnly value="Read Only" />
+  </Col>
+</Row>
+```
+
+### Size
+
+TextArea can have different sizes.
+
+```js live
+<Row gutter={1}>
+  <Col span={8}>
+    <TextArea size="sm" placeholder="sm" />
+  </Col>
+  <Col span={8}>
+    <TextArea size="md" placeholder="md" />
+  </Col>
+  <Col span={8}>
+    <TextArea size="lg" placeholder="lg" />
+  </Col>
+</Row>
+```
+
+### Error
+
+A textarea can indicate it has an error.
+
+```js live
+<Row gutter={1}>
+  <Col span={12}>
+    <TextArea hasError placeholder="Error..." />
+  </Col>
+  <Col span={12}>
+    <TextArea hasError placeholder="Error...">
+      Text indicating error
+    </TextArea>
+  </Col>
+</Row>
+```
+
+## Design Guidelines
+
+<DoDont
+  do={[
+    'Use TextArea to get multiline data input from a user.',
+    'Make use of a label when possible otherwise set aria-label.'
+  ]}
+  dont={[
+    'Use TextArea in an inaccessible way for screen readers.',
+    'Use TextArea when only a single line of data is required.'
+  ]}
+/>

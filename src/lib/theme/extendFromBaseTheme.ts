@@ -103,6 +103,9 @@ function extendColors(colors?: ThemeColors): Complete<ThemeColors> {
         .alpha(0.25)
         .rgb()
         .string(),
+    scrollbar: colors?.scrollbar || colors?.text || baseColors.black,
+    scrollbarDark:
+      colors?.scrollbarDark || colors?.textDark || baseColors.grey1,
 
     darkGrey: colors?.darkGrey || baseColors.darkGrey3,
     grey: colors?.grey || baseColors.grey3,

@@ -159,6 +159,8 @@ export interface ThemeColors {
   outline?: string;
   outlineDanger?: string;
   textSelection?: string;
+  scrollbar?: string;
+  scrollbarDark?: string;
 
   darkGrey?: string;
   grey?: string;

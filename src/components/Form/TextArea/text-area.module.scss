@@ -1,0 +1,91 @@
+@import '../../../common/mixins';
+
+.container {
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  line-height: 1;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 0.4rem;
+  }
+}
+
+.textarea {
+  @include input-mixin();
+  resize: none;
+}
+
+.no-autosize {
+  @include scrollbars(
+    var(--mvn-color-background-text),
+    var(--mvn-color-background-text-dark)
+  );
+  cursor: auto;
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    overflow-y: auto;
+  }
+}
+
+.sm {
+  .textarea {
+    font-size: 1.4rem;
+    padding: 0.8rem;
+  }
+
+  .text,
+  .label {
+    font-size: 1.4rem;
+  }
+}
+
+.md {
+  .textarea {
+    font-size: 1.6rem;
+    padding: 1.2rem;
+  }
+
+  .text,
+  .label {
+    font-size: 1.6rem;
+  }
+}
+
+.lg {
+  .textarea {
+    font-size: 1.8rem;
+    padding: 1.6rem;
+  }
+
+  .text,
+  .label {
+    font-size: 1.8rem;
+  }
+}
+
+.has-error {
+  .textarea {
+    border-color: var(--mvn-danger1);
+
+    &:focus {
+      border-color: var(--mvn-color-outline-danger);
+      box-shadow: 0 0 0 var(--mvn-size-outline) var(--mvn-color-outline-danger);
+    }
+  }
+
+  .textarea,
+  .text,
+  .label {
+    color: var(--mvn-color-text-danger);
+
+    :global(.mvn-dark) & {
+      color: var(--mvn-color-text-danger-dark);
+    }
+  }
+}
