@@ -1,3 +1,5 @@
+@import '../src/common/mixins';
+
 .nav {
   z-index: 10;
   position: sticky;
@@ -53,5 +55,26 @@
 
   a:last-child {
     padding-right: 0;
+  }
+}
+
+.toggle-container {
+  display: inline-block;
+  margin-left: 1rem;
+  position: relative;
+  width: 40px;
+}
+
+.toggle {
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scale(0.75);
+  transform-origin: top left;
+}
+
+@media (max-width: $mvn-media-lg - 0.01) {
+  .container {
+    padding: 0;
   }
 }

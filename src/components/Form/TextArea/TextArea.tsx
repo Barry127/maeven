@@ -57,6 +57,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 maxRows={maxRows}
                 ref={ref}
                 rows={rows}
+                aria-describedby={label ? labelId : undefined}
               />
             ) : (
               <textarea
@@ -66,6 +67,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 id={id}
                 ref={ref}
                 rows={rows}
+                aria-describedby={label ? labelId : undefined}
               />
             )}
           </label>

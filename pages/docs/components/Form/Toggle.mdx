@@ -1,0 +1,79 @@
+import { Description, DoDont, Meta, Props } from 'docsComponents';
+
+<Meta title="Toggle" />
+
+# Toggle
+
+<Description of="Toggle" />
+
+## Props
+
+<Props of="Toggle" />
+
+## Examples
+
+### Basic
+
+A basic usage of Toggle.
+
+```js live
+<Toggle>Children are placed next to the toggle.</Toggle>
+```
+
+### Disabled
+
+Toggles can be disabled.
+
+```js live
+<>
+  <Toggle disabled checked />
+</>
+```
+
+### Icons
+
+Toggles can have icons to indicate on and off states.
+
+```js live
+// import { check, x } from 'icon-packs/feather';
+
+<Toggle offIcon={x} onIcon={check} />
+```
+
+### Size
+
+Toggles can have different sizes.
+
+```js live
+// import { check, x } from 'icon-packs/feather';
+
+<Row gutter={1} align="center">
+  <Col span={8}>
+    <Toggle offIcon={x} onIcon={check} size="sm">
+      sm
+    </Toggle>
+  </Col>
+  <Col span={8}>
+    <Toggle offIcon={x} onIcon={check} size="md">
+      md
+    </Toggle>
+  </Col>
+  <Col span={8}>
+    <Toggle offIcon={x} onIcon={check} size="lg">
+      lg
+    </Toggle>
+  </Col>
+</Row>
+```
+
+## Design Guidelines
+
+<DoDont
+  do={[
+    'Use a toggle when the effect of state changes are immediate e.g. switch color theme.',
+    'Make use of a label when possible otherwise set aria-label.'
+  ]}
+  dont={[
+    'Use a toggle to check multiple items in a list. Checkboxes are used in that case.'
+  ]}
+/>

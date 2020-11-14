@@ -27,6 +27,7 @@
           "PasswordInput": "/docs/components/Form/PasswordInput",
           "TextArea": "/docs/components/Form/TextArea",
           "TextInput": "/docs/components/Form/TextInput",
+          "Toggle": "/docs/components/Form/Toggle",
           "TypeAheadInput": "/docs/components/Form/TypeAheadInput"
         }
       },

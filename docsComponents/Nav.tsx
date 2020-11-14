@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { Block, Col, Container, Link, Row, useDarkMode } from 'maeven';
+import { moon, sun } from 'icon-packs/feather';
+import { Block, Col, Container, Link, Toggle, Row, useDarkMode } from 'maeven';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
@@ -11,7 +12,7 @@ export const Nav: FC = () => {
 
   return (
     <Block element="nav" background="textBackground" className={classes.nav}>
-      <Container fluid>
+      <Container className={classes.container} fluid>
         <Row align="center">
           <Col>
             <NextLink href="/">
@@ -42,7 +43,17 @@ export const Nav: FC = () => {
             <Link href="https://github.com/Barry127/maeven" target="_blank">
               GitHub
             </Link>
-            <input type="checkbox" checked={isDark} onChange={toggleDark} />
+            <div className={classes['toggle-container']}>
+              &nbsp;
+              <Toggle
+                size="sm"
+                checked={!isDark}
+                onChange={toggleDark}
+                onIcon={sun}
+                offIcon={moon}
+                className={classes.toggle}
+              />
+            </div>
           </Col>
         </Row>
       </Container>

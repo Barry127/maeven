@@ -72,6 +72,32 @@ describe('Textarea', () => {
     });
   });
 
+  describe('label', () => {
+    it('has no aria-describedby by default', () => {
+      render(<TextArea />);
+      const textarea = document.querySelector('textarea');
+      expect(textarea).not.toHaveAttribute('aria-describedby');
+    });
+
+    it('has no aria-describedby by default with autoSize off', () => {
+      render(<TextArea autoSize={false} />);
+      const textarea = document.querySelector('textarea');
+      expect(textarea).not.toHaveAttribute('aria-describedby');
+    });
+
+    it('sets aria-describedby by when textarea has a label', () => {
+      render(<TextArea label="Label" />);
+      const textarea = document.querySelector('textarea');
+      expect(textarea).toHaveAttribute('aria-describedby');
+    });
+
+    it('sets aria-describedby by when textarea has a label with autoSize off', () => {
+      render(<TextArea autoSize={false} label="Label" />);
+      const textarea = document.querySelector('textarea');
+      expect(textarea).toHaveAttribute('aria-describedby');
+    });
+  });
+
   describe('size', () => {
     it('is md by default', () => {
       render(<TextArea />);

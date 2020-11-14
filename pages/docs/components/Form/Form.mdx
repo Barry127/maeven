@@ -21,6 +21,8 @@ const FullForm = () => {
   return (
     <Form onSubmit={(ev) => ev.preventDefault()}>
       <TextInput label="Username" icon={user} />
+      <PasswordInput label="Password" icon={lock} />
+      <TextArea label="Comment" />
       <FormField>
         <Button type="submit" buttonType="primary">
           Save

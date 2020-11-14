@@ -87,6 +87,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                   : undefined
               }
               type={type}
+              aria-describedby={label ? labelId : undefined}
             />
             {icon && (
               <Icon className={clsx(classes.icon, classes.left)} icon={icon} />

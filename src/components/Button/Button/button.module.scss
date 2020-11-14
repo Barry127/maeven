@@ -24,7 +24,6 @@ $semanticTypes: ('primary', 'success', 'warning', 'danger');
   &:focus {
     outline: none;
     z-index: 1;
-    border-color: var(--mvn-primary);
     box-shadow: 0 0 0 var(--mvn-size-outline) var(--mvn-color-outline);
   }
 

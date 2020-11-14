@@ -92,6 +92,20 @@ describe('TextInput', () => {
     });
   });
 
+  describe('label', () => {
+    it('has no aria-describedby by default', () => {
+      render(<TextInput />);
+      const input = document.querySelector('input');
+      expect(input).not.toHaveAttribute('aria-describedby');
+    });
+
+    it('sets aria-describedby by when input has a label', () => {
+      render(<TextInput label="Label" />);
+      const input = document.querySelector('input');
+      expect(input).toHaveAttribute('aria-describedby');
+    });
+  });
+
   describe('loading', () => {
     it('is not loading by default', () => {
       render(<TextInput iconRight={activity} />);
