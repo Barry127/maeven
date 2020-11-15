@@ -136,120 +136,132 @@
 
 .sm {
   .toggle {
-    border-radius: calc(1.6rem + 2px);
-    height: 3.2rem;
-    width: calc((2.6rem * 2) + 1px);
+    border-radius: 1.25rem;
+    height: 2.5rem;
+    width: calc(5rem - 8px);
+  }
+
+  &.has-label .toggle {
+    margin: 0.35rem 0;
+  }
+
+  &.has-children .toggle {
+    margin-right: 0.7rem;
   }
 
   .knob {
-    margin: calc(0.3rem - 1px);
-    height: 2.6rem;
-    width: 2.6rem;
+    margin: 2px;
+    height: calc(2.5rem - 6px);
+    width: calc(2.5rem - 6px);
   }
 
   .icon {
     text-align: center;
-    width: 2.6rem;
+    width: calc(2.5rem - 6px);
 
     &.on {
-      left: calc(0.3rem - 1px);
+      left: 2px;
     }
 
     &.off {
-      left: 2.4rem;
+      left: calc(2.5rem - 6px);
     }
   }
 
   .input:checked + .toggle .knob {
-    transform: translateX(calc(2.1rem + 1px));
+    transform: translateX(calc(2.5rem - 8px));
   }
 
   .toggle,
   .text {
     font-size: 1.4rem;
   }
-
-  &.has-children .toggle {
-    margin-right: 1rem;
-  }
 }
 
 .md {
   .toggle {
-    border-radius: calc(2rem + 2px);
-    height: 4rem;
-    width: calc((3.4rem * 2) + 1px);
+    border-radius: 1.4rem; //height / 2
+    height: 2.8rem; //1.75 * font-size
+    width: calc(5.6rem - 8px); // 2*height - 8px
+  }
+
+  &.has-label .toggle {
+    margin: 0.6rem 0; // (input-height - height) / 2
+  }
+
+  &.has-children .toggle {
+    margin-right: 0.8rem; // font-size / 2
   }
 
   .knob {
-    margin: calc(0.3rem - 1px);
-    height: 3.4rem;
-    width: 3.4rem;
+    margin: 2px;
+    height: calc(2.8rem - 6px); //height
+    width: calc(2.8rem - 6px); //height
   }
 
   .icon {
     text-align: center;
-    width: 3.4rem;
+    width: calc(2.8rem - 6px); //height
 
     &.on {
-      left: calc(0.3rem - 1px);
+      left: 2px;
     }
 
     &.off {
-      left: 3.1rem;
+      left: calc(2.8rem - 6px); //height
     }
   }
 
   .input:checked + .toggle .knob {
-    transform: translateX(calc(2.8rem + 1px));
+    transform: translateX(calc(2.8rem - 8px));
   }
 
   .toggle,
   .text {
     font-size: 1.6rem;
   }
-
-  &.has-children .toggle {
-    margin-right: 1.2rem;
-  }
 }
 
 .lg {
   .toggle {
-    border-radius: calc(2.4rem + 2px);
-    height: 4.8rem;
-    width: calc((4.2rem * 2) + 1px);
+    border-radius: 1.575rem;
+    height: 3.15rem;
+    width: calc(6.3rem - 8px);
+  }
+
+  &.has-label .toggle {
+    margin: 0.825rem 0;
+  }
+
+  &.has-children .toggle {
+    margin-right: 0.9rem;
   }
 
   .knob {
-    margin: calc(0.3rem - 1px);
-    height: 4.2rem;
-    width: 4.2rem;
+    margin: 2px;
+    height: calc(3.15rem - 6px);
+    width: calc(3.15rem - 6px);
   }
 
   .icon {
     text-align: center;
-    width: 4.2rem;
+    width: calc(3.15rem - 6px);
 
     &.on {
-      left: calc(0.3rem - 1px);
+      left: 2px;
     }
 
     &.off {
-      left: 3.9rem;
+      left: calc(3.15rem - 6px);
     }
   }
 
   .input:checked + .toggle .knob {
-    transform: translateX(calc(3.6rem + 1px));
+    transform: translateX(calc(3.15rem - 8px));
   }
 
   .toggle,
   .text {
     font-size: 1.8rem;
-  }
-
-  &.has-children .toggle {
-    margin-right: 1.35rem;
   }
 }

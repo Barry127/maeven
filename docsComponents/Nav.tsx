@@ -43,17 +43,13 @@ export const Nav: FC = () => {
             <Link href="https://github.com/Barry127/maeven" target="_blank">
               GitHub
             </Link>
-            <div className={classes['toggle-container']}>
-              &nbsp;
-              <Toggle
-                size="sm"
-                checked={!isDark}
-                onChange={toggleDark}
-                onIcon={sun}
-                offIcon={moon}
-                className={classes.toggle}
-              />
-            </div>
+            <Toggle
+              checked={!isDark}
+              onChange={toggleDark}
+              onIcon={sun}
+              offIcon={moon}
+              className={classes.toggle}
+            />
           </Col>
         </Row>
       </Container>

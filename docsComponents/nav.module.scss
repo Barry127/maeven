@@ -18,6 +18,7 @@
     font-weight: 500;
     padding: 0 1rem;
     color: var(--mvn-color-text) !important;
+    vertical-align: middle;
 
     :global(.mvn-dark) & {
       color: var(--mvn-color-text-dark) !important;
@@ -33,6 +34,10 @@
       :global(.mvn-dark) & {
         color: var(--mvn-color-text-primary-dark) !important;
       }
+    }
+
+    strong {
+      vertical-align: middle;
     }
   }
 }
@@ -58,19 +63,8 @@
   }
 }
 
-.toggle-container {
-  display: inline-block;
-  margin-left: 1rem;
-  position: relative;
-  width: 40px;
-}
-
 .toggle {
-  left: 0;
-  position: absolute;
-  top: 0;
-  transform: scale(0.75);
-  transform-origin: top left;
+  margin-left: 0.5em;
 }
 
 @media (max-width: $mvn-media-lg - 0.01) {

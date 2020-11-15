@@ -35,7 +35,10 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             'mvn--toggle',
             classes.container,
             classes[size],
-            { [classes['has-children']]: !!children },
+            {
+              [classes['has-label']]: !!label,
+              [classes['has-children']]: !!children
+            },
             className
           )}
           style={style}
@@ -44,6 +47,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             {...props}
             className={classes.input}
             disabled={disabled}
+            id={id}
             ref={ref}
             type="checkbox"
             aria-describedby={label ? labelId : undefined}
