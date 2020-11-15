@@ -1,3 +1,4 @@
+export * from './CheckBox'
 export * from './Form';
 export * from './PasswordInput';
 export * from './TextArea';

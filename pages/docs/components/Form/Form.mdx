@@ -18,12 +18,40 @@ A basic usage of Form.
 
 ```js live withRender
 const FullForm = () => {
+  const [tc, setTc] = useState(false);
+  const [news, setNews] = useState(true);
+
+  function toggleAll() {
+    if (tc && news) {
+      setTc(false);
+      setNews(false);
+    } else {
+      setTc(true);
+      setNews(true);
+    }
+  }
+
   return (
     <Form onSubmit={(ev) => ev.preventDefault()}>
       <TextInput label="Username" icon={user} />
       <PasswordInput label="Password" icon={lock} />
       <Toggle label="Toggle" />
       <TextArea label="Comment" />
+      <FormField>
+        <CheckBox
+          checked={tc && news}
+          indeterminate={tc !== news}
+          onChange={toggleAll}
+        >
+          Accept All
+        </CheckBox>
+        <CheckBox checked={tc} onChange={(ev) => setTc(ev.target.checked)}>
+          Accept Terms & Conditions
+        </CheckBox>
+        <CheckBox checked={news} onChange={(ev) => setNews(ev.target.checked)}>
+          Receive Newsletter
+        </CheckBox>
+      </FormField>
       <FormField>
         <Button type="submit" buttonType="primary">
           Save

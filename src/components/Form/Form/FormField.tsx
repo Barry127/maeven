@@ -26,6 +26,7 @@ export const FormField: FC<FormFieldProps> = ({
       className
     )}
     gutter={1}
+    wrap={false}
   >
     <Col
       className={classes.label}

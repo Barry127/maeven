@@ -23,6 +23,7 @@
         "basePath": "/docs/components/Form",
         "children": {
           "Form": "/docs/components/Form/Form",
+          "CheckBox": "/docs/components/Form/CheckBox",
           "FormField": "/docs/components/Form/FormField",
           "PasswordInput": "/docs/components/Form/PasswordInput",
           "TextArea": "/docs/components/Form/TextArea",

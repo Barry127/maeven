@@ -1,0 +1,77 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="CheckBox" />
+
+# CheckBox
+
+<Description of="CheckBox" />
+
+## Props
+
+<Props of="CheckBox" />
+
+## Examples
+
+### Basic
+
+A basic usage of CheckBox.
+
+```js live
+<CheckBox>Hello World!</CheckBox>
+```
+
+### Controlled
+
+A controlled CheckBox.
+
+```js live withRender
+const Controlled = (props) => {
+  const [checked, setChecked] = useState(true);
+  return (
+    <CheckBox
+      checked={checked}
+      onChange={(ev) => setChecked(ev.target.checked)}
+    >
+      Toggle me
+    </CheckBox>
+  );
+};
+
+render(<Controlled />);
+```
+
+### Disabled
+
+CheckBoxes can be disabled.
+
+```js live
+<CheckBox checked disabled>
+  Disabled
+</CheckBox>
+```
+
+### Size
+
+CheckBoxes can have different sizes.
+
+```js live
+<Row gutter={1}>
+  <Col span={24}>
+    <CheckBox size="sm">Small</CheckBox>
+  </Col>
+  <Col span={24}>
+    <CheckBox size="md">Medium</CheckBox>
+  </Col>
+  <Col span={24}>
+    <CheckBox size="lg">Large</CheckBox>
+  </Col>
+</Row>
+```
+
+### Error
+
+A CheckBox can indicate it has an error.
+
+```js live
+<CheckBox hasError>Text indicating error</CheckBox>
+```

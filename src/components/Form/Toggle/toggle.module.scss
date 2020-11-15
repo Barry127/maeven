@@ -180,35 +180,35 @@
 
 .md {
   .toggle {
-    border-radius: 1.4rem; //height / 2
-    height: 2.8rem; //1.75 * font-size
-    width: calc(5.6rem - 8px); // 2*height - 8px
+    border-radius: 1.4rem;
+    height: 2.8rem;
+    width: calc(5.6rem - 8px);
   }
 
   &.has-label .toggle {
-    margin: 0.6rem 0; // (input-height - height) / 2
+    margin: 0.6rem 0;
   }
 
   &.has-children .toggle {
-    margin-right: 0.8rem; // font-size / 2
+    margin-right: 0.8rem;
   }
 
   .knob {
     margin: 2px;
-    height: calc(2.8rem - 6px); //height
-    width: calc(2.8rem - 6px); //height
+    height: calc(2.8rem - 6px);
+    width: calc(2.8rem - 6px);
   }
 
   .icon {
     text-align: center;
-    width: calc(2.8rem - 6px); //height
+    width: calc(2.8rem - 6px);
 
     &.on {
       left: 2px;
     }
 
     &.off {
-      left: calc(2.8rem - 6px); //height
+      left: calc(2.8rem - 6px);
     }
   }
 
