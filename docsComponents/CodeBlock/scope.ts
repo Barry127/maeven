@@ -1,3 +1,4 @@
+import { code } from 'icon-packs/devicons';
 import {
   alignCenterSolid,
   alignLeftSolid,
@@ -58,6 +59,7 @@ export const scope = {
   check,
   checkCircle,
   circleSolid,
+  code,
   fileRegular,
   helpCircle,
   italicSolid,

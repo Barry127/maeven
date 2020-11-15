@@ -25,6 +25,7 @@
           "Form": "/docs/components/Form/Form",
           "CheckBox": "/docs/components/Form/CheckBox",
           "FormField": "/docs/components/Form/FormField",
+          "NativeSelect": "/docs/components/Form/NativeSelect",
           "PasswordInput": "/docs/components/Form/PasswordInput",
           "TextArea": "/docs/components/Form/TextArea",
           "TextInput": "/docs/components/Form/TextInput",

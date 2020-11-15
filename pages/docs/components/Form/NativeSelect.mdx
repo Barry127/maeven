@@ -1,0 +1,214 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="NativeSelect" />
+
+# NativeSelect
+
+<Description of="NativeSelect" />
+
+## Props
+
+<Props of="NativeSelect" />
+
+## Examples
+
+### Basic
+
+A basic usage of NativeSelect.
+
+```js live withRender
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(
+  <NativeSelect options={options} placeholder="Select something...">
+    Children are placed under the select.
+  </NativeSelect>
+);
+```
+
+### Controlled
+
+A controlled select.
+
+```js live withRender
+const options = [
+  { value: 'js', text: 'JavaScript' },
+  { value: 'java', text: 'Java' },
+  { value: 'php', text: 'PHP' },
+  { value: 'pl', text: 'Perl' },
+  { value: 'c', text: 'C' },
+  { value: 'lua', text: 'Lua' },
+  { value: 'cpp', text: 'C++' },
+  { value: 'rs', text: 'Rust' }
+];
+
+const Controlled = (props) => {
+  const [value, setValue] = useState('cpp');
+  return (
+    <NativeSelect
+      {...props}
+      value={value}
+      onChange={(ev) => setValue(ev.target.value)}
+    >
+      Value: <i>{value}</i>
+    </NativeSelect>
+  );
+};
+
+render(<Controlled options={options} placeholder="Select something..." />);
+```
+
+### Disabled
+
+Selects can be disabled.
+
+```js live withRender
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(<NativeSelect disabled options={options} placeholder="Disabled" />);
+```
+
+### Loading
+
+Select can have a loading state.
+
+```js live withRender
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(
+  <NativeSelect loading options={options} placeholder="Select something..." />
+);
+```
+
+### Icon
+
+Select can have an icon.
+
+```js live withRender
+// import { code } from 'icon-packs/devicons';
+
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(
+  <NativeSelect
+    icon={code}
+    options={options}
+    placeholder="Select something..."
+  />
+);
+```
+
+### Size
+
+Selects can have different sizes.
+
+```js live withRender
+// import { code } from 'icon-packs/devicons';
+
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(
+  <Row gutter={1}>
+    <Col span={12}>
+      <NativeSelect icon={code} options={options} size="sm" placeholder="sm" />
+    </Col>
+    <Col span={12}>
+      <NativeSelect options={options} size="sm" placeholder="sm" />
+    </Col>
+    <Col span={12}>
+      <NativeSelect icon={code} options={options} size="md" placeholder="md" />
+    </Col>
+    <Col span={12}>
+      <NativeSelect options={options} size="md" placeholder="md" />
+    </Col>
+    <Col span={12}>
+      <NativeSelect icon={code} options={options} size="lg" placeholder="lg" />
+    </Col>
+    <Col span={12}>
+      <NativeSelect options={options} size="lg" placeholder="lg" />
+    </Col>
+  </Row>
+);
+```
+
+### Error
+
+A Select can indicate it has an error.
+
+```js live withRender
+// import { x } from 'icon-packs/feather';
+
+const options = [
+  { value: 'JavaScript' },
+  { value: 'Java' },
+  { value: 'PHP' },
+  { value: 'Perl' },
+  { value: 'C' },
+  { value: 'Lua' },
+  { value: 'C++' },
+  { value: 'Rust' }
+];
+
+render(
+  <Row gutter={1}>
+    <Col span={12}>
+      <NativeSelect
+        hasError
+        icon={x}
+        options={options}
+        placeholder="error..."
+      />
+    </Col>
+    <Col span={12}>
+      <NativeSelect hasError options={options} placeholder="error...">
+        Text indicating error
+      </NativeSelect>
+    </Col>
+  </Row>
+);
+```

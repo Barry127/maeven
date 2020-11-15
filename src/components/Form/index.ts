@@ -1,5 +1,6 @@
 export * from './CheckBox'
 export * from './Form';
+export * from './NativeSelect'
 export * from './PasswordInput';
 export * from './TextArea';
 export * from './TextInput';
