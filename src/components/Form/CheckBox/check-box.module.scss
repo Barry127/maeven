@@ -174,7 +174,7 @@
 
   &:disabled {
     & + .box {
-      background-color: var(--mvn-color-background);
+      background-color: var(--mvn-grey1);
       background-image: none;
       pointer-events: none;
 

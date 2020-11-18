@@ -12,9 +12,11 @@ export const ${name} = forwardRef<
   HTMLDivElement,
   ${name}Props
 >(({ children, className, ...props }, ref) => (
-  <div {...props} className={clsx('mvn--${dashify(name)}', classes.${dashify(
-    name
-  )}, className)} ref={ref}>
+  <div {...props} className={clsx('mvn--${dashify(name)}', ${
+    dashify(name).includes('-')
+      ? "classes['" + dashify(name) + "']"
+      : 'classes.' + dashify(name)
+  }, className)} ref={ref}>
     {children}
   </div>
 ));
@@ -57,21 +59,21 @@ describe('${name}', () => {
 
   it('sets className', () => {
     render(
-      <${name} className="${name.toLowerCase()}-class">Hello world!</${name}>
+      <${name} className="${dashify(name)}-class">Hello world!</${name}>
     );
     const element = document.querySelector('.mvn--${dashify(name)}')
-    expect(element).toHaveClass('${name.toLowerCase()}-class');
+    expect(element).toHaveClass('${dashify(name)}-class');
   });
 
   it('passes props', () => {
     render(
-      <${name} id="${name}Id" data-test="${name.toLowerCase()}-data">
+      <${name} id="${name}Id" data-test="${dashify(name)}-data">
         Hello world!
       </${name}>
     );
     const element = document.querySelector('.mvn--${dashify(name)}')
     expect(element).toHaveAttribute('id', '${name}Id');
-    expect(element).toHaveAttribute('data-test', '${name.toLowerCase()}-data');
+    expect(element).toHaveAttribute('data-test', '${dashify(name)}-data');
   });
 
   it.skip('', () => {});

@@ -21,6 +21,12 @@ const FullForm = () => {
   const [tc, setTc] = useState(false);
   const [news, setNews] = useState(true);
 
+  const radioOptions = [
+    { label: 'Javascript', value: 'js' },
+    { label: 'Typescript', value: 'ts' },
+    { label: 'Coffescript', value: 'coffee' }
+  ];
+
   function toggleAll() {
     if (tc && news) {
       setTc(false);
@@ -35,6 +41,7 @@ const FullForm = () => {
     <Form onSubmit={(ev) => ev.preventDefault()}>
       <TextInput label="Username" icon={user} />
       <PasswordInput label="Password" icon={lock} />
+      <RadioGroup label="Flavour" options={radioOptions} name="flavour" />
       <Toggle label="Toggle" />
       <TextArea label="Comment" />
       <FormField>

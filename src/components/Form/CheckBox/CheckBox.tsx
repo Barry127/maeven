@@ -101,7 +101,7 @@ export const CheckBox = forwardRef<HTMLInputElement, CheckBoxProps>(
 );
 
 export interface CheckBoxProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   /** Wether the CheckBox is checked */
   checked?: boolean;
 
