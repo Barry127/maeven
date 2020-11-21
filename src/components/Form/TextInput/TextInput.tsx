@@ -129,7 +129,7 @@ export interface TextInputProps
   /** Label text */
   label?: ReactNode;
 
-  /** Wether button has loading state */
+  /** Wether input has loading state */
   loading?: boolean;
 
   /** Element to render on right side of input */

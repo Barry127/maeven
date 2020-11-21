@@ -1,4 +1,4 @@
-import { code } from 'icon-packs/devicons';
+import { code, java, javascript1, perl, php, rust } from 'icon-packs/devicons';
 import {
   alignCenterSolid,
   alignLeftSolid,
@@ -63,11 +63,16 @@ export const scope = {
   fileRegular,
   helpCircle,
   italicSolid,
+  java,
+  javascript1,
   lock,
   logoGithub,
   markGithub,
+  perl,
+  php,
   plusSolid,
   refreshCw,
+  rust,
   tag,
   timesSolid,
   underlineSolid,

@@ -21,6 +21,17 @@ const FullForm = () => {
   const [tc, setTc] = useState(false);
   const [news, setNews] = useState(true);
 
+  const options = [
+    { value: 'JavaScript' },
+    { value: 'Java' },
+    { value: 'PHP' },
+    { value: 'Perl' },
+    { value: 'C' },
+    { value: 'Lua' },
+    { value: 'C++' },
+    { value: 'Rust' }
+  ];
+
   const radioOptions = [
     { label: 'Javascript', value: 'js' },
     { label: 'Typescript', value: 'ts' },
@@ -41,6 +52,79 @@ const FullForm = () => {
     <Form onSubmit={(ev) => ev.preventDefault()}>
       <TextInput label="Username" icon={user} />
       <PasswordInput label="Password" icon={lock} />
+      <Select label="Language" options={options} />
+      <RadioGroup label="Flavour" options={radioOptions} name="flavour" />
+      <Toggle label="Toggle" />
+      <TextArea label="Comment" />
+      <FormField>
+        <CheckBox
+          checked={tc && news}
+          indeterminate={tc !== news}
+          onChange={toggleAll}
+        >
+          Accept All
+        </CheckBox>
+        <CheckBox checked={tc} onChange={(ev) => setTc(ev.target.checked)}>
+          Accept Terms & Conditions
+        </CheckBox>
+        <CheckBox checked={news} onChange={(ev) => setNews(ev.target.checked)}>
+          Receive Newsletter
+        </CheckBox>
+      </FormField>
+      <FormField>
+        <Button type="submit" buttonType="primary">
+          Save
+        </Button>
+        <Button type="reset">Cancel</Button>
+      </FormField>
+    </Form>
+  );
+};
+
+render(<FullForm />);
+```
+
+### Vertical
+
+A form can have a vertical layout.
+
+```js live withRender
+const FullForm = () => {
+  const [tc, setTc] = useState(false);
+  const [news, setNews] = useState(true);
+
+  const options = [
+    { value: 'JavaScript' },
+    { value: 'Java' },
+    { value: 'PHP' },
+    { value: 'Perl' },
+    { value: 'C' },
+    { value: 'Lua' },
+    { value: 'C++' },
+    { value: 'Rust' }
+  ];
+
+  const radioOptions = [
+    { label: 'Javascript', value: 'js' },
+    { label: 'Typescript', value: 'ts' },
+    { label: 'Coffescript', value: 'coffee' }
+  ];
+
+  function toggleAll() {
+    if (tc && news) {
+      setTc(false);
+      setNews(false);
+    } else {
+      setTc(true);
+      setNews(true);
+    }
+  }
+
+  return (
+    <Form layout="vertical" onSubmit={(ev) => ev.preventDefault()}>
+      <TextInput label="Username" icon={user} />
+      <PasswordInput label="Password" icon={lock} />
+      <Select label="Language" options={options} />
       <RadioGroup label="Flavour" options={radioOptions} name="flavour" />
       <Toggle label="Toggle" />
       <TextArea label="Comment" />

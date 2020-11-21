@@ -1,0 +1,46 @@
+import { Meta } from 'docsComponents';
+
+<Meta title="useFocus" />
+
+# useFocus
+
+useFocus keeps a local state hasFocus based on onFocus and onBlur props for a DOM Element. If given props contain an onFocus or onBlur handler it is wrapped.
+
+## signature
+
+```ts
+interface FocusEventHandlers<T = Element> {
+  onBlur: FocusEventHandler<T>;
+  onFocus: FocusEventHandler<T>;
+}
+
+function useFocus<T = Element>(
+  props: Partial<FocusEventHandlers<T>> = {}
+): [boolean, FocusEventHandlers<T>];
+```
+
+## Example
+
+Use case for useFocus.
+
+```js live withRender
+const Example = (props) => {
+  const [hasFocus, focusProps] = useFocus(props);
+
+  return (
+    <Card style={hasFocus ? { border: '1px solid var(--mvn-primary)' } : {}}>
+      <P>This card will indicate when the button has focus.</P>
+      <Button {...props} {...focusProps}>
+        Focus Me
+      </Button>
+    </Card>
+  );
+};
+
+render(
+  <Example
+    onFocus={(ev) => console.log('onFocus', ev.target)}
+    onBlur={(ev) => console.log('onBlur', ev.target)}
+  />
+);
+```

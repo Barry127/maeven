@@ -29,6 +29,7 @@
           "PasswordInput": "/docs/components/Form/PasswordInput",
           "RadioButton": "/docs/components/Form/RadioButton",
           "RadioGroup": "/docs/components/Form/RadioGroup",
+          "Select": "/docs/components/Form/Select",
           "TextArea": "/docs/components/Form/TextArea",
           "TextInput": "/docs/components/Form/TextInput",
           "Toggle": "/docs/components/Form/Toggle",
@@ -74,6 +75,7 @@
     "basePath": "/docs/hooks",
     "children": {
       "useDarkMode": "/docs/hooks/useDarkMode",
+      "useFocus": "/docs/hooks/useFocus",
       "useId": "/docs/hooks/useId",
       "useOutline": "/docs/hooks/useOutline"
     }

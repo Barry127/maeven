@@ -3,6 +3,7 @@ export * from './Form';
 export * from './NativeSelect'
 export * from './PasswordInput';
 export * from './RadioButton'
+export * from './Select'
 export * from './TextArea';
 export * from './TextInput';
 export * from './Toggle'
