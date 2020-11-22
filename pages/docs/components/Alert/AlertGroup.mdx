@@ -1,0 +1,77 @@
+import { Description, Meta, Props } from 'docsComponents';
+import { Alert } from 'maeven';
+
+<Meta title="AlertGroup" />
+
+# AlertGroup
+
+<Description of="AlertGroup" />
+
+<Alert type="warning" title="Warning!" closable={false}>
+  AlertGroup depends on its children to render correctly. Uncontrolled Alerts
+  give unpredictable results. Always use controlled Alerts!
+</Alert>
+
+## Props
+
+<Props of="AlertGroup" />
+
+## Examples
+
+### Controlled
+
+An AlertGroup of controlled Alerts.
+
+```js live withRender
+const ControlledGroup = () => {
+  const [showSuccess, setSuccess] = useState(true);
+  const [showInfo, setInfo] = useState(true);
+  const [showWarning, setWarning] = useState(true);
+  const [showDanger, setDanger] = useState(true);
+
+  return (
+    <AlertGroup>
+      <Alert
+        isOpen={showSuccess}
+        onClose={() => {
+          setSuccess(false);
+        }}
+        type="success"
+        title="Alert Title"
+      >
+        Success Alert
+      </Alert>
+      <Alert
+        isOpen={showInfo}
+        onClose={() => {
+          setInfo(false);
+        }}
+        type="info"
+      >
+        Info Alert
+      </Alert>
+      <Alert
+        isOpen={showWarning}
+        onClose={() => {
+          setWarning(false);
+        }}
+        type="warning"
+      >
+        Warning Alert
+      </Alert>
+      <Alert
+        isOpen={showDanger}
+        onClose={() => {
+          setDanger(false);
+        }}
+        type="danger"
+        closable={false}
+      >
+        Danger Alert (always closable in group)
+      </Alert>
+    </AlertGroup>
+  );
+};
+
+render(<ControlledGroup />);
+```

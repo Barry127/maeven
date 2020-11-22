@@ -34,6 +34,10 @@ $alert-types: (
 
 .content {
   flex-grow: 1;
+
+  .title {
+    color: inherit;
+  }
 }
 
 .close {
@@ -45,18 +49,18 @@ $alert-types: (
 @each $name, $color in $alert-types {
   .#{$name} {
     border-color: var(--mvn-#{$color});
-    background: var(--mvn-#{$color}-w85);
+    background-color: var(--mvn-#{$color}-w85);
 
     .icon {
       color: var(--mvn-color-text-#{$color});
     }
 
     :global(.mvn-dark) & {
-      background: var(--mvn-#{$color});
-      color: var(--mvn-color-text-background-#{$color});
+      background-color: var(--mvn-#{$color});
+      color: var(--mvn-#{$color}-background-text);
 
       .icon {
-        color: var(--mvn-color-text-background-#{$color});
+        color: var(--mvn-#{$color}-background-text);
       }
     }
   }

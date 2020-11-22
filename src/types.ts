@@ -235,6 +235,8 @@ export interface ThemeColors {
 export interface ThemeIconOverrides {
   check?: MaevenIcon;
   chevronDown?: MaevenIcon;
+  chevronLeft?: MaevenIcon;
+  chevronRight?: MaevenIcon;
   chevronUp?: MaevenIcon;
   close?: MaevenIcon;
   danger?: MaevenIcon;

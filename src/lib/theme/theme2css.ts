@@ -213,18 +213,22 @@ export function theme2css(theme: Theme): string {
   --mvn-light-grey-l30: ${color(theme.colors.lightGrey)
     .lighten(0.3)
     .toString()};
+  --mvn-primary-d15: ${color(theme.colors.primary).darken(0.15).toString()};
   --mvn-primary-l30: ${color(theme.colors.primary).lighten(0.3).toString()};
   --mvn-primary-w85: ${color(theme.colors.primary)
     .mix(color(theme.colors.white), 0.85)
     .toString()};
+  --mvn-success-d15: ${color(theme.colors.success).darken(0.15).toString()};
   --mvn-success-l30: ${color(theme.colors.success).lighten(0.3).toString()};
   --mvn-success-w85: ${color(theme.colors.success)
     .mix(color(theme.colors.white), 0.85)
     .toString()};
+  --mvn-warning-d15: ${color(theme.colors.warning).darken(0.15).toString()};
   --mvn-warning-l30: ${color(theme.colors.warning).lighten(0.3).toString()};
   --mvn-warning-w85: ${color(theme.colors.warning)
     .mix(color(theme.colors.white), 0.85)
     .toString()};
+  --mvn-danger-d15: ${color(theme.colors.danger).darken(0.15).toString()};
   --mvn-danger-l30: ${color(theme.colors.danger).lighten(0.3).toString()};
   --mvn-danger-w85: ${color(theme.colors.danger)
     .mix(color(theme.colors.white), 0.85)

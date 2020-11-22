@@ -7,7 +7,8 @@
       "Alert": {
         "basePath": "/docs/components/Alert",
         "children": {
-          "Alert": "/docs/components/Alert/Alert"
+          "Alert": "/docs/components/Alert/Alert",
+          "AlertGroup": "/docs/components/Alert/AlertGroup"
         }
       },
       "Block": "/docs/components/Block",
