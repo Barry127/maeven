@@ -236,9 +236,14 @@ export interface ThemeIconOverrides {
   check?: MaevenIcon;
   chevronDown?: MaevenIcon;
   chevronUp?: MaevenIcon;
+  close?: MaevenIcon;
+  danger?: MaevenIcon;
   indeterminate?: MaevenIcon;
+  info?: MaevenIcon;
   passwordHide?: MaevenIcon;
   passwordShow?: MaevenIcon;
+  success?: MaevenIcon;
+  warning?: MaevenIcon;
 }
 
 export interface ThemeSizes {

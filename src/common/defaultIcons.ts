@@ -3,9 +3,10 @@ import { MaevenIcon } from '../types';
 /**
  * Default Icons used for components.
  *
- * check, chevronDown, chevronUp minus, passwordShow,
- * passwordHide icons are licensed under the MIT License by
- * Feather Icons: https://feathericons.com
+ * check, chevronDown, chevronUp, close, danger, info,
+ *  minus, passwordShow, passwordHide, success, warning
+ * icons are licensed under the MIT License by Feather
+ * Icons: https://feathericons.com
  */
 
 export const check: MaevenIcon = {
@@ -72,6 +73,127 @@ export const chevronUp: MaevenIcon = {
       tag: 'polyline',
       attrs: {
         points: '18 15 12 9 6 15'
+      }
+    }
+  ]
+};
+
+export const close: MaevenIcon = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'line',
+      attrs: {
+        x1: '18',
+        y1: '6',
+        x2: '6',
+        y2: '18'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '6',
+        y1: '6',
+        x2: '18',
+        y2: '18'
+      }
+    }
+  ]
+};
+
+export const danger: MaevenIcon = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'circle',
+      attrs: {
+        cx: '12',
+        cy: '12',
+        r: '10'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '15',
+        y1: '9',
+        x2: '9',
+        y2: '15'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '9',
+        y1: '9',
+        x2: '15',
+        y2: '15'
+      }
+    }
+  ]
+};
+
+export const info: MaevenIcon = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'circle',
+      attrs: {
+        cx: '12',
+        cy: '12',
+        r: '10'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '12',
+        y1: '16',
+        x2: '12',
+        y2: '12'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '12',
+        y1: '8',
+        x2: '12.01',
+        y2: '8'
       }
     }
   ]
@@ -147,5 +269,76 @@ export const passwordShow: MaevenIcon = {
       attrs: { d: 'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z' }
     },
     { tag: 'circle', attrs: { cx: '12', cy: '12', r: '3' } }
+  ]
+};
+
+export const success: MaevenIcon = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'path',
+      attrs: {
+        d: 'M22 11.08V12a10 10 0 1 1-5.93-9.14'
+      }
+    },
+    {
+      tag: 'polyline',
+      attrs: {
+        points: '22 4 12 14.01 9 11.01'
+      }
+    }
+  ]
+};
+
+export const warning: MaevenIcon = {
+  tag: 'svg',
+  attrs: {
+    xmlns: 'http://www.w3.org/2000/svg',
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round'
+  },
+  children: [
+    {
+      tag: 'path',
+      attrs: {
+        d:
+          'M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '12',
+        y1: '9',
+        x2: '12',
+        y2: '13'
+      }
+    },
+    {
+      tag: 'line',
+      attrs: {
+        x1: '12',
+        y1: '17',
+        x2: '12.01',
+        y2: '17'
+      }
+    }
   ]
 };

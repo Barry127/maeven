@@ -4,6 +4,12 @@
     "isOpen": true,
     "basePath": "/docs/components",
     "children": {
+      "Alert": {
+        "basePath": "/docs/components/Alert",
+        "children": {
+          "Alert": "/docs/components/Alert/Alert"
+        }
+      },
       "Block": "/docs/components/Block",
       "Button": {
         "basePath": "/docs/components/Button",

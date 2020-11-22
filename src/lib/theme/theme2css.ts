@@ -214,9 +214,21 @@ export function theme2css(theme: Theme): string {
     .lighten(0.3)
     .toString()};
   --mvn-primary-l30: ${color(theme.colors.primary).lighten(0.3).toString()};
+  --mvn-primary-w85: ${color(theme.colors.primary)
+    .mix(color(theme.colors.white), 0.85)
+    .toString()};
   --mvn-success-l30: ${color(theme.colors.success).lighten(0.3).toString()};
+  --mvn-success-w85: ${color(theme.colors.success)
+    .mix(color(theme.colors.white), 0.85)
+    .toString()};
   --mvn-warning-l30: ${color(theme.colors.warning).lighten(0.3).toString()};
+  --mvn-warning-w85: ${color(theme.colors.warning)
+    .mix(color(theme.colors.white), 0.85)
+    .toString()};
   --mvn-danger-l30: ${color(theme.colors.danger).lighten(0.3).toString()};
+  --mvn-danger-w85: ${color(theme.colors.danger)
+    .mix(color(theme.colors.white), 0.85)
+    .toString()};
 
   --mvn-black-background-text: ${theme.colors.blackBackgroundText};
   --mvn-white-background-text: ${theme.colors.whiteBackgroundText};

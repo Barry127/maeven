@@ -70,7 +70,7 @@ describe('NativeSelect', () => {
       expect(polyLine).not.toBeInTheDocument();
     });
 
-    it('overrides check icon from theme', () => {
+    it('overrides chevronDown icon from theme', () => {
       const theme = {
         ...maeven,
         iconOverrides: {

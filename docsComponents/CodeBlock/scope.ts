@@ -23,6 +23,7 @@ import {
   helpCircle,
   lock,
   refreshCw,
+  shieldOff,
   tag,
   user,
   x
@@ -73,6 +74,7 @@ export const scope = {
   plusSolid,
   refreshCw,
   rust,
+  shieldOff,
   tag,
   timesSolid,
   underlineSolid,
