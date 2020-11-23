@@ -242,6 +242,8 @@ export interface ThemeIconOverrides {
   danger?: MaevenIcon;
   indeterminate?: MaevenIcon;
   info?: MaevenIcon;
+  maximize?: MaevenIcon;
+  minimize?: MaevenIcon;
   passwordHide?: MaevenIcon;
   passwordShow?: MaevenIcon;
   success?: MaevenIcon;

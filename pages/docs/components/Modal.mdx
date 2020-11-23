@@ -1,0 +1,58 @@
+import { Description, Meta, Props } from 'docsComponents';
+import { Alert } from 'maeven';
+
+<Meta title="Modal" />
+
+# Modal
+
+<Description of="Modal" />
+
+<Alert type="warning" title="Warning!" closable={false}>
+  Modal relies on resize-observers. Older browsers need a polyfill.
+</Alert>
+
+## Props
+
+<Props of="Modal" />
+
+## Examples
+
+### Basic
+
+A basic usage of Modal.
+
+```js live withRender
+const ModalComp = () => {
+  [isOpen, setOpen] = useState(false);
+
+  return (
+    <>
+      <Modal
+        icon={userCircleSolid}
+        title="Hello World"
+        isOpen={isOpen}
+        maximizable
+        onClose={() => setOpen(false)}
+        color="primary"
+      >
+        <P>
+          Don't be too proud of this technological terror you've constructed.
+          The ability to destroy a planet is insignificant next to the power of
+          the Force. But with the blast shield down, I can't even see! How am I
+          supposed to fight?
+        </P>
+        <Ol>
+          <Li>
+            You are a part of the Rebel Alliance and a traitor! Take her away!
+          </Li>
+          <Li>The Force is strong with this one. I have you now.</Li>
+          <Li>He is here.</Li>
+        </Ol>
+      </Modal>
+      <Button onClick={() => setOpen(true)}>Open</Button>
+    </>
+  );
+};
+
+render(<ModalComp />);
+```

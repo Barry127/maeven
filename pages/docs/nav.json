@@ -73,6 +73,7 @@
       },
       "Icon": "/docs/components/Icon",
       "Link": "/docs/components/Link",
+      "Modal": "/docs/components/Modal",
       "Spinner": "/docs/components/Spinner",
       "ThemeProvider": "/docs/components/ThemeProvider"
     }
