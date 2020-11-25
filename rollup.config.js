@@ -49,7 +49,7 @@ export default {
     'react-dom',
     'react-hooks-global-state',
     'react-spring',
-    'react-spring/renderprops',
+    'react-spring/renderprops.cjs',
     'react-use-measure'
   ]
 };

@@ -23,5 +23,5 @@
     "outDir": "build"
   },
   "include": ["next-env.d.ts", "src"],
-  "exclude": ["src/**/*.spec.ts{,x}"]
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx"]
 }
