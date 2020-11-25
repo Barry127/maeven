@@ -82,6 +82,7 @@
     "react-dom": "^16.13.1",
     "react-live": "^2.2.2",
     "react-test-renderer": "^16.14.0",
+    "require-unpkg": "^0.5.2",
     "resize-observer-polyfill": "^1.5.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.32.0",

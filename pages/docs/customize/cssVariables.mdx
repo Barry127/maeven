@@ -1,0 +1,302 @@
+import { Meta } from 'docsComponents';
+
+<Meta title="Icons" />
+
+# CSS Variables
+
+Maeven will set most theme options als css variables so consistent styling is easy to extend in your own custom classes. Below a list of all Maeven CSS variables.
+
+## Base
+
+| Name         | Description                                                                 |
+| :----------- | :-------------------------------------------------------------------------- |
+| `--mvn-base` | Base size for all theme. This is the value `1rem` will be. defaults to 10px |
+
+## Animations
+
+| Name                               | Description                             |
+| :--------------------------------- | :-------------------------------------- |
+| `--mvn-transition-duration`        | Default duration for transitions        |
+| `--mvn-transition-timing-function` | Default timing function for transitions |
+
+## Colors
+
+| Name                                   | Description                                                                                                                                              |
+| :------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--mvn-black`                          | <span style={{color: 'var(--mvn-black)'}}>&#9632;</span> Theme black color                                                                               |
+| `--mvn-white`                          | <span style={{color: 'var(--mvn-white)'}}>&#9632;</span> Theme white color                                                                               |
+| `--mvn-dark-grey1`                     | <span style={{color: 'var(--mvn-dark-grey1)'}}>&#9632;</span> Theme lightest dark grey color                                                             |
+| `--mvn-dark-grey2`                     | <span style={{color: 'var(--mvn-dark-grey2)'}}>&#9632;</span> Theme light dark grey color                                                                |
+| `--mvn-dark-grey3`                     | <span style={{color: 'var(--mvn-dark-grey3)'}}>&#9632;</span> Theme dark grey color                                                                      |
+| `--mvn-dark-grey4`                     | <span style={{color: 'var(--mvn-dark-grey4)'}}>&#9632;</span> Theme dark dark grey color                                                                 |
+| `--mvn-dark-grey5`                     | <span style={{color: 'var(--mvn-dark-grey5)'}}>&#9632;</span> Theme darkest dark grey color                                                              |
+| `--mvn-grey1`                          | <span style={{color: 'var(--mvn-grey1)'}}>&#9632;</span> Theme lightest grey color                                                                       |
+| `--mvn-grey2`                          | <span style={{color: 'var(--mvn-grey2)'}}>&#9632;</span> Theme light grey color                                                                          |
+| `--mvn-grey3`                          | <span style={{color: 'var(--mvn-grey3)'}}>&#9632;</span> Theme grey color                                                                                |
+| `--mvn-grey4`                          | <span style={{color: 'var(--mvn-grey4)'}}>&#9632;</span> Theme dark grey color                                                                           |
+| `--mvn-grey5`                          | <span style={{color: 'var(--mvn-grey5)'}}>&#9632;</span> Theme darkest grey color                                                                        |
+| `--mvn-light-grey1`                    | <span style={{color: 'var(--mvn-light-grey1)'}}>&#9632;</span> Theme lightest light grey color                                                           |
+| `--mvn-light-grey2`                    | <span style={{color: 'var(--mvn-light-grey2)'}}>&#9632;</span> Theme light light grey color                                                              |
+| `--mvn-light-grey3`                    | <span style={{color: 'var(--mvn-light-grey3)'}}>&#9632;</span> Theme light grey color                                                                    |
+| `--mvn-light-grey4`                    | <span style={{color: 'var(--mvn-light-grey4)'}}>&#9632;</span> Theme dark light grey color                                                               |
+| `--mvn-light-grey5`                    | <span style={{color: 'var(--mvn-light-grey5)'}}>&#9632;</span> Theme darkest light grey color                                                            |
+| `--mvn-red1`                           | <span style={{color: 'var(--mvn-red1)'}}>&#9632;</span> Theme lightest red color                                                                         |
+| `--mvn-red2`                           | <span style={{color: 'var(--mvn-red2)'}}>&#9632;</span> Theme light red color                                                                            |
+| `--mvn-red3`                           | <span style={{color: 'var(--mvn-red3)'}}>&#9632;</span> Theme red color                                                                                  |
+| `--mvn-red4`                           | <span style={{color: 'var(--mvn-red4)'}}>&#9632;</span> Theme dark red color                                                                             |
+| `--mvn-red5`                           | <span style={{color: 'var(--mvn-red5)'}}>&#9632;</span> Theme darkest red color                                                                          |
+| `--mvn-orange1`                        | <span style={{color: 'var(--mvn-orange1)'}}>&#9632;</span> Theme lightest orange color                                                                   |
+| `--mvn-orange2`                        | <span style={{color: 'var(--mvn-orange2)'}}>&#9632;</span> Theme light orange color                                                                      |
+| `--mvn-orange3`                        | <span style={{color: 'var(--mvn-orange3)'}}>&#9632;</span> Theme orange color                                                                            |
+| `--mvn-orange4`                        | <span style={{color: 'var(--mvn-orange4)'}}>&#9632;</span> Theme dark orange color                                                                       |
+| `--mvn-orange5`                        | <span style={{color: 'var(--mvn-orange5)'}}>&#9632;</span> Theme darkest orange color                                                                    |
+| `--mvn-yellow1`                        | <span style={{color: 'var(--mvn-yellow1)'}}>&#9632;</span> Theme lightest yellow color                                                                   |
+| `--mvn-yellow2`                        | <span style={{color: 'var(--mvn-yellow2)'}}>&#9632;</span> Theme light yellow color                                                                      |
+| `--mvn-yellow3`                        | <span style={{color: 'var(--mvn-yellow3)'}}>&#9632;</span> Theme yellow color                                                                            |
+| `--mvn-yellow4`                        | <span style={{color: 'var(--mvn-yellow4)'}}>&#9632;</span> Theme dark yellow color                                                                       |
+| `--mvn-yellow5`                        | <span style={{color: 'var(--mvn-yellow5)'}}>&#9632;</span> Theme darkest yellow color                                                                    |
+| `--mvn-green1`                         | <span style={{color: 'var(--mvn-green1)'}}>&#9632;</span> Theme lightest green color                                                                     |
+| `--mvn-green2`                         | <span style={{color: 'var(--mvn-green2)'}}>&#9632;</span> Theme light green color                                                                        |
+| `--mvn-green3`                         | <span style={{color: 'var(--mvn-green3)'}}>&#9632;</span> Theme green color                                                                              |
+| `--mvn-green4`                         | <span style={{color: 'var(--mvn-green4)'}}>&#9632;</span> Theme dark green color                                                                         |
+| `--mvn-green5`                         | <span style={{color: 'var(--mvn-green5)'}}>&#9632;</span> Theme darkest green color                                                                      |
+| `--mvn-teal1`                          | <span style={{color: 'var(--mvn-teal1)'}}>&#9632;</span> Theme lightest teal color                                                                       |
+| `--mvn-teal2`                          | <span style={{color: 'var(--mvn-teal2)'}}>&#9632;</span> Theme light teal color                                                                          |
+| `--mvn-teal3`                          | <span style={{color: 'var(--mvn-teal3)'}}>&#9632;</span> Theme teal color                                                                                |
+| `--mvn-teal4`                          | <span style={{color: 'var(--mvn-teal4)'}}>&#9632;</span> Theme dark teal color                                                                           |
+| `--mvn-teal5`                          | <span style={{color: 'var(--mvn-teal5)'}}>&#9632;</span> Theme darkest red color                                                                         |
+| `--mvn-blue1`                          | <span style={{color: 'var(--mvn-blue1)'}}>&#9632;</span> Theme lightest blue color                                                                       |
+| `--mvn-blue2`                          | <span style={{color: 'var(--mvn-blue2)'}}>&#9632;</span> Theme light blue color                                                                          |
+| `--mvn-blue3`                          | <span style={{color: 'var(--mvn-blue3)'}}>&#9632;</span> Theme blue color                                                                                |
+| `--mvn-blue4`                          | <span style={{color: 'var(--mvn-blue4)'}}>&#9632;</span> Theme dark blue color                                                                           |
+| `--mvn-blue5`                          | <span style={{color: 'var(--mvn-blue5)'}}>&#9632;</span> Theme darkest blue color                                                                        |
+| `--mvn-indigo1`                        | <span style={{color: 'var(--mvn-indigo1)'}}>&#9632;</span> Theme lightest indigo color                                                                   |
+| `--mvn-indigo2`                        | <span style={{color: 'var(--mvn-indigo2)'}}>&#9632;</span> Theme light indigo color                                                                      |
+| `--mvn-indigo3`                        | <span style={{color: 'var(--mvn-indigo3)'}}>&#9632;</span> Theme indigo color                                                                            |
+| `--mvn-indigo4`                        | <span style={{color: 'var(--mvn-indigo4)'}}>&#9632;</span> Theme dark indigo color                                                                       |
+| `--mvn-indigo5`                        | <span style={{color: 'var(--mvn-indigo5)'}}>&#9632;</span> Theme darkest indigo color                                                                    |
+| `--mvn-pink1`                          | <span style={{color: 'var(--mvn-pink1)'}}>&#9632;</span> Theme lightest pink color                                                                       |
+| `--mvn-pink2`                          | <span style={{color: 'var(--mvn-pink2)'}}>&#9632;</span> Theme light pink color                                                                          |
+| `--mvn-pink3`                          | <span style={{color: 'var(--mvn-pink3)'}}>&#9632;</span> Theme pink color                                                                                |
+| `--mvn-pink4`                          | <span style={{color: 'var(--mvn-pink4)'}}>&#9632;</span> Theme dark pink color                                                                           |
+| `--mvn-pink5`                          | <span style={{color: 'var(--mvn-pink5)'}}>&#9632;</span> Theme darkest pink color                                                                        |
+| `--mvn-primary1`                       | <span style={{color: 'var(--mvn-primary1)'}}>&#9632;</span> Theme lightest primary color                                                                 |
+| `--mvn-primary2`                       | <span style={{color: 'var(--mvn-primary2)'}}>&#9632;</span> Theme light primary color                                                                    |
+| `--mvn-primary3`                       | <span style={{color: 'var(--mvn-primary3)'}}>&#9632;</span> Theme primary color                                                                          |
+| `--mvn-primary4`                       | <span style={{color: 'var(--mvn-primary4)'}}>&#9632;</span> Theme dark primary color                                                                     |
+| `--mvn-primary5`                       | <span style={{color: 'var(--mvn-primary5)'}}>&#9632;</span> Theme darkest primary color                                                                  |
+| `--mvn-success1`                       | <span style={{color: 'var(--mvn-success1)'}}>&#9632;</span> Theme lightest success color                                                                 |
+| `--mvn-success2`                       | <span style={{color: 'var(--mvn-success2)'}}>&#9632;</span> Theme light success color                                                                    |
+| `--mvn-success3`                       | <span style={{color: 'var(--mvn-success3)'}}>&#9632;</span> Theme success color                                                                          |
+| `--mvn-success4`                       | <span style={{color: 'var(--mvn-success4)'}}>&#9632;</span> Theme dark success color                                                                     |
+| `--mvn-success5`                       | <span style={{color: 'var(--mvn-success5)'}}>&#9632;</span> Theme darkest success color                                                                  |
+| `--mvn-warning1`                       | <span style={{color: 'var(--mvn-warning1)'}}>&#9632;</span> Theme lightest warning color                                                                 |
+| `--mvn-warning2`                       | <span style={{color: 'var(--mvn-warning2)'}}>&#9632;</span> Theme light warning color                                                                    |
+| `--mvn-warning3`                       | <span style={{color: 'var(--mvn-warning3)'}}>&#9632;</span> Theme warning color                                                                          |
+| `--mvn-warning4`                       | <span style={{color: 'var(--mvn-warning4)'}}>&#9632;</span> Theme dark warning color                                                                     |
+| `--mvn-warning5`                       | <span style={{color: 'var(--mvn-warning5)'}}>&#9632;</span> Theme darkest warning color                                                                  |
+| `--mvn-danger1`                        | <span style={{color: 'var(--mvn-danger1)'}}>&#9632;</span> Theme lightest danger color                                                                   |
+| `--mvn-danger2`                        | <span style={{color: 'var(--mvn-danger2)'}}>&#9632;</span> Theme light danger color                                                                      |
+| `--mvn-danger3`                        | <span style={{color: 'var(--mvn-danger3)'}}>&#9632;</span> Theme danger color                                                                            |
+| `--mvn-danger4`                        | <span style={{color: 'var(--mvn-danger4)'}}>&#9632;</span> Theme dark danger color                                                                       |
+| `--mvn-danger5`                        | <span style={{color: 'var(--mvn-danger5)'}}>&#9632;</span> Theme darkest danger color                                                                    |
+| `--mvn-primary1-d5`                    | <span style={{color: 'var(--mvn-primary1-d5)'}}>&#9632;</span> Theme lightest primary color darkened by 5%                                               |
+| `--mvn-primary1-l5`                    | <span style={{color: 'var(--mvn-primary1-l5)'}}>&#9632;</span> Theme lightest primary color lightened by 5%                                              |
+| `--mvn-primary2-d5`                    | <span style={{color: 'var(--mvn-primary2-d5)'}}>&#9632;</span> Theme light primary color darkened by 5%                                                  |
+| `--mvn-primary2-l5`                    | <span style={{color: 'var(--mvn-primary2-l5)'}}>&#9632;</span> Theme light primary color lightened by 5%                                                 |
+| `--mvn-primary3-d5`                    | <span style={{color: 'var(--mvn-primary3-d5)'}}>&#9632;</span> Theme primary color darkened by 5%                                                        |
+| `--mvn-primary3-l5`                    | <span style={{color: 'var(--mvn-primary3-l5)'}}>&#9632;</span> Theme primary color lightened by 5%                                                       |
+| `--mvn-primary4-d5`                    | <span style={{color: 'var(--mvn-primary4-d5)'}}>&#9632;</span> Theme dark primary color darkened by 5%                                                   |
+| `--mvn-primary4-l5`                    | <span style={{color: 'var(--mvn-primary4-l5)'}}>&#9632;</span> Theme dark primary color lightened by 5%                                                  |
+| `--mvn-primary5-d5`                    | <span style={{color: 'var(--mvn-primary5-d5)'}}>&#9632;</span> Theme darkest primary color darkened by 5%                                                |
+| `--mvn-primary5-l5`                    | <span style={{color: 'var(--mvn-primary5-l5)'}}>&#9632;</span> Theme darkest primary color lightened by 5%                                               |
+| `--mvn-success1-d5`                    | <span style={{color: 'var(--mvn-success1-d5)'}}>&#9632;</span> Theme lightest success color darkened by 5%                                               |
+| `--mvn-success1-l5`                    | <span style={{color: 'var(--mvn-success1-l5)'}}>&#9632;</span> Theme lightest success color lightened by 5%                                              |
+| `--mvn-success2-d5`                    | <span style={{color: 'var(--mvn-success2-d5)'}}>&#9632;</span> Theme light success color darkened by 5%                                                  |
+| `--mvn-success2-l5`                    | <span style={{color: 'var(--mvn-success2-l5)'}}>&#9632;</span> Theme light success color lightened by 5%                                                 |
+| `--mvn-success3-d5`                    | <span style={{color: 'var(--mvn-success3-d5)'}}>&#9632;</span> Theme success color darkened by 5%                                                        |
+| `--mvn-success3-l5`                    | <span style={{color: 'var(--mvn-success3-l5)'}}>&#9632;</span> Theme success color lightened by 5%                                                       |
+| `--mvn-success4-d5`                    | <span style={{color: 'var(--mvn-success4-d5)'}}>&#9632;</span> Theme dark success color darkened by 5%                                                   |
+| `--mvn-success4-l5`                    | <span style={{color: 'var(--mvn-success4-l5)'}}>&#9632;</span> Theme dark success color lightened by 5%                                                  |
+| `--mvn-success5-d5`                    | <span style={{color: 'var(--mvn-success5-d5)'}}>&#9632;</span> Theme darkest success color darkened by 5%                                                |
+| `--mvn-success5-l5`                    | <span style={{color: 'var(--mvn-success5-l5)'}}>&#9632;</span> Theme darkest success color lightened by 5%                                               |
+| `--mvn-warning1-d5`                    | <span style={{color: 'var(--mvn-warning1-d5)'}}>&#9632;</span> Theme lightest warning color darkened by 5%                                               |
+| `--mvn-warning1-l5`                    | <span style={{color: 'var(--mvn-warning1-l5)'}}>&#9632;</span> Theme lightest warning color lightened by 5%                                              |
+| `--mvn-warning2-d5`                    | <span style={{color: 'var(--mvn-warning2-d5)'}}>&#9632;</span> Theme light warning color darkened by 5%                                                  |
+| `--mvn-warning2-l5`                    | <span style={{color: 'var(--mvn-warning2-l5)'}}>&#9632;</span> Theme light warning color lightened by 5%                                                 |
+| `--mvn-warning3-d5`                    | <span style={{color: 'var(--mvn-warning3-d5)'}}>&#9632;</span> Theme warning color darkened by 5%                                                        |
+| `--mvn-warning3-l5`                    | <span style={{color: 'var(--mvn-warning3-l5)'}}>&#9632;</span> Theme warning color lightened by 5%                                                       |
+| `--mvn-warning4-d5`                    | <span style={{color: 'var(--mvn-warning4-d5)'}}>&#9632;</span> Theme dark warning color darkened by 5%                                                   |
+| `--mvn-warning4-l5`                    | <span style={{color: 'var(--mvn-warning4-l5)'}}>&#9632;</span> Theme dark warning color lightened by 5%                                                  |
+| `--mvn-warning5-d5`                    | <span style={{color: 'var(--mvn-warning5-d5)'}}>&#9632;</span> Theme darkest warning color darkened by 5%                                                |
+| `--mvn-warning5-l5`                    | <span style={{color: 'var(--mvn-warning5-l5)'}}>&#9632;</span> Theme darkest warning color lightened by 5%                                               |
+| `--mvn-danger1-d5`                     | <span style={{color: 'var(--mvn-danger1-d5)'}}>&#9632;</span> Theme lightest danger color darkened by 5%                                                 |
+| `--mvn-danger1-l5`                     | <span style={{color: 'var(--mvn-danger1-l5)'}}>&#9632;</span> Theme lightest danger color lightened by 5%                                                |
+| `--mvn-danger2-d5`                     | <span style={{color: 'var(--mvn-danger2-d5)'}}>&#9632;</span> Theme light danger color darkened by 5%                                                    |
+| `--mvn-danger2-l5`                     | <span style={{color: 'var(--mvn-danger2-l5)'}}>&#9632;</span> Theme light danger color lightened by 5%                                                   |
+| `--mvn-danger3-d5`                     | <span style={{color: 'var(--mvn-danger3-d5)'}}>&#9632;</span> Theme danger color darkened by 5%                                                          |
+| `--mvn-danger3-l5`                     | <span style={{color: 'var(--mvn-danger3-l5)'}}>&#9632;</span> Theme danger color lightened by 5%                                                         |
+| `--mvn-danger4-d5`                     | <span style={{color: 'var(--mvn-danger4-d5)'}}>&#9632;</span> Theme dark danger color darkened by 5%                                                     |
+| `--mvn-danger4-l5`                     | <span style={{color: 'var(--mvn-danger4-l5)'}}>&#9632;</span> Theme dark danger color lightened by 5%                                                    |
+| `--mvn-danger5-d5`                     | <span style={{color: 'var(--mvn-danger5-d5)'}}>&#9632;</span> Theme darkest danger color darkened by 5%                                                  |
+| `--mvn-danger5-l5`                     | <span style={{color: 'var(--mvn-danger5-l5)'}}>&#9632;</span> Theme darkest danger color lightened by 5%                                                 |
+| `--mvn-color-background`               | <span style={{color: 'var(--mvn-color-background)'}}>&#9632;</span> Theme background color                                                               |
+| `--mvn-color-background-text`          | <span style={{color: 'var(--mvn-color-background-text)'}}>&#9632;</span> Theme background color for text content                                         |
+| `--mvn-color-background-dark`          | <span style={{color: 'var(--mvn-color-background-dark)'}}>&#9632;</span> Theme background color in dark mode                                             |
+| `--mvn-color-background-text-dark`     | <span style={{color: 'var(--mvn-color-background-text-dark)'}}>&#9632;</span> Theme background color for text content in dark mode                       |
+| `--mvn-color-background-text-a60`      | <span style={{color: 'var(--mvn-color-background-text-a60)'}}>&#9632;</span> Theme background color for text content with alpha of 60%                   |
+| `--mvn-color-background-text-a80`      | <span style={{color: 'var(--mvn-color-background-text-a80)'}}>&#9632;</span> Theme background color for text content with alpha of 80%                   |
+| `--mvn-color-background-text-dark-a60` | <span style={{color: 'var(--mvn-color-background-text-dark-a60)'}}>&#9632;</span> Theme background color for text content with alpha of 60% in dark mode |
+| `--mvn-color-background-text-dark-a80` | <span style={{color: 'var(--mvn-color-background-text-dark-a80)'}}>&#9632;</span> Theme background color for text content with alpha of 80% in dark mode |
+| `--mvn-color-border`                   | <span style={{color: 'var(--mvn-color-border)'}}>&#9632;</span> Theme border color                                                                       |
+| `--mvn-color-border-dark`              | <span style={{color: 'var(--mvn-color-border-dark)'}}>&#9632;</span> Theme border color in dark mode                                                     |
+| `--mvn-color-text`                     | <span style={{color: 'var(--mvn-color-text)'}}>&#9632;</span> Theme text color                                                                           |
+| `--mvn-color-text-heading`             | <span style={{color: 'var(--mvn-color-text-heading)'}}>&#9632;</span> Theme heading text color                                                           |
+| `--mvn-color-text-link`                | <span style={{color: 'var(--mvn-color-text-link)'}}>&#9632;</span> Theme link text color                                                                 |
+| `--mvn-color-text-link-hover`          | <span style={{color: 'var(--mvn-color-text-link-hover)'}}>&#9632;</span> Theme link hover text color                                                     |
+| `--mvn-color-text-dark`                | <span style={{color: 'var(--mvn-color-text-dark)'}}>&#9632;</span> Theme text color in dark mode                                                         |
+| `--mvn-color-text-heading-dark`        | <span style={{color: 'var(--mvn-color-text-heading-dark)'}}>&#9632;</span> Theme heading text color in dark mode                                         |
+| `--mvn-color-text-link-dark`           | <span style={{color: 'var(--mvn-color-text-link-dark)'}}>&#9632;</span> Theme link text color in dark mode                                               |
+| `--mvn-color-text-link-hover-dark`     | <span style={{color: 'var(--mvn-color-text-link-hover-dark)'}}>&#9632;</span> Theme link hover text color in dark mode                                   |
+| `--mvn-color-focus`                    | <span style={{color: 'var(--mvn-color-focus)'}}>&#9632;</span> Theme focus color                                                                         |
+| `--mvn-color-focus-danger`             | <span style={{color: 'var(--mvn-color-focus-danger)'}}>&#9632;</span> Theme focus color with error state                                                 |
+| `--mvn-color-outline`                  | <span style={{color: 'var(--mvn-color-outline)'}}>&#9632;</span> Theme outline color                                                                     |
+| `--mvn-color-outline-danger`           | <span style={{color: 'var(--mvn-color-outline-danger)'}}>&#9632;</span> Theme outline color with error state                                             |
+| `--mvn-color-text-selection`           | <span style={{color: 'var(--mvn-color-text-selection)'}}>&#9632;</span> Theme text selection background color                                            |
+| `--mvn-color-scrollbar`                | <span style={{color: 'var(--mvn-color-scrollbar)'}}>&#9632;</span> Theme scrollbar color                                                                 |
+| `--mvn-color-scrollbar-a20`            | <span style={{color: 'var(--mvn-color-scrollbar-a20)'}}>&#9632;</span> Theme scrollbar color with alpha of 20%                                           |
+| `--mvn-color-scrollbar-a50`            | <span style={{color: 'var(--mvn-color-scrollbar-a50)'}}>&#9632;</span> Theme scrollbar color with alpha of 50%                                           |
+| `--mvn-color-scrollbar-dark`           | <span style={{color: 'var(--mvn-color-scrollbar-dark)'}}>&#9632;</span> Theme scrollbar color in dark mode                                               |
+| `--mvn-color-scrollbar-dark-a20`       | <span style={{color: 'var(--mvn-color-scrollbar-dark-a20)'}}>&#9632;</span> Theme scrollbar color with alpha of 20% in dark mode                         |
+| `--mvn-color-scrollbar-dark-a50`       | <span style={{color: 'var(--mvn-color-scrollbar-dark-a50)'}}>&#9632;</span> Theme scrollbar color with alpha of 50% in dark mode                         |
+| `--mvn-dark-grey`                      | <span style={{color: 'var(--mvn-dark-grey)'}}>&#9632;</span> Theme dark grey color                                                                       |
+| `--mvn-grey`                           | <span style={{color: 'var(--mvn-grey)'}}>&#9632;</span> Theme grey color                                                                                 |
+| `--mvn-light-grey`                     | <span style={{color: 'var(--mvn-light-grey)'}}>&#9632;</span> Theme light grey color                                                                     |
+| `--mvn-red`                            | <span style={{color: 'var(--mvn-red)'}}>&#9632;</span> Theme red color                                                                                   |
+| `--mvn-orange`                         | <span style={{color: 'var(--mvn-orange)'}}>&#9632;</span> Theme orange color                                                                             |
+| `--mvn-yellow`                         | <span style={{color: 'var(--mvn-yellow)'}}>&#9632;</span> Theme yellow color                                                                             |
+| `--mvn-green`                          | <span style={{color: 'var(--mvn-green)'}}>&#9632;</span> Theme green color                                                                               |
+| `--mvn-teal`                           | <span style={{color: 'var(--mvn-teal)'}}>&#9632;</span> Theme teal color                                                                                 |
+| `--mvn-blue`                           | <span style={{color: 'var(--mvn-blue)'}}>&#9632;</span> Theme blue color                                                                                 |
+| `--mvn-indigo`                         | <span style={{color: 'var(--mvn-indigo)'}}>&#9632;</span> Theme indigo color                                                                             |
+| `--mvn-pink`                           | <span style={{color: 'var(--mvn-pink)'}}>&#9632;</span> Theme pink color                                                                                 |
+| `--mvn-primary`                        | <span style={{color: 'var(--mvn-primary)'}}>&#9632;</span> Theme primary color                                                                           |
+| `--mvn-success`                        | <span style={{color: 'var(--mvn-success)'}}>&#9632;</span> Theme success color                                                                           |
+| `--mvn-warning`                        | <span style={{color: 'var(--mvn-warning)'}}>&#9632;</span> Theme warning color                                                                           |
+| `--mvn-danger`                         | <span style={{color: 'var(--mvn-danger)'}}>&#9632;</span> Theme danger color                                                                             |
+| `--mvn-light-grey-l30`                 | <span style={{color: 'var(--mvn-light-grey-l30)'}}>&#9632;</span> Theme light grey color lightened by 30%                                                |
+| `--mvn-primary-d15`                    | <span style={{color: 'var(--mvn-primary-d15)'}}>&#9632;</span> Theme primary color darkened by 15%                                                       |
+| `--mvn-primary-l30`                    | <span style={{color: 'var(--mvn-primary-l30)'}}>&#9632;</span> Theme primary color lightened by 30%                                                      |
+| `--mvn-primary-w85`                    | <span style={{color: 'var(--mvn-primary-w85)'}}>&#9632;</span> Theme primary color mixed with 85% white                                                  |
+| `--mvn-success-d15`                    | <span style={{color: 'var(--mvn-success-d15)'}}>&#9632;</span> Theme success color darkened by 15%                                                       |
+| `--mvn-success-l30`                    | <span style={{color: 'var(--mvn-success-l30)'}}>&#9632;</span> Theme success color lightened by 30%                                                      |
+| `--mvn-success-w85`                    | <span style={{color: 'var(--mvn-success-w85)'}}>&#9632;</span> Theme success color mixed with 85% white                                                  |
+| `--mvn-warning-d15`                    | <span style={{color: 'var(--mvn-warning-d15)'}}>&#9632;</span> Theme warning color darkened by 15%                                                       |
+| `--mvn-warning-l30`                    | <span style={{color: 'var(--mvn-warning-l30)'}}>&#9632;</span> Theme warning color lightened by 30%                                                      |
+| `--mvn-warning-w85`                    | <span style={{color: 'var(--mvn-warning-w85)'}}>&#9632;</span> Theme warning color mixed with 85% white                                                  |
+| `--mvn-danger-d15`                     | <span style={{color: 'var(--mvn-danger-d15)'}}>&#9632;</span> Theme danger color darkened by 15%                                                         |
+| `--mvn-danger-l30`                     | <span style={{color: 'var(--mvn-danger-l30)'}}>&#9632;</span> Theme danger color lightened by 30%                                                        |
+| `--mvn-danger-w85`                     | <span style={{color: 'var(--mvn-danger-w85)'}}>&#9632;</span> Theme danger color mixed with 85% white                                                    |
+| `--mvn-black-background-text`          | <span style={{color: 'var(--mvn-black-background-text)'}}>&#9632;</span> Theme text color for black background                                           |
+| `--mvn-white-background-text`          | <span style={{color: 'var(--mvn-white-background-text)'}}>&#9632;</span> Theme text color for white background                                           |
+| `--mvn-dark-grey-background-text`      | <span style={{color: 'var(--mvn-dark-grey-background-text)'}}>&#9632;</span> Theme text color for dark grey background                                   |
+| `--mvn-grey-background-text`           | <span style={{color: 'var(--mvn-grey-background-text)'}}>&#9632;</span> Theme text color for grey background                                             |
+| `--mvn-light-grey-background-text`     | <span style={{color: 'var(--mvn-light-grey-background-text)'}}>&#9632;</span> Theme text color for light grey background                                 |
+| `--mvn-red-background-text`            | <span style={{color: 'var(--mvn-red-background-text)'}}>&#9632;</span> Theme text color for red background                                               |
+| `--mvn-orange-background-text`         | <span style={{color: 'var(--mvn-orange-background-text)'}}>&#9632;</span> Theme text color for orange background                                         |
+| `--mvn-yellow-background-text`         | <span style={{color: 'var(--mvn-yellow-background-text)'}}>&#9632;</span> Theme text color for yellow background                                         |
+| `--mvn-green-background-text`          | <span style={{color: 'var(--mvn-green-background-text)'}}>&#9632;</span> Theme text color for green background                                           |
+| `--mvn-teal-background-text`           | <span style={{color: 'var(--mvn-teal-background-text)'}}>&#9632;</span> Theme text color for teal background                                             |
+| `--mvn-blue-background-text`           | <span style={{color: 'var(--mvn-blue-background-text)'}}>&#9632;</span> Theme text color for blue background                                             |
+| `--mvn-indigo-background-text`         | <span style={{color: 'var(--mvn-indigo-background-text)'}}>&#9632;</span> Theme text color for indigo background                                         |
+| `--mvn-pink-background-text`           | <span style={{color: 'var(--mvn-pink-background-text)'}}>&#9632;</span> Theme text color for pink background                                             |
+| `--mvn-primary-background-text`        | <span style={{color: 'var(--mvn-primary-background-text)'}}>&#9632;</span> Theme text color for primary background                                       |
+| `--mvn-success-background-text`        | <span style={{color: 'var(--mvn-success-background-text)'}}>&#9632;</span> Theme text color for success background                                       |
+| `--mvn-warning-background-text`        | <span style={{color: 'var(--mvn-warning-background-text)'}}>&#9632;</span> Theme text color for warning background                                       |
+| `--mvn-danger-background-text`         | <span style={{color: 'var(--mvn-danger-background-text)'}}>&#9632;</span> Theme text color for danger background                                         |
+| `--mvn-color-text-black`               | <span style={{color: 'var(--mvn-color-text-black)'}}>&#9632;</span> Theme black text color                                                               |
+| `--mvn-color-text-white`               | <span style={{color: 'var(--mvn-color-text-white)'}}>&#9632;</span> Theme white text color                                                               |
+| `--mvn-color-text-dark-grey`           | <span style={{color: 'var(--mvn-color-text-dark-grey)'}}>&#9632;</span> Theme dark grey text color                                                       |
+| `--mvn-color-text-grey`                | <span style={{color: 'var(--mvn-color-text-grey)'}}>&#9632;</span> Theme grey text color                                                                 |
+| `--mvn-color-text-light-grey`          | <span style={{color: 'var(--mvn-color-text-light-grey)'}}>&#9632;</span> Theme light grey text color                                                     |
+| `--mvn-color-text-red`                 | <span style={{color: 'var(--mvn-color-text-red)'}}>&#9632;</span> Theme red text color                                                                   |
+| `--mvn-color-text-orange`              | <span style={{color: 'var(--mvn-color-text-orange)'}}>&#9632;</span> Theme orange text color                                                             |
+| `--mvn-color-text-yellow`              | <span style={{color: 'var(--mvn-color-text-yellow)'}}>&#9632;</span> Theme yellow text color                                                             |
+| `--mvn-color-text-green`               | <span style={{color: 'var(--mvn-color-text-green)'}}>&#9632;</span> Theme green text color                                                               |
+| `--mvn-color-text-teal`                | <span style={{color: 'var(--mvn-color-text-teal)'}}>&#9632;</span> Theme teal text color                                                                 |
+| `--mvn-color-text-blue`                | <span style={{color: 'var(--mvn-color-text-blue)'}}>&#9632;</span> Theme blue text color                                                                 |
+| `--mvn-color-text-indigo`              | <span style={{color: 'var(--mvn-color-text-indigo)'}}>&#9632;</span> Theme indigo text color                                                             |
+| `--mvn-color-text-pink`                | <span style={{color: 'var(--mvn-color-text-pink)'}}>&#9632;</span> Theme pink text color                                                                 |
+| `--mvn-color-text-primary`             | <span style={{color: 'var(--mvn-color-text-primary)'}}>&#9632;</span> Theme primary text color                                                           |
+| `--mvn-color-text-success`             | <span style={{color: 'var(--mvn-color-text-success)'}}>&#9632;</span> Theme success text color                                                           |
+| `--mvn-color-text-warning`             | <span style={{color: 'var(--mvn-color-text-warning)'}}>&#9632;</span> Theme warning text color                                                           |
+| `--mvn-color-text-danger`              | <span style={{color: 'var(--mvn-color-text-danger)'}}>&#9632;</span> Theme danger text color                                                             |
+| `--mvn-color-text-black-d10`           | <span style={{color: 'var(--mvn-color-text-black-d10)'}}>&#9632;</span> Theme black text color darkened by 10%                                           |
+| `--mvn-color-text-white-d10`           | <span style={{color: 'var(--mvn-color-text-white-d10)'}}>&#9632;</span> Theme white text color darkened by 10%                                           |
+| `--mvn-color-text-dark-grey-d10`       | <span style={{color: 'var(--mvn-color-text-dark-grey-d10)'}}>&#9632;</span> Theme dark grey text color darkened by 10%                                   |
+| `--mvn-color-text-grey-d10`            | <span style={{color: 'var(--mvn-color-text-grey-d10)'}}>&#9632;</span> Theme grey text color darkened by 10%                                             |
+| `--mvn-color-text-light-grey-d10`      | <span style={{color: 'var(--mvn-color-text-light-grey-d10)'}}>&#9632;</span> Theme light grey text color darkened by 10%                                 |
+| `--mvn-color-text-red-d10`             | <span style={{color: 'var(--mvn-color-text-red-d10)'}}>&#9632;</span> Theme red text color darkened by 10%                                               |
+| `--mvn-color-text-orange-d10`          | <span style={{color: 'var(--mvn-color-text-orange-d10)'}}>&#9632;</span> Theme orange text color darkened by 10%                                         |
+| `--mvn-color-text-yellow-d10`          | <span style={{color: 'var(--mvn-color-text-yellow-d10)'}}>&#9632;</span> Theme yellow text color darkened by 10%                                         |
+| `--mvn-color-text-green-d10`           | <span style={{color: 'var(--mvn-color-text-green-d10)'}}>&#9632;</span> Theme green text color darkened by 10%                                           |
+| `--mvn-color-text-teal-d10`            | <span style={{color: 'var(--mvn-color-text-teal-d10)'}}>&#9632;</span> Theme teal text color darkened by 10%                                             |
+| `--mvn-color-text-blue-d10`            | <span style={{color: 'var(--mvn-color-text-blue-d10)'}}>&#9632;</span> Theme blue text color darkened by 10%                                             |
+| `--mvn-color-text-indigo-d10`          | <span style={{color: 'var(--mvn-color-text-indigo-d10)'}}>&#9632;</span> Theme indigo text color darkened by 10%                                         |
+| `--mvn-color-text-pink-d10`            | <span style={{color: 'var(--mvn-color-text-pink-d10)'}}>&#9632;</span> Theme pink text color darkened by 10%                                             |
+| `--mvn-color-text-primary-d10`         | <span style={{color: 'var(--mvn-color-text-primary-d10)'}}>&#9632;</span> Theme primary text color darkened by 10%                                       |
+| `--mvn-color-text-success-d10`         | <span style={{color: 'var(--mvn-color-text-success-d10)'}}>&#9632;</span> Theme success text color darkened by 10%                                       |
+| `--mvn-color-text-warning-d10`         | <span style={{color: 'var(--mvn-color-text-warning-d10)'}}>&#9632;</span> Theme warning text color darkened by 10%                                       |
+| `--mvn-color-text-danger-d10`          | <span style={{color: 'var(--mvn-color-text-danger-d10)'}}>&#9632;</span> Theme danger text color darkened by 10%                                         |
+| `--mvn-color-text-black-dark`          | <span style={{color: 'var(--mvn-color-text-black-dark)'}}>&#9632;</span> Theme black text color in dark mode                                             |
+| `--mvn-color-text-white-dark`          | <span style={{color: 'var(--mvn-color-text-white-dark)'}}>&#9632;</span> Theme white text color in dark mode                                             |
+| `--mvn-color-text-dark-grey-dark`      | <span style={{color: 'var(--mvn-color-text-dark-grey-dark)'}}>&#9632;</span> Theme dark grey text color in dark mode                                     |
+| `--mvn-color-text-grey-dark`           | <span style={{color: 'var(--mvn-color-text-grey-dark)'}}>&#9632;</span> Theme grey text color in dark mode                                               |
+| `--mvn-color-text-light-grey-dark`     | <span style={{color: 'var(--mvn-color-text-light-grey-dark)'}}>&#9632;</span> Theme light grey text color in dark mode                                   |
+| `--mvn-color-text-red-dark`            | <span style={{color: 'var(--mvn-color-text-red-dark)'}}>&#9632;</span> Theme red text color in dark mode                                                 |
+| `--mvn-color-text-orange-dark`         | <span style={{color: 'var(--mvn-color-text-orange-dark)'}}>&#9632;</span> Theme orange text color in dark mode                                           |
+| `--mvn-color-text-yellow-dark`         | <span style={{color: 'var(--mvn-color-text-yellow-dark)'}}>&#9632;</span> Theme yellow text color in dark mode                                           |
+| `--mvn-color-text-green-dark`          | <span style={{color: 'var(--mvn-color-text-green-dark)'}}>&#9632;</span> Theme green text color in dark mode                                             |
+| `--mvn-color-text-teal-dark`           | <span style={{color: 'var(--mvn-color-text-teal-dark)'}}>&#9632;</span> Theme teal text color in dark mode                                               |
+| `--mvn-color-text-blue-dark`           | <span style={{color: 'var(--mvn-color-text-blue-dark)'}}>&#9632;</span> Theme blue text color in dark mode                                               |
+| `--mvn-color-text-indigo-dark`         | <span style={{color: 'var(--mvn-color-text-indigo-dark)'}}>&#9632;</span> Theme indigo text color in dark mode                                           |
+| `--mvn-color-text-pink-dark`           | <span style={{color: 'var(--mvn-color-text-pink-dark)'}}>&#9632;</span> Theme pink text color in dark mode                                               |
+| `--mvn-color-text-primary-dark`        | <span style={{color: 'var(--mvn-color-text-primary-dark)'}}>&#9632;</span> Theme primary text color in dark mode                                         |
+| `--mvn-color-text-success-dark`        | <span style={{color: 'var(--mvn-color-text-success-dark)'}}>&#9632;</span> Theme success text color in dark mode                                         |
+| `--mvn-color-text-warning-dark`        | <span style={{color: 'var(--mvn-color-text-warning-dark)'}}>&#9632;</span> Theme warning text color in dark mode                                         |
+| `--mvn-color-text-danger-dark`         | <span style={{color: 'var(--mvn-color-text-danger-dark)'}}>&#9632;</span> Theme danger text color in dark mode                                           |
+| `--mvn-color-text-black-dark-l10`      | <span style={{color: 'var(--mvn-color-text-black-dark-l10)'}}>&#9632;</span> Theme black text color lightened by 10% in dark mode                        |
+| `--mvn-color-text-white-dark-l10`      | <span style={{color: 'var(--mvn-color-text-white-dark-l10)'}}>&#9632;</span> Theme white text color lightened by 10% in dark mode                        |
+| `--mvn-color-text-dark-grey-dark-l10`  | <span style={{color: 'var(--mvn-color-text-dark-grey-dark-l10)'}}>&#9632;</span> Theme dark grey text color lightened by 10% in dark mode                |
+| `--mvn-color-text-grey-dark-l10`       | <span style={{color: 'var(--mvn-color-text-grey-dark-l10)'}}>&#9632;</span> Theme grey text color lightened by 10% in dark mode                          |
+| `--mvn-color-text-light-grey-dark-l10` | <span style={{color: 'var(--mvn-color-text-light-grey-dark-l10)'}}>&#9632;</span> Theme light grey text color lightened by 10% in dark mode              |
+| `--mvn-color-text-red-dark-l10`        | <span style={{color: 'var(--mvn-color-text-red-dark-l10)'}}>&#9632;</span> Theme red text color lightened by 10% in dark mode                            |
+| `--mvn-color-text-orange-dark-l10`     | <span style={{color: 'var(--mvn-color-text-orange-dark-l10)'}}>&#9632;</span> Theme orange text color lightened by 10% in dark mode                      |
+| `--mvn-color-text-yellow-dark-l10`     | <span style={{color: 'var(--mvn-color-text-yellow-dark-l10)'}}>&#9632;</span> Theme yellow text color lightened by 10% in dark mode                      |
+| `--mvn-color-text-green-dark-l10`      | <span style={{color: 'var(--mvn-color-text-green-dark-l10)'}}>&#9632;</span> Theme green text color lightened by 10% in dark mode                        |
+| `--mvn-color-text-teal-dark-l10`       | <span style={{color: 'var(--mvn-color-text-teal-dark-l10)'}}>&#9632;</span> Theme teal text color lightened by 10% in dark mode                          |
+| `--mvn-color-text-blue-dark-l10`       | <span style={{color: 'var(--mvn-color-text-blue-dark-l10)'}}>&#9632;</span> Theme blue text color lightened by 10% in dark mode                          |
+| `--mvn-color-text-indigo-dark-l10`     | <span style={{color: 'var(--mvn-color-text-indigo-dark-l10)'}}>&#9632;</span> Theme indigo text color lightened by 10% in dark mode                      |
+| `--mvn-color-text-pink-dark-l10`       | <span style={{color: 'var(--mvn-color-text-pink-dark-l10)'}}>&#9632;</span> Theme pink text color lightened by 10% in dark mode                          |
+| `--mvn-color-text-primary-dark-l10`    | <span style={{color: 'var(--mvn-color-text-primary-dark-l10)'}}>&#9632;</span> Theme primary text color lightened by 10% in dark mode                    |
+| `--mvn-color-text-success-dark-l10`    | <span style={{color: 'var(--mvn-color-text-success-dark-l10)'}}>&#9632;</span> Theme success text color lightened by 10% in dark mode                    |
+| `--mvn-color-text-warning-dark-l10`    | <span style={{color: 'var(--mvn-color-text-warning-dark-l10)'}}>&#9632;</span> Theme warning text color lightened by 10% in dark mode                    |
+| `--mvn-color-text-danger-dark-l10`     | <span style={{color: 'var(--mvn-color-text-danger-dark-l10)'}}>&#9632;</span> Theme danger text color lightened by 10% in dark mode                      |
+
+## Sizes
+
+| Name                        | Description                                    |
+| :-------------------------- | :--------------------------------------------- |
+| `--mvn-border-radius`       | Default border radius size for most components |
+| `--mvn-border-radius-large` | Large border radius size for block components  |
+| `--mvn-size-outline`        | Size for focus outline                         |
+
+## Typography
+
+| Name                                     | Description                            |
+| :--------------------------------------- | :------------------------------------- |
+| `--mvn-typography-font-family`           | Theme Default font family              |
+| `--mvn-typography-font-family-monospace` | Theme Default monospace font family    |
+| `--mvn-typography-font-family-heading`   | Theme Default font family for headings |
+| `--mvn-typography-line-height`           | Theme Default line height              |
+| `--mvn-typography-line-height-heading`   | Theme Default line height for headings |

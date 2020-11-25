@@ -3,12 +3,21 @@ import {
   MDXProviderComponentsProp
 } from '@mdx-js/react';
 import { H1, H4, H5, H6, Li, Link, Ol, P, Span, Ul } from 'maeven';
+import NextLink from 'next/link';
 import React, { FC } from 'react';
 import { CodeBlock } from './CodeBlock';
 import { MdxH2, MdxH3 } from './MdxH';
+import { Table, Th } from './MdxTable';
 
 const components: MDXProviderComponentsProp = {
-  a: Link,
+  a: ({ ...props }: any) =>
+    props.href?.startsWith('/') ? (
+      <NextLink href={props.href}>
+        <Link {...props} />
+      </NextLink>
+    ) : (
+      <Link {...props} />
+    ),
   code: CodeBlock,
   h1: H1,
   h2: MdxH2,
@@ -21,6 +30,8 @@ const components: MDXProviderComponentsProp = {
   ol: Ol,
   pre: (props: any) => <div {...props} />,
   span: Span,
+  table: Table,
+  th: Th,
   ul: Ul
 };
 

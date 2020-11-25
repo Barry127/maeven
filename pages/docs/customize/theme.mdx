@@ -1,0 +1,101 @@
+import { Meta } from 'docsComponents';
+
+<Meta title="Theming" />
+
+# Theming
+
+Maeven is open to customization with custom themes.
+
+## Custom Theming
+
+Customization can be done on multiple levels:
+
+- Global theme
+- Custom css for components
+- Extending components with `className` and `style` props
+
+### Global theme
+
+The most consistent way to customize styling is the use of a global theme. Themes can be set the [ThemeProvider](/docs/components/ThemeProvider). Creating a theme is as easy as creating an object with a name property.
+
+```js
+const myTheme = {
+  name: 'My Custom Theme'
+};
+```
+
+All other properties are completely optional and will be extended with sensible defaults.
+
+#### CSS Variables
+
+Maeven will set most theme options als css variables so consistent styling is easy to extend in your own custom classes. See [this list](/docs/customize/cssVariables) for all CSS variables.
+
+```css
+.my-red-div {
+  background: var(--mvn-red);
+  color: var(--mvn-color-text-blue);
+}
+```
+
+### Custom css for components
+
+For complete customization maeven adds a className to each component. E.g. the [Button](/docs/components/Button/Button) Component has the className `.mvn--button` and the [Card](/docs/components/Card/Card) Component `.mvn--card`. This gives the possibility to completely style each component with custom css.
+
+```css
+// Set green border to all cards
+.mvn--card {
+  border: 2px solid var(--mvn-green);
+}
+```
+
+```jsx live
+<>
+  <style
+    dangerouslySetInnerHTML={{
+      __html: `
+.mvn--card {
+  border: 2px solid var(--mvn-green);
+}`
+    }}
+  />
+  <Card>
+    <P>Styled Card</P>
+  </Card>
+</>
+```
+
+## Extending single Component styles
+
+All components accept the `className` and `style` prop. For most components this will be set on the container element. Setting custom `className` and `style` props allow for styling one-off components without affecting all other components of the same type.
+
+```jsx live
+<Button style={{ border: '3px dashed var(--mvn-primary)' }}>
+  My Custom Button
+</Button>
+```
+
+## Dark Mode
+
+All themes come with a light and dark theme. Maeven toggles dark mode by setting and removing the `.mvn-dark` on the document body.
+
+```css
+.mvn-dark .mvn--button {
+  border: 3px solid var(--mvn-yellow);
+}
+```
+
+```jsx live
+<>
+  <style
+    dangerouslySetInnerHTML={{
+      __html: `
+.mvn-dark .my-custom-button {
+  border: 3px solid var(--mvn-yellow);
+}`
+    }}
+  />
+  <Button className="my-custom-button">
+    This Button has only custom styling in dark mode
+  </Button>
+</>
+```

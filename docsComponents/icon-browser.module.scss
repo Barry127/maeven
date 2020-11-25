@@ -1,0 +1,64 @@
+@import '../src/common/mixins';
+
+.controls {
+  background: var(--mvn-color-background-text);
+  padding-top: 2rem;
+  position: sticky;
+  top: 5.5rem;
+  transition: animate-transition(background);
+  z-index: 3;
+
+  :global(.mvn-dark) & {
+    background: var(--mvn-color-background-text-dark);
+  }
+}
+
+.col {
+  flex-grow: 0;
+  height: 6em;
+  position: relative;
+  width: 6em;
+}
+
+.card {
+  position: absolute;
+  height: 6em;
+  left: 0;
+  top: 0;
+  width: 6em;
+  transition: animate-transition(box-shadow), animate-transition(width),
+    animate-transition(height), animate-transition(top),
+    animate-transition(left);
+}
+
+.icon-container {
+  text-align: center;
+  transition: animate-transition(padding);
+}
+
+.icon {
+  transition: animate-transition(color);
+}
+
+.name {
+  @extend %truncate;
+  text-align: center;
+  transition: animate-transition(font-size);
+}
+
+.card:focus {
+  height: 12em;
+  left: -3em;
+  top: -3em;
+  width: 12em;
+  z-index: 4;
+
+  .icon-container {
+    padding-top: 0.5em;
+    font-size: 2em;
+  }
+
+  .name {
+    margin-top: 0.5em;
+  }
+}

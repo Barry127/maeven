@@ -15,6 +15,7 @@
     "docgen",
     "flowtype",
     "focusring",
+    "ionicons",
     "lcov",
     "maeven",
     "maximizable",
@@ -30,6 +31,7 @@
     "secondaryfill",
     "shorthash",
     "tabindex",
-    "textfield"
+    "textfield",
+    "typicons"
   ]
 }

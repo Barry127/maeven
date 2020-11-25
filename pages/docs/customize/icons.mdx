@@ -1,0 +1,39 @@
+import { Meta } from 'docsComponents';
+import { IconBrowser } from 'docsComponents/IconBrowser';
+
+<Meta title="Icons" />
+
+# Icons
+
+It's very easy to add custom icons to the Maeven Icon Component. Icons are just an Object representation of a DOM tree.
+
+```ts
+interface MaevenIcon {
+  tag: keyof JSX.IntrinsicElements;
+  attrs: AllHTMLAttributes<any> & SVGProps<any>;
+  children?: this[] | string;
+}
+```
+
+A simple image icon could look like this:
+
+```jsx
+import { myIconPath } from './icon.png';
+
+const myIcon = {
+  tag: 'img',
+  attrs: {
+    alt: 'My Awesome Icon',
+    src: myIconPath
+  }
+};
+
+// can be used like this:
+<Icon icon={myIcon} />;
+```
+
+## Icon Browser
+
+Some of the most popular svg icon packs on the web are bundled in the `icon-packs` npm package. The default export is es6 tree shakeable so only used icons end up in modern bundles.
+
+<IconBrowser />

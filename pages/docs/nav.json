@@ -1,5 +1,7 @@
 {
   "Maeven": "/docs",
+  "Getting Started": "/docs/gettingStarted",
+  "License": "/docs/license",
   "Components": {
     "isOpen": true,
     "basePath": "/docs/components",
@@ -86,6 +88,15 @@
       "useFocus": "/docs/hooks/useFocus",
       "useId": "/docs/hooks/useId",
       "useOutline": "/docs/hooks/useOutline"
+    }
+  },
+  "Customizing": {
+    "isOpen": false,
+    "basePath": "/docs/customize",
+    "children": {
+      "Theme": "/docs/customize/theme",
+      "Icons": "/docs/customize/icons",
+      "CSS Variables": "/docs/customize/cssVariables"
     }
   }
 }

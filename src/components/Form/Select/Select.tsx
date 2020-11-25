@@ -405,7 +405,14 @@ export interface SelectProps
   size?: 'sm' | 'md' | 'lg';
 }
 
-export interface SelectItem {
-  value?: any;
+export interface SelectItem<T = any> {
+  value?: T;
   [key: string]: any;
+}
+
+export type SelectOnChange<T = any> = (ev: SelectOnchangeEvent<T>) => void;
+
+export interface SelectOnchangeEvent<T = any> {
+  selectedItem?: SelectItem<T>;
+  inputValue?: string;
 }
