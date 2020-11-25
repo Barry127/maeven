@@ -1,9 +1,12 @@
-export function createModalContainer(): HTMLDivElement {
+export function createModalContainer(): HTMLDivElement | null {
+  if (typeof document === 'undefined') return null;
   const modalContainer = document.createElement('div');
   document.body.appendChild(modalContainer);
   return modalContainer;
 }
 
-export function removeModalContainer(modalContainer: HTMLDivElement): void {
-  document.body.removeChild(modalContainer);
+export function removeModalContainer(
+  modalContainer: HTMLDivElement | null
+): void {
+  if (modalContainer) document.body.removeChild(modalContainer);
 }

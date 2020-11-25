@@ -112,6 +112,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
         : config.stiff
     });
 
+    if (!modalContainer) return null;
+
     return createPortal(
       modalTransitions.map(
         ({ item, key, props: styleProps }) =>

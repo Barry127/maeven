@@ -33,4 +33,8 @@ describe('removeModalContainer', () => {
     expect(before).toContain(element);
     expect(after).not.toContain(element);
   });
+
+  it('does nothing when element is null', () => {
+    removeModalContainer(null);
+  });
 });
