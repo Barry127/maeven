@@ -75,4 +75,57 @@ Spinners can be styled in different (theme) colors.
 </div>
 ```
 
-### TODO: Overlay on card
+### Spinner overlay
+
+A Spinner can overlay it's children when `spinning` is set to `true`.
+
+```js live withRender
+// import skyline from '@assets/skyline.jpg';
+// import bubbles from '@assets/bubbles.jpg';
+
+const Component = () => {
+  const [s1, setS1] = useState(true);
+  const [s2, setS2] = useState(false);
+  return (
+    <Container>
+      <Row gutter={1}>
+        <Col span={12}>
+          <Spinner spinning={s1} size={96} color="primary" text="Loading">
+            <Card>
+              <CardImage src={skyline} />
+              <H3>Title</H3>
+              <P>Card content with a short text containing a description.</P>
+            </Card>
+          </Spinner>
+        </Col>
+        <Col span={12}>
+          <Spinner spinning={s2} size={96} color="primary" delay={200}>
+            <Card>
+              <CardImage src={bubbles} />
+              <H3>Delay</H3>
+              <P>
+                This Spinner will wait for 200ms before showing, this allows to
+                show content without showing just a quickly flashing spinner.
+              </P>
+            </Card>
+          </Spinner>
+        </Col>
+      </Row>
+      <Row gutter={1}>
+        <Col span={12}>
+          <Button buttonType="primary" onClick={() => setS1(!s1)}>
+            Toggle Spinning
+          </Button>
+        </Col>
+        <Col span={12}>
+          <Button buttonType="primary" onClick={() => setS2(!s2)}>
+            Toggle Spinning
+          </Button>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+render(<Component />);
+```
