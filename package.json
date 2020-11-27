@@ -1,6 +1,6 @@
 {
   "name": "maeven",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "React Components for modern web apps",
   "main": "cjs/index.js",
   "module": "index.js",
