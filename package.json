@@ -3,7 +3,7 @@
   "version": "0.3.1",
   "description": "React Components for modern web apps",
   "main": "cjs/index.js",
-  "module": "index.mjs",
+  "module": "index.js",
   "license": "MIT",
   "private": true,
   "author": {

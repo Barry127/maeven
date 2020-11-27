@@ -17,7 +17,7 @@ export default {
     {
       dir: '.',
       format: 'es',
-      entryFileNames: '[name].mjs'
+      entryFileNames: '[name].js'
     }
   ],
 
