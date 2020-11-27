@@ -87,7 +87,8 @@
       "useDarkMode": "/docs/hooks/useDarkMode",
       "useFocus": "/docs/hooks/useFocus",
       "useId": "/docs/hooks/useId",
-      "useOutline": "/docs/hooks/useOutline"
+      "useOutline": "/docs/hooks/useOutline",
+      "useTitle": "/docs/hooks/useTitle"
     }
   },
   "Customizing": {

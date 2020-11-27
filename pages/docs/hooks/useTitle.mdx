@@ -1,0 +1,33 @@
+import { Meta } from 'docsComponents';
+
+<Meta title="useTitle" />
+
+# useTitle
+
+useTitle sets document title when a title is passed.
+
+## Signature
+
+```ts
+function useTitle(title?: string): void;
+```
+
+### Example
+
+Set document title with useTitle.
+
+```js live withRender
+function TitleComponent() {
+  const [title, setTitle] = useState();
+  useTitle(title);
+
+  return (
+    <>
+      <H3>Type to set document title</H3>
+      <TextInput value={title} onChange={(ev) => setTitle(ev.target.value)} />
+    </>
+  );
+}
+
+render(<TitleComponent />);
+```
