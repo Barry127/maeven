@@ -76,6 +76,12 @@
       "Icon": "/docs/components/Icon",
       "Link": "/docs/components/Link",
       "Modal": "/docs/components/Modal",
+      "Progress": {
+        "basePath": "/docs/components/Progress",
+        "children": {
+          "ProgressBar": "/docs/components/Progress/ProgressBar"
+        }
+      },
       "Spinner": "/docs/components/Spinner",
       "ThemeProvider": "/docs/components/ThemeProvider"
     }

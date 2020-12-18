@@ -1,0 +1,127 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="ProgressBar" />
+
+# ProgressBar
+
+<Description of="ProgressBar" />
+
+## Props
+
+<Props of="ProgressBar" />
+
+## Examples
+
+### Basic
+
+A basic usage of ProgressBar.
+
+```js live
+<ProgressBar value={50} text="50%" />
+```
+
+### Color
+
+A ProgressBar can be styled in different colors.
+
+```jsx live withRender
+const Progress = () => {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const to = setTimeout(() => {
+      setProgress((progress + 5) % 100);
+    }, 1500);
+    return () => {
+      clearTimeout(to);
+    };
+  }, [progress]);
+
+  return (
+    <>
+      <ProgressBar value={progress} color="black" text={`Black ${progress}%`} />
+      <ProgressBar value={progress} color="white" text={`White ${progress}%`} />
+      <ProgressBar
+        value={progress}
+        color="darkGrey"
+        text={`DarkGrey ${progress}%`}
+      />
+      <ProgressBar value={progress} color="grey" text={`Grey ${progress}%`} />
+      <ProgressBar
+        value={progress}
+        color="lightGrey"
+        text={`LightGrey ${progress}%`}
+      />
+      <ProgressBar value={progress} color="red" text={`Red ${progress}%`} />
+      <ProgressBar
+        value={progress}
+        color="orange"
+        text={`Orange ${progress}%`}
+      />
+      <ProgressBar
+        value={progress}
+        color="yellow"
+        text={`Yellow ${progress}%`}
+      />
+      <ProgressBar value={progress} color="green" text={`Green ${progress}%`} />
+      <ProgressBar value={progress} color="teal" text={`Teal ${progress}%`} />
+      <ProgressBar value={progress} color="blue" text={`Blue ${progress}%`} />
+      <ProgressBar
+        value={progress}
+        color="indigo"
+        text={`Indigo ${progress}%`}
+      />
+      <ProgressBar value={progress} color="pink" text={`Pink ${progress}%`} />
+      <ProgressBar
+        value={progress}
+        color="primary"
+        text={`Primary ${progress}%`}
+      />
+      <ProgressBar
+        value={progress}
+        color="success"
+        text={`Success ${progress}%`}
+      />
+      <ProgressBar
+        value={progress}
+        color="warning"
+        text={`Warning ${progress}%`}
+      />
+      <ProgressBar
+        value={progress}
+        color="danger"
+        text={`Danger ${progress}%`}
+      />
+    </>
+  );
+};
+
+render(<Progress />);
+```
+
+### Size
+
+ProgressBars can have different sizes.
+
+```js live
+<>
+  <ProgressBar size="sm" value={50} text="Small ProgressBar" />
+  <ProgressBar size="md" value={50} text="Medium ProgressBar" />
+  <ProgressBar size="lg" value={50} text="Large ProgressBar" />
+</>
+```
+
+### Active
+
+A ProgressBar bar can indicate an active (animated) state.
+
+```js live
+<ProgressBar active value={50} text="50%" />
+```
+
+### Indeterminate
+
+A ProgressBar bar can indicate an Indeterminate state.
+
+```js live
+<ProgressBar indeterminate text="Loading data..." />
+```
