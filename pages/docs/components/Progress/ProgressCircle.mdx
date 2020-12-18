@@ -1,0 +1,182 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="ProgressCircle" />
+
+# ProgressCircle
+
+<Description of="ProgressCircle" />
+
+## Props
+
+<Props of="ProgressCircle" />
+
+## Examples
+
+### Basic
+
+A basic usage of ProgressCircle.
+
+```js live
+<ProgressCircle value={50}>
+  <H3>50%</H3>
+</ProgressCircle>
+```
+
+### Color
+
+A ProgressCircle can be styled in different colors.
+
+```jsx live withRender
+const Progress = () => {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const to = setTimeout(() => {
+      setProgress((progress + 5) % 100);
+    }, 1500);
+    return () => {
+      clearTimeout(to);
+    };
+  }, [progress]);
+
+  return (
+    <Row gutter={1}>
+      <Col>
+        <ProgressCircle value={progress} color="black">
+          <H5>Black</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="white">
+          <H5>White</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="darkGrey">
+          <H5>DarkGrey</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="grey">
+          <H5>Grey</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="lightGrey">
+          <H5>LightGrey</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="red">
+          <H5>Red</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="orange">
+          <H5>Orange</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="yellow">
+          <H5>Yellow</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="green">
+          <H5>Green</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="teal">
+          <H5>Teal</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="blue">
+          <H5>Blue</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="indigo">
+          <H5>Indigo</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="pink">
+          <H5>Pink</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="primary">
+          <H5>Primary</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="success">
+          <H5>Success</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="warning">
+          <H5>Warning</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+      <Col>
+        <ProgressCircle value={progress} color="danger">
+          <H5>Danger</H5>
+          <Block>{progress}%</Block>
+        </ProgressCircle>
+      </Col>
+    </Row>
+  );
+};
+
+render(<Progress />);
+```
+
+### Size
+
+ProgressCircles can have different sizes.
+
+```js live
+<Row align="center">
+  <Col style={{ textAlign: 'center' }}>
+    <ProgressCircle size={92} value={50}>
+      <H3>50</H3>
+    </ProgressCircle>
+  </Col>
+  <Col style={{ textAlign: 'center' }}>
+    <ProgressCircle size={128} value={50}>
+      <H2>50</H2>
+    </ProgressCircle>
+  </Col>
+  <Col style={{ textAlign: 'center' }}>
+    <ProgressCircle size={160} value={50}>
+      <H1>50</H1>
+    </ProgressCircle>
+  </Col>
+</Row>
+```
+
+### Indeterminate
+
+A ProgressCircle can indicate an Indeterminate state.
+
+```js live
+<ProgressCircle indeterminate>Loading data</ProgressCircle>
+```

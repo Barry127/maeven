@@ -90,5 +90,6 @@ export interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
   /** ProgressBar text */
   text?: ReactNode;
 
+  /** Current value */
   value?: number;
 }

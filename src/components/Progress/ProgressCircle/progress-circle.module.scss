@@ -1,0 +1,45 @@
+@import '../../../common/colors';
+
+.container {
+  display: inline-block;
+  position: relative;
+  stroke-linecap: round;
+  text-align: center;
+}
+
+.circle {
+  fill: transparent;
+}
+
+.track {
+  stroke: var(--mvn-color-background);
+}
+
+.content {
+  left: 50%;
+  padding: 1.6rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.indeterminate .bar {
+  animation: indeterminateCircle 2s linear infinite;
+  transform-origin: center center;
+}
+
+@each $color, $dashedColor in $colorsMap {
+  .circle.#{$color} .bar {
+    stroke: var(--mvn-#{$dashedColor});
+  }
+}
+
+@keyframes indeterminateCircle {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
