@@ -80,7 +80,8 @@
         "basePath": "/docs/components/Progress",
         "children": {
           "ProgressBar": "/docs/components/Progress/ProgressBar",
-          "ProgressCircle": "/docs/components/Progress/ProgressCircle"
+          "ProgressCircle": "/docs/components/Progress/ProgressCircle",
+          "ProgressGauge": "/docs/components/Progress/ProgressGauge"
         }
       },
       "Spinner": "/docs/components/Spinner",

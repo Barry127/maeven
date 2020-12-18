@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-.circle {
+.gauge {
   fill: transparent;
 }
 
@@ -23,23 +23,8 @@
   transform: translate(-50%, -50%);
 }
 
-.indeterminate .bar {
-  animation: indeterminateCircle 2s linear infinite;
-  transform-origin: center center;
-}
-
 @each $color, $dashedColor in $colorsMap {
   .container.#{$color} .bar {
     stroke: var(--mvn-#{$dashedColor});
-  }
-}
-
-@keyframes indeterminateCircle {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }

@@ -1,0 +1,174 @@
+import { Description, Meta, Props } from 'docsComponents';
+
+<Meta title="ProgressGauge" />
+
+# ProgressGauge
+
+<Description of="ProgressGauge" />
+
+## Props
+
+<Props of="ProgressGauge" />
+
+## Examples
+
+### Basic
+
+A basic usage of ProgressGauge.
+
+```js live
+<ProgressGauge value={50}>
+  <H3>50%</H3>
+</ProgressGauge>
+```
+
+### Color
+
+A ProgressGauge can be styled in different colors.
+
+```jsx live withRender
+const Progress = () => {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const to = setTimeout(() => {
+      setProgress((progress + 5) % 100);
+    }, 1500);
+    return () => {
+      clearTimeout(to);
+    };
+  }, [progress]);
+
+  return (
+    <Row gutter={1}>
+      <Col>
+        <ProgressGauge value={progress} color="black">
+          <H5>Black</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="white">
+          <H5>White</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="darkGrey">
+          <H5>DarkGrey</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="grey">
+          <H5>Grey</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="lightGrey">
+          <H5>LightGrey</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="red">
+          <H5>Red</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="orange">
+          <H5>Orange</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="yellow">
+          <H5>Yellow</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="green">
+          <H5>Green</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="teal">
+          <H5>Teal</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="blue">
+          <H5>Blue</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="indigo">
+          <H5>Indigo</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="pink">
+          <H5>Pink</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="primary">
+          <H5>Primary</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="success">
+          <H5>Success</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="warning">
+          <H5>Warning</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+      <Col>
+        <ProgressGauge value={progress} color="danger">
+          <H5>Danger</H5>
+          <Block>{progress}%</Block>
+        </ProgressGauge>
+      </Col>
+    </Row>
+  );
+};
+
+render(<Progress />);
+```
+
+### Size
+
+ProgressGauges can have different sizes.
+
+```js live
+<Row align="center">
+  <Col style={{ textAlign: 'center' }}>
+    <ProgressGauge size={92} value={50}>
+      <H3>50</H3>
+    </ProgressGauge>
+  </Col>
+  <Col style={{ textAlign: 'center' }}>
+    <ProgressGauge size={128} value={50}>
+      <H2>50</H2>
+    </ProgressGauge>
+  </Col>
+  <Col style={{ textAlign: 'center' }}>
+    <ProgressGauge size={160} value={50}>
+      <H1>50</H1>
+    </ProgressGauge>
+  </Col>
+</Row>
+```

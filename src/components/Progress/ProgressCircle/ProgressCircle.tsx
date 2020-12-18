@@ -21,7 +21,6 @@ export const ProgressCircle = forwardRef<HTMLDivElement, ProgressCircleProps>(
       max = 100,
       min = 0,
       size = 128,
-      style,
       value,
       width,
       ...props
