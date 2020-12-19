@@ -1,0 +1,313 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><link rel="shortcut icon" href="/maeven/favicon.ico"/><title>useTitle | Maeven</title><link rel="preload" href="/maeven/_next/static/css/a9051f140023fddbcd71.css" as="style"/><link rel="stylesheet" href="/maeven/_next/static/css/a9051f140023fddbcd71.css" data-n-g=""/><link rel="preload" href="/maeven/_next/static/css/e733230a6e6b0706c06d.css" as="style"/><link rel="stylesheet" href="/maeven/_next/static/css/e733230a6e6b0706c06d.css" data-n-g=""/><link rel="preload" href="/maeven/_next/static/css/e2a1b138c54b5b02b670.css" as="style"/><link rel="stylesheet" href="/maeven/_next/static/css/e2a1b138c54b5b02b670.css" data-n-p=""/><noscript data-n-css="true"></noscript><link rel="preload" href="/maeven/_next/static/chunks/main-cabce7c5f764869df652.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/framework.b11cd6ab3c62dae3dfb8.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/702ccf50.891306660b79437e0e00.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/44e2a0e6.d0dda7cc57367bd61b3a.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/f0e45107.e07aabf41fd41220d88d.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/6d406fec.cf9e4c8ca3c58c112c8d.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/d1f6095a43b68148e8a871590d8994a93b98c6c1.902901e33d56d25d7fcd.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/d1f6095a43b68148e8a871590d8994a93b98c6c1_CSS.8f6f5b95f5e92b2c9bcd.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/25f6d7332b976b1e5ec025b28edf8208d16c52aa.09caf2a4a647329005f5.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/f6078781a05fe1bcb0902d23dbbb2662c8d200b3.174c13f373fe7b79226b.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/pages/_app-73dd467cd06636139932.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/640326480e8723813f77679ff6c795c5a1c4dbc1.25329ab35b2e5029c2ab.js" as="script"/><link rel="preload" href="/maeven/_next/static/chunks/pages/docs/hooks/useTitle-dfbc720a4ca4f7c3b62f.js" as="script"/></head><body><div id="__next"><style>:root {
+  --mvn-base: 10px;
+
+  --mvn-black: #182026;
+  --mvn-white: #ffffff;
+
+  --mvn-dark-grey1: #454f59;
+  --mvn-dark-grey2: #39434d;
+  --mvn-dark-grey3: #323a42;
+  --mvn-dark-grey4: #272d33;
+  --mvn-dark-grey5: #1d2226;
+
+  --mvn-grey1: #d7dadb;
+  --mvn-grey2: #b4bcc2;
+  --mvn-grey3: #94a0a8;
+  --mvn-grey4: #77848f;
+  --mvn-grey5: #5b6975;
+
+  --mvn-light-grey1: #f5f8fb;
+  --mvn-light-grey2: #ebf1f5;
+  --mvn-light-grey3: #e1e8ed;
+  --mvn-light-grey4: #d8e1e8;
+  --mvn-light-grey5: #ced9e0;
+
+  --mvn-red1: #ff6666;
+  --mvn-red2: #fd4c4c;
+  --mvn-red3: #f73131;
+  --mvn-red4: #eb2f2f;
+  --mvn-red5: #de2c2c;
+
+  --mvn-orange1: #ffa570;
+  --mvn-orange2: #fc9356;
+  --mvn-orange3: #f57f3b;
+  --mvn-orange4: #e87838;
+  --mvn-orange5: #db7235;
+
+  --mvn-yellow1: #ffd659;
+  --mvn-yellow2: #ffcf40;
+  --mvn-yellow3: #ffc926;
+  --mvn-yellow4: #e5b522;
+  --mvn-yellow5: #cca11f;
+
+  --mvn-green1: #51fc7b;
+  --mvn-green2: #34e35d;
+  --mvn-green3: #1bc943;
+  --mvn-green4: #17b03b;
+  --mvn-green5: #149632;
+
+  --mvn-teal1: #4fffca;
+  --mvn-teal2: #34f7bd;
+  --mvn-teal3: #18e1a5;
+  --mvn-teal4: #16c792;
+  --mvn-teal5: #13ad7f;
+
+  --mvn-blue1: #66bfff;
+  --mvn-blue2: #49acf2;
+  --mvn-blue3: #2b91d9;
+  --mvn-blue4: #2680bf;
+  --mvn-blue5: #216fa6;
+
+  --mvn-indigo1: #a66dfc;
+  --mvn-indigo2: #884be3;
+  --mvn-indigo3: #6d2ec9;
+  --mvn-indigo4: #5f28b0;
+  --mvn-indigo5: #512396;
+
+  --mvn-pink1: #ff59ba;
+  --mvn-pink2: #fe40af;
+  --mvn-pink3: #fc26a4;
+  --mvn-pink4: #e32293;
+  --mvn-pink5: #c91e82;
+
+  --mvn-primary1: #66bfff;
+  --mvn-primary2: #49acf2;
+  --mvn-primary3: #2b91d9;
+  --mvn-primary4: #2680bf;
+  --mvn-primary5: #216fa6;
+
+  --mvn-success1: #51fc7b;
+  --mvn-success2: #34e35d;
+  --mvn-success3: #1bc943;
+  --mvn-success4: #17b03b;
+  --mvn-success5: #149632;
+
+  --mvn-warning1: #ffa570;
+  --mvn-warning2: #fc9356;
+  --mvn-warning3: #f57f3b;
+  --mvn-warning4: #e87838;
+  --mvn-warning5: #db7235;
+
+  --mvn-danger1: #ff6666;
+  --mvn-danger2: #fd4c4c;
+  --mvn-danger3: #f73131;
+  --mvn-danger4: #eb2f2f;
+  --mvn-danger5: #de2c2c;
+
+  --mvn-primary1-d5: hsl(205.10000000000002, 100%, 66.5%);
+  --mvn-primary1-l5: hsl(205.10000000000002, 100%, 73.5%);
+  --mvn-primary2-d5: hsl(204.89999999999998, 86.7%, 58.7%);
+  --mvn-primary2-l5: hsl(204.89999999999998, 86.7%, 64.9%);
+  --mvn-primary3-d5: hsl(204.79999999999995, 69.6%, 48.4%);
+  --mvn-primary3-l5: hsl(204.79999999999995, 69.6%, 53.5%);
+  --mvn-primary4-d5: hsl(204.70000000000005, 66.8%, 42.7%);
+  --mvn-primary4-l5: hsl(204.70000000000005, 66.8%, 47.1%);
+  --mvn-primary5-d5: hsl(204.79999999999995, 66.8%, 37.1%);
+  --mvn-primary5-l5: hsl(204.79999999999995, 66.8%, 41%);
+
+  --mvn-success1-d5: hsl(134.7, 96.6%, 62%);
+  --mvn-success1-l5: hsl(134.7, 96.6%, 68.6%);
+  --mvn-success2-d5: hsl(134.10000000000002, 75.8%, 52%);
+  --mvn-success2-l5: hsl(134.10000000000002, 75.8%, 57.4%);
+  --mvn-success3-d5: hsl(133.8, 76.3%, 42.5%);
+  --mvn-success3-l5: hsl(133.8, 76.3%, 46.9%);
+  --mvn-success4-d5: hsl(134.10000000000002, 76.9%, 37.1%);
+  --mvn-success4-l5: hsl(134.10000000000002, 76.9%, 41%);
+  --mvn-success5-d5: hsl(133.8, 76.5%, 31.7%);
+  --mvn-success5-l5: hsl(133.8, 76.5%, 35%);
+
+  --mvn-warning1-d5: hsl(22.19999999999999, 100%, 68.4%);
+  --mvn-warning1-l5: hsl(22.19999999999999, 100%, 75.6%);
+  --mvn-warning2-d5: hsl(22, 96.5%, 63%);
+  --mvn-warning2-l5: hsl(22, 96.5%, 69.6%);
+  --mvn-warning3-d5: hsl(21.899999999999977, 90.3%, 56.6%);
+  --mvn-warning3-l5: hsl(21.899999999999977, 90.3%, 62.6%);
+  --mvn-warning4-d5: hsl(21.80000000000001, 79.3%, 53.6%);
+  --mvn-warning4-l5: hsl(21.80000000000001, 79.3%, 59.3%);
+  --mvn-warning5-d5: hsl(22, 69.7%, 50.7%);
+  --mvn-warning5-l5: hsl(22, 69.7%, 56%);
+
+  --mvn-danger1-d5: hsl(0, 100%, 66.5%);
+  --mvn-danger1-l5: hsl(0, 100%, 73.5%);
+  --mvn-danger2-d5: hsl(0, 97.8%, 61.3%);
+  --mvn-danger2-l5: hsl(0, 97.8%, 67.7%);
+  --mvn-danger3-d5: hsl(0, 92.5%, 55.1%);
+  --mvn-danger3-l5: hsl(0, 92.5%, 60.9%);
+  --mvn-danger4-d5: hsl(0, 82.5%, 52.5%);
+  --mvn-danger4-l5: hsl(0, 82.5%, 58.1%);
+  --mvn-danger5-d5: hsl(0, 73%, 49.5%);
+  --mvn-danger5-l5: hsl(0, 73%, 54.8%);
+
+  --mvn-color-background: #f5f8fb;
+  --mvn-color-background-text: #ffffff;
+  --mvn-color-background-dark: #323a42;
+  --mvn-color-background-text-dark: #272d33;
+
+  --mvn-color-background-text-a60: rgba(255, 255, 255, 0.6);
+  --mvn-color-background-text-a80: rgba(255, 255, 255, 0.8);
+  --mvn-color-background-text-dark-a80: rgba(39, 45, 51, 0.8);
+    --mvn-color-background-text-dark-a60: rgba(39, 45, 51, 0.6);
+
+  --mvn-color-border: #e1e8ed;
+  --mvn-color-border-dark: #39434d;
+
+  --mvn-color-text: #182026;
+  --mvn-color-text-heading: #182026;
+  --mvn-color-text-link: #2680bf;
+  --mvn-color-text-link-hover: hsl(204.70000000000005, 66.8%, 40.4%);
+  --mvn-color-text-dark: #d7dadb;
+  --mvn-color-text-heading-dark: #d7dadb;
+  --mvn-color-text-link-dark: #49acf2;
+  --mvn-color-text-link-hover-dark: hsl(204.89999999999998, 86.7%, 67.9%);
+
+  --mvn-color-focus: #2b91d9;
+  --mvn-color-focus-danger: #f73131;
+  --mvn-color-outline: rgba(43, 145, 217, 0.5);
+  --mvn-color-outline-danger: rgba(247, 49, 49, 0.5);
+  --mvn-color-text-selection: rgba(43, 145, 217, 0.25);
+  --mvn-color-scrollbar: #182026;
+  --mvn-color-scrollbar-a20: rgba(24, 32, 38, 0.2);
+  --mvn-color-scrollbar-a50: rgba(24, 32, 38, 0.5);
+  --mvn-color-scrollbar-dark: #d7dadb;
+  --mvn-color-scrollbar-dark-a20: rgba(215, 218, 219, 0.2);
+  --mvn-color-scrollbar-dark-a50: rgba(215, 218, 219, 0.5);
+
+  --mvn-dark-grey: #323a42;
+  --mvn-grey: #94a0a8;
+  --mvn-light-grey: #e1e8ed;
+  --mvn-red: #f73131;
+  --mvn-orange: #f57f3b;
+  --mvn-yellow: #ffc926;
+  --mvn-green: #1bc943;
+  --mvn-teal: #18e1a5;
+  --mvn-blue: #2b91d9;
+  --mvn-indigo: #6d2ec9;
+  --mvn-pink: #fc26a4;
+  --mvn-primary: #2b91d9;
+  --mvn-success: #1bc943;
+  --mvn-warning: #f57f3b;
+  --mvn-danger: #f73131;
+
+  --mvn-light-grey-l30: hsl(205, 25%, 100%);
+  --mvn-primary-d15: hsl(204.79999999999995, 69.6%, 43.3%);
+  --mvn-primary-l30: hsl(204.79999999999995, 69.6%, 66.3%);
+  --mvn-primary-w85: rgb(223, 239, 249);
+  --mvn-success-d15: hsl(133.8, 76.3%, 38%);
+  --mvn-success-l30: hsl(133.8, 76.3%, 58.1%);
+  --mvn-success-w85: rgb(221, 247, 227);
+  --mvn-warning-d15: hsl(21.899999999999977, 90.3%, 50.7%);
+  --mvn-warning-l30: hsl(21.899999999999977, 90.3%, 77.5%);
+  --mvn-warning-w85: rgb(254, 236, 226);
+  --mvn-danger-d15: hsl(0, 92.5%, 49.3%);
+  --mvn-danger-l30: hsl(0, 92.5%, 75.5%);
+  --mvn-danger-w85: rgb(254, 224, 224);
+
+  --mvn-black-background-text: #ffffff;
+  --mvn-white-background-text: #182026;
+  --mvn-dark-grey-background-text: #ffffff;
+  --mvn-grey-background-text: #182026;
+  --mvn-light-grey-background-text: #182026;
+  --mvn-red-background-text: #182026;
+  --mvn-orange-background-text: #182026;
+  --mvn-yellow-background-text: #182026;
+  --mvn-green-background-text: #182026;
+  --mvn-teal-background-text: #182026;
+  --mvn-blue-background-text: #182026;
+  --mvn-indigo-background-text: #ffffff;
+  --mvn-pink-background-text: #182026;
+  --mvn-primary-background-text: #ffffff;
+  --mvn-success-background-text: #ffffff;
+  --mvn-warning-background-text: #ffffff;
+  --mvn-danger-background-text: #ffffff;
+
+  --mvn-color-text-black: #182026;
+  --mvn-color-text-white: #ffffff;
+  --mvn-color-text-dark-grey: #323a42;
+  --mvn-color-text-grey: #77848f;
+  --mvn-color-text-light-grey: #d8e1e8;
+  --mvn-color-text-red: #eb2f2f;
+  --mvn-color-text-orange: #e87838;
+  --mvn-color-text-yellow: #e5b522;
+  --mvn-color-text-green: #17b03b;
+  --mvn-color-text-teal: #16c792;
+  --mvn-color-text-blue: #2680bf;
+  --mvn-color-text-indigo: #5f28b0;
+  --mvn-color-text-pink: #e32293;
+  --mvn-color-text-primary: #2680bf;
+  --mvn-color-text-success: #17b03b;
+  --mvn-color-text-warning: #e87838;
+  --mvn-color-text-danger: #eb2f2f;
+
+  --mvn-color-text-black-d10: hsl(205.70000000000005, 22.6%, 10.9%);
+  --mvn-color-text-white-d10: hsl(0, 0%, 90%);
+  --mvn-color-text-dark-grey-d10: hsl(210, 13.8%, 20.5%);
+  --mvn-color-text-grey-d10: hsl(207.5, 9.7%, 46.2%);
+  --mvn-color-text-light-grey-d10: hsl(206.29999999999995, 25.8%, 79.1%);
+  --mvn-color-text-red-d10: hsl(0, 82.5%, 49.8%);
+  --mvn-color-text-orange-d10: hsl(21.80000000000001, 79.3%, 50.8%);
+  --mvn-color-text-yellow-d10: hsl(45.19999999999999, 78.9%, 46.4%);
+  --mvn-color-text-green-d10: hsl(134.10000000000002, 76.9%, 35.1%);
+  --mvn-color-text-teal-d10: hsl(162, 80.1%, 39%);
+  --mvn-color-text-blue-d10: hsl(204.70000000000005, 66.8%, 40.4%);
+  --mvn-color-text-indigo-d10: hsl(264.29999999999995, 63%, 38.1%);
+  --mvn-color-text-pink-d10: hsl(324.9, 77.5%, 46.1%);
+  --mvn-color-text-primary-d10: hsl(204.70000000000005, 66.8%, 40.4%);
+  --mvn-color-text-success-d10: hsl(134.10000000000002, 76.9%, 35.1%);
+  --mvn-color-text-warning-d10: hsl(21.80000000000001, 79.3%, 50.8%);
+  --mvn-color-text-danger-d10: hsl(0, 82.5%, 49.8%);
+  
+
+  --mvn-color-text-black-dark: #182026;
+  --mvn-color-text-white-dark: #ffffff;
+  --mvn-color-text-dark-grey-dark: #323a42;
+  --mvn-color-text-grey-dark: #b4bcc2;
+  --mvn-color-text-light-grey-dark: #ebf1f5;
+  --mvn-color-text-red-dark: #fd4c4c;
+  --mvn-color-text-orange-dark: #fc9356;
+  --mvn-color-text-yellow-dark: #ffcf40;
+  --mvn-color-text-green-dark: #34e35d;
+  --mvn-color-text-teal-dark: #34f7bd;
+  --mvn-color-text-blue-dark: #49acf2;
+  --mvn-color-text-indigo-dark: #a66dfc;
+  --mvn-color-text-pink-dark: #fe40af;
+  --mvn-color-text-primary-dark: #49acf2;
+  --mvn-color-text-success-dark: #34e35d;
+  --mvn-color-text-warning-dark: #fc9356;
+  --mvn-color-text-danger-dark: #fd4c4c;
+
+  --mvn-color-text-black-dark-l10: hsl(205.70000000000005, 22.6%, 13.4%);
+  --mvn-color-text-white-dark-l10: hsl(0, 0%, 100%);
+  --mvn-color-text-dark-grey-dark-l10: hsl(210, 13.8%, 25%);
+  --mvn-color-text-grey-dark-l10: hsl(205.70000000000005, 10.3%, 80.7%);
+  --mvn-color-text-light-grey-dark-l10: hsl(204, 33.3%, 100%);
+  --mvn-color-text-red-dark-l10: hsl(0, 97.8%, 71%);
+  --mvn-color-text-orange-dark-l10: hsl(22, 96.5%, 72.9%);
+  --mvn-color-text-yellow-dark-l10: hsl(44.89999999999998, 100%, 68.8%);
+  --mvn-color-text-green-dark-l10: hsl(134.10000000000002, 75.8%, 60.2%);
+  --mvn-color-text-teal-dark-l10: hsl(162.20000000000005, 92.4%, 64.5%);
+  --mvn-color-text-blue-dark-l10: hsl(204.89999999999998, 86.7%, 67.9%);
+  --mvn-color-text-indigo-dark-l10: hsl(263.9, 96%, 77.9%);
+  --mvn-color-text-pink-dark-l10: hsl(324.9, 99%, 68.6%);
+  --mvn-color-text-primary-dark-l10: hsl(204.89999999999998, 86.7%, 67.9%);
+  --mvn-color-text-success-dark-l10: hsl(134.10000000000002, 75.8%, 60.2%);
+  --mvn-color-text-warning-dark-l10: hsl(22, 96.5%, 72.9%);
+  --mvn-color-text-danger-dark-l10: hsl(0, 97.8%, 71%);
+
+  --mvn-border-radius: 0.4rem;
+  --mvn-border-radius-large: 0.8rem;
+  --mvn-size-outline: 0.3rem;
+
+  --mvn-transition-duration: 0.2s;
+  --mvn-transition-timing-function: cubic-bezier(0.4, 1, 0.75, 0.9);
+
+  --mvn-typography-font-family: -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell,
+    'Fira Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+  --mvn-typography-font-family-monospace: source-code-pro, Menlo, Monaco, Consolas,
+    'Courier New', monospace;
+  --mvn-typography-font-family-heading: -apple-system, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell,
+    'Fira Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+  --mvn-typography-line-height: 1.65;
+  --mvn-typography-line-height-heading: 1.25; 
+}</style><div class="mvn--block block_block__3Fds0 block_background-textBackground__11kmk app_app__2qsNT"><nav class="mvn--block block_block__3Fds0 block_background-textBackground__11kmk nav_nav__1SrUg"><div class="mvn--block block_block__3Fds0 mvn--container container_container__1vk8A nav_container__3t9x8"><div class="mvn--row row_row__24gNQ row_center__1nk-Y" style="--mvn-grid-gutter:0rem"><div class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn"><a href="/" class="mvn--block block_block__3Fds0 mvn--link link_a__3MhIx"><img src="/maeven/logo.png" class="nav_logo__2r91A" alt="Maeven Logo"/><strong>Maeven</strong></a><a href="/docs" class="mvn--block block_block__3Fds0 mvn--link link_a__3MhIx nav_active__3L77j">Docs</a></div><div class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn nav_right__izoLs"><a href="https://github.com/Barry127/maeven" target="_blank" class="mvn--block block_block__3Fds0 mvn--link link_a__3MhIx">GitHub</a><label class="mvn--toggle toggle_container__j8iMM toggle_md__DI1pr nav_toggle__GhoKP"><input type="checkbox" checked="" class="toggle_input__1UPDV" id="mvn-id-0"/><div class="toggle_toggle__16Mwl"><span style="font-size:1em" class="mvn--block block_block__3Fds0 mvn--icon icon_container__3XS5_ toggle_icon__3qLl4 toggle_on__3btJF"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon_icon__2TK1I icon_stroke__16Z1X"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span><span style="font-size:1em" class="mvn--block block_block__3Fds0 mvn--icon icon_container__3XS5_ toggle_icon__3qLl4 toggle_off__2iS5D"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon_icon__2TK1I icon_stroke__16Z1X"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span><div class="toggle_knob__2btH5"></div></div></label></div></div></div></nav><div class="app_content__rKJzh"><div class="mvn--row row_row__24gNQ row_normal__1fc78 row_no-wrap__i1gXa" style="--mvn-grid-gutter:0rem"><button class="mvn--button button_button__lHdXb button_default__2m8dG button_md__3onPz button_icon-button__1EEFq side-nav_hamburger__3iDxl" type="button"><span style="font-size:1em" class="mvn--block block_block__3Fds0 mvn--icon icon_container__3XS5_ button_icon__3P0Aw button_left__2ay7n"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon_icon__2TK1I icon_stroke__16Z1X"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></span></button><div role="complementary" class="mvn--block block_block__3Fds0 block_background-background__3iPmJ mvn--col col_col__3-wJn col_hidden-md__unRIV col_hidden-sm__1jCt5 col_hidden-xs__3EH28 side-nav_container__1G5Ch"><div style="top:0;min-height:calc(100vh - 0px);max-height:calc(100vh - 0px)" class="mvn--block block_block__3Fds0 block_padding__1r1Sk side-nav_content__1DnMV"><ul><li><a href="/docs" class="">Maeven</a></li><li><a href="/docs/gettingStarted" class="">Getting Started</a></li><li><a href="/docs/license" class="">License</a></li><li><a href="/docs/components" class="side-nav_group__2fQsW side-nav_open__zTt-n">Components<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Alert" class="side-nav_group__2fQsW">Alert<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Alert/Alert" class="">Alert</a></li><li><a href="/docs/components/Alert/AlertGroup" class="">AlertGroup</a></li></ul></div></li><li><a href="/docs/components/Block" class="">Block</a></li><li><a href="/docs/components/Button" class="side-nav_group__2fQsW">Button<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Button/Button" class="">Button</a></li><li><a href="/docs/components/Button/ButtonGroup" class="">ButtonGroup</a></li></ul></div></li><li><a href="/docs/components/Card" class="side-nav_group__2fQsW">Card<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Card/Card" class="">Card</a></li><li><a href="/docs/components/Card/CardImage" class="">CardImage</a></li></ul></div></li><li><a href="/docs/components/Form" class="side-nav_group__2fQsW">Form<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Form/Form" class="">Form</a></li><li><a href="/docs/components/Form/CheckBox" class="">CheckBox</a></li><li><a href="/docs/components/Form/FormField" class="">FormField</a></li><li><a href="/docs/components/Form/NativeSelect" class="">NativeSelect</a></li><li><a href="/docs/components/Form/PasswordInput" class="">PasswordInput</a></li><li><a href="/docs/components/Form/RadioButton" class="">RadioButton</a></li><li><a href="/docs/components/Form/RadioGroup" class="">RadioGroup</a></li><li><a href="/docs/components/Form/Select" class="">Select</a></li><li><a href="/docs/components/Form/TextArea" class="">TextArea</a></li><li><a href="/docs/components/Form/TextInput" class="">TextInput</a></li><li><a href="/docs/components/Form/Toggle" class="">Toggle</a></li><li><a href="/docs/components/Form/TypeAheadInput" class="">TypeAheadInput</a></li></ul></div></li><li><a href="/docs/components/Grid" class="side-nav_group__2fQsW">Grid<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Grid" class="">Grid</a></li><li><a href="/docs/components/Grid/Col" class="">Col</a></li><li><a href="/docs/components/Grid/Container" class="">Container</a></li><li><a href="/docs/components/Grid/Row" class="">Row</a></li></ul></div></li><li><a href="/docs/components/Heading" class="">Heading</a></li><li><a href="/docs/components/Html" class="side-nav_group__2fQsW">HTML<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Html" class="">HTML</a></li><li><a href="/docs/components/Html/A" class="">A</a></li><li><a href="/docs/components/Html/H1" class="">H1</a></li><li><a href="/docs/components/Html/H2" class="">H2</a></li><li><a href="/docs/components/Html/H3" class="">H3</a></li><li><a href="/docs/components/Html/H4" class="">H4</a></li><li><a href="/docs/components/Html/H5" class="">H5</a></li><li><a href="/docs/components/Html/H6" class="">H6</a></li><li><a href="/docs/components/Html/Li" class="">Li</a></li><li><a href="/docs/components/Html/Ol" class="">Ol</a></li><li><a href="/docs/components/Html/P" class="">P</a></li><li><a href="/docs/components/Html/Span" class="">Span</a></li><li><a href="/docs/components/Html/Ul" class="">Ul</a></li></ul></div></li><li><a href="/docs/components/Icon" class="">Icon</a></li><li><a href="/docs/components/Link" class="">Link</a></li><li><a href="/docs/components/Modal" class="">Modal</a></li><li><a href="/docs/components/Progress" class="side-nav_group__2fQsW">Progress<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/components/Progress/ProgressBar" class="">ProgressBar</a></li><li><a href="/docs/components/Progress/ProgressCircle" class="">ProgressCircle</a></li><li><a href="/docs/components/Progress/ProgressGauge" class="">ProgressGauge</a></li></ul></div></li><li><a href="/docs/components/Spinner" class="">Spinner</a></li><li><a href="/docs/components/ThemeProvider" class="">ThemeProvider</a></li></ul></div></li><li><a href="/docs/hooks" class="side-nav_group__2fQsW side-nav_open__zTt-n side-nav_active__21gwC">Hooks<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/hooks/useDarkMode" class="">useDarkMode</a></li><li><a href="/docs/hooks/useFocus" class="">useFocus</a></li><li><a href="/docs/hooks/useId" class="">useId</a></li><li><a href="/docs/hooks/useOutline" class="">useOutline</a></li><li><a href="/docs/hooks/useTitle" class="side-nav_active__21gwC">useTitle</a></li></ul></div></li><li><a href="/docs/customize" class="side-nav_group__2fQsW">Customizing<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></a><div style="height:0"><ul><li><a href="/docs/customize/theme" class="">Theme</a></li><li><a href="/docs/customize/icons" class="">Icons</a></li><li><a href="/docs/customize/cssVariables" class="">CSS Variables</a></li></ul></div></li></ul></div><button class="mvn--button button_button__lHdXb button_default__2m8dG button_md__3onPz button_icon-button__1EEFq side-nav_hamburger__3iDxl" type="button"><span style="font-size:1em" class="mvn--block block_block__3Fds0 mvn--icon icon_container__3XS5_ button_icon__3P0Aw button_left__2ay7n"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon_icon__2TK1I icon_stroke__16Z1X"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></span></button></div><main class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn app_main__16MF0"><div class="mvn--block block_block__3Fds0 mvn--container container_container__1vk8A container_responsive__1SAKi"><div class="mvn--row row_row__24gNQ row_normal__1fc78" style="--mvn-grid-gutter:1rem"><article class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn col_md-24__1j2kH col_lg-18__1Ghm9 col_xl-18__18EDJ"><h1 class="mvn--block block_block__3Fds0 mvn--h1 html_h1__J90o7">useTitle</h1><p class="mvn--block block_block__3Fds0 mvn--p html_p__KDgl0">useTitle sets document title when a title is passed.</p><h2 class="mvn--block block_block__3Fds0 mvn--h2 html_h2__21scP"><a aria-hidden="true" id="signature" tabindex="-1" class="mvn--block block_block__3Fds0 mvn--link link_a__3MhIx mdx-h_anchor__1hiqQ"></a>Signature<a aria-hidden="true" tabindex="-1" href="#signature" title="Direct link" class="mvn--block block_block__3Fds0 mvn--link link_a__3MhIx mdx-h_hash__1P6ub">#</a></h2><div><pre class="prism-code language-ts code-block_static__3pJBP code-block_monokai__36egi" style="background-color:#2a2734;color:#9a86fd"><div class="token-line" style="color:#9a86fd"><span class="token keyword" style="color:#ffcc99">function</span><span class="token plain"> </span><span class="token function" style="color:#9a86fd">useTitle</span><span class="token punctuation" style="color:#6c6783">(</span><span class="token parameter">title</span><span class="token parameter operator" style="color:#e09142">?</span><span class="token parameter punctuation" style="color:#6c6783">:</span><span class="token parameter"> string</span><span class="token punctuation" style="color:#6c6783">)</span><span class="token punctuation" style="color:#6c6783">:</span><span class="token plain"> </span><span class="token keyword" style="color:#ffcc99">void</span><span class="token punctuation" style="color:#6c6783">;</span></div></pre></div><h3 class="mvn--block block_block__3Fds0 mvn--h3 html_h3__2MwOP"><a aria-hidden="true" id="example" tabindex="-1" class="mvn--block block_block__3Fds0 mvn--link link_a__3MhIx mdx-h_anchor__1hiqQ"></a>Example<a aria-hidden="true" tabindex="-1" href="#example" title="Direct link" class="mvn--block block_block__3Fds0 mvn--link link_a__3MhIx mdx-h_hash__1P6ub">#</a></h3><p class="mvn--block block_block__3Fds0 mvn--p html_p__KDgl0">Set document title with useTitle.</p><div><div class="code-block_live__2U4DJ"><div class=""><div class="mvn--block block_block__3Fds0 code-block_toolbar__1UVMm"><div class="mvn--row row_row__24gNQ row_normal__1fc78" style="--mvn-grid-gutter:0rem"><div class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn col_xs-12__2zYIo"><button title="Toggle transparent background" class="mvn--button button_button__lHdXb button_link__2sGRc button_md__3onPz button_icon-button__1EEFq" type="button"><span style="font-size:1em" class="mvn--block block_block__3Fds0 mvn--icon icon_container__3XS5_ button_icon__3P0Aw button_left__2ay7n"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon_icon__2TK1I icon_stroke__16Z1X"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></span></button></div><div style="text-align:right" class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn col_xs-12__2zYIo"><button title="Show code" class="mvn--button button_button__lHdXb button_link__2sGRc button_md__3onPz button_icon-button__1EEFq" type="button"><span style="font-size:1em" class="mvn--block block_block__3Fds0 mvn--icon icon_container__3XS5_ button_icon__3P0Aw button_left__2ay7n"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon_icon__2TK1I icon_stroke__16Z1X"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span></button><button title="Maximize" class="mvn--button button_button__lHdXb button_link__2sGRc button_md__3onPz button_icon-button__1EEFq" type="button"><span style="font-size:1em" class="mvn--block block_block__3Fds0 mvn--icon icon_container__3XS5_ button_icon__3P0Aw button_left__2ay7n"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon_icon__2TK1I icon_stroke__16Z1X"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></span></button></div></div></div><div class="mvn--row row_row__24gNQ row_normal__1fc78" style="--mvn-grid-gutter:0rem"><div class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn col_col-24__1R9kw code-block_preview__1wNVM"><div><h3 class="mvn--block block_block__3Fds0 mvn--h3 html_h3__2MwOP">Type to set document title</h3><div class="mvn--text-input text-input_container__3gwkK text-input_md__1apAD"><label class="text-input_label__3VQ3Z"><input type="text" class="text-input_input__rCDh1" id="mvn-id-2"/></label></div></div></div></div></div></div></div></article><div class="mvn--block block_block__3Fds0 mvn--col col_col__3-wJn col_col-6__1G3Qu col_hidden-md__unRIV col_hidden-sm__1jCt5 col_hidden-xs__3EH28"><div style="display:none" class="mvn--block block_block__3Fds0 table-of-content_container__1wxrb"><ul class="mvn--block block_block__3Fds0 mvn--ul html_ul__3shKC"></ul></div></div></div></div></main></div></div><footer class="mvn--block block_block__3Fds0 block_background-darkGrey__3hJCQ footer_footer__1nCIX">Copyright © 2020 Barry de Kleijn.</footer></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/docs/hooks/useTitle","query":{},"buildId":"h7C2iVXHJXkP66r2ZyrAF","assetPrefix":"/maeven","runtimeConfig":{},"nextExport":true,"autoExport":true,"isFallback":false,"head":[["meta",{"name":"viewport","content":"width=device-width"}],["meta",{"charSet":"utf-8"}],["link",{"rel":"shortcut icon","href":"/maeven/favicon.ico"}],["title",{"children":"useTitle | Maeven"}]]}</script><script nomodule="" src="/maeven/_next/static/chunks/polyfills-a30d34de4669043eba8b.js"></script><script src="/maeven/_next/static/chunks/main-cabce7c5f764869df652.js" async=""></script><script src="/maeven/_next/static/chunks/webpack-e067438c4cf4ef2ef178.js" async=""></script><script src="/maeven/_next/static/chunks/framework.b11cd6ab3c62dae3dfb8.js" async=""></script><script src="/maeven/_next/static/chunks/702ccf50.891306660b79437e0e00.js" async=""></script><script src="/maeven/_next/static/chunks/44e2a0e6.d0dda7cc57367bd61b3a.js" async=""></script><script src="/maeven/_next/static/chunks/f0e45107.e07aabf41fd41220d88d.js" async=""></script><script src="/maeven/_next/static/chunks/6d406fec.cf9e4c8ca3c58c112c8d.js" async=""></script><script src="/maeven/_next/static/chunks/d1f6095a43b68148e8a871590d8994a93b98c6c1.902901e33d56d25d7fcd.js" async=""></script><script src="/maeven/_next/static/chunks/d1f6095a43b68148e8a871590d8994a93b98c6c1_CSS.8f6f5b95f5e92b2c9bcd.js" async=""></script><script src="/maeven/_next/static/chunks/25f6d7332b976b1e5ec025b28edf8208d16c52aa.09caf2a4a647329005f5.js" async=""></script><script src="/maeven/_next/static/chunks/f6078781a05fe1bcb0902d23dbbb2662c8d200b3.174c13f373fe7b79226b.js" async=""></script><script src="/maeven/_next/static/chunks/pages/_app-73dd467cd06636139932.js" async=""></script><script src="/maeven/_next/static/chunks/640326480e8723813f77679ff6c795c5a1c4dbc1.25329ab35b2e5029c2ab.js" async=""></script><script src="/maeven/_next/static/chunks/pages/docs/hooks/useTitle-dfbc720a4ca4f7c3b62f.js" async=""></script><script src="/maeven/_next/static/h7C2iVXHJXkP66r2ZyrAF/_buildManifest.js" async=""></script><script src="/maeven/_next/static/h7C2iVXHJXkP66r2ZyrAF/_ssgManifest.js" async=""></script></body></html>
