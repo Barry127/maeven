@@ -13,6 +13,10 @@
 
 .track {
   stroke: var(--mvn-color-background);
+
+  :global(.mvn-dark) & {
+    stroke: var(--mvn-color-background-dark);
+  }
 }
 
 .content {
