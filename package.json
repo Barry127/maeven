@@ -24,7 +24,7 @@
     "clsx": "^1.1.1",
     "color": "^3.2.0",
     "react-autosize-textarea": "^7.1.0",
-    "react-hooks-global-state": "^1.0.1",
+    "react-hooks-global-state": "^1.0.2",
     "react-spring": "^8.0.27",
     "react-use-measure": "^2.0.4"
   },
