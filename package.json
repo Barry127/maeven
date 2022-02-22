@@ -20,7 +20,7 @@
   },
   "homepage": "http://barry127.github.io/maeven/",
   "dependencies": {
-    "@types/color": "^3.0.2",
+    "@types/color": "^3.0.3",
     "clsx": "^1.1.1",
     "color": "^3.2.0",
     "react-autosize-textarea": "^7.1.0",
