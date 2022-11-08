@@ -21,7 +21,7 @@
   "homepage": "http://barry127.github.io/maeven/",
   "dependencies": {
     "@types/color": "^3.0.2",
-    "clsx": "^1.1.1",
+    "clsx": "^1.2.0",
     "color": "^3.2.0",
     "react-autosize-textarea": "^7.1.0",
     "react-hooks-global-state": "^1.0.2",
@@ -71,7 +71,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.5.3",
     "lodash": "^4.17.21",
-    "next": "^9.5.5",
+    "next": "^12.1.0",
     "node-sass": "^7.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
